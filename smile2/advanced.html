@@ -14,13 +14,13 @@
   <meta property="og:image" content="http://sincioco.com/smile2/images/smile-2.0-logo.png">
   <meta property="og:image:alt" content="SMILE 2.0 programming language logo">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"http://sincioco.com/smile2/advanced.html#webpage","url":"http://sincioco.com/smile2/advanced.html","name":"Arena, fire, water \u0026 earth | SMILE 2.0 · Sincioco","description":"Create the native SMILE 2.0 arena and instantiate reusable Fire, Water, and Earth effects with accurate lifecycle examples, downloadable sources, and real Lab screenshots.","inLanguage":"en","isPartOf":{"@id":"http://sincioco.com/#website"},"author":{"@type":"Person","@id":"http://sincioco.com/#louiery-sincioco","name":"Louiery Sincioco"},"image":"http://sincioco.com/smile2/images/smile-2.0-logo.png"},{"@type":"BreadcrumbList","@id":"http://sincioco.com/smile2/advanced.html#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"http://sincioco.com/"},{"@type":"ListItem","position":2,"name":"SMILE 2.0 Guide","item":"http://sincioco.com/smile2/"},{"@type":"ListItem","position":3,"name":"Arena, fire, water \u0026 earth","item":"http://sincioco.com/smile2/advanced.html"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"http://sincioco.com/smile2/advanced.html#webpage","url":"http://sincioco.com/smile2/advanced.html","name":"Arena, fire, water \u0026 earth | SMILE 2.0 · Sincioco","description":"Create the native SMILE 2.0 arena and instantiate reusable Fire, Water, and Earth effects with accurate lifecycle examples, downloadable sources, and real Lab screenshots.","inLanguage":"en","isPartOf":{"@id":"http://sincioco.com/#website"},"author":{"name":"Louiery Sincioco","@type":"Person","@id":"http://sincioco.com/#louiery-sincioco"},"image":"http://sincioco.com/smile2/images/smile-2.0-logo.png"},{"@type":"BreadcrumbList","@id":"http://sincioco.com/smile2/advanced.html#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"http://sincioco.com/"},{"@type":"ListItem","position":2,"name":"SMILE 2.0 Guide","item":"http://sincioco.com/smile2/"},{"@type":"ListItem","position":3,"name":"Arena, fire, water \u0026 earth","item":"http://sincioco.com/smile2/advanced.html"}]}]}</script>
   <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
-  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
-  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
-  <script src="search-index.js?v=20261005-projects-1" defer></script>
-  <script src="docs.js?v=20261005-projects-1" defer></script>
+  <link rel="icon" href="../Images/favicon.svg?v=c7f3e63dca854d3d" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=c5d789cc0da28dc3">
+  <link rel="stylesheet" href="docs.css?v=d578442fb2074961">
+  <script src="search-index.js?v=d84568326437fb82" defer></script>
+  <script src="docs.js?v=5a7037967b6ebbc8" defer></script>
 </head>
 <body class="smile-docs">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -147,7 +147,7 @@ Show Screen</code></pre>
 </section>
 
 <section><h2 id="fire">2. Create a fire emitter</h2>
-  <figure class="screenshot"><img src="images/fire-inferno-blast.jpg" alt="Kael sends an Inferno Blast across the reflective native SMILE 2.0 Fire Lab arena." loading="lazy"><figcaption>Current native Fire Lab: Kael's Inferno Blast. The small teaching sample starts with a standalone torch; the character, choreography, and attack rules belong to the larger Lab.</figcaption></figure>
+  <figure class="screenshot"><img src="images/fire-inferno-blast.jpg?v=9c56304d6d02394b" alt="Kael sends an Inferno Blast across the reflective native SMILE 2.0 Fire Lab arena." loading="lazy"><figcaption>Current native Fire Lab: Kael's Inferno Blast. The small teaching sample starts with a standalone torch; the character, choreography, and attack rules belong to the larger Lab.</figcaption></figure>
   <p>An <strong>emitter</strong> is a source that keeps producing particles. A torch is a useful first example because it can stay in one place while its fire, smoke, and embers change over time.</p>
   <pre><code class="language-smile">Import Smile.Simple3D.FireEmitter3D As Fire
 Import Smile.Simple3D.Precision3D As P
@@ -179,7 +179,7 @@ Call Fire.Shutdown()</code></pre>
 </section>
 
 <section><h2 id="water">3. Give water an effect context and a frame</h2>
-  <figure class="screenshot"><img src="images/water-serpent-orbit.jpg" alt="Reflective water coils around Kael during Serpent Orbit in the native SMILE 2.0 Water Lab." loading="lazy"><figcaption>Current native Water Lab: Serpent Orbit with Realistic Water. The shared effect receives a description of the cast; the host provides its timing and targets.</figcaption></figure>
+  <figure class="screenshot"><img src="images/water-serpent-orbit.jpg?v=9b5ea255e3b0c54f" alt="Reflective water coils around Kael during Serpent Orbit in the native SMILE 2.0 Water Lab." loading="lazy"><figcaption>Current native Water Lab: Serpent Orbit with Realistic Water. The shared effect receives a description of the cast; the host provides its timing and targets.</figcaption></figure>
   <p>A <code>Water.Context</code> owns the reusable rendering resources. A <code>Water.Frame</code> describes what the effect should do <em>now</em>: its mode, time, strength, position, and target. Keep the context for the scene; update the frame as the cast progresses.</p>
   <pre><code class="language-smile">Import Smile.Simple3D.WaterVfx3D As Water
 Import Smile.Simple3D.Precision3D As P
@@ -212,7 +212,7 @@ Call Water.Destroy(WaterEffect)</code></pre>
 </section>
 
 <section><h2 id="earth">4. Animate rocks and keep the dust alive</h2>
-  <figure class="screenshot"><img src="images/earth-boulder-hurl.jpg" alt="Kael lifts a large rock while preparing Boulder Hurl in the native SMILE 2.0 Earth Lab." loading="lazy"><figcaption>Current native Earth Lab: Boulder Hurl. Rock instances and dust belong to the shared effect; character poses and cast timing are supplied by the host.</figcaption></figure>
+  <figure class="screenshot"><img src="images/earth-boulder-hurl.jpg?v=431b9121bd121ddc" alt="Kael lifts a large rock while preparing Boulder Hurl in the native SMILE 2.0 Earth Lab." loading="lazy"><figcaption>Current native Earth Lab: Boulder Hurl. Rock instances and dust belong to the shared effect; character poses and cast timing are supplied by the host.</figcaption></figure>
   <p>Earth uses the same context-and-frame idea, with reusable rock models and a dust pool. Its frame has one extra timing detail worth learning: <code>Time</code> locates the cast, while <code>Elapsed</code> says how much playback time advanced since the last update.</p>
   <pre><code class="language-smile">Import Smile.Simple3D.EarthVfx3D As Earth
 Import Smile.Simple3D.Precision3D As P

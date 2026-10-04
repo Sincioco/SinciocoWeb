@@ -32,6 +32,7 @@ html { scroll-behavior:auto; }
 .project-heading .lead { font-size:18px; margin-top:19px; }
 .project-links { display:flex; flex-wrap:wrap; gap:24px; margin-top:20px; }
 .project-artwork { max-width:180px; height:auto; margin-top:24px; border-radius:18px; }
+.project-screenshot { display:block; width:100%; height:auto; margin-top:24px; border:1px solid var(--line); border-radius:18px; }
 .project-content { font-size:15px; line-height:1.75; overflow-wrap:anywhere; }
 .project-content > :first-child { margin-top:0; }
 .project-content p { margin-block:0 18px; }
@@ -63,7 +64,7 @@ html { scroll-behavior:auto; }
 .project-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; margin-block:24px 30px; }
 .project-gallery figure { min-width:0; margin:0; padding:12px; border:1px solid var(--line); border-radius:16px; background:var(--surface); }
 .project-gallery figure:only-child { grid-column:1 / -1; }
-.project-gallery figure:has(img[src="images/life2/calendar-landscape.png"]) { grid-column:1 / -1; }
+.project-gallery figure:has(img[src="images/life2/calendar-landscape.png"], img[src^="images/life2/calendar-landscape.png?"]) { grid-column:1 / -1; }
 .project-gallery figure img { width:100%; margin:0; border-radius:8px; }
 .gallery-label { font-size:13px; font-weight:600; padding:3px 2px 12px; }
 .project-gallery figcaption { font-size:13px; color:var(--muted); margin-top:13px; }

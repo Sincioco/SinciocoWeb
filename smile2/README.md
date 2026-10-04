@@ -11,6 +11,9 @@ restart, package installation, or production build step is required to serve it.
   generated HTML pages, search index, and documentation sitemap entries.
 - `../tools/Get-SeoHead.ps1` owns shared search/social metadata, page JSON-LD, and
   breadcrumbs; the documentation builder supplies each lesson's values.
+- `../tools/Update-AssetVersions.ps1` runs after generation to version local assets
+  by content hash across all sitemap pages. Root `Web.config` owns response caching;
+  `../tools/Test-AssetCaching.ps1` covers the reported stale-asset regression.
 - `docs.css` owns documentation layout and components. `../CSS/site.css` owns
   the existing Sincioco.com design tokens, header, navigation, and footer.
 - `docs.js` owns only progressive enhancements: search, copy buttons, simple
@@ -28,6 +31,7 @@ Rebuild after changing lesson content or the shared layout, using PowerShell 7:
 pwsh -NoProfile -File .\smile2\tools\Build-Docs.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
 pwsh -NoProfile -File .\tools\Check-SEO.ps1
+pwsh -NoProfile -File .\tools\Update-AssetVersions.ps1 -Check
 ```
 
 Optional HTTP verification of every page against a running local site:
@@ -41,10 +45,16 @@ The root SEO checker covers all 21 sitemap routes, metadata, JSON-LD, robots rul
 and permanent legacy/canonical redirects. See the [root SEO audit](../README.md#seo-audit--2026-10-05) for
 the current HTTP-origin policy, live hosting findings, and approval/deployment steps.
 
-The generator's version value controls cache-busting URLs. Update that value and
-the three parent-page stylesheet URLs for a later CSS/JS release. Use Ctrl+F5 in
-the browser after editing. Search works without a fetch request, including from
-local files. Core lesson text, links, diagrams, and downloads remain usable when
+Versions come from asset contents, so no manual version bump is needed. After an
+asset-only edit, run `tools/Update-AssetVersions.ps1` from the website root and use
+`-Check` before publishing. See [asset caching](../README.md#asset-caching--2026-10-05)
+for the HTTP policy and focused regression command. An ordinary reload is sufficient
+after the new policy is received; open pages and history snapshots still need reloading.
+The first two cache regression runs and local IIS 200/304 cache-header checks passed;
+the documentation checker also passed all 14 pages and 537 local links/assets.
+Search works without a fetch request, including from local files. Its generated JSON
+now has stable ordering with unchanged search data. Core lesson text, links,
+diagrams, and downloads remain usable when
 JavaScript is disabled; interactive controls and search need JavaScript.
 
 ## Scope and provenance

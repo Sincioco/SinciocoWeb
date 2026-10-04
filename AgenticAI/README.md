@@ -2,7 +2,8 @@
 
 This static sub-site is available at `/AgenticAI/`. The landing page presents six
 projects in the requested order: PMT, Life 2.0, Sin Star I, SMILE 2.0, Sin AI Prompt,
-and SMILE 1.0. Each project keeps its complete public README on one HTML page.
+and SMILE 1.0. Each project presents its public README on one HTML page with
+the website-specific edits described below.
 Its left navigation links to headings on that same page.
 
 The shared top navigation uses Military, a vertical separator, then Agentic AI
@@ -17,8 +18,16 @@ project tab and its language-guide link remain available.
 - `tools/Convert-ProjectReadme.ps1` converts the snapshots into semantic HTML,
   replaces image paths, resolves source links, and extracts heading anchors.
 - `tools/Build-Projects.ps1` owns the page shell, project order, and sitemap entries.
+  It omits Sin AI Prompt's Run section and its navigation item, and uses the
+  owner-supplied `images/sinaiprompt/sin-ai-prompt-editor.png` screenshot for the
+  full-width introduction and social preview. Only the landing-page project card
+  uses the supplied `images/sinaiprompt/sin-ai-prompt-thumbnail.png` artwork. The original
+  `SinAIPrompt.png` logo and pinned README/source metadata remain unchanged.
 - `../tools/Get-SeoHead.ps1` owns shared search/social metadata, page JSON-LD, and
   breadcrumbs; the builder supplies each page's content and identity.
+- `../tools/Update-AssetVersions.ps1` runs at the end of generation and versions
+  local assets by content hash across all sitemap pages. Root `Web.config` owns
+  response caching; `../tools/Test-AssetCaching.ps1` covers the stale-asset regression.
 - `projects.css` owns only this sub-site's layout. `../CSS/site.css` owns shared
   typography, colors, header, footer, and global navigation. Documentation details
   follow the existing `../smile2/docs.css` conventions.
@@ -48,6 +57,7 @@ pwsh -NoProfile -File .\AgenticAI\tools\Build-Projects.ps1
 pwsh -NoProfile -File .\AgenticAI\tools\Check-Projects.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
 pwsh -NoProfile -File .\tools\Check-SEO.ps1
+pwsh -NoProfile -File .\tools\Update-AssetVersions.ps1 -Check
 pwsh -NoProfile -File .\AgenticAI\tools\Test-ProjectBuild.ps1
 pwsh -NoProfile -File .\AgenticAI\tools\Test-SinStarTowns.ps1
 ```
@@ -68,10 +78,15 @@ documents remain links to their pinned GitHub versions.
 
 When refreshing source content, replace snapshots deliberately, update the exact
 commit and image mappings, and rerun validation. The builder works offline and
-does not silently refresh from GitHub. Increase its version string after CSS or
-JavaScript edits. The shared site CSS version must also be updated in the three
-parent pages and the SMILE documentation generator if shared styling changes.
-Use Ctrl+F5 during browser testing.
+does not silently refresh from GitHub. Asset versions are automatic; after editing
+an asset without rebuilding, run `tools/Update-AssetVersions.ps1` from the website
+root, then use `-Check` before publishing. See [asset caching](../README.md#asset-caching--2026-10-05)
+for the HTTP policy and regression command. Use an ordinary reload after the new
+policy is received; already-open pages and history snapshots still need reloading.
+The Calendar gallery selector retains its full-width layout with versioned image URLs.
+The first two cache regression runs and local IIS cache-header checks passed; all 134
+site asset versions are current. Browser review confirmed the Calendar card and
+gallery both measure 842px, with no horizontal overflow at a 1250px viewport.
 
 ## Imported sources — October 5, 2026
 
@@ -114,7 +129,7 @@ New handwritten files range from 22 to 138 lines. Shared CSS grew from 236 to 24
 lines for wrapping navigation; the existing documentation generator and checker
 retain their previous line counts. The build regression checks sitemap stability
 and retention of all 21 entries after repeated builds of either sub-site. It
-covers a newline-growth bug found during this task. Its first four relevant runs passed;
+covers a newline-growth bug found during this task. Its first five relevant runs passed;
 retire it after ten consecutive relevant successful runs under the global policy.
 
 The Towns regression covers the original table's separated name-only cards. It
@@ -123,6 +138,15 @@ runs passed. Retire it after ten consecutive relevant successful runs. The trail
 was checked at 842px desktop and 335px mobile content widths. In the browser, the
 first audible hover request was blocked; after selecting Play, leaving paused
 playback and hovering resumed it with `muted=false`. No silent fallback is used.
+
+The Sin AI Prompt presentation update removes Run before section navigation is
+generated and uses the owner-supplied editor screenshot without changing the
+imported README, source metadata, or original logo. The existing builder owns
+these presentation choices; it grew from 122 to 133 physical lines and project
+CSS from 108 to 109. No new dependencies or size exceptions were introduced.
+The project, SEO, and asset-version checks passed. Desktop and 390px browser
+checks confirmed the screenshot loads responsively and Run is absent from both
+the content and navigation.
 
 The work is prepared locally and has not been deployed to the public server.
 The website is versioned in the private `Sincioco/SinciocoWeb` repository.

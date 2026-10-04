@@ -5,7 +5,6 @@ $ErrorActionPreference = 'Stop'
 $site = Split-Path $PSScriptRoot -Parent
 $root = Split-Path $site -Parent
 . (Join-Path $root 'tools/Get-SeoHead.ps1')
-$version = '20261005-projects-1'
 $order = @('index','start','basics','flow','structure','media','game','libraries','reference','advanced','next')
 $labels = @('Overview','Your first program','Values & variables','Decisions & loops','Organize your code','Graphics, input & sound','Build Star Collector','Library guide','Built-in reference','Arena & elemental VFX','Debug & keep building')
 $pages = @{}
@@ -35,12 +34,12 @@ foreach ($id in $order) {
     $toc = foreach ($heading in $sections) {
         '<a href="#{0}">{1}</a>' -f $heading.Groups[1].Value,(Encode (Plain $heading.Groups[2].Value))
     }
-    $search.Add(@{title=$page.title;href=$href;text=(Plain ($page.lead+' '+$page.body)).Trim()})
+    $search.Add([ordered]@{title=$page.title;href=$href;text=(Plain ($page.lead+' '+$page.body)).Trim()})
     foreach ($heading in $sections) {
         $start = $heading.Index
         $next = $page.body.IndexOf('<h2 ', $start + $heading.Length)
         if ($next -lt 0) { $next = $page.body.Length }
-        $search.Add(@{title=(Plain $heading.Groups[2].Value);section=$page.title;href="$href#$($heading.Groups[1].Value)";text=(Plain $page.body.Substring($start,$next-$start))})
+        $search.Add([ordered]@{title=(Plain $heading.Groups[2].Value);section=$page.title;href="$href#$($heading.Groups[1].Value)";text=(Plain $page.body.Substring($start,$next-$start))})
     }
     $sourceLinks = foreach ($source in $page.sources) {
         $sourcePath = (($source.path -split '/') | ForEach-Object { [uri]::EscapeDataString($_) }) -join '/'
@@ -62,11 +61,11 @@ foreach ($id in $order) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
 $seoHead
   <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
-  <link rel="stylesheet" href="../CSS/site.css?v=$version">
-  <link rel="stylesheet" href="docs.css?v=$version">
-  <script src="search-index.js?v=$version" defer></script>
-  <script src="docs.js?v=$version" defer></script>
+  <link rel="icon" href="../Images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css">
+  <link rel="stylesheet" href="docs.css">
+  <script src="search-index.js" defer></script>
+  <script src="docs.js" defer></script>
 </head>
 <body class="smile-docs$heroClass">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -102,7 +101,7 @@ $seoHead
 $api = Get-Content -LiteralPath (Join-Path $site 'data/api.json') -Raw | ConvertFrom-Json
 foreach ($entry in $api.functions) {
     $anchor = $entry.name.ToLowerInvariant().Replace('_','-')
-    $search.Add(@{title=$entry.name;section='Built-in reference';href="reference.html#$anchor";text="$($entry.signature) $($entry.description)"})
+    $search.Add([ordered]@{title=$entry.name;section='Built-in reference';href="reference.html#$anchor";text="$($entry.signature) $($entry.description)"})
 }
 $searchJson = ConvertTo-Json -InputObject @($search.ToArray()) -Depth 8 -Compress
 Set-Content -LiteralPath (Join-Path $site 'search-index.js') -Value "window.SMILE_SEARCH = $searchJson;" -Encoding utf8
@@ -112,4 +111,5 @@ $sitemap = Get-Content -LiteralPath $mapPath -Raw
 $sitemap = $sitemap -replace '(?s)\s*<url><loc>http://sincioco.com/smile2/.*?</url>',''
 $sitemap = $sitemap -replace '</urlset>',(($urls -join "`n  ")+"`n</urlset>")
 Set-Content -LiteralPath $mapPath -Value $sitemap.TrimEnd() -Encoding utf8
+& (Join-Path $root 'tools/Update-AssetVersions.ps1') -SiteRoot $root
 Write-Output "Built $($pages.Count) documentation pages and $($search.Count) search entries."

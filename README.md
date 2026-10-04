@@ -16,6 +16,10 @@ The private GitHub repository is `Sincioco/SinciocoWeb`.
 - `tools/Get-SeoHead.ps1` owns shared search/social metadata, page JSON-LD, and
   breadcrumbs for both generated sub-sites. Parent-page metadata stays in its HTML.
 - `tools/Check-SEO.ps1` validates metadata and indexability across sitemap routes.
+- `tools/Update-AssetVersions.ps1` owns content-derived local asset URLs in the
+  21 sitemap HTML pages; both sub-site builders run it after generation.
+- `Web.config` owns HTTP cache policy; `tools/Test-AssetCaching.ps1` covers the
+  reported stale-asset bug and optional served-header/conditional-response checks.
 
 Generated HTML and required images/downloads are included so the website can be
 served directly without a build service, package installation, or external asset
@@ -43,17 +47,68 @@ pwsh -NoProfile -File .\AgenticAI\tools\Build-Projects.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
 pwsh -NoProfile -File .\AgenticAI\tools\Check-Projects.ps1
 pwsh -NoProfile -File .\tools\Check-SEO.ps1
+pwsh -NoProfile -File .\tools\Update-AssetVersions.ps1 -Check
 ```
 
 All three checkers accept `-PreviewUrl http://localhost:8877` when a local server
 is running. The SEO checker also verifies permanent redirects.
 `AgenticAI/tools/Test-ProjectBuild.ps1` is the focused regression check
 for repeatable sitemap generation. See each sub-site's README for ownership,
-source provenance, validation details, and cache-version updates.
+source provenance and validation details.
 
-Use Ctrl+F5 after changes during browser testing. The generators use local source
-snapshots and installed PowerShell/Windows capabilities; they require no package
-downloads. Publishing this repository does not deploy changes to the website.
+The generators use local source snapshots and installed PowerShell/Windows
+capabilities; they require no package downloads. Publishing this repository does
+not deploy changes to the website.
+
+## Asset caching — 2026-10-05
+
+Asset versions are generated from the first 16 lowercase hexadecimal characters
+of each file's SHA-256 hash. The updater covers local CSS, JavaScript, images,
+favicons, and full-size image links in sitemap HTML, preserving other query
+parameters and fragments. Changed bytes produce a new `v` value; timestamps alone
+do not. The current site has 134 referenced local assets across 21 HTML pages.
+
+Both page builders update versions automatically. After a standalone asset edit,
+run the updater and its read-only check before publishing; no manual version bump
+is needed. The focused regression uses temporary fixtures, with optional IIS checks:
+
+```powershell
+pwsh -NoProfile -File .\tools\Update-AssetVersions.ps1
+pwsh -NoProfile -File .\tools\Update-AssetVersions.ps1 -Check
+pwsh -NoProfile -File .\tools\Test-AssetCaching.ps1 -PreviewUrl http://localhost:8877
+```
+
+`Web.config` sets `Cache-Control: no-cache` for HTML and unversioned static resources,
+allowing validator-based HTTP 304 responses. Known asset types requested with a
+16-character hexadecimal `v` value receive `public, max-age=31536000, immutable`
+on HTTP 200 and 304 responses. Publish the updated HTML, assets, and configuration
+together. After the browser receives this policy, an ordinary reload checks for
+new HTML and follows changed asset URLs; no hard-refresh workflow is required.
+Already-open pages and browser-history snapshots still need an ordinary reload.
+New server headers cannot retroactively evict HTML cached under the old policy.
+
+The SMILE search index now uses stable JSON ordering with unchanged data. A focused
+Calendar-image selector change preserves its full-width card with the version query.
+Sin approved committing and pushing the cache work and image updates on 2026-10-05.
+Public deployment remains separate; the Azure plan is unchanged.
+No .NET recompilation or application restart is required; local IIS picked up the
+configuration automatically.
+The version updater is 54 lines and the regression script is 107 lines; the IIS
+configuration grew by 12 lines. Both existing builders and the stylesheet kept
+their line counts. This adds no browser runtime, package dependency, shared
+mutable state, or file-size exception.
+
+The first two relevant cache regression runs passed: content changes update versions,
+unchanged inputs stay stable, `-Check` detects stale references without writing,
+and query parameters, fragments, and excluded URLs are preserved. Local IIS checks
+confirmed HTML returns `no-cache` on 200/304, including HTML with a version query;
+versioned CSS/JavaScript/images return the immutable policy on 200/304, unversioned
+assets return `no-cache`, and missing assets return 404 without immutable caching.
+All 134 asset versions are current. SEO/project checks passed their 21-page scopes;
+the SMILE checker passed 14 pages and 537 local links/assets. Browser review confirmed
+the Life 2.0 Calendar card spans the full 842px gallery with no horizontal overflow
+at a 1250px viewport. Retire the cache regression after ten consecutive relevant
+successful runs under the global policy.
 
 ## SEO audit — 2026-10-05
 
@@ -125,3 +180,5 @@ any migration, new account, DNS change, or plan change requires separate approva
 Keep changes focused in the existing owners. Do not add third-party dependencies.
 All Codex-created commit subjects begin with `Sin and Codex: ` and include a
 detailed explanation of the change and relevant validation.
+Sin authorized automatic commits and pushes after completed tasks on 2026-10-05.
+Follow this workflow unless Sin gives a task-specific instruction to hold changes.
