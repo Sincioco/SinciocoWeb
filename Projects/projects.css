@@ -47,6 +47,12 @@ html { scroll-behavior:auto; }
 .project-content img { border:1px solid var(--line); border-radius:12px; height:auto; max-height:720px; width:auto; object-fit:contain; margin:20px auto; }
 .project-content img[alt*="logo"] { max-width:180px; border:0; }
 .project-content a > img:hover { outline:2px solid var(--blue); outline-offset:3px; }
+.project-video { width:100%; margin-bottom:18px; }
+.project-video-frame { position:relative; width:100%; min-height:200px; aspect-ratio:16 / 9; overflow:hidden; border:1px solid var(--line); border-radius:12px; background:#000; }
+.project-video-frame iframe,.project-video-frame a { position:absolute; inset:0; width:100%; height:100%; border:0; }
+.project-video-frame img { width:100%; height:100%; max-height:none; margin:0; border:0; border-radius:0; object-fit:cover; }
+.project-video-frame a > img:hover { outline:none; }
+.project-video .project-video-status { min-height:2.8em; margin:10px 0 0; color:var(--muted); font-size:12px; line-height:1.4; }
 .project-content code { padding:2px 5px; border-radius:4px; background:var(--surface); font: .88em/1.6 Consolas,"Cascadia Mono",monospace; }
 .project-content pre { max-width:100%; overflow:auto; padding:24px; background:#102333; color:#e4edf7; border:1px solid #263c50; border-radius:13px; line-height:1.8; font-size:13px; }
 .project-content pre code { display:block; color:inherit; padding:0; background:none; white-space:pre; overflow-wrap:normal; }

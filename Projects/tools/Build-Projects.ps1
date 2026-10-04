@@ -5,7 +5,8 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $siteRoot = Split-Path $projectRoot -Parent
 . (Join-Path $PSScriptRoot 'Convert-ProjectReadme.ps1')
-$version = '20261005-projects-5'
+. (Join-Path $PSScriptRoot 'Format-SinStarReadme.ps1')
+$version = '20261005-projects-6'
 $order = @('pmt', 'life2', 'sinstar', 'smile2', 'sinaiprompt', 'smile1')
 $projects = foreach ($slug in $order) {
     Get-Content -LiteralPath (Join-Path $projectRoot "content/$slug/source.json") -Raw | ConvertFrom-Json
@@ -21,6 +22,7 @@ function ProjectTabs([string]$current) {
 function WriteProjectPage([string]$file, [string]$title, [string]$description, [string]$content, [string]$current) {
     $canonical = if ($file -eq 'Index.html') { '' } else { $file }
     $tabs = ProjectTabs $current
+    $videoScript = if ($current -eq 'sinstar') { '<script src="project-video.js?v=' + $version + '" defer></script>' } else { '' }
     $html = @"
 <!doctype html>
 <html lang="en">
@@ -35,6 +37,7 @@ function WriteProjectPage([string]$file, [string]$title, [string]$description, [
   <link rel="stylesheet" href="../CSS/site.css?v=$version">
   <link rel="stylesheet" href="projects.css?v=$version">
   <script src="projects.js?v=$version" defer></script>
+$videoScript
 </head>
 <body class="projects-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -64,7 +67,14 @@ WriteProjectPage 'Index.html' 'Agentic AI Projects' 'Explore PMT, Life 2.0, Sin 
 $sectionCount = 0
 foreach ($project in $projects) {
     $markdown = Get-Content -LiteralPath (Join-Path $projectRoot "content/$($project.slug)/README.md") -Raw
+    if ($project.slug -eq 'sinstar') { $markdown = Format-SinStarReadme -Markdown $markdown }
     $document = Convert-ProjectReadme $project $markdown $projectRoot
+    if ($project.slug -eq 'sinstar') {
+        $trailer = [regex]::Match($document.Html, '(?s)^<p>\s*(<a href="https://www.youtube.com/watch\?v=IuDbnSnKEPo">.*?</a>)<br>\s*(.*?)</p>')
+        if (!$trailer.Success) { throw 'The Sin Star I trailer markup changed; review its inline player.' }
+        $player = '<div class="project-video" data-video-id="IuDbnSnKEPo"><div class="project-video-frame">' + $trailer.Groups[1].Value + '</div><p class="project-video-status" role="status">Hover to play with sound, or select the video.</p></div><p>' + $trailer.Groups[2].Value + '</p>'
+        $document.Html = $player + $document.Html.Substring($trailer.Length)
+    }
     $navigation = foreach ($section in $document.Sections) {
         '<a href="#{0}" class="section-level-{1}">{2}</a>' -f $section.id, $section.level, (Encode $section.label)
     }

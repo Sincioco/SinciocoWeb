@@ -21,12 +21,21 @@ project tab and its language-guide link remain available.
   typography, colors, header, footer, and global navigation. Documentation details
   follow the existing `../smile2/docs.css` conventions.
 - `projects.js` owns the responsive section menu and current-section indicator.
+- `project-video.js` owns the Sin Star I trailer's inline YouTube player and hover
+  playback. It requests audio on, pauses on mouse departure, and preserves normal
+  player controls when the browser requires a click before audible playback.
+- `tools/Format-SinStarReadme.ps1` curates the website's Towns gallery while keeping
+  the upstream snapshot unchanged: one named image per town, daytime except for
+  Neris Metropolis at night.
 - `tools/Check-Projects.ps1` validates the generated pages and shared navigation.
 
 No new package, frontend library, server runtime, or external build download is
 required. Generation uses the existing PowerShell 7 `ConvertFrom-Markdown` cmdlet
-and Windows image APIs. Published pages use local CSS, JavaScript, and images;
-repository and video links open their external destinations only when selected.
+and Windows image APIs. Published pages use local CSS, JavaScript, and images.
+The Sin Star I trailer loads YouTube's embedded player and official IFrame API.
+Inline playback needs HTTP/HTTPS (including the local IIS preview); direct file
+opening retains a full-width thumbnail linking to YouTube. Browsers can require
+a click before allowing playback with sound; the site never falls back to mute.
 
 ## Build and validate
 
@@ -37,6 +46,7 @@ pwsh -NoProfile -File .\Projects\tools\Build-Projects.ps1
 pwsh -NoProfile -File .\Projects\tools\Check-Projects.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
 pwsh -NoProfile -File .\Projects\tools\Test-ProjectBuild.ps1
+pwsh -NoProfile -File .\Projects\tools\Test-SinStarTowns.ps1
 ```
 
 With an IIS/IIS Express preview running, add `-PreviewUrl http://localhost:8877`
@@ -69,7 +79,8 @@ Use Ctrl+F5 during browser testing.
 | Sin AI Prompt | Sincioco/SinAIPrompt | 5c706172621dddd69dc2a6e2f5a271753a7ba19f | 1 |
 | SMILE 1.0 | Sincioco/SMILE | 32dc0fef51e42c75722b10c6b6cbe43b64f7df83 | 5 |
 
-The 100 README image references are preserved. Sin AI Prompt has no inline README
+The 100 README image references remain in the source snapshots; the Sin Star I
+website gallery displays only the 17 selected town images. Sin AI Prompt has no inline README
 images; its one supplemental image is the application artwork referenced by the
 README. All 101 image files were decoded or parsed successfully. No videos were
 downloaded. The original README snapshots retain their source license notices.
@@ -98,8 +109,15 @@ New handwritten files range from 22 to 138 lines. Shared CSS grew from 236 to 24
 lines for wrapping navigation; the existing documentation generator and checker
 retain their previous line counts. The build regression checks sitemap stability
 and retention of all 21 entries after repeated builds of either sub-site. It
-covers a newline-growth bug found during this task. Its first relevant run passed;
+covers a newline-growth bug found during this task. Its first two relevant runs passed;
 retire it after ten consecutive relevant successful runs under the global policy.
+
+The Towns regression covers the original table's separated name-only cards. It
+checks all 17 named cards and each selected day/night image; its first two relevant
+runs passed. Retire it after ten consecutive relevant successful runs. The trailer
+was checked at 842px desktop and 335px mobile content widths. In the browser, the
+first audible hover request was blocked; after selecting Play, leaving paused
+playback and hovering resumed it with `muted=false`. No silent fallback is used.
 
 The work is prepared locally and has not been deployed to the public server.
 The website is versioned in the private `Sincioco/SinciocoWeb` repository.
