@@ -1,0 +1,57 @@
+.military-hero { padding-bottom: 0; border-bottom: 0; }
+.military-hero .lead { max-width: 780px; }
+.service-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 64px 0 0; padding: 30px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.service-facts dt { margin-bottom: 10px; color: var(--muted); font-size: .8rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+.service-facts dd { margin: 0; font-size: clamp(1.65rem, 3vw, 2.25rem); font-weight: 650; letter-spacing: -.04em; }
+.service-facts dd span { display: block; margin-top: 8px; color: var(--muted); font-size: .86rem; font-weight: 400; letter-spacing: 0; }
+.mission-card { display: flex; flex-direction: column; }
+.mission-number { display: inline-block; margin-bottom: 20px; color: var(--blue); font-size: .9rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.mission-card .tag-list { margin-top: auto; padding-top: 20px; }
+.recognition-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; border-radius: var(--radius); background: var(--surface); padding: clamp(28px, 5vw, 56px); }
+.recognition-panel .section-heading { margin-bottom: 0; }
+.recognition-panel h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.recognition-list article + article { margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--line); }
+.recognition-list h3 { margin: 10px 0; font-size: 1.15rem; }
+.recognition-list p { color: var(--muted); }
+.recognition-list .award-date { margin: 0; color: var(--blue); font-size: .85rem; font-weight: 650; }
+.service-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 20px; }
+.gallery-link { display: block; min-width: 0; text-decoration: none; color: var(--ink); }
+.gallery-link img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; background: #090909; border-radius: 14px; transition: transform 180ms ease, box-shadow 180ms ease; }
+.gallery-link span { display: block; margin-top: 10px; padding-left: 2px; font-size: .83rem; font-weight: 600; line-height: 1.4; }
+.gallery-link:hover img { transform: translateY(-3px); box-shadow: 0 8px 22px #17202b20; }
+.gallery-link:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; border-radius: 14px; }
+.photo-dialog { box-sizing: border-box; width: min(1080px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; padding: 16px; border: 0; border-radius: 18px; color: #fff; background: #111316; box-shadow: 0 24px 90px #0006; }
+.photo-dialog::backdrop { background: #070c16da; }
+.photo-dialog-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 2px 14px; }
+.photo-dialog-toolbar p { margin: 0; font-size: .95rem; font-weight: 600; }
+.photo-close { flex-shrink: 0; min-height: 44px; padding: 8px 14px; border: 1px solid #ffffff50; border-radius: 100px; background: #ffffff0d; color: #fff; font: inherit; font-size: .85rem; cursor: pointer; }
+.photo-close span { margin-left: 10px; font-size: 1.25rem; }
+.photo-close:hover { background: #ffffff24; }
+.photo-close:focus-visible { outline: 3px solid #9bcfff; outline-offset: 3px; }
+.photo-full { display: block; width: 100%; height: auto; max-height: calc(100dvh - 132px); object-fit: contain; }
+body.photo-is-open { overflow: hidden; }
+@media (max-width: 800px) {
+  .recognition-panel { grid-template-columns: 1fr; gap: 30px; }
+  .service-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .service-facts { gap: 20px; }
+}
+@media (max-width: 560px) {
+  .service-facts { grid-template-columns: 1fr; gap: 22px; margin-top: 40px; }
+  .service-facts > div + div { padding-top: 20px; border-top: 1px solid var(--line); }
+  .service-facts dt { margin-bottom: 4px; }
+  .service-facts dd { font-size: 1.65rem; }
+  .service-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .photo-dialog { padding: 12px; width: calc(100% - 20px); }
+  .photo-dialog-toolbar { gap: 10px; }
+  .photo-dialog-toolbar p { font-size: .8rem; }
+  .photo-close { font-size: .75rem; padding: 8px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-link img { transition: none; }
+  .gallery-link:hover img { transform: none; }
+}
+@media print {
+  .service-gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .gallery-link { break-inside: avoid; }
+  .photo-dialog { display: none; }
+}

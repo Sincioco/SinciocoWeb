@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decisions, loops &amp; routines | SMILE 2.0 · Sincioco</title>
+  <meta name="description" content="Learn SMILE 2.0 If, Select Case, For, Do loops, keyboard input, Subs, Functions, ByRef, optional parameters, and named arguments.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/smile2/flow.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Decisions, loops &amp; routines | SMILE 2.0">
+  <meta property="og:description" content="Learn SMILE 2.0 If, Select Case, For, Do loops, keyboard input, Subs, Functions, ByRef, optional parameters, and named arguments.">
+  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
+  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
+  <script src="search-index.js?v=20261005-projects-1" defer></script>
+  <script src="docs.js?v=20261005-projects-1" defer></script>
+</head>
+<body class="smile-docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../Projects/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="docs-bar"><div class="docs-bar-inner">
+    <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>
+    <div class="docs-bar-actions"><span class="edition">Language guide</span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="lesson-nav" hidden>Lessons <span aria-hidden="true">☰</span></button></div>
+  </div></div>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="lesson-nav">
+      <div class="search-box" hidden><label for="doc-search">Search the docs</label><input id="doc-search" type="search" placeholder="Try “arrays” or “fire”…" autocomplete="off" aria-controls="search-results"><p id="search-status" class="sr-only" aria-live="polite"></p><div id="search-results" hidden></div></div>
+      <nav class="lesson-nav" aria-label="Documentation"><p class="nav-group">Start here</p>
+<a href="Index.html"><span class="lesson-number">00</span>Overview</a>
+<a href="start.html"><span class="lesson-number">01</span>Your first program</a>
+<p class="nav-group">Learn the language</p>
+<a href="basics.html"><span class="lesson-number">02</span>Values &amp; variables</a>
+<a href="flow.html" aria-current="page"><span class="lesson-number">03</span>Decisions &amp; loops</a>
+<a href="structure.html"><span class="lesson-number">04</span>Organize your code</a>
+<a href="media.html"><span class="lesson-number">05</span>Graphics, input &amp; sound</a>
+<a href="game.html"><span class="lesson-number">06</span>Build Star Collector</a>
+<p class="nav-group">Explore & build</p>
+<a href="libraries.html"><span class="lesson-number">07</span>Library guide</a>
+<a href="reference.html"><span class="lesson-number">08</span>Built-in reference</a>
+<a href="advanced.html"><span class="lesson-number">09</span>Arena &amp; elemental VFX</a>
+<a href="next.html"><span class="lesson-number">10</span>Debug &amp; keep building</a></nav>
+      <a class="source-link" href="https://github.com/Sincioco/SMILE-2.0">Explore the source <span aria-hidden="true">↗</span></a>
+      <p class="sidebar-note">Simple Modern and Intuitive<br>Language for Everyone.</p>
+    </aside>
+    <main id="main" class="doc-main">
+      <header class="doc-heading"><p class="eyebrow">03 / Make the rules</p><h1>Decisions, loops &amp; routines</h1><p class="lead">Games are rules in motion. Choose what happens, repeat it when needed, and give useful actions names you can call again.</p></header>
+      <article class="doc-content"><section aria-labelledby="decisions">
+<h2 id="decisions">If chooses what happens next</h2>
+<p>Imagine the player has 30 health. Your game can show a different message when health is low or reaches zero. Each condition is a Boolean question. SMILE takes the first true branch, then continues after <code>End If</code>.</p>
+<pre><code class="language-smile">Dim Health As Number
+
+Health = 30
+
+If Health &lt;= 0 Then
+    Print &quot;Game over&quot;
+Else If Health &lt; 10 Then
+    Print &quot;Find a potion&quot;
+Else
+    Print &quot;Ready for adventure&quot;
+End If</code></pre>
+<figure class="concept-diagram"><div class="diagram-step"><strong>Health ≤ 0?</strong><span>Yes → Game over</span></div><div class="diagram-arrow" aria-hidden="true">→</div><div class="diagram-step"><strong>Health &lt; 10?</strong><span>Yes → Find a potion</span></div><div class="diagram-arrow" aria-hidden="true">→</div><div class="diagram-step"><strong>Otherwise</strong><span>Ready for adventure</span></div><figcaption>Try health values 0, 5, and 30. Only one message prints each time.</figcaption></figure>
+<p>The order matters. A health value of zero is also below ten; checking zero first makes the game-over rule win. <code>Else If</code> and <code>Else</code> are optional, but every multiline <code>If</code> needs <code>End If</code>.</p>
+</section>
+<section aria-labelledby="select">
+<h2 id="select">Select Case matches one value to several choices</h2>
+<p>Use <code>Select Case</code> when you are comparing the same value with a menu of alternatives. This example chooses an action from text already stored in <code>Choice</code>; it does not ask the player to type.</p>
+<pre><code class="language-smile">Dim Choice As Text
+
+Choice = &quot;Attack&quot;
+
+Select Case Choice
+    Case &quot;Attack&quot;
+        Print &quot;You swing your sword.&quot;
+    Case &quot;Defend&quot;
+        Print &quot;You raise your shield.&quot;
+    Case Else
+        Print &quot;Choose Attack or Defend.&quot;
+End Select</code></pre>
+<p>A matching branch runs without falling through into the next one. <code>Case Else</code> catches values with no listed match. The selector and case values must have matching types. Enums work well here once your game's states have names.</p>
+</section>
+<section aria-labelledby="for">
+<h2 id="for">For repeats a known number of times</h2>
+<p>A <code>For</code> loop counts through whole Number values. Both endpoints are included. The first loop below prints 1, 2, 3; the second prints 3, 2, 1.</p>
+<pre><code class="language-smile">Dim Turn As Number
+
+For Turn = 1 To 3
+    Print Turn
+End For
+
+For Turn = 3 Down To 1
+    Print Turn
+End For</code></pre>
+<p>Use <code>To</code> to count upward by one and <code>Down To</code> to count downward by one. For an array of three elements, count from <code>0 To 2</code>. <code>Exit For</code> leaves the nearest active For loop early.</p>
+</section>
+<section aria-labelledby="do">
+<h2 id="do">Do repeats until you are finished</h2>
+<p>A <code>Do ... Loop Until</code> loop checks its stopping condition at the bottom. That means its body runs at least once. This small countdown prints 3, 2, 1.</p>
+<pre><code class="language-smile">Dim Countdown As Number
+
+Countdown = 3
+
+Do
+    Print Countdown
+    Countdown = Countdown - 1
+
+Loop Until Countdown = 0</code></pre>
+<p>Sometimes the loop must check a rule <em>before</em> taking another turn. Put an <code>If</code> and <code>Exit Do</code> near the top. This version starts at 30 health, takes damage in chunks of ten, and stops before taking another turn at zero:</p>
+<pre><code class="language-smile">Dim Health As Number
+
+Health = 30
+
+Do
+    If Health &lt;= 0 Then
+        Exit Do
+    End If
+
+    Health = Max(0, Health - 10)
+    Print &quot;Health: &quot;; Health
+
+Loop</code></pre>
+<div class="callout"><strong>Current syntax boundary.</strong><p>Use <code>Do</code>, <code>Loop</code>, <code>Loop Until</code>, and <code>Exit Do</code> in SMILE 2.0. A <code>While ... End While</code> block or <code>Do While</code> is not part of this documented language surface. Also, old BASIC console <code>Input</code>, data-list <code>Data</code>, and <code>Read</code> statements are not implemented. Keyboard game input is covered below.</p></div>
+<p>A loop needs a way to finish or keep the game responsive. Forgetting to update a stopping value can make the same instructions run forever. In a graphical game, input, updating, drawing, and <code>Show Screen</code> belong together in the main loop.</p>
+</section>
+<section aria-labelledby="routines">
+<h2 id="routines">Give a group of instructions a name</h2>
+<p>A <strong>Sub</strong> performs an action. A <strong>Function</strong> calculates and returns a value. Parameters are named inputs; arguments are the values supplied in a call.</p>
+<pre><code class="language-smile">Dim Score As Number
+Dim Reward As Number
+
+Score = 10
+
+Call GiveBonus(Score)
+
+Reward = PointsFor(3)
+Print Score
+Print Reward
+
+Sub GiveBonus(ByRef Total As Number, Optional Amount As Number = 5)
+
+    Total = Total + Amount
+
+End Sub
+
+Function PointsFor(TurnNumber As Number) As Number
+
+    Dim Result As Number
+
+    Result = TurnNumber * 10
+
+    Return Result
+
+End Function</code></pre>
+<p><code>GiveBonus</code> uses <code>ByRef</code>, so <code>Total</code> refers to the caller's actual Score variable. The call adds five points to Score. <code>PointsFor(3)</code> returns 30. Storing that result in <code>Reward</code> makes it available for printing, adding to a score, or inspecting in the debugger.</p>
+<table><thead><tr><th>Feature</th><th>Meaning</th></tr></thead><tbody><tr><td><code>Call Name(...)</code></td><td>Run a Sub.</td></tr><tr><td><code>Name(...)</code> in an expression</td><td>Use a Function's returned value.</td></tr><tr><td><code>Return Value</code></td><td>Finish a Function and send its result back.</td></tr><tr><td><code>ByVal</code>, or no mode written</td><td>Pass the value. For Number, Boolean, Text, Double, Enum and Type, changing the parameter does not change the caller's value.</td></tr><tr><td><code>ByRef</code></td><td>Pass a writable location of exactly the declared type. A literal such as <code>10</code> cannot be a ByRef destination.</td></tr><tr><td>Routine-local <code>Dim</code></td><td>A variable visible from its declaration through the end of that routine.</td></tr></tbody></table>
+<p>A Function declares its result type using <code>As</code>. For a calculated return value, this guide follows SMILE's formatting convention: calculate into a named local variable, then return that variable. Keeping the steps separate makes the value easy to inspect.</p>
+</section>
+<section aria-labelledby="arguments">
+<h2 id="arguments">Optional and named arguments make calls readable</h2>
+<p>An <code>Optional</code> parameter supplies a default when the caller leaves it out. A named argument uses the parameter's name followed by <code>:=</code>.</p>
+<pre><code class="language-smile">Call Announce(65)
+Call Announce(Caption:=&quot;Round score&quot;, Value:=65)
+
+Sub Announce(Value As Number, Optional Caption As Text = &quot;Score&quot;)
+
+    Print Caption + &quot;: &quot;; Value
+
+End Sub</code></pre>
+<p>The first call prints <code>Score: 65</code>; the second prints <code>Round score: 65</code>. In the second call, the names explain each argument even though the order differs from the declaration.</p>
+<ul><li>Put all required parameters before optional parameters.</li><li>Give each optional parameter an explicit type and a compile-time default.</li><li>Optional parameters are ByVal; they cannot be ByRef.</li><li>If you mix positional and named arguments, put positional arguments first.</li><li>Supply a parameter at most once. Named arguments belong to user routines and member routines; built-in functions use positional arguments.</li><li>Explicit arguments are evaluated once, in the order written in the call.</li></ul>
+<p>Class values have shared-reference behavior even with ByVal. Learn that distinction in <a href="structure.html#classes">Types and Classes</a> before passing objects around.</p>
+</section>
+<section aria-labelledby="keyboard">
+<h2 id="keyboard">A game reads keys one frame at a time</h2>
+<p><code>Get Key Key</code> puts a queued key event into a Number variable. <code>Key_Held(KEY_RIGHT)</code> asks whether Right is currently held. Use events for a one-time action such as accepting a menu choice; use held state for continuous movement.</p>
+<p>This is a <strong>fragment for inside a Game Window loop</strong>, with <code>Key</code> and <code>PlayerX</code> declared as Number. The <a href="game.html">Star Collector lesson</a> provides the complete runnable game around it.</p>
+<pre><code class="language-smile">Get Key Key
+
+If Key = KEY_ESCAPE Then
+    Exit Do
+End If
+
+If Key_Held(KEY_RIGHT) Then
+    PlayerX = PlayerX + 4
+End If</code></pre>
+<p>Movement of four pixels per loop is fine for understanding the rule. A larger game should use elapsed time so speed does not depend on frame rate. Escape exits the loop; the program can then release resources and finish.</p>
+</section>
+<section aria-labelledby="practice">
+<h2 id="practice">Try all the rules together</h2>
+<p>Download <a href="examples/language-turns.smile" download>the complete turns example</a>. Compile it as a single source, as shown on the <a href="start.html#files">start page</a>. It demonstrates If, Select Case, both counting directions, Exit Do, a Function, ByRef, optional parameters, and named arguments.</p>
+<details><summary>Check the expected output</summary><pre><code class="language-text">Ready for adventure
+You swing your sword.
+Round score: 65
+Health: 20
+Health: 10
+Health: 0
+Countdown: 3
+Countdown: 2
+Countdown: 1</code></pre></details>
+<div class="challenge"><h3>Your mission: a bigger bonus</h3><p>Change the default bonus from 5 to 20 by supplying a named argument at the call site. Keep the Sub's default unchanged. Predict the final score.</p><details><summary>Reveal one solution</summary><pre><code class="language-smile">Call GiveBonus(Total:=Score, Amount:=20)</code></pre><p>The three turn rewards are 10 + 20 + 30 = 60. This call adds 20, so the announced score becomes <strong>80</strong>.</p></details></div>
+<p class="lesson-next">Next: <a href="structure.html">organize heroes, states, and reusable modules →</a></p>
+</section></article>
+      <details class="source-notes"><summary>Sources &amp; version notes</summary><p>Checked against the local SMILE 2.0 source on September 25, 2026. Examples target the native Windows toolchain unless stated otherwise. The linked repository may continue to evolve.</p><ul><li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/README.md">Control flow and routine semantics ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/double.md">Supported numeric and legacy-input boundaries ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/examples/StructuredLanguageBasics.smile">Structured language example ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/SMILE-2.0-Authoritative-Code-Formatting-Conventions.md">Authoritative routine and loop formatting ↗</a></li></ul></details>
+      <nav class="lesson-pager" aria-label="Lesson navigation"><a href="basics.html"><small>← Previous</small>Values &amp; variables</a><a href="structure.html"><small>Up next →</small>Organize your code</a></nav>
+    </main>
+    <aside class="page-toc" aria-label="On this page"><p>On this page</p><a href="#decisions">If chooses what happens next</a>
+<a href="#select">Select Case matches one value to several choices</a>
+<a href="#for">For repeats a known number of times</a>
+<a href="#do">Do repeats until you are finished</a>
+<a href="#routines">Give a group of instructions a name</a>
+<a href="#arguments">Optional and named arguments make calls readable</a>
+<a href="#keyboard">A game reads keys one frame at a time</a>
+<a href="#practice">Try all the rules together</a></aside>
+  </div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco · SMILE 2.0</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="start.html">Start learning</a><a href="https://github.com/Sincioco/SMILE-2.0">GitHub ↗</a></div></div></footer>
+</body>
+</html>

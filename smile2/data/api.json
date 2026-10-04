@@ -1,0 +1,391 @@
+{
+  "snapshot": "2026-09-25",
+  "count": 55,
+  "functions": [
+    {
+      "name": "Abs",
+      "group": "Math",
+      "signature": "Abs(value As Number) As Number",
+      "description": "Distance from zero. Abs(-8) is 8. Also accepts a Double and returns Double; keep argument types consistent.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Min",
+      "group": "Math",
+      "signature": "Min(first As Number, second As Number) As Number",
+      "description": "The smaller value. Also accepts two Doubles. Useful for limiting a player's position.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Max",
+      "group": "Math",
+      "signature": "Max(first As Number, second As Number) As Number",
+      "description": "The larger value. Also accepts two Doubles. Max(0, Health - Damage) keeps health from becoming negative.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "ToDouble",
+      "group": "Math",
+      "signature": "ToDouble(value As Number) As Double",
+      "description": "Explicitly converts a whole Number to Double. Very large integers can lose precision in binary64.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "ToNumber",
+      "group": "Math",
+      "signature": "ToNumber(value As Double) As Number",
+      "description": "Truncates toward zero: ToNumber(7.9) is 7. Out-of-range conversion fails.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Clamp",
+      "group": "Math",
+      "signature": "Clamp(value As Double, minimum As Double, maximum As Double) As Double",
+      "description": "Keeps a Double between its bounds. Use Clamp(Health, 0.0, 100.0) for Double values; minimum must not exceed maximum.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Sqrt",
+      "group": "Math",
+      "signature": "Sqrt(value As Double) As Double",
+      "description": "Square root. Sqrt(25.0) is 5.0. Negative input fails.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Sin",
+      "group": "Math",
+      "signature": "Sin(value As Double) As Double",
+      "description": "Sine of an angle in radians. Use it for waves, bobbing objects, and circular motion.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Cos",
+      "group": "Math",
+      "signature": "Cos(value As Double) As Double",
+      "description": "Cosine of an angle in radians. Pair with Sin for circular motion.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Atan2",
+      "group": "Math",
+      "signature": "Atan2(y As Double, x As Double) As Double",
+      "description": "Direction angle in radians from a pair of coordinates.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Floor",
+      "group": "Math",
+      "signature": "Floor(value As Double) As Double",
+      "description": "Rounds down: Floor(-1.2) is -2.0. The result stays Double.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Ceiling",
+      "group": "Math",
+      "signature": "Ceiling(value As Double) As Double",
+      "description": "Rounds up: Ceiling(1.2) is 2.0. The result stays Double.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Truncate",
+      "group": "Math",
+      "signature": "Truncate(value As Double) As Double",
+      "description": "Drops the fractional part toward zero. The result stays Double.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Round",
+      "group": "Math",
+      "signature": "Round(value As Double) As Double",
+      "description": "Rounds to the nearest whole value, with exact halves going to the even value: Round(2.5) is 2.0 and Round(3.5) is 4.0.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Text_Length",
+      "group": "Text",
+      "signature": "Text_Length(text As Text) As Number",
+      "description": "Counts Unicode scalar values. This is character-oriented text processing, not a UTF-8 byte count.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Text_Code_At",
+      "group": "Text",
+      "signature": "Text_Code_At(text As Text, index As Number) As Number",
+      "description": "Returns a Unicode scalar at zero-based index, or -1 if the index is outside the text.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Text_Slice",
+      "group": "Text",
+      "signature": "Text_Slice(text As Text, start As Number, count As Number) As Text",
+      "description": "Takes a Unicode scalar slice. A negative start, nonpositive count, or start beyond the end returns empty text; a long count clamps to the available text.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Text_From_Double",
+      "group": "Text",
+      "signature": "Text_From_Double(value As Double) As Text",
+      "description": "Converts a finite Double to culture-independent round-trip text, such as 2.5.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Text_To_Double",
+      "group": "Text",
+      "signature": "Text_To_Double(value As Text) As Double",
+      "description": "Parses a finite decimal/exponent value using a decimal point. Malformed or nonfinite text fails; use with controlled input.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Timer",
+      "group": "Timing and windows",
+      "signature": "Timer() As Number",
+      "description": "Returns elapsed milliseconds from the runtime timer. Compare two readings to measure elapsed time.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Game_Closed",
+      "group": "Timing and windows",
+      "signature": "Game_Closed() As Boolean",
+      "description": "True when the game window has closed. Use it as a game-loop exit condition.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Window_Width",
+      "group": "Timing and windows",
+      "signature": "Window_Width() As Number",
+      "description": "Returns the logical canvas width.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Window_Height",
+      "group": "Timing and windows",
+      "signature": "Window_Height() As Number",
+      "description": "Returns the logical canvas height.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Window_Title",
+      "group": "Timing and windows",
+      "signature": "Window_Title(text As Text) As Boolean",
+      "description": "Changes the native window title or Web document title.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Window_Activate",
+      "group": "Timing and windows",
+      "signature": "Window_Activate() As Boolean",
+      "description": "Restores/requests focus for a native game window and reports success. Web currently returns False.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Window_Loading",
+      "group": "Timing and windows",
+      "signature": "Window_Loading() As Boolean",
+      "description": "Shows the shared loading presentation again. Load a scene after success; the next Show Screen completes the transition after the minimum display time.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Window_DeferClose",
+      "group": "Timing and windows",
+      "signature": "Window_DeferClose(defer As Boolean) As Boolean",
+      "description": "Enables or disables deferred closing. Native apps can offer save/discard/cancel. Web requests the browser's own unsaved-work prompt, subject to browser policy.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Window_CloseRequested",
+      "group": "Timing and windows",
+      "signature": "Window_CloseRequested() As Boolean",
+      "description": "Consumes a deferred native close request once. Web returns False because tab-close confirmation belongs to the browser.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Key_Held",
+      "group": "Keyboard",
+      "signature": "Key_Held(key As Number) As Boolean",
+      "description": "Reads the current live held state. Use with KEY_LEFT, KEY_RIGHT, or another named key for continuous movement.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Key_Event_Held",
+      "group": "Keyboard",
+      "signature": "Key_Event_Held(key As Number) As Boolean",
+      "description": "Reads which named keys were held when the most recent queued Get Key event occurred. Useful for a quick Control+Arrow shortcut.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_X",
+      "group": "Pointer",
+      "signature": "Pointer_X() As Number",
+      "description": "Logical canvas x coordinate of the latest pointer position.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Y",
+      "group": "Pointer",
+      "signature": "Pointer_Y() As Number",
+      "description": "Logical canvas y coordinate of the latest pointer position.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Delta_X",
+      "group": "Pointer",
+      "signature": "Pointer_Delta_X() As Number",
+      "description": "Accumulated x movement in this frame. Show Screen clears frame deltas.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Delta_Y",
+      "group": "Pointer",
+      "signature": "Pointer_Delta_Y() As Number",
+      "description": "Accumulated y movement in this frame. Show Screen clears frame deltas.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Wheel_Delta",
+      "group": "Pointer",
+      "signature": "Pointer_Wheel_Delta() As Number",
+      "description": "Wheel movement accumulated during this frame, cleared by Show Screen.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Wheel_Remainder",
+      "group": "Pointer",
+      "signature": "Pointer_Wheel_Remainder() As Number",
+      "description": "Native raw wheel units retained below one 120-unit step; Web currently returns zero.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Inside",
+      "group": "Pointer",
+      "signature": "Pointer_Inside() As Boolean",
+      "description": "Whether the latest pointer position is inside the logical game canvas.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Held",
+      "group": "Pointer",
+      "signature": "Pointer_Held(button As Number) As Boolean",
+      "description": "True while a contact owns the chosen button role; held state remains across frames.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Pressed",
+      "group": "Pointer",
+      "signature": "Pointer_Pressed(button As Number) As Boolean",
+      "description": "True if this button was pressed during the current frame; read before Show Screen.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Pointer_Released",
+      "group": "Pointer",
+      "signature": "Pointer_Released(button As Number) As Boolean",
+      "description": "True if this button was released during the current frame; read before Show Screen.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Rgb",
+      "group": "Images and drawing",
+      "signature": "Rgb(red As Number, green As Number, blue As Number) As Number",
+      "description": "Builds a color from red, green, and blue components. Use values from 0 to 255.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Image_Width",
+      "group": "Images and drawing",
+      "signature": "Image_Width(image As Image) As Number",
+      "description": "Original pixel width of a loaded image.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Image_Height",
+      "group": "Images and drawing",
+      "signature": "Image_Height(image As Image) As Number",
+      "description": "Original pixel height of a loaded image.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Image_Loaded",
+      "group": "Images and drawing",
+      "signature": "Image_Loaded(image As Image) As Boolean",
+      "description": "Checks whether an Image holds a loaded resource.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Text_Width",
+      "group": "Images and drawing",
+      "signature": "Text_Width(text As Text, size As Number) As Number",
+      "description": "Measures text using the target's drawing engine; use it to lay out a label.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Text_Height",
+      "group": "Images and drawing",
+      "signature": "Text_Height(text As Text, size As Number) As Number",
+      "description": "Measures text height. Positive text sizes give a positive height even for empty text.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "File_Export",
+      "group": "File transfer",
+      "signature": "File_Export(fileName As Text, contents As Text) As Boolean",
+      "description": "Requests a user-chosen UTF-8 file export. Native uses a file dialog; Web requests a download. Success on Web means the request was accepted, not proof the file reached disk.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "File_Import",
+      "group": "File transfer",
+      "signature": "File_Import() As Text",
+      "description": "Requests user-chosen UTF-8 text. Empty, canceled, and unavailable results all return empty text; trigger it from an explicit user action.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "File_Reveal",
+      "group": "File transfer",
+      "signature": "File_Reveal(text As Text) As Boolean",
+      "description": "Native helper to reveal an existing absolute Windows drive path in the file manager. Returns False where unavailable; it is not a portable game-asset loader.",
+      "requiresGameWindow": false
+    },
+    {
+      "name": "Renderer3D",
+      "group": "Renderer bridge",
+      "signature": "Renderer3D(command As Number, a As Number, b As Number, c As Number, d As Number, e As Number, f As Number, g As Number, h As Number, i As Number, j As Number) As Number",
+      "description": "Low-level renderer command bridge used by Smile.Simple3D. Learn Graphics3D, Precision3D, and ArenaViewport3D instead of inventing command numbers.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Renderer3DImage",
+      "group": "Renderer bridge",
+      "signature": "Renderer3DImage(command As Number, image As Image, a As Number, b As Number, c As Number, d As Number, e As Number, f As Number, g As Number, h As Number) As Number",
+      "description": "Image-to-renderer bridge used by the library's texture/material operations.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Renderer3DText",
+      "group": "Renderer bridge",
+      "signature": "Renderer3DText(command As Number, text As Text, a As Number, b As Number, c As Number, d As Number, e As Number, f As Number, g As Number, h As Number) As Number",
+      "description": "Text-to-renderer bridge used by the library's resource operations.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Renderer3DTextValue",
+      "group": "Renderer bridge",
+      "signature": "Renderer3DTextValue(command As Number, a As Number, b As Number, c As Number, d As Number, e As Number, f As Number, g As Number, h As Number, i As Number) As Text",
+      "description": "Renderer query bridge with a Text result; use the named library wrapper.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Renderer3DDouble",
+      "group": "Renderer bridge",
+      "signature": "Renderer3DDouble(command As Number, resource As Number, a As Double, b As Double, c As Double, d As Double, e As Double, f As Double, g As Double, h As Double, i As Double, j As Double, k As Double, l As Double) As Number",
+      "description": "Typed precision bridge. Command/resource are Number; the twelve value slots are Double. High-level precision modules own scene state.",
+      "requiresGameWindow": true
+    },
+    {
+      "name": "Renderer3DDoubleValue",
+      "group": "Renderer bridge",
+      "signature": "Renderer3DDoubleValue(command As Number, resource As Number, index As Number, component As Number) As Double",
+      "description": "Queries a Double value from the renderer through a named library wrapper.",
+      "requiresGameWindow": true
+    }
+  ]
+}

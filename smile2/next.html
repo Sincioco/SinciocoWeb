@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Debug &amp; build what is next | SMILE 2.0 · Sincioco</title>
+  <meta name="description" content="Understand SMILE 2.0 compiler errors, debug game behavior, and choose a practical path from Star Collector to Snake, Paddle Ball, maps, and 3D effects.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/smile2/next.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Debug &amp; build what is next | SMILE 2.0">
+  <meta property="og:description" content="Understand SMILE 2.0 compiler errors, debug game behavior, and choose a practical path from Star Collector to Snake, Paddle Ball, maps, and 3D effects.">
+  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
+  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
+  <script src="search-index.js?v=20261005-projects-1" defer></script>
+  <script src="docs.js?v=20261005-projects-1" defer></script>
+</head>
+<body class="smile-docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../Projects/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="docs-bar"><div class="docs-bar-inner">
+    <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>
+    <div class="docs-bar-actions"><span class="edition">Language guide</span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="lesson-nav" hidden>Lessons <span aria-hidden="true">☰</span></button></div>
+  </div></div>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="lesson-nav">
+      <div class="search-box" hidden><label for="doc-search">Search the docs</label><input id="doc-search" type="search" placeholder="Try “arrays” or “fire”…" autocomplete="off" aria-controls="search-results"><p id="search-status" class="sr-only" aria-live="polite"></p><div id="search-results" hidden></div></div>
+      <nav class="lesson-nav" aria-label="Documentation"><p class="nav-group">Start here</p>
+<a href="Index.html"><span class="lesson-number">00</span>Overview</a>
+<a href="start.html"><span class="lesson-number">01</span>Your first program</a>
+<p class="nav-group">Learn the language</p>
+<a href="basics.html"><span class="lesson-number">02</span>Values &amp; variables</a>
+<a href="flow.html"><span class="lesson-number">03</span>Decisions &amp; loops</a>
+<a href="structure.html"><span class="lesson-number">04</span>Organize your code</a>
+<a href="media.html"><span class="lesson-number">05</span>Graphics, input &amp; sound</a>
+<a href="game.html"><span class="lesson-number">06</span>Build Star Collector</a>
+<p class="nav-group">Explore & build</p>
+<a href="libraries.html"><span class="lesson-number">07</span>Library guide</a>
+<a href="reference.html"><span class="lesson-number">08</span>Built-in reference</a>
+<a href="advanced.html"><span class="lesson-number">09</span>Arena &amp; elemental VFX</a>
+<a href="next.html" aria-current="page"><span class="lesson-number">10</span>Debug &amp; keep building</a></nav>
+      <a class="source-link" href="https://github.com/Sincioco/SMILE-2.0">Explore the source <span aria-hidden="true">↗</span></a>
+      <p class="sidebar-note">Simple Modern and Intuitive<br>Language for Everyone.</p>
+    </aside>
+    <main id="main" class="doc-main">
+      <header class="doc-heading"><p class="eyebrow">Keep making games</p><h1>Debug &amp; build what is next</h1><p class="lead">Read the clues, fix one thing at a time, and turn your first game into the next idea you want to play.</p></header>
+      <article class="doc-content">
+<section><h2 id="debug">When it breaks, become a detective</h2>
+  <p>A bug is a clue about a difference between what you meant and what you wrote. First decide which kind of problem you have: does the program fail to build, close while running, or run with the wrong behavior?</p>
+  <div class="step-grid">
+    <article class="card"><h3>1. Make it repeatable</h3><p>Describe the shortest steps that cause it: “Start the game, hold Right, then touch a star.” Save your work before experimenting.</p></article>
+    <article class="card"><h3>2. Find the first wrong fact</h3><p>Check the relevant input, position, score, or state flag. The wrong picture may simply be showing an earlier mistake.</p></article>
+    <article class="card"><h3>3. Change one thing</h3><p>Make the smallest correction, rebuild, and repeat exactly the same steps. Then check that the surrounding behavior still works.</p></article>
+  </div>
+</section>
+
+<section><h2 id="messages">Read a compiler message</h2>
+  <p>The compiler points to a file, line, and column, followed by an error code and explanation. Fix the first useful error first; later messages can be side effects of the same missing word.</p>
+  <pre><code>star-collector.smile(3,1): error SML3303:
+Variable 'Scoree' must be declared because Option Explicit is enabled for this source.</code></pre>
+  <p>This is the message from a tiny example containing a misspelled variable on line 3. Your file's line and column will be different. Here, <code>Scoree</code> is probably meant to be <code>Score</code>.</p>
+  <div class="table-wrap"><table><thead><tr><th>Clue</th><th>Likely cause</th><th>What to check</th></tr></thead><tbody>
+    <tr><td><code>SML3303</code></td><td>A name is undeclared under <code>Option Explicit</code>.</td><td>Compare its spelling with the <code>Dim</code> declaration. Declare it only if you really need a new variable.</td></tr>
+    <tr><td><code>SML3304</code></td><td>A value has the wrong type.</td><td><code>Score = "ten"</code> tries to store Text in a Number. Use a number for arithmetic and a separate Text value for words.</td></tr>
+    <tr><td><code>SML2001</code></td><td>An expected word or block ending is missing.</td><td>Check the indicated line and the block immediately above it. Every <code>If</code> needs <code>End If</code>; a <code>Sub</code> needs <code>End Sub</code>.</td></tr>
+    <tr><td><code>SML3308</code></td><td>A text operation mixes incompatible types or uses an unsupported operator.</td><td>Keep numbers numeric. In a game HUD, use <code>Draw Text</code> for the label and <code>Draw Number</code> for the score.</td></tr>
+    <tr><td><code>SML3021</code></td><td>A function or routine name is unknown.</td><td>Check its spelling. For a library call, confirm the package/source reference and the matching <code>Import</code> alias.</td></tr>
+  </tbody></table></div>
+  <p>The typo, Text-to-Number, and missing-<code>End If</code> examples were checked against the available native SMILE compiler when this guide was written. The complete diagnostic reference lives in the <a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/README.md">official language documentation</a>.</p>
+  <details><summary>Try fixing a tiny broken program</summary>
+    <p>This program intentionally contains two mistakes. It is a debugging exercise, not a working example.</p>
+    <pre><code class="language-smile">Option Explicit
+
+Dim Score As Number
+
+Scoree = 3
+Score = "four"
+Print Score</code></pre>
+    <p>First change <code>Scoree</code> to <code>Score</code>. Then change <code>"four"</code> to <code>4</code>. The final printed value is 4 because the second assignment replaces the first.</p>
+  </details>
+</section>
+
+<section><h2 id="wrong-behavior">It runs, but something feels wrong</h2>
+  <div class="table-wrap"><table><thead><tr><th>What you see</th><th>Where to investigate</th><th>Small experiment</th></tr></thead><tbody>
+    <tr><td>The player leaves a trail.</td><td>Drawing order.</td><td>Check that <code>Clear</code> runs before drawing every frame.</td></tr>
+    <tr><td>The game shows an empty window.</td><td>The main loop and presentation.</td><td>Draw one bright rectangle at a known position, then call <code>Show Screen</code>.</td></tr>
+    <tr><td>Movement happens only when a key repeats.</td><td>Input.</td><td>Use <code>Key_Held</code> for continuous movement. Keep <code>Get Key</code> for actions such as menu choices.</td></tr>
+    <tr><td>The player speeds up on another computer.</td><td>Timing.</td><td>Use elapsed time rather than adding the same distance on every frame.</td></tr>
+    <tr><td>The player partly leaves the arena.</td><td>Boundary math.</td><td>The largest X is the right wall minus the player's width.</td></tr>
+    <tr><td>Stars count from far away.</td><td>The hitbox test.</td><td>Check that horizontal and vertical overlap are joined with <code>And</code>.</td></tr>
+    <tr><td>A new round keeps the old score.</td><td>Reset state.</td><td>Confirm <code>ResetGame</code> assigns <code>Score = 0</code> and is actually called.</td></tr>
+  </tbody></table></div>
+  <p>In a graphics game, put temporary values on screen just before the main loop's <code>Show Screen</code>:</p>
+  <pre><code class="language-smile">Draw Text "Player X" At 32, 110 Size 18 Color WHITE
+Draw Number PlayerX At 130, 110 Size 18 Color YELLOW</code></pre>
+  <p>In a console example, <code>Print Score</code> is a quick way to inspect a value. Remove temporary displays once they have answered your question. If Visual Studio debugging is configured, set a breakpoint near the suspected update and inspect its values there.</p>
+  <div class="challenge"><strong>Draw the invisible rules</strong><p>In <code>DrawGame</code>, temporarily add <code>Draw Rectangle StarX, StarY, StarSize, StarSize, MAGENTA</code>. You can now see the exact hitbox used by the collision test.</p></div>
+</section>
+
+<section><h2 id="next-projects">Choose your next game</h2>
+  <p>Reuse one idea from Star Collector and add one new idea. Finish a small playable version before adding effects, menus, or more levels.</p>
+  <div class="table-wrap"><table><thead><tr><th>Build next</th><th>What you already know</th><th>One new idea to study</th><th>Official example</th></tr></thead><tbody>
+    <tr><td>Catch the falling stars</td><td>Held keys, overlap, score, and restart.</td><td>Make the star's Y position increase over time. Reset it above the arena when caught or missed.</td><td>Remix <a href="game.html">Star Collector</a>.</td></tr>
+    <tr><td>Paddle Ball</td><td>Movement, timing, boundary limits.</td><td>A moving ball has velocity. A bounce changes the relevant velocity's sign.</td><td><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/games/PaddleBall/Program-NoDemo.smile">Paddle Ball teaching source</a>.</td></tr>
+    <tr><td>Snake</td><td>Food placement, collection, score.</td><td>Store a trail of grid cells, grow it, and prevent the head from hitting the body.</td><td><a href="https://github.com/Sincioco/SMILE-2.0/tree/main/games/Snake">Snake project and model</a>.</td></tr>
+    <tr><td>Brick Breaker</td><td>Ball movement and rectangle tests.</td><td>Use an array to remember which bricks remain.</td><td><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/games/BrickBreaker/Program-NoDemo.smile">Brick Breaker teaching source</a>.</td></tr>
+    <tr><td>Maze Muncher</td><td>Grid movement, collecting, game states.</td><td>Parse a tile map and choose legal moves for enemies.</td><td><a href="https://github.com/Sincioco/SMILE-2.0/tree/main/games/MazeMuncher">Maze Muncher project</a>.</td></tr>
+  </tbody></table></div>
+  <div class="note"><strong>Use each example as a complete project</strong><p>The official games may need additional source files, maps, sounds, and project settings. Copy or open their whole project, then read its README. A <code>Program-NoDemo.smile</code> file keeps the playable game while removing its automatic attract demo; select it as the project's <code>StartupFile</code>. Snake also needs <code>SnakeModel.smile</code>.</p></div>
+</section>
+
+<section><h2 id="level-up">Grow your toolkit when the game needs it</h2>
+  <div class="step-grid">
+    <article class="card"><h3>More things on screen</h3><p>Learn <a href="flow.html">loops and arrays</a> to update a row of bricks or a list of pickups without copying the same code again and again.</p></article>
+    <article class="card"><h3>Better organization</h3><p>Learn <a href="structure.html">Types, Classes, and Modules</a> when related values and behaviors need a clear home.</p></article>
+    <article class="card"><h3>Pictures and sound</h3><p>Use <a href="media.html">graphics, input, and audio</a> to replace simple shapes with images and add feedback when something happens.</p></article>
+    <article class="card"><h3>Maps, cameras, and battles</h3><p>Explore <a href="libraries.html">the library guide</a> for <code>Smile.Game</code>, <code>Smile.RPG</code>, and the other source packages.</p></article>
+    <article class="card"><h3>An ambitious 3D path</h3><p>Study <a href="advanced.html">Arena and elemental effects</a> to see how an arena and reusable Fire, Water, and Earth effects fit into a larger native SMILE program.</p></article>
+  </div>
+  <p>Those larger projects still repeat the same story: get input, update state, draw, and present. Bigger art does not replace those foundations.</p>
+</section>
+
+<section><h2 id="finish">A small finished game is a real achievement</h2>
+  <p>Before calling your game finished, ask someone else to play it without instructions from you. Watch where they get confused, then improve the on-screen instructions or feedback.</p>
+  <ul><li>Can a new player understand the goal and controls?</li><li>Can the game start, finish, and restart cleanly?</li><li>Do the score and on-screen messages agree with the game rules?</li><li>Can the window close normally?</li><li>Does the complete project work from another folder with its required assets?</li></ul>
+  <p>Keep a working copy before your next experiment. Add one feature, test it, and keep going.</p>
+</section></article>
+      <details class="source-notes"><summary>Sources &amp; version notes</summary><p>Checked against the local SMILE 2.0 source on September 25, 2026. Examples target the native Windows toolchain unless stated otherwise. The linked repository may continue to evolve.</p><ul><li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/README.md">Language types, diagnostics, and built-in input ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/src/Smile.Language/Parser.cs">Syntax diagnostics from the shared parser ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/games/Snake/README.md">Snake teaching project ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/games/PaddleBall/README.md">Paddle Ball teaching project ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/games/BrickBreaker/README.md">Brick Breaker teaching project ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/games/MazeMuncher/README.md">Maze Muncher teaching project ↗</a></li></ul></details>
+      <nav class="lesson-pager" aria-label="Lesson navigation"><a href="advanced.html"><small>← Previous</small>Arena &amp; elemental VFX</a></nav>
+    </main>
+    <aside class="page-toc" aria-label="On this page"><p>On this page</p><a href="#debug">When it breaks, become a detective</a>
+<a href="#messages">Read a compiler message</a>
+<a href="#wrong-behavior">It runs, but something feels wrong</a>
+<a href="#next-projects">Choose your next game</a>
+<a href="#level-up">Grow your toolkit when the game needs it</a>
+<a href="#finish">A small finished game is a real achievement</a></aside>
+  </div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco · SMILE 2.0</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="start.html">Start learning</a><a href="https://github.com/Sincioco/SMILE-2.0">GitHub ↗</a></div></div></footer>
+</body>
+</html>

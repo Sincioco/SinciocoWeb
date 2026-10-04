@@ -1,0 +1,165 @@
+' Star Collector - a first SMILE 2.0 game.
+
+Option Explicit
+
+Const CanvasWidth = 960
+Const CanvasHeight = 540
+Const PlayerSize = 28
+Const StarSize = 24
+Const WinningScore = 10
+Const PlayerSpeed = 240
+Const SubpixelsPerPixel = 1000
+Const FieldLeft = 24
+Const FieldTop = 92
+Const FieldRight = 936
+Const FieldBottom = 490
+
+Dim PlayerX As Number
+Dim PlayerY As Number
+Dim PlayerXSub As Number
+Dim PlayerYSub As Number
+Dim StarX As Number
+Dim StarY As Number
+Dim Score As Number
+Dim Won As Boolean
+Dim Key As Number
+Dim LastFrameTime As Number
+Dim FrameTime As Number
+Dim Elapsed As Number
+
+Game Window "Star Collector - SMILE 2.0" Size 960 By 540
+
+Call ResetGame()
+
+LastFrameTime = Timer()
+
+Do
+    FrameTime = Timer()
+    Elapsed = Max(0, Min(50, FrameTime - LastFrameTime))
+    LastFrameTime = FrameTime
+    Get Key Key
+
+    If Key = KEY_ESCAPE Then
+        End Program
+    Else If Key = KEY_ENTER And Won = True Then
+        Call ResetGame()
+    End If
+
+    If Won = False Then
+        Call MovePlayer()
+        Call CollectStar()
+    End If
+
+    Call DrawGame()
+
+    Show Screen
+
+Loop Until Game_Closed() = True
+
+Sub ResetGame()
+
+    PlayerX = 100
+    PlayerY = 260
+    PlayerXSub = PlayerX * SubpixelsPerPixel
+    PlayerYSub = PlayerY * SubpixelsPerPixel
+    Score = 0
+    Won = False
+
+    Call PlaceStar()
+
+End Sub
+
+Sub MovePlayer()
+
+    Dim Distance As Number
+
+    Distance = PlayerSpeed * Elapsed
+
+    If Key_Held(KEY_LEFT) Or Key_Held(KEY_A) Then
+        PlayerXSub = PlayerXSub - Distance
+    End If
+
+    If Key_Held(KEY_RIGHT) Or Key_Held(KEY_D) Then
+        PlayerXSub = PlayerXSub + Distance
+    End If
+
+    If Key_Held(KEY_UP) Or Key_Held(KEY_W) Then
+        PlayerYSub = PlayerYSub - Distance
+    End If
+
+    If Key_Held(KEY_DOWN) Or Key_Held(KEY_S) Then
+        PlayerYSub = PlayerYSub + Distance
+    End If
+
+    PlayerXSub = Max(FieldLeft * SubpixelsPerPixel, PlayerXSub)
+    PlayerXSub = Min((FieldRight - PlayerSize) * SubpixelsPerPixel, PlayerXSub)
+    PlayerYSub = Max(FieldTop * SubpixelsPerPixel, PlayerYSub)
+    PlayerYSub = Min((FieldBottom - PlayerSize) * SubpixelsPerPixel, PlayerYSub)
+    PlayerX = PlayerXSub / SubpixelsPerPixel
+    PlayerY = PlayerYSub / SubpixelsPerPixel
+
+End Sub
+
+Function TouchingStar() As Boolean
+
+    Dim OverlapX As Boolean
+    Dim OverlapY As Boolean
+    Dim ReturnValue As Boolean
+
+    OverlapX = PlayerX < StarX + StarSize And PlayerX + PlayerSize > StarX
+    OverlapY = PlayerY < StarY + StarSize And PlayerY + PlayerSize > StarY
+    ReturnValue = OverlapX And OverlapY
+
+    Return ReturnValue
+
+End Function
+
+Sub CollectStar()
+
+    If TouchingStar() = True Then
+
+        Score = Score + 1
+
+        If Score >= WinningScore Then
+            Won = True
+        Else
+            Call PlaceStar()
+        End If
+
+    End If
+
+End Sub
+
+Sub PlaceStar()
+
+    Do
+        Random StarX From FieldLeft + 8 To FieldRight - StarSize - 8
+        Random StarY From FieldTop + 8 To FieldBottom - StarSize - 8
+
+    Loop Until TouchingStar() = False
+
+End Sub
+
+Sub DrawGame()
+
+    Clear Rgb(9, 18, 31)
+    Draw Text "Star Collector" At 24, 20 Size 30 Color WHITE
+    Draw Text "Score" At 700, 28 Size 20 Color LIGHT_GRAY
+    Draw Number Score At 768, 24 Size 26 Color YELLOW
+    Draw Text "/ 10" At 806, 28 Size 20 Color LIGHT_GRAY
+    Fill Rectangle FieldLeft, FieldTop, FieldRight - FieldLeft, FieldBottom - FieldTop, Rgb(15, 32, 49)
+    Draw Rectangle FieldLeft, FieldTop, FieldRight - FieldLeft, FieldBottom - FieldTop, Rgb(46, 80, 103)
+    Fill Rounded Rectangle PlayerX, PlayerY, PlayerSize, PlayerSize, 5, CYAN
+
+    If Won = False Then
+        Fill Quadrilateral StarX + 12, StarY, StarX + 24, StarY + 12, StarX + 12, StarY + 24, StarX, StarY + 12, YELLOW
+    Else
+        Draw Text "You Collected 10 Stars!" At 480, 240 Size 36 Color YELLOW Centered
+        Draw Text "Press Enter To Play Again" At 480, 296 Size 22 Color WHITE Centered
+    End If
+
+    Draw Text "Arrow Keys / WASD: Move     Escape: Exit" At 480, 508 Size 18 Color LIGHT_GRAY Centered
+
+End Sub
+
+End Program

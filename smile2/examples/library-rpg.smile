@@ -1,0 +1,18 @@
+Option Explicit
+
+Import Smile.RPG.Core As RPG
+Import Smile.RPG.Party As Party
+
+Dim State As Number
+Dim Accepted As Boolean
+
+State = RPG.Create()
+If RPG.IsValid(State) Then
+    Accepted = Party.AddGold(State, 25)
+    Print "Gold: "; Party.Gold(State)
+    Accepted = Party.SpendGold(State, 10)
+    Print "Purchase accepted: "; Accepted
+    Print "Gold left: "; Party.Gold(State)
+    Call RPG.Destroy(State)
+End If
+End Program

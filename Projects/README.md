@@ -1,0 +1,105 @@
+# Agentic AI Projects
+
+This static sub-site is available at `/Projects/`. The landing page presents six
+projects in the requested order: PMT, Life 2.0, Sin Star I, SMILE 2.0, Sin AI Prompt,
+and SMILE 1.0. Each project keeps its complete public README on one HTML page.
+Its left navigation links to headings on that same page.
+
+The shared top navigation uses Military, a vertical separator, then Agentic AI
+Projects. The standalone Smile 2.0 top-navigation link is hidden; the SMILE 2.0
+project tab and its language-guide link remain available.
+
+## Ownership
+
+- `content/<project>/README.md` is the unchanged public repository snapshot.
+- `content/<project>/source.json` records its commit, image mapping, and description.
+- `images/<project>/` holds original source pictures as separate local files.
+- `tools/Convert-ProjectReadme.ps1` converts the snapshots into semantic HTML,
+  replaces image paths, resolves source links, and extracts heading anchors.
+- `tools/Build-Projects.ps1` owns the page shell, project order, and sitemap entries.
+- `projects.css` owns only this sub-site's layout. `../CSS/site.css` owns shared
+  typography, colors, header, footer, and global navigation. Documentation details
+  follow the existing `../smile2/docs.css` conventions.
+- `projects.js` owns the responsive section menu and current-section indicator.
+- `tools/Check-Projects.ps1` validates the generated pages and shared navigation.
+
+No new package, frontend library, server runtime, or external build download is
+required. Generation uses the existing PowerShell 7 `ConvertFrom-Markdown` cmdlet
+and Windows image APIs. Published pages use local CSS, JavaScript, and images;
+repository and video links open their external destinations only when selected.
+
+## Build and validate
+
+From the website root, using the installed PowerShell 7:
+
+```powershell
+pwsh -NoProfile -File .\Projects\tools\Build-Projects.ps1
+pwsh -NoProfile -File .\Projects\tools\Check-Projects.ps1
+pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
+pwsh -NoProfile -File .\Projects\tools\Test-ProjectBuild.ps1
+```
+
+With an IIS/IIS Express preview running, add `-PreviewUrl http://localhost:8877`
+to either checker to verify the served pages too. The site needs no .NET build.
+The existing SMILE documentation generator also includes the new global link;
+rebuilding it will retain the navigation. Each generator preserves the other
+sub-site's sitemap entries.
+
+The checked-in HTML is generated output. Edit the corresponding source or builder
+and rebuild. Image-gallery tables are restyled as responsive figures; source
+styles, widths, and alignment are discarded. Image dimensions are read locally
+to reserve space before lazy loading. Existing source links to other repository
+documents remain links to their pinned GitHub versions.
+
+When refreshing source content, replace snapshots deliberately, update the exact
+commit and image mappings, and rerun validation. The builder works offline and
+does not silently refresh from GitHub. Increase its version string after CSS or
+JavaScript edits. The shared site CSS version must also be updated in the three
+parent pages and the SMILE documentation generator if shared styling changes.
+Use Ctrl+F5 during browser testing.
+
+## Imported sources — October 5, 2026
+
+| Project | Repository | Commit | Local images |
+| --- | --- | --- | --- |
+| PMT | Sincioco/PMT | ec73ff3ad9a371deedcdc23ca32d5988c2336b6c | 13 |
+| Life 2.0 | Sincioco/life2 | 4cee5ac2ff15432086f42ec506581e93096cd7d6 | 7 |
+| Sin Star I | Sincioco/SinStarI | 097f52ff30f032c1b30dd13812d9215cc760532b | 58 |
+| SMILE 2.0 | Sincioco/SMILE-2.0 | 61cc9253d29a17ed264eb416e912c648b0a5d845 | 17 |
+| Sin AI Prompt | Sincioco/SinAIPrompt | 5c706172621dddd69dc2a6e2f5a271753a7ba19f | 1 |
+| SMILE 1.0 | Sincioco/SMILE | 32dc0fef51e42c75722b10c6b6cbe43b64f7df83 | 5 |
+
+The 100 README image references are preserved. Sin AI Prompt has no inline README
+images; its one supplemental image is the application artwork referenced by the
+README. All 101 image files were decoded or parsed successfully. No videos were
+downloaded. The original README snapshots retain their source license notices.
+
+## Validation and limits
+
+The site checker verifies 21 HTML pages, the six project tabs, same-page sidebar
+destinations, local links and images, unique IDs, image descriptions, and main
+navigation order. The existing SMILE checker verifies its 14-page scope.
+Both also passed HTTP checks against the local IIS Express preview. Repository
+review found all 79 rewritten pinned GitHub link targets in their commit trees,
+and confirmed preservation of source text and image references.
+
+The browser review covered all six project pages at 390px and 1440px widths,
+with no horizontal page overflow or broken loaded images. Mobile menu behavior
+and same-page section positioning were exercised. Source images are lazy-loaded;
+the image checker also verifies their local existence independently of scrolling.
+
+Handwritten PowerShell, CSS, and JavaScript files receive physical-line review
+warnings above 500 lines and failures above 800. Source snapshots, images, and
+generated HTML are explicitly excluded from that code measurement. Coupling,
+state ownership, and semantic correctness were reviewed manually; the checker
+does not claim to enforce them. No size exception or legacy baseline was added.
+
+New handwritten files range from 22 to 138 lines. Shared CSS grew from 236 to 247
+lines for wrapping navigation; the existing documentation generator and checker
+retain their previous line counts. The build regression checks sitemap stability
+and retention of all 21 entries after repeated builds of either sub-site. It
+covers a newline-growth bug found during this task. Its first relevant run passed;
+retire it after ten consecutive relevant successful runs under the global policy.
+
+The work is prepared locally and has not been deployed to the public server.
+The website is versioned in the private `Sincioco/SinciocoWeb` repository.

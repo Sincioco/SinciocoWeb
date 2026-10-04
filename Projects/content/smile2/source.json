@@ -1,0 +1,78 @@
+{
+  "slug": "smile2",
+  "name": "SMILE 2.0",
+  "repository": "https://github.com/Sincioco/SMILE-2.0",
+  "commit": "61cc9253d29a17ed264eb416e912c648b0a5d845",
+  "readmePath": "README.md",
+  "description": "A BASIC-inspired programming language, native Windows compiler and game-development toolchain powering Sin Star I.",
+  "images": [
+    {
+      "source": "docs/images/readme/2026-09-24/battle-system.jpg",
+      "localPath": "images/smile2/01-battle-system.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/kael-party.jpg",
+      "localPath": "images/smile2/02-kael-party.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/earth-boulder-hurl.jpg",
+      "localPath": "images/smile2/03-earth-boulder-hurl.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/vrax-party.jpg",
+      "localPath": "images/smile2/04-vrax-party.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/vrax-animation.jpg",
+      "localPath": "images/smile2/05-vrax-animation.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/dragon-fire-breath.jpg",
+      "localPath": "images/smile2/06-dragon-fire-breath.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/dragon-party.jpg",
+      "localPath": "images/smile2/07-dragon-party.jpg"
+    },
+    {
+      "source": "assets/branding/smile-2.0-logo.png",
+      "localPath": "images/smile2/08-smile-2.0-logo.png"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/earth-stone-volley.jpg",
+      "localPath": "images/smile2/09-earth-stone-volley.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/earth-fault-line.jpg",
+      "localPath": "images/smile2/10-earth-fault-line.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/fire-inferno-blast.jpg",
+      "localPath": "images/smile2/11-fire-inferno-blast.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/fire-ember-strikes.jpg",
+      "localPath": "images/smile2/12-fire-ember-strikes.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/water-serpent-orbit.jpg",
+      "localPath": "images/smile2/13-water-serpent-orbit.jpg"
+    },
+    {
+      "source": "docs/images/readme/2026-09-24/water-tidal-surge.jpg",
+      "localPath": "images/smile2/14-water-tidal-surge.jpg"
+    },
+    {
+      "source": "https://i.ytimg.com/vi/IuDbnSnKEPo/hqdefault.jpg",
+      "localPath": "images/smile2/15-hqdefault.jpg"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/Sincioco/SinStarI/main/Visual%20Script%20and%20Storyboard/asset/images/c00-s01-duel.png",
+      "localPath": "images/smile2/16-c00-s01-duel.png"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/Sincioco/SinStarI/main/Visual%20Script%20and%20Storyboard/asset/images/c09-s03-planet.png",
+      "localPath": "images/smile2/17-c09-s03-planet.png"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<SmileProject Version="1.0">
+  <PropertyGroup>
+    <ProjectKind>Game</ProjectKind>
+    <StartupFile>advanced-fire.smile</StartupFile>
+    <OutputName>DocumentationFire</OutputName>
+    <GraphicsBackend>DirectX</GraphicsBackend>
+    <VSync>true</VSync>
+  </PropertyGroup>
+  <ItemGroup>
+    <SmileSource Include="advanced-fire.smile" StartupOnly="true" />
+    <SmileProjectReference Include="..\..\libraries\Smile.Simple3D\Smile.Simple3D.smilelibproj" />
+    <Asset Include="Assets\Backgrounds\SinStarLandscape.png" />
+    <Asset Include="Assets\Backgrounds\SinStarTitleWithLogo.png" />
+    <Asset Include="Assets\Fire\*.png" />
+  </ItemGroup>
+</SmileProject>

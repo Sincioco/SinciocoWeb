@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.web>
+    <httpRuntime requestValidationMode="2.0" />
+    <customErrors mode="Off" />
+    <pages validateRequest="false" />
+    <compilation />
+    <trust level="Full" />
+  </system.web>
+  <system.webServer>
+    <staticContent>
+      <remove fileExtension=".json" />
+      <mimeMap fileExtension=".json" mimeType="application/json" />
+      <remove fileExtension=".mp4" />
+      <mimeMap fileExtension=".mp4" mimeType="video/mp4" />
+      <remove fileExtension=".ogv" />
+      <mimeMap fileExtension=".ogv" mimeType="video/ogg" />
+      <remove fileExtension=".webm" />
+      <mimeMap fileExtension=".webm" mimeType="video/webm" />
+      <remove fileExtension=".unityweb" />
+      <mimeMap fileExtension=".unityweb" mimeType="application/octet-stream" />
+      <remove fileExtension=".wasm" />
+      <mimeMap fileExtension=".wasm" mimeType="application/wasm" />
+      <remove fileExtension=".data" />
+      <mimeMap fileExtension=".data" mimeType="application/octet-stream" />
+      <remove fileExtension=".sm3d" />
+      <mimeMap fileExtension=".sm3d" mimeType="application/octet-stream" />
+      <remove fileExtension=".smkf" />
+      <mimeMap fileExtension=".smkf" mimeType="application/octet-stream" />
+      <remove fileExtension=".pdf" />
+      <mimeMap fileExtension=".pdf" mimeType="application/pdf" />
+      <remove fileExtension=".docx" />
+      <mimeMap fileExtension=".docx" mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+      <remove fileExtension=".svg" />
+      <mimeMap fileExtension=".svg" mimeType="image/svg+xml" />
+    </staticContent>
+  </system.webServer>
+</configuration>
+<!--ProjectGuid: F38D1ED0-2028-4F3D-9AD6-A1334454B5C6-->

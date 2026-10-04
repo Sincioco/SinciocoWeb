@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The library toolbox | SMILE 2.0 · Sincioco</title>
+  <meta name="description" content="A guide to SMILE 2.0&#39;s nine repository library packages, imports, movement, UI, RPG systems, 3D, and resource lifecycles.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/smile2/libraries.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The library toolbox | SMILE 2.0">
+  <meta property="og:description" content="A guide to SMILE 2.0&#39;s nine repository library packages, imports, movement, UI, RPG systems, 3D, and resource lifecycles.">
+  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
+  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
+  <script src="search-index.js?v=20261005-projects-1" defer></script>
+  <script src="docs.js?v=20261005-projects-1" defer></script>
+</head>
+<body class="smile-docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../Projects/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="docs-bar"><div class="docs-bar-inner">
+    <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>
+    <div class="docs-bar-actions"><span class="edition">Language guide</span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="lesson-nav" hidden>Lessons <span aria-hidden="true">☰</span></button></div>
+  </div></div>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="lesson-nav">
+      <div class="search-box" hidden><label for="doc-search">Search the docs</label><input id="doc-search" type="search" placeholder="Try “arrays” or “fire”…" autocomplete="off" aria-controls="search-results"><p id="search-status" class="sr-only" aria-live="polite"></p><div id="search-results" hidden></div></div>
+      <nav class="lesson-nav" aria-label="Documentation"><p class="nav-group">Start here</p>
+<a href="Index.html"><span class="lesson-number">00</span>Overview</a>
+<a href="start.html"><span class="lesson-number">01</span>Your first program</a>
+<p class="nav-group">Learn the language</p>
+<a href="basics.html"><span class="lesson-number">02</span>Values &amp; variables</a>
+<a href="flow.html"><span class="lesson-number">03</span>Decisions &amp; loops</a>
+<a href="structure.html"><span class="lesson-number">04</span>Organize your code</a>
+<a href="media.html"><span class="lesson-number">05</span>Graphics, input &amp; sound</a>
+<a href="game.html"><span class="lesson-number">06</span>Build Star Collector</a>
+<p class="nav-group">Explore & build</p>
+<a href="libraries.html" aria-current="page"><span class="lesson-number">07</span>Library guide</a>
+<a href="reference.html"><span class="lesson-number">08</span>Built-in reference</a>
+<a href="advanced.html"><span class="lesson-number">09</span>Arena &amp; elemental VFX</a>
+<a href="next.html"><span class="lesson-number">10</span>Debug &amp; keep building</a></nav>
+      <a class="source-link" href="https://github.com/Sincioco/SMILE-2.0">Explore the source <span aria-hidden="true">↗</span></a>
+      <p class="sidebar-note">Simple Modern and Intuitive<br>Language for Everyone.</p>
+    </aside>
+    <main id="main" class="doc-main">
+      <header class="doc-heading"><p class="eyebrow">BUILD ON WHAT EXISTS</p><h1>The library toolbox</h1><p class="lead">Libraries give you tested building blocks. You bring the game idea, choose the rules, and connect the pieces.</p></header>
+      <article class="doc-content"><h2 id="two-toolboxes">Two kinds of toolbox</h2><p><strong>Runtime built-ins</strong> such as <code>Rgb()</code>, <code>Key_Held()</code>, and <code>Draw Text</code> are part of the language. <strong>Libraries</strong> are reusable SMILE code you add to a project and access with <code>Import</code>. A package can contain several modules; each module has a focused job.</p><p>The current compiler identifies <code>Smile.Game</code>, <code>Smile.UI</code>, and <code>Smile.RPG</code> as built-in libraries. The same repository also maintains the 3D and teaching packages below. They still need an explicit project or package reference.</p><h2 id="add-a-library">Add a library in two steps</h2><ol><li>In Visual Studio, use your project's <strong>References → Add SMILE 2.0 Library Reference…</strong> to select a <code>.smilelibproj</code> project or a built <code>.smilelib</code> package.</li><li>Import the module you want in each source file that uses it. The alias after <code>As</code> is the short name you write in code.</li></ol><pre><code class="language-smile">Option Explicit
+Import Smile.Game.Collision2D As Collision
+
+Print Collision.CellsOverlap(3, 4, 3, 4)</code></pre><p>This prints <code>True</code>: both positions occupy the same cell. <code>Import</code> names a module; it does not download a package or add a missing reference. Library dependencies must also be supplied at the required version.</p><div class="callout"><p><strong>Which shape of API?</strong> A <code>Type</code> such as <code>CardinalMover</code> is a copied value. A <code>Class</code> such as <code>Menu</code> is a shared object created with <code>New</code>. Some libraries return a Number <em>handle</em>, an ID for a bounded resource. Check creation results and release resources with the matching cleanup call.</p></div><h2 id="package-map">The package map</h2><p>Versions below are read from the current library project files. Start with the first three rows for 2D games; move into Simple3D when you are comfortable with the game loop.</p><div class="table-scroll"><table><thead><tr><th>Package</th><th>What it helps you build</th><th>Modules / reference</th></tr></thead><tbody><tr><td><strong>Smile.Game</strong><br>2.0.0<br><span class="tag">Built-in library</span></td><td>Movement, sprite timing, tile maps, cameras, and collision.</td><td>Core, Animation, TileMap, Camera2D, Collision2D.<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/libraries/smile-game-api.md">Read the complete package reference</a></td></tr><tr><td><strong>Smile.UI</strong><br>2.0.0<br><span class="tag">Built-in library</span></td><td>Buttons, panels, styled text, bitmap fonts, menus, and dialogue.</td><td>Core, Controls, Window, BitmapFont, Text, Menu, Dialogue.<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.UI/API.md">Read the complete package reference</a></td></tr><tr><td><strong>Smile.RPG</strong><br>1.3.0<br><span class="tag">Built-in library</span></td><td>Characters, parties, inventory, equipment, abilities, shops, saves, world state, encounters, and turn-based battle rules.</td><td>Core, Characters, Party, Inventory, Equipment, Abilities, Shops, SaveGames, World, Story, Encounters, BattleEffects, BattleCore, BattleStrategy, BattleView.<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.RPG/API.md">Read the complete package reference</a></td></tr><tr><td><strong>Smile.Simple3D</strong><br>2.0.0<br><span class="tag">3D package</span></td><td>3D meshes, materials, animation, cameras, shared arenas, and scene effects; also includes the earlier teaching wireframe layer.</td><td>Graphics3D, Precision3D, Scene3D, Character3D, ArenaViewport3D, FireEmitter3D, WaterVfx3D, EarthVfx3D and more.<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Simple3D/API.md">Read the complete package reference</a></td></tr><tr><td><strong>Smile.Battle3D</strong><br>1.2.1<br><span class="tag">Advanced package</span></td><td>Turns RPG battle presentation cues into timed 3D actor, camera, effect, and sound requests. Combat rules stay in RPG.</td><td>Core, Actor, Articulation, Presentation, Camera, Effects.<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Battle3D/README.md">Read the complete package reference</a></td></tr><tr><td><strong>Smile.BattleTime</strong><br>1.0.0<br><span class="tag">Advanced package</span></td><td>Adds deterministic active-time battle gauges to the RPG round engine. Active and Wait modes control when gauges advance.</td><td>Smile.RPG.BattleTime (the exported module name differs from the package name).<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.BattleTime/README.md">Read the complete package reference</a></td></tr><tr><td><strong>Smile.Math.Extras</strong><br>1.0.0<br><span class="tag">Teaching/proof package</span></td><td>A small library example for whole-number Clamp and IsBetween.</td><td>Smile.Math.Extras.<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Math.Extras/README.md">Read the complete package reference</a></td></tr><tr><td><strong>Smile.Text.Extras</strong><br>1.0.0<br><span class="tag">Teaching/proof package</span></td><td>Practises typed Text arguments, joining text, and ByRef replacement.</td><td>Smile.Text.Extras.<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Text.Extras/README.md">Read the complete package reference</a></td></tr><tr><td><strong>Smile.Data.Models</strong><br>1.0.0<br><span class="tag">Teaching/proof package</span></td><td>Practises nested Actor records, deep copies, movement, and damage.</td><td>Smile.Data.Models.<br><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Data.Models/README.md">Read the complete package reference</a></td></tr></tbody></table></div><h2 id="game">Smile.Game: move one tile smoothly</h2><p><code>CardinalMover</code> separates the hero's logical cell from its animated pixel position. The destination becomes the real cell only when the move completes. Your game checks walls or occupied cells before starting a move.</p><pre><code class="language-smile">Option Explicit
+
+Import Smile.Game.Core As GCore
+Import Smile.Game.Camera2D As Cameras
+Import Smile.Game.Collision2D As Collision
+
+Dim Hero As GCore.CardinalMover
+Dim View As Cameras.CameraState
+Dim Accepted As Boolean
+Dim Arrived As Boolean
+Dim StepIndex As Number
+
+Call Hero.Place(2, 3, GCore.CardinalDirection.Right)
+Accepted = View.Configure(320, 180, 1280, 720)
+
+If Not Collision.OutsideMap(3, 3, 40, 22) Then
+    Accepted = Hero.BeginMove(GCore.CardinalDirection.Right, 8)
+End If
+
+For StepIndex = 1 To 8
+    Arrived = Hero.UpdateMove(1)
+    Call View.Follow(Hero.VisualX(32), Hero.VisualY(32))
+    Print Hero.VisualX(32)
+End For
+
+Print &quot;Arrived: &quot;; Arrived
+Print &quot;Cell: &quot;; Hero.CellX; &quot;, &quot;; Hero.CellY
+End Program</code></pre><p><a href="examples/library-movement.smile" download>Download the movement example</a>. Add the Smile.Game reference before building. Its printed X positions move from cell 2 toward cell 3; after eight steps, <code>Arrived</code> is True and the cell is <code>3, 3</code>.</p><table><thead><tr><th>Member</th><th>Use it for</th></tr></thead><tbody><tr><td><code>Hero.BeginMove(Direction, Duration) As Boolean</code></td><td>Try to begin one cardinal move; duration is a positive number of steps.</td></tr><tr><td><code>Hero.UpdateMove(Steps) As Boolean</code></td><td>Advance a move; True means it completed this update.</td></tr><tr><td><code>Hero.VisualX(CellWidth) As Number</code>, <code>VisualY(CellHeight)</code></td><td>Read an interpolated world position for drawing.</td></tr><tr><td><code>View.Configure(ViewWidth, ViewHeight, WorldWidth, WorldHeight) As Boolean</code></td><td>Set the view and world dimensions.</td></tr><tr><td><code>View.Follow(TargetX, TargetY)</code>, <code>SmoothFollow(TargetX, TargetY, MaximumStep)</code></td><td>Keep the camera inside the world. Draw at world position minus camera X/Y.</td></tr><tr><td><code>Collision.FootprintsOverlap(X1, Y1, W1, H1, X2, Y2, W2, H2) As Boolean</code></td><td>Check overlapping rectangular footprints.</td></tr></tbody></table><h3>Animation and tile maps</h3><p><code>Smile.Game.Animation</code> keeps frame timing; you still draw the selected source rectangle. It supports 64 definitions with up to 16 frames each. <code>Smile.Game.TileMap</code> loads the documented SMILE-MAP 1 format, stores up to four maps, and draws Ground, Detail, and Foreground layers.</p><pre><code class="language-smile">Import Smile.Game.Animation As Animation
+
+Dim Walk As Number
+Dim Accepted As Boolean
+Dim FrameIndex As Number
+
+Walk = Animation.Create(6, True, 0, 0)
+If Animation.IsValid(Walk) Then
+    Accepted = Animation.AddFrame(Walk, 0, 0, 32, 32)
+    Accepted = Animation.AddFrame(Walk, 32, 0, 32, 32)
+    FrameIndex = Animation.CurrentFrame(Walk, 7)
+    Print FrameIndex
+    Call Animation.Destroy(Walk)
+End If</code></pre><p>Here each frame lasts six caller-supplied steps. Seven elapsed steps select the second frame. The animation module does not read the clock for you. TileMap loading is transactional: an invalid load does not expose half a map.</p><h2 id="ui">Smile.UI: give the player a button</h2><p>The Controls module is the smallest starting point. It detects clicks and draws controls; your game owns the meaning of a click.</p><pre><code class="language-smile">Option Explicit
+
+Import Smile.UI.Controls As Controls
+
+Dim Selected As Boolean
+Dim Key As Number
+
+Game Window &quot;My First Library Button&quot; Size 640 By 360
+
+Do
+    Get Key Key
+    If Controls.Clicked(220, 140, 200, 64) Then
+        Selected = Not Selected
+    End If
+
+    Clear Rgb(12, 18, 36)
+    Call Controls.DrawButton(220, 140, 200, 64, &quot;Click Me&quot;, Selected)
+    Draw Text &quot;A library handles the button. You choose its action.&quot; At 320, 245 Size 16 Color WHITE Centered
+    Show Screen
+    Wait 16 Milliseconds
+
+Loop Until Game_Closed() Or Key = KEY_ESCAPE
+
+End Program</code></pre><p><a href="examples/library-ui.smile" download>Download the button example</a>. Add a Smile.UI reference. Click the button to toggle its selected state; Escape exits.</p><h3>Menus and dialogue are objects</h3><p>For keyboard-driven menus, use <code>Import Smile.UI.Menu As Menus</code>. Construct <code>New Menus.Menu(Style, X, Y, Width, Height)</code>, check its <code>Valid</code> property, add choices with <code>AddItem(Label, UserValue)</code>, feed queued keys to <code>Update(Key)</code>, and draw with <code>Call Menu.Draw()</code>. <code>MenuNavigator</code> is exported by that same Menu module and handles submenus.</p><p><code>Smile.UI.Dialogue</code> provides the Dialogue class for paged, gradually revealed text. Styles are value Types in <code>Smile.UI.Core</code>; skins, fonts, images, and sounds belong to your application. Call <code>Destroy()</code> explicitly: dialogues and navigators first, then their menus, then owned graphics. Setting a Class variable to <code>Nothing</code> releases that reference; it does not replace the documented bounded-slot cleanup.</p><p><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.UI/API.md">See exact Menu, MenuNavigator, Dialogue, text, and font signatures</a>.</p><h2 id="rpg">Smile.RPG: rules and saved progress</h2><p>A state handle holds one RPG session. Define stable character/item IDs before using them and register definitions before loading a save. The package calculates rules and progress; your game supplies pictures, input, and audio.</p><pre><code class="language-smile">Option Explicit
+
+Import Smile.RPG.Core As RPG
+Import Smile.RPG.Party As Party
+
+Dim State As Number
+Dim Accepted As Boolean
+
+State = RPG.Create()
+If RPG.IsValid(State) Then
+    Accepted = Party.AddGold(State, 25)
+    Print &quot;Gold: &quot;; Party.Gold(State)
+    Accepted = Party.SpendGold(State, 10)
+    Print &quot;Purchase accepted: &quot;; Accepted
+    Print &quot;Gold left: &quot;; Party.Gold(State)
+    Call RPG.Destroy(State)
+End If
+End Program</code></pre><p><a href="examples/library-rpg.smile" download>Download the gold example</a>. It prints 25 gold, a successful purchase, and 15 gold left. Always check Boolean/result-code returns before showing a success message.</p><table><thead><tr><th>Goal</th><th>Start here</th></tr></thead><tbody><tr><td>Heroes and inventory</td><td>Characters, Party, Inventory, Equipment, Abilities</td></tr><tr><td>Buy and sell</td><td>Shops; operations return <code>RPG_RESULT_*</code> codes</td></tr><tr><td>Exploration and quests</td><td>World, Story flags/values, Encounters; your game owns quest policy and presentation</td></tr><tr><td>Turn-based battles</td><td>BattleCore, BattleEffects, BattleStrategy, BattleView</td></tr><tr><td>Save progress</td><td><code>SaveGames.SaveGame(StateHandle, SaveSlot, SchemaVersion)</code> and <code>LoadGame(StateHandle, SaveSlot, ExpectedSchemaVersion)</code></td></tr></tbody></table><p>Active battles are transient and are not serialized by SaveGames. Definitions and save-schema choices belong to your game.</p><h2 id="three-d">Smile.Simple3D: step into an arena</h2><p>Use <code>Graphics3D</code> for the introductory integer-world API, <code>Precision3D</code> for Double transforms, and <code>ArenaViewport3D</code> for the shared floor, grid, backdrop, and smooth camera controls. <code>Character3D</code> handles independent playback of shared character assets.</p><p>Create geometry once, update it each frame, open a 3D pass, draw, close that pass, then draw the ordinary 2D HUD and call <code>Show Screen</code>. Destroy owned resources when leaving the scene. True 3D requires a supported renderer; native GDI preserves the wireframe/2D fallback.</p><p class="next-link"><a href="advanced.html">Build an arena and instantiate Fire, Water &amp; Earth effects →</a></p><details><summary>All 32 Simple3D modules</summary><p>Core, FixedMath, Math3D, Mesh, Primitives, Renderer, Interaction, CharacterViewer, Graphics3D, Precision3D, PrecisionMath3D, PrecisionCamera3D, Scene3D, Character3D, NodeAim3D, Effects3D, AetherBlade3D, FireEmitter3D, LightningVfx3D, WaterVfx3D, EarthVfx3D, WaterFlow3D, WaterImpact3D, WaterStorm3D, CharacterGlow3D, LightPool3D, SceneVfx3D, Arena3D, ArenaCamera3D, ArenaBackdrop3D, ArenaViewport3D, StaticBackdrop3D.</p></details><h2 id="battle-extensions">Battle presentation and time</h2><p><code>Smile.Battle3D</code> bridges RPG battle cues to actors, articulation, camera shots, and effects. It references Smile.RPG and Smile.Simple3D. <code>Smile.BattleTime</code> references Smile.RPG and exports <code>Smile.RPG.BattleTime</code>: <code>Begin(StateHandle, Mode, Speed)</code>, <code>Advance(StateHandle, Ticks, PresentationBusy)</code>, and <code>TryStartRound(StateHandle)</code> return Boolean results. Speed ranges from 1 to 5. Active mode advances while presentation is busy; Wait mode freezes it.</p><p>These are extensions for an existing battle system. Build your first moving character or small 2D game before adding battle orchestration.</p><h2 id="small-packages">Small packages for learning imports</h2><table><thead><tr><th>Package / exact examples</th><th>Lesson</th></tr></thead><tbody><tr><td><code>Math.Clamp(150, 0, 100)</code><br><code>Math.IsBetween(5, 1, 10)</code></td><td>Import <code>Smile.Math.Extras As Math</code>. Its whole-number Clamp returns 100. This qualified library call is different from the runtime <code>Clamp(150.0, 0.0, 100.0)</code> for Doubles.</td></tr><tr><td><code>TextTools.JoinFive("A", " ", "tiny", " ", "game")</code><br><code>Call TextTools.Replace(Label, "Ready")</code></td><td>Import <code>Smile.Text.Extras As TextTools</code>. JoinFive returns Text; Replace changes a Text variable passed ByRef.</td></tr><tr><td><code>Models.CreateActor("Nova", 2, 3, 10, 10)</code><br><code>Call Models.Move(Hero, 1, 0)</code></td><td>Import <code>Smile.Data.Models As Models</code>. CreateActor returns an Actor record; Move and Damage change it ByRef. CopyActor demonstrates value copying.</td></tr></tbody></table><h2 id="choose-next">Choose your next lesson</h2><p><a href="media.html">Draw, move, play sound, and save a score</a> using runtime commands, or open the <a href="reference.html">55-function built-in reference</a> when you need an exact signature.</p></article>
+      <details class="source-notes"><summary>Sources &amp; version notes</summary><p>Checked against the local SMILE 2.0 source on September 25, 2026. Examples target the native Windows toolchain unless stated otherwise. The linked repository may continue to evolve.</p><ul><li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/src/Smile.Language/Modules.cs">Built-in library catalog ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/libraries/README.md">Library reference workflow ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/libraries/smile-game-api.md">Smile.Game API ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.UI/API.md">Smile.UI API ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.RPG/API.md">Smile.RPG API ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Simple3D/API.md">Simple3D API ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/libraries/arena3d.md">Shared arena ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Game/Smile.Game.smilelibproj">Library project version example ↗</a></li></ul></details>
+      <nav class="lesson-pager" aria-label="Lesson navigation"><a href="game.html"><small>← Previous</small>Build Star Collector</a><a href="reference.html"><small>Up next →</small>Built-in reference</a></nav>
+    </main>
+    <aside class="page-toc" aria-label="On this page"><p>On this page</p><a href="#two-toolboxes">Two kinds of toolbox</a>
+<a href="#add-a-library">Add a library in two steps</a>
+<a href="#package-map">The package map</a>
+<a href="#game">Smile.Game: move one tile smoothly</a>
+<a href="#ui">Smile.UI: give the player a button</a>
+<a href="#rpg">Smile.RPG: rules and saved progress</a>
+<a href="#three-d">Smile.Simple3D: step into an arena</a>
+<a href="#battle-extensions">Battle presentation and time</a>
+<a href="#small-packages">Small packages for learning imports</a>
+<a href="#choose-next">Choose your next lesson</a></aside>
+  </div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco · SMILE 2.0</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="start.html">Start learning</a><a href="https://github.com/Sincioco/SMILE-2.0">GitHub ↗</a></div></div></footer>
+</body>
+</html>

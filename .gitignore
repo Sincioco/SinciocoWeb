@@ -1,0 +1,18 @@
+# Keep machine-specific configuration and credentials local.
+/Web.config
+.env
+.env.*
+*.pfx
+*.p12
+*.key
+*.pubxml.user
+
+# Visual Studio, build outputs, and local diagnostics.
+.vs/
+bin/
+obj/
+*.suo
+*.user
+*.log
+Thumbs.db
+.DS_Store

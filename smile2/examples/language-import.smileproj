@@ -1,0 +1,11 @@
+<SmileProject Version="1.0">
+  <PropertyGroup>
+    <ProjectKind>Console</ProjectKind>
+    <StartupFile>language-import.smile</StartupFile>
+    <OutputName>AdventureModules</OutputName>
+  </PropertyGroup>
+  <ItemGroup>
+    <SmileSource Include="language-import.smile" StartupOnly="true" />
+    <SmileSource Include="language-module.smile" />
+  </ItemGroup>
+</SmileProject>

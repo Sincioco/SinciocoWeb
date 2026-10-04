@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build your first game | SMILE 2.0 · Sincioco</title>
+  <meta name="description" content="Build Star Collector in SMILE 2.0 with keyboard movement, timed updates, rectangle collision, scoring, and restart.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/smile2/game.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Build your first game | SMILE 2.0">
+  <meta property="og:description" content="Build Star Collector in SMILE 2.0 with keyboard movement, timed updates, rectangle collision, scoring, and restart.">
+  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
+  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
+  <script src="search-index.js?v=20261005-projects-1" defer></script>
+  <script src="docs.js?v=20261005-projects-1" defer></script>
+</head>
+<body class="smile-docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../Projects/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="docs-bar"><div class="docs-bar-inner">
+    <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>
+    <div class="docs-bar-actions"><span class="edition">Language guide</span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="lesson-nav" hidden>Lessons <span aria-hidden="true">☰</span></button></div>
+  </div></div>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="lesson-nav">
+      <div class="search-box" hidden><label for="doc-search">Search the docs</label><input id="doc-search" type="search" placeholder="Try “arrays” or “fire”…" autocomplete="off" aria-controls="search-results"><p id="search-status" class="sr-only" aria-live="polite"></p><div id="search-results" hidden></div></div>
+      <nav class="lesson-nav" aria-label="Documentation"><p class="nav-group">Start here</p>
+<a href="Index.html"><span class="lesson-number">00</span>Overview</a>
+<a href="start.html"><span class="lesson-number">01</span>Your first program</a>
+<p class="nav-group">Learn the language</p>
+<a href="basics.html"><span class="lesson-number">02</span>Values &amp; variables</a>
+<a href="flow.html"><span class="lesson-number">03</span>Decisions &amp; loops</a>
+<a href="structure.html"><span class="lesson-number">04</span>Organize your code</a>
+<a href="media.html"><span class="lesson-number">05</span>Graphics, input &amp; sound</a>
+<a href="game.html" aria-current="page"><span class="lesson-number">06</span>Build Star Collector</a>
+<p class="nav-group">Explore & build</p>
+<a href="libraries.html"><span class="lesson-number">07</span>Library guide</a>
+<a href="reference.html"><span class="lesson-number">08</span>Built-in reference</a>
+<a href="advanced.html"><span class="lesson-number">09</span>Arena &amp; elemental VFX</a>
+<a href="next.html"><span class="lesson-number">10</span>Debug &amp; keep building</a></nav>
+      <a class="source-link" href="https://github.com/Sincioco/SMILE-2.0">Explore the source <span aria-hidden="true">↗</span></a>
+      <p class="sidebar-note">Simple Modern and Intuitive<br>Language for Everyone.</p>
+    </aside>
+    <main id="main" class="doc-main">
+      <header class="doc-heading"><p class="eyebrow">Make something playable</p><h1>Build your first game</h1><p class="lead">Turn a few shapes and a handful of rules into Star Collector—your first complete, playable SMILE 2.0 game.</p></header>
+      <article class="doc-content">
+<section><h2 id="mission">Your mission: collect ten stars</h2>
+  <p>Move the cyan player around the arena. Touch a gold star to collect it. A new star appears somewhere else; collect ten to win. This small game teaches the same four jobs you will use in bigger games: read input, change the game, draw it, and repeat.</p>
+  <figure class="screenshot"><img src="images/star-collector.jpg" alt="The native SMILE 2.0 Star Collector game, with a cyan player, gold collectible and score display." width="962" height="572" loading="lazy"><figcaption>Star Collector running as a native Windows game. The downloadable SMILE source draws every shape on screen.</figcaption></figure>
+  <div class="callout"><strong>Before you begin</strong><p>Complete <a href="start.html">Get started</a> and try <a href="basics.html">Language basics</a>. You need the SMILE 2.0 compiler and native Windows build tools. This game needs no images, music files, or library packages.</p></div>
+  <div class="table-wrap"><table><thead><tr><th>Control</th><th>Action</th></tr></thead><tbody><tr><td>Arrow keys or W / A / S / D</td><td>Hold to move.</td></tr><tr><td>Enter</td><td>Start a fresh round after winning.</td></tr><tr><td>Escape</td><td>Exit the game.</td></tr></tbody></table></div>
+</section>
+
+<section><h2 id="run">1. Run the complete game first</h2>
+  <p>Download both files into the same folder. The <code>.smile</code> file contains your instructions; the <code>.smileproj</code> file tells the tools which source to build.</p>
+  <p class="download-links"><a class="button" href="examples/star-collector.smile" download>Download the game source</a> <a class="button button-secondary" href="examples/star-collector.smileproj" download>Download the project</a></p>
+  <p>Open <code>star-collector.smileproj</code> in Visual Studio with the SMILE extension installed, then build and run it. If you use the command line, open a terminal in the folder holding both files and run:</p>
+  <pre><code class="language-powershell">smilec --project star-collector.smileproj --target windows-x64 -o StarCollector.exe
+.\StarCollector.exe</code></pre>
+  <p>If Windows cannot find <code>smilec</code>, use the full path to your installed compiler as explained in <a href="start.html">Get started</a>. The standard SMILE startup screen appears before the arena.</p>
+  <div class="challenge"><strong>First experiment</strong><p>Find <code>Const PlayerSpeed = 240</code>, change <code>240</code> to <code>160</code>, save, and rebuild. Your player should move more slowly. You have changed a game rule without touching its drawing code.</p></div>
+</section>
+
+<section><h2 id="loop">2. Find the game's repeating story</h2>
+  <p>The source puts declarations first, then opens the window, starts the game, and enters its main loop. The helper routines are below that loop. Start reading at <code>Game Window</code>; you can understand the whole story before opening each helper.</p>
+  <figure class="diagram">
+    <svg viewBox="0 0 860 210" role="img" aria-labelledby="game-loop-title game-loop-description" xmlns="http://www.w3.org/2000/svg">
+      <title id="game-loop-title">One frame in the Star Collector loop</title><desc id="game-loop-description">Read the keyboard, update movement and collection, draw a new frame, and present it with Show Screen. Repeat until the window closes.</desc>
+      <rect width="860" height="210" rx="16" fill="#0b1726"/>
+      <g fill="#132c3d" stroke="#37687a"><rect x="24" y="40" width="170" height="76" rx="10"/><rect x="238" y="40" width="170" height="76" rx="10"/><rect x="452" y="40" width="170" height="76" rx="10"/><rect x="666" y="40" width="170" height="76" rx="10"/></g>
+      <g fill="#f3eadd" text-anchor="middle" font-family="sans-serif" font-size="19"><text x="109" y="72">Read input</text><text x="323" y="72">Update state</text><text x="537" y="72">Draw frame</text><text x="751" y="72">Show Screen</text></g>
+      <g fill="#a8bdc6" text-anchor="middle" font-family="sans-serif" font-size="14"><text x="109" y="97">Keys and timing</text><text x="323" y="97">Move and collect</text><text x="537" y="97">Clear, then shapes</text><text x="751" y="97">Present together</text></g>
+      <g fill="#6ee7e2"><path d="M202 76h22l-8-7v14z"/><path d="M416 76h22l-8-7v14z"/><path d="M630 76h22l-8-7v14z"/></g>
+      <path d="M751 128v36H109v-34" stroke="#e6bc70" stroke-width="2" fill="none"/><path d="m109 128-6 10h12z" fill="#e6bc70"/>
+      <text x="430" y="193" text-anchor="middle" fill="#e6bc70" font-family="sans-serif" font-size="15">Repeat while the window is open</text>
+    </svg>
+    <figcaption>A frame is one trip around the loop. Each trip makes the next picture.</figcaption>
+  </figure>
+  <p>This is an excerpt from the complete file. <code>MovePlayer</code>, <code>CollectStar</code>, and <code>DrawGame</code> are helpers defined later in that file.</p>
+  <pre><code class="language-smile">Do
+    FrameTime = Timer()
+    Elapsed = Max(0, Min(50, FrameTime - LastFrameTime))
+    LastFrameTime = FrameTime
+    Get Key Key
+
+    If Key = KEY_ESCAPE Then
+        End Program
+    Else If Key = KEY_ENTER And Won = True Then
+        Call ResetGame()
+    End If
+
+    If Won = False Then
+        Call MovePlayer()
+        Call CollectStar()
+    End If
+
+    Call DrawGame()
+
+    Show Screen
+
+Loop Until Game_Closed() = True</code></pre>
+  <p><code>Get Key</code> reads a queued key event, which works well for menu actions such as restarting. <code>Key_Held</code>, used inside <code>MovePlayer</code>, asks whether a key is currently down. Keep holding a movement key and the player keeps moving.</p>
+</section>
+
+<section><h2 id="state">3. Give the game a memory</h2>
+  <p><strong>State</strong> means the facts the game remembers between frames. Our state is small: the player and star positions, the score, a win flag, and timing values. <code>ResetGame</code> puts these facts back into their starting state.</p>
+  <pre><code class="language-smile">Sub ResetGame()
+
+    PlayerX = 100
+    PlayerY = 260
+    PlayerXSub = PlayerX * SubpixelsPerPixel
+    PlayerYSub = PlayerY * SubpixelsPerPixel
+    Score = 0
+    Won = False
+
+    Call PlaceStar()
+
+End Sub</code></pre>
+  <div class="table-wrap"><table><thead><tr><th>Value</th><th>What it remembers</th><th>Who changes it?</th></tr></thead><tbody><tr><td><code>PlayerX, PlayerY</code></td><td>The player's top-left pixel position.</td><td><code>ResetGame</code> and <code>MovePlayer</code>.</td></tr><tr><td><code>StarX, StarY</code></td><td>The next collectible's top-left position.</td><td><code>PlaceStar</code>.</td></tr><tr><td><code>Score</code></td><td>How many stars you collected this round.</td><td><code>ResetGame</code> and <code>CollectStar</code>.</td></tr><tr><td><code>Won</code></td><td>Whether the round is finished.</td><td><code>ResetGame</code> and <code>CollectStar</code>.</td></tr></tbody></table></div>
+  <p>This first game keeps its small set of shared values together so you can see them all. As your game grows, use <a href="structure.html">Types, Classes, and Modules</a> to give larger pieces their own state. Drawing should read the game state; it should not award points.</p>
+</section>
+
+<section><h2 id="movement">4. Turn time and keys into movement</h2>
+  <p><code>Timer()</code> gives time in milliseconds. We subtract the previous frame's time to learn how much time passed. Movement uses that elapsed time, so a fast computer does not automatically produce a faster player.</p>
+  <pre><code class="language-smile">Distance = PlayerSpeed * Elapsed
+
+If Key_Held(KEY_RIGHT) Or Key_Held(KEY_D) Then
+    PlayerXSub = PlayerXSub + Distance
+End If
+
+PlayerXSub = Max(FieldLeft * SubpixelsPerPixel, PlayerXSub)
+PlayerXSub = Min((FieldRight - PlayerSize) * SubpixelsPerPixel, PlayerXSub)
+PlayerX = PlayerXSub / SubpixelsPerPixel</code></pre>
+  <p>Why the <code>Sub</code> suffix? <code>Number</code> stores whole numbers. We keep positions in thousandths of a pixel, then divide by <code>1000</code> when drawing. At 240 pixels per second, a 16-millisecond frame moves 3,840 of these tiny units: 3.84 pixels. The leftover fraction stays in <code>PlayerXSub</code> for later frames.</p>
+  <p>The <code>Max</code> and <code>Min</code> lines clamp the position to the arena. Subtracting <code>PlayerSize</code> keeps the player's right edge inside the right wall. The complete file does the same for all four directions.</p>
+  <div class="note"><strong>Two deliberate first-game choices</strong><p>We cap elapsed time at 50 milliseconds so returning after a pause cannot send the player across the arena. If a computer continually draws fewer than 20 frames per second, this cap slows the simulation. Holding a horizontal and vertical key together also moves diagonally faster; normalizing diagonal speed is a useful later challenge.</p></div>
+</section>
+
+<section><h2 id="collision">5. Ask whether two rectangles overlap</h2>
+  <p>The player is 28 by 28 pixels. The star is drawn as a gold diamond inside a 24 by 24 box. Its <strong>hitbox</strong> is that entire box, making collection a little more forgiving than the visible diamond.</p>
+  <figure class="diagram">
+    <svg viewBox="0 0 800 300" role="img" aria-labelledby="collision-title collision-description" xmlns="http://www.w3.org/2000/svg">
+      <title id="collision-title">Both horizontal and vertical ranges must overlap</title><desc id="collision-description">A cyan player's rectangle overlaps the gold star's dotted rectangular hitbox. Overlap on the horizontal axis and overlap on the vertical axis together mean a collision.</desc>
+      <rect width="800" height="300" rx="16" fill="#0b1726"/>
+      <rect x="95" y="90" width="135" height="135" rx="8" fill="#35c7d1" fill-opacity=".28" stroke="#6ee7e2" stroke-width="3"/>
+      <rect x="195" y="150" width="115" height="115" fill="none" stroke="#e6bc70" stroke-width="2" stroke-dasharray="6 5"/>
+      <path d="M252.5 150 310 207.5 252.5 265 195 207.5Z" fill="#e6bc70" fill-opacity=".7"/>
+      <rect x="195" y="150" width="35" height="75" fill="#f7ebca" fill-opacity=".55"/>
+      <g font-family="sans-serif" font-size="17"><text x="95" y="59" fill="#6ee7e2">Player rectangle</text><text x="321" y="238" fill="#e6bc70">Star hitbox</text><text x="430" y="99" fill="#f3eadd">Horizontal overlap?</text><text x="700" y="99" fill="#6ee7e2">Yes</text><text x="430" y="144" fill="#f3eadd">Vertical overlap?</text><text x="700" y="144" fill="#6ee7e2">Yes</text><text x="430" y="205" fill="#e6bc70" font-size="22">Collect the star.</text></g>
+      <path d="M310 225h104" stroke="#e6bc70" fill="none"/>
+    </svg>
+    <figcaption>Both tests must be true. Merely lining up on one axis is not enough.</figcaption>
+  </figure>
+  <pre><code class="language-smile">Function TouchingStar() As Boolean
+
+    Dim OverlapX As Boolean
+    Dim OverlapY As Boolean
+    Dim ReturnValue As Boolean
+
+    OverlapX = PlayerX &lt; StarX + StarSize And PlayerX + PlayerSize &gt; StarX
+    OverlapY = PlayerY &lt; StarY + StarSize And PlayerY + PlayerSize &gt; StarY
+    ReturnValue = OverlapX And OverlapY
+
+    Return ReturnValue
+
+End Function</code></pre>
+  <p>Read the first line as two questions: “Is the player's left edge before the star's right edge?” and “Is the player's right edge after the star's left edge?” The second line repeats that reasoning from top to bottom. Exact edge contact does not count here because the comparisons use <code>&lt;</code> and <code>&gt;</code>.</p>
+  <div class="challenge"><strong>Predict before changing</strong><p>What happens if you change <code>ReturnValue = OverlapX And OverlapY</code> to use <code>Or</code>? Try it, observe the overly generous collection, then put <code>And</code> back.</p></div>
+</section>
+
+<section><h2 id="score">6. Collect, win, and restart</h2>
+  <p>A collision changes the score once. Before the next frame, the game either moves the star somewhere new or changes <code>Won</code> to <code>True</code>.</p>
+  <pre><code class="language-smile">Sub CollectStar()
+
+    If TouchingStar() = True Then
+
+        Score = Score + 1
+
+        If Score &gt;= WinningScore Then
+            Won = True
+        Else
+            Call PlaceStar()
+        End If
+
+    End If
+
+End Sub</code></pre>
+  <p><code>PlaceStar</code> picks a random position inside the arena. It retries if the new star overlaps the player, so one collection cannot immediately turn into another without moving.</p>
+  <pre><code class="language-smile">Sub PlaceStar()
+
+    Do
+        Random StarX From FieldLeft + 8 To FieldRight - StarSize - 8
+        Random StarY From FieldTop + 8 To FieldBottom - StarSize - 8
+
+    Loop Until TouchingStar() = False
+
+End Sub</code></pre>
+  <p>When <code>Won</code> is true, the main loop skips movement and collection but continues drawing and reading keys. That is why the victory screen stays responsive and Enter can restart it.</p>
+</section>
+
+<section><h2 id="drawing">7. Draw a fresh picture</h2>
+  <p><code>Clear</code> removes the previous frame. Draw the arena first, the player and star next, and the score and messages where you want them. <code>Show Screen</code> presents the finished frame.</p>
+  <pre><code class="language-smile">Clear Rgb(9, 18, 31)
+Fill Rounded Rectangle PlayerX, PlayerY, PlayerSize, PlayerSize, 5, CYAN
+Draw Text "Score" At 700, 28 Size 20 Color LIGHT_GRAY
+Draw Number Score At 768, 24 Size 26 Color YELLOW</code></pre>
+  <p>The excerpt above focuses on a few drawing commands. The complete <code>DrawGame</code> routine also draws the arena, collectible, instructions, and victory message. It does not contain <code>Show Screen</code>; the main loop presents once after all drawing finishes.</p>
+</section>
+
+<section><h2 id="remix">Make it yours</h2>
+  <div class="step-grid">
+    <article class="card"><h3>Easy · New look</h3><p>Replace <code>CYAN</code> with <code>LIGHT_GREEN</code>. Then adjust the three numbers in <code>Rgb(9, 18, 31)</code> to design your background.</p></article>
+    <article class="card"><h3>Medium · New goal</h3><p>Change <code>WinningScore</code> from 10 to 20. Update the “/ 10” and victory text in <code>DrawGame</code> too. Which displayed labels could you generate from state instead?</p></article>
+    <article class="card"><h3>Stretch · Race the clock</h3><p>Remember the round's start time. Display elapsed seconds using <code>(Timer() - StartTime) / 1000</code>. Freeze the final time on victory and reset it on Enter.</p></article>
+  </div>
+  <p>Before moving on, check that you can move in four directions, stop at all four walls, collect exactly one point per star, win at ten, and restart with a score of zero. Explain to a friend why <code>Show Screen</code> belongs inside the loop.</p>
+  <p><a href="next.html">Continue to debugging and your next game →</a></p>
+</section></article>
+      <details class="source-notes"><summary>Sources &amp; version notes</summary><p>Checked against the local SMILE 2.0 source on September 25, 2026. Examples target the native Windows toolchain unless stated otherwise. The linked repository may continue to evolve.</p><ul><li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/README.md">SMILE language and built-in game commands ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/games/PaddleBall/Program-NoDemo.smile">Paddle Ball: timing, held keys, drawing, and main-loop structure ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/SMILE-2.0-Authoritative-Code-Formatting-Conventions.md">Official source formatting conventions ↗</a></li></ul></details>
+      <nav class="lesson-pager" aria-label="Lesson navigation"><a href="media.html"><small>← Previous</small>Graphics, input &amp; sound</a><a href="libraries.html"><small>Up next →</small>Library guide</a></nav>
+    </main>
+    <aside class="page-toc" aria-label="On this page"><p>On this page</p><a href="#mission">Your mission: collect ten stars</a>
+<a href="#run">1. Run the complete game first</a>
+<a href="#loop">2. Find the game&#39;s repeating story</a>
+<a href="#state">3. Give the game a memory</a>
+<a href="#movement">4. Turn time and keys into movement</a>
+<a href="#collision">5. Ask whether two rectangles overlap</a>
+<a href="#score">6. Collect, win, and restart</a>
+<a href="#drawing">7. Draw a fresh picture</a>
+<a href="#remix">Make it yours</a></aside>
+  </div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco · SMILE 2.0</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="start.html">Start learning</a><a href="https://github.com/Sincioco/SMILE-2.0">GitHub ↗</a></div></div></footer>
+</body>
+</html>

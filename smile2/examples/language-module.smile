@@ -1,0 +1,17 @@
+Module Adventure.Scoring
+
+Option Explicit
+
+Public Const PointsPerGem = 10
+
+Public Function GemPoints(Gems As Number) As Number
+
+    Dim Result As Number
+
+    Result = Gems * PointsPerGem
+
+    Return Result
+
+End Function
+
+End Module

@@ -1,0 +1,29 @@
+Option Explicit
+
+Import Smile.Game.Core As GCore
+Import Smile.Game.Camera2D As Cameras
+Import Smile.Game.Collision2D As Collision
+
+Dim Hero As GCore.CardinalMover
+Dim View As Cameras.CameraState
+Dim Accepted As Boolean
+Dim Arrived As Boolean
+Dim StepIndex As Number
+
+Call Hero.Place(2, 3, GCore.CardinalDirection.Right)
+Accepted = View.Configure(320, 180, 1280, 720)
+
+If Not Collision.OutsideMap(3, 3, 40, 22) Then
+    Accepted = Hero.BeginMove(GCore.CardinalDirection.Right, 8)
+End If
+
+For StepIndex = 1 To 8
+    Arrived = Hero.UpdateMove(1)
+    Call View.Follow(Hero.VisualX(32), Hero.VisualY(32))
+    Print Hero.VisualX(32)
+End For
+
+Print "Arrived: "; Arrived
+Print "Cell: "; Hero.CellX; ", "; Hero.CellY
+End Program
+

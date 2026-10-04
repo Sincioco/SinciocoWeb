@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arena, fire, water &amp; earth | SMILE 2.0 · Sincioco</title>
+  <meta name="description" content="Create the native SMILE 2.0 arena and instantiate reusable Fire, Water, and Earth effects with accurate lifecycle examples, downloadable sources, and real Lab screenshots.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/smile2/advanced.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Arena, fire, water &amp; earth | SMILE 2.0">
+  <meta property="og:description" content="Create the native SMILE 2.0 arena and instantiate reusable Fire, Water, and Earth effects with accurate lifecycle examples, downloadable sources, and real Lab screenshots.">
+  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
+  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
+  <script src="search-index.js?v=20261005-projects-1" defer></script>
+  <script src="docs.js?v=20261005-projects-1" defer></script>
+</head>
+<body class="smile-docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../Projects/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="docs-bar"><div class="docs-bar-inner">
+    <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>
+    <div class="docs-bar-actions"><span class="edition">Language guide</span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="lesson-nav" hidden>Lessons <span aria-hidden="true">☰</span></button></div>
+  </div></div>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="lesson-nav">
+      <div class="search-box" hidden><label for="doc-search">Search the docs</label><input id="doc-search" type="search" placeholder="Try “arrays” or “fire”…" autocomplete="off" aria-controls="search-results"><p id="search-status" class="sr-only" aria-live="polite"></p><div id="search-results" hidden></div></div>
+      <nav class="lesson-nav" aria-label="Documentation"><p class="nav-group">Start here</p>
+<a href="Index.html"><span class="lesson-number">00</span>Overview</a>
+<a href="start.html"><span class="lesson-number">01</span>Your first program</a>
+<p class="nav-group">Learn the language</p>
+<a href="basics.html"><span class="lesson-number">02</span>Values &amp; variables</a>
+<a href="flow.html"><span class="lesson-number">03</span>Decisions &amp; loops</a>
+<a href="structure.html"><span class="lesson-number">04</span>Organize your code</a>
+<a href="media.html"><span class="lesson-number">05</span>Graphics, input &amp; sound</a>
+<a href="game.html"><span class="lesson-number">06</span>Build Star Collector</a>
+<p class="nav-group">Explore & build</p>
+<a href="libraries.html"><span class="lesson-number">07</span>Library guide</a>
+<a href="reference.html"><span class="lesson-number">08</span>Built-in reference</a>
+<a href="advanced.html" aria-current="page"><span class="lesson-number">09</span>Arena &amp; elemental VFX</a>
+<a href="next.html"><span class="lesson-number">10</span>Debug &amp; keep building</a></nav>
+      <a class="source-link" href="https://github.com/Sincioco/SMILE-2.0">Explore the source <span aria-hidden="true">↗</span></a>
+      <p class="sidebar-note">Simple Modern and Intuitive<br>Language for Everyone.</p>
+    </aside>
+    <main id="main" class="doc-main">
+      <header class="doc-heading"><p class="eyebrow">A path into 3D</p><h1>Arena, fire, water &amp; earth</h1><p class="lead">Build a shared arena, create an effect, and learn how your game drives it—one small native example at a time.</p></header>
+      <article class="doc-content">
+<section><h2 id="before-3d">From a 2D game to a 3D scene</h2>
+  <p>The short code blocks below isolate one phase at a time. Use the complete source and project downloads to build a running program.</p><p>A 3D arena still needs the loop you learned in <a href="game.html">Star Collector</a>. What changes is what you create and draw: a camera, floor, objects, and effects. Start with an empty arena, then add one effect at a time.</p>
+  <div class="callout"><strong>Native Windows workshop</strong><p>These examples use the current <code>Smile.Simple3D</code> source library and the native DirectX renderer. You need a local SMILE 2.0 repository checkout with its compiler, library, and assets. The downloads target native Windows programs.</p></div>
+  <p>Read <a href="structure.html">Types, Classes, and Modules</a> and the <a href="libraries.html">library guide</a> first. In this lesson, <code>Arena</code>, <code>Fire</code>, <code>Water</code>, and <code>Earth</code> are import aliases for real modules supplied by <code>Smile.Simple3D</code>. Each effect download uses the shorter alias <code>Vfx</code> for its one selected effect module, with <code>Effect</code> and <code>Sample</code> for the context and frame.</p>
+</section>
+
+<section><h2 id="lifecycle">Meet the resource lifecycle</h2>
+  <p>A resource is something the renderer keeps, such as a texture, mesh, or particle pool. Create those resources during startup. While the scene runs, update and draw the resources you already have. Release them when the scene ends.</p>
+  <figure class="diagram">
+    <svg viewBox="0 0 850 220" role="img" aria-labelledby="vfx-lifecycle-title vfx-lifecycle-description" xmlns="http://www.w3.org/2000/svg">
+      <title id="vfx-lifecycle-title">Create once, update and draw repeatedly, destroy once</title><desc id="vfx-lifecycle-description">Startup creates resources. Each frame updates the effects, draws them inside the arena scene and presents the finished frame. Shutdown releases the effect resources and arena.</desc>
+      <rect width="850" height="220" rx="16" fill="#0b1726"/>
+      <g fill="#132c3d" stroke="#37687a"><rect x="24" y="54" width="154" height="77" rx="10"/><rect x="218" y="54" width="185" height="77" rx="10"/><rect x="443" y="54" width="185" height="77" rx="10"/><rect x="668" y="54" width="158" height="77" rx="10"/></g>
+      <g fill="#f3eadd" font-family="sans-serif" text-anchor="middle" font-size="19"><text x="101" y="86">Prepare</text><text x="311" y="86">Update</text><text x="536" y="86">Draw + present</text><text x="747" y="86">Destroy</text></g>
+      <g fill="#a8bdc6" font-family="sans-serif" text-anchor="middle" font-size="14"><text x="101" y="111">Once per scene</text><text x="311" y="111">Time and positions</text><text x="536" y="111">Once per frame</text><text x="747" y="111">On scene exit</text></g>
+      <g fill="#6ee7e2"><path d="M186 91h24l-8-7v14z"/><path d="M411 91h24l-8-7v14z"/><path d="M636 91h24l-8-7v14z"/></g>
+      <path d="M536 144v27H311v-27" stroke="#e6bc70" stroke-width="2" fill="none"/><path d="m311 141-6 10h12z" fill="#e6bc70"/>
+      <g fill="#e6bc70" text-anchor="middle" font-family="sans-serif" font-size="15"><text x="422" y="199">Repeat this middle section</text><text x="101" y="32">Startup</text><text x="747" y="32">Shutdown</text></g>
+    </svg>
+    <figcaption>Do not put texture loading or emitter creation inside the repeating frame loop.</figcaption>
+  </figure>
+  <div class="table-wrap"><table><thead><tr><th>Feature</th><th>What you keep</th><th>How it begins</th><th>How it ends</th></tr></thead><tbody>
+    <tr><td>Arena</td><td><code>Arena.State</code></td><td><code>Arena.Create(...)</code></td><td><code>Call Arena.Destroy(Stage)</code></td></tr>
+    <tr><td>Fire</td><td><code>Fire.FireEmitter</code> handle</td><td><code>Fire.Initialize(...)</code>, then <code>Fire.StartAtPrecise(...)</code></td><td><code>Fire.Destroy(Flame)</code>, then shared <code>Fire.Shutdown()</code></td></tr>
+    <tr><td>Water</td><td><code>Water.Context</code> and <code>Water.Frame</code></td><td><code>Water.Prepare(...)</code></td><td><code>Call Water.Destroy(WaterEffect)</code></td></tr>
+    <tr><td>Earth</td><td><code>Earth.Context</code> and <code>Earth.Frame</code></td><td><code>Earth.Prepare(...)</code></td><td><code>Call Earth.Destroy(EarthEffect)</code></td></tr>
+  </tbody></table></div>
+  <div class="note"><strong>“Create an instance” does not always mean <code>New</code></strong><p>These APIs expose <code>Type</code> values and module functions. You declare them with <code>Dim</code>, then use their real creation function. <code>New</code> belongs to a SMILE <code>Class</code>. A copied Type containing a renderer handle still refers to the same resource; copying it does not create another flame, texture, or GPU pool. Give each live resource one clear owner and one cleanup path.</p></div>
+</section>
+
+<section><h2 id="arena">1. Create the shared arena</h2>
+  <p><code>ArenaViewport3D</code> combines the standard floor, grid, backgrounds, and camera controls. Your program owns one <code>State</code> value and a base camera describing the starting view.</p>
+  <pre><code class="language-smile">Import Smile.Simple3D.ArenaViewport3D As Arena
+Import Smile.Simple3D.Precision3D As P
+Import Smile.Simple3D.Scene3D As Scene
+
+Dim Stage As Arena.State
+Dim BaseCamera As P.Camera3D
+Dim Ready As Boolean
+
+Game Window "My Arena" Size 1280 By 720
+
+Stage = Arena.Create(1000, 800)
+Ready = Stage.Ready
+BaseCamera.Position = P.Vector(0.0, 180.0, -500.0)
+BaseCamera.Target = P.Vector(0.0, 60.0, 0.0)
+BaseCamera.UpDirection = P.Vector(0.0, 1.0, 0.0)
+BaseCamera.FovDegrees = 55.0
+BaseCamera.NearPlane = 1.0
+BaseCamera.FarPlane = 3000.0</code></pre>
+  <p>This is a startup excerpt. The download includes the loop, renderer check, failure message, and cleanup. The vectors use <code>Double</code> coordinates: X moves across, Y is height, and Z is depth. The camera looks from <code>Position</code> toward <code>Target</code>.</p>
+  <pre><code class="language-smile">Call Arena.Update(Stage, Key)
+
+Ready = Arena.BeginFrame(Stage, BaseCamera)
+
+If Ready Then
+    Ready = Arena.Draw(Stage)
+    Ready = Scene.EndScene() And Ready
+End If
+
+Show Screen</code></pre>
+  <p>Read this as: update the controls, open the 3D frame, draw the arena, close the 3D frame, and show the finished picture. Draw your objects and effects <em>after</em> <code>Arena.Draw</code> and <em>before</em> <code>Scene.EndScene</code>. Draw 2D labels after the scene ends and before <code>Show Screen</code>.</p>
+  <div class="table-wrap"><table><thead><tr><th>Control</th><th>Shared arena behavior</th></tr></thead><tbody><tr><td>F / G</td><td>Toggle the floor / grid independently.</td></tr><tr><td>B</td><td>Cycle Black, Green, Purple, Landscape, and Title backgrounds. Startup uses Landscape.</td></tr><tr><td>Left mouse drag</td><td>Pan the view.</td></tr><tr><td>Middle mouse drag</td><td>Orbit around the view's target.</td></tr><tr><td>Mouse wheel</td><td>Zoom smoothly within limits.</td></tr><tr><td>Right click</td><td>Reset the camera controls.</td></tr></tbody></table></div>
+  <p>For a new grid color or spacing, change the options passed to <code>Arena.Create</code>. Keep camera interaction inside the shared arena library instead of copying another application's private camera code.</p>
+  <p class="download-links"><a class="button" href="examples/advanced-arena.smile" download>Download arena source</a> <a class="button button-secondary" href="examples/advanced-arena.smileproj" download>Download arena project</a></p>
+</section>
+
+<section><h2 id="setup-assets">Prepare the sample projects and assets</h2>
+  <p>The downloaded files are teaching projects that use your local SMILE 2.0 repository. Each project expects its folder to sit two levels below the repository root, such as <code>examples\DocsArena</code>. This makes its <code>..\..\libraries\Smile.Simple3D</code> reference point to the real library.</p>
+  <ol><li>Create <code>examples\DocsArena</code> in your SMILE 2.0 checkout and save the two arena downloads there.</li><li>From the repository root, copy the canonical backgrounds with the existing helper:</li></ol>
+  <pre><code class="language-powershell">.\scripts\copy-arena-assets.ps1 -ProjectDirectory .\examples\DocsArena</code></pre>
+  <p>Then build and run:</p>
+  <pre><code class="language-powershell">.\artifacts\compiler\smilec.exe --project .\examples\DocsArena\advanced-arena.smileproj --target windows-x64 -o .\examples\DocsArena\bin\DocumentationArena.exe
+.\examples\DocsArena\bin\DocumentationArena.exe</code></pre>
+  <p>The project selects <code>&lt;GraphicsBackend&gt;DirectX&lt;/GraphicsBackend&gt;</code>. The compiler publishes the declared assets next to the executable. A source-library reference brings in code; it does not automatically bring in image or model files.</p>
+  <div class="table-wrap"><table><thead><tr><th>Feature</th><th>Required runtime files</th><th>Where the repository keeps the source assets</th></tr></thead><tbody>
+    <tr><td>Every arena</td><td><code>Assets/Backgrounds/SinStarLandscape.png</code> and <code>SinStarTitleWithLogo.png</code></td><td>The shared <code>copy-arena-assets.ps1</code> helper copies the canonical Viewer backgrounds.</td></tr>
+    <tr><td>Fire</td><td><code>Assets/Fire/fire-shape-atlas.png</code>, <code>smoke-shape-atlas.png</code>, and <code>ember-shape.png</code></td><td><code>TechnicalAssets/Generation3/Fire</code></td></tr>
+    <tr><td>Water</td><td><code>Assets/Water/water-sheet.png</code> and <code>water-drop.png</code></td><td><code>TechnicalAssets/Generation3/Water</code></td></tr>
+    <tr><td>Earth</td><td><code>Assets/Earth/EarthRocks.sm3d</code>, its published textures, and <code>earth-dust.png</code></td><td><code>TechnicalAssets/Generation3/Earth</code>; the model source is <code>earth-rocks.glb</code> and needs the project's model publication step.</td></tr>
+  </tbody></table></div>
+  <p>For each effect, create its own folder under <code>examples</code>, such as <code>DocsFire</code>, <code>DocsWater</code>, or <code>DocsEarth</code>. Save the matching source/project pair from the sections below and this helper in that folder:</p>
+<p class="download-links"><a class="button button-secondary" href="examples/advanced-prepare.ps1" download>Download effect asset helper</a></p>
+<p>Open PowerShell in that sample folder and run the helper with the matching effect name:</p>
+<pre><code class="language-powershell">.\advanced-prepare.ps1 -Effect Fire
+..\..\artifacts\compiler\smilec.exe --project .\advanced-fire.smileproj --target windows-x64 -o .\bin\FireDemo.exe
+.\bin\FireDemo.exe</code></pre>
+<p>For Water or Earth, replace <code>Fire</code> with <code>Water</code> or <code>Earth</code>, use <code>advanced-water.smileproj</code> or <code>advanced-earth.smileproj</code>, and choose a matching output name. The helper copies the canonical backgrounds and the effect's exact source assets. Earth's project converts the GLB rock model through its <code>Model3DAsset</code> declaration and publishes its textures.</p>
+<p>Renaming a GLB file to <code>.sm3d</code> does not convert it. Keep the model publication settings and the textures together. These compact demos have no character model or battle rules; they isolate one reusable effect so you can understand its lifecycle.</p>
+</section>
+
+<section><h2 id="fire">2. Create a fire emitter</h2>
+  <figure class="screenshot"><img src="images/fire-inferno-blast.jpg" alt="Kael sends an Inferno Blast across the reflective native SMILE 2.0 Fire Lab arena." loading="lazy"><figcaption>Current native Fire Lab: Kael's Inferno Blast. The small teaching sample starts with a standalone torch; the character, choreography, and attack rules belong to the larger Lab.</figcaption></figure>
+  <p>An <strong>emitter</strong> is a source that keeps producing particles. A torch is a useful first example because it can stay in one place while its fire, smoke, and embers change over time.</p>
+  <pre><code class="language-smile">Import Smile.Simple3D.FireEmitter3D As Fire
+Import Smile.Simple3D.Precision3D As P
+
+Dim Flame As Fire.FireEmitter
+Dim Ready As Boolean
+
+' Startup: load the shared fire resources once.
+Ready = Fire.Initialize("Assets/Fire")
+
+If Ready Then
+    Flame = Fire.StartAtPrecise("TorchFire", P.Vector(0.0, 20.0, 0.0), 12345,
+        Fire.QUALITY_MEDIUM, Fire.SIMULATION_AUTO, 20)
+    Ready = Flame.Slot &lt;&gt; 0
+End If</code></pre>
+  <p><code>"TorchFire"</code> selects an existing preset. The position places the source in the world. The seed selects its repeatable random sequence; quality controls the effect budget, and automatic simulation selects an available backend. The final <code>20</code> is the source radius in world units.</p>
+  <pre><code class="language-smile">' Update once for the whole fire system each frame.
+Call Fire.Update(Elapsed)
+
+' During the open 3D scene, draw this emitter.
+Ready = Fire.Draw(Flame) And Ready</code></pre>
+  <p>If you have three emitters, call <code>Fire.Update(Elapsed)</code> once and draw each emitter once. Updating the shared system three times would advance every emitter three times. To move an existing flame, use <code>Fire.SetPositionPrecise</code>; do not start a replacement emitter every frame.</p>
+  <pre><code class="language-smile">' After the loop: release this emitter, then shared fire resources.
+Ready = Fire.Destroy(Flame)
+
+Call Fire.Shutdown()</code></pre>
+  <div class="challenge"><strong>Try it</strong><p>Move the torch's initial X position from <code>0.0</code> to <code>80.0</code>. Then try a second emitter with its own handle and seed, remembering that the shared update still runs only once.</p></div>
+  <p class="download-links"><a class="button" href="examples/advanced-fire.smile" download>Download fire source</a> <a class="button button-secondary" href="examples/advanced-fire.smileproj" download>Download fire project</a></p>
+</section>
+
+<section><h2 id="water">3. Give water an effect context and a frame</h2>
+  <figure class="screenshot"><img src="images/water-serpent-orbit.jpg" alt="Reflective water coils around Kael during Serpent Orbit in the native SMILE 2.0 Water Lab." loading="lazy"><figcaption>Current native Water Lab: Serpent Orbit with Realistic Water. The shared effect receives a description of the cast; the host provides its timing and targets.</figcaption></figure>
+  <p>A <code>Water.Context</code> owns the reusable rendering resources. A <code>Water.Frame</code> describes what the effect should do <em>now</em>: its mode, time, strength, position, and target. Keep the context for the scene; update the frame as the cast progresses.</p>
+  <pre><code class="language-smile">Import Smile.Simple3D.WaterVfx3D As Water
+Import Smile.Simple3D.Precision3D As P
+
+Dim WaterEffect As Water.Context
+Dim WaterFrame As Water.Frame
+Dim Ready As Boolean
+
+' Startup: allocate the water resources once.
+Ready = Water.Prepare(WaterEffect, "Assets/Water")</code></pre>
+  <p>For a simple traveling water effect, build a frame like this inside your update phase. Here <code>CastTime</code> is your scene's current cast time in milliseconds.</p>
+  <pre><code class="language-smile">WaterFrame.Mode = Water.WATER_BALL
+WaterFrame.Time = CastTime
+WaterFrame.Progress = ToDouble(CastTime) / 4000.0
+WaterFrame.Strength = 1.0
+WaterFrame.FlowScale = 1.0
+WaterFrame.Origin = P.Vector(-160.0, 70.0, 0.0)
+WaterFrame.Target = P.Vector(160.0, 65.0, 0.0)
+WaterFrame.Realistic = True
+Ready = Water.Update(WaterEffect, WaterFrame)</code></pre>
+  <p>Progress is a <code>Double</code> from <code>0.0</code> to <code>1.0</code>. At 2,000 milliseconds of a 4,000-millisecond cast it is <code>0.5</code>, halfway through. <code>ToDouble</code> matters: a <code>Number</code> division would discard the fractional part. Clamp or restart your cast clock at its duration.</p>
+  <pre><code class="language-smile">' During the open 3D scene:
+Call Water.Draw(WaterEffect)
+
+' After the main loop:
+Call Water.Destroy(WaterEffect)</code></pre>
+  <p>The module supplies several modes, including <code>HEAL</code>, <code>SHIELD</code>, <code>TORRENT</code>, <code>WATER_BALL</code>, <code>WAVE</code>, and <code>WATER_BEND</code>. Different modes use different frame fields; read the official module and Lab before switching a complex effect. For target wrapping, the frame also accepts target bounds.</p>
+  <div class="note"><strong>The frame is a request, not a character</strong><p>Water does not decide whose turn it is, spend Magic Points, select an enemy, or animate a character's arms. Your game makes those decisions and supplies the frame. That separation lets a different character reuse the same water effect.</p></div>
+  <p class="download-links"><a class="button" href="examples/advanced-water.smile" download>Download water source</a> <a class="button button-secondary" href="examples/advanced-water.smileproj" download>Download water project</a></p>
+</section>
+
+<section><h2 id="earth">4. Animate rocks and keep the dust alive</h2>
+  <figure class="screenshot"><img src="images/earth-boulder-hurl.jpg" alt="Kael lifts a large rock while preparing Boulder Hurl in the native SMILE 2.0 Earth Lab." loading="lazy"><figcaption>Current native Earth Lab: Boulder Hurl. Rock instances and dust belong to the shared effect; character poses and cast timing are supplied by the host.</figcaption></figure>
+  <p>Earth uses the same context-and-frame idea, with reusable rock models and a dust pool. Its frame has one extra timing detail worth learning: <code>Time</code> locates the cast, while <code>Elapsed</code> says how much playback time advanced since the last update.</p>
+  <pre><code class="language-smile">Import Smile.Simple3D.EarthVfx3D As Earth
+Import Smile.Simple3D.Precision3D As P
+
+Dim EarthEffect As Earth.Context
+Dim EarthFrame As Earth.Frame
+Dim Ready As Boolean
+
+' Startup: load the prepared rock model and dust resources once.
+Ready = Earth.Prepare(EarthEffect, "Assets/Earth")</code></pre>
+  <pre><code class="language-smile">EarthFrame.Mode = Earth.HURL
+EarthFrame.Time = CastTime
+EarthFrame.Elapsed = Elapsed
+EarthFrame.Progress = ToDouble(CastTime) / 4000.0
+EarthFrame.Scale = 1.0
+EarthFrame.Origin = P.Vector(-160.0, 0.0, 0.0)
+EarthFrame.Target = P.Vector(160.0, 50.0, 0.0)
+Ready = Earth.Update(EarthEffect, EarthFrame)</code></pre>
+  <p>The current modes are <code>HURL</code>, <code>VOLLEY</code>, and <code>SLAM</code>. The frame's scale, origin, and target place the authored effect in your scene.</p>
+  <pre><code class="language-smile">' During the open 3D scene:
+Call Earth.Draw(EarthEffect)
+
+' After the main loop:
+Call Earth.Destroy(EarthEffect)</code></pre>
+  <p>Dust can keep fading after a rock reaches its target. At the end of a cast, continue giving the effect elapsed playback time so that tail can finish. When playback is paused, keep the cast time fixed and set <code>Elapsed</code> to zero. Do not destroy and recreate the entire context just to repeat a cast.</p>
+  <div class="challenge"><strong>Try it</strong><p>In the downloaded Earth sample, change <code>Sample.Mode = Vfx.HURL</code> to <code>Vfx.VOLLEY</code> and compare the motion. For a closer inspection, open the full Earth Lab and use its Pause control at the impact. Watch how the rock motion and dust timing serve different jobs.</p></div>
+  <p class="download-links"><a class="button" href="examples/advanced-earth.smile" download>Download earth source</a> <a class="button button-secondary" href="examples/advanced-earth.smileproj" download>Download earth project</a></p>
+</section>
+
+<section><h2 id="compose">Bring the scene together</h2>
+  <p>Use this order when adding an effect to your arena. The download examples provide the actual declarations, setup, and shutdown around it.</p>
+  <ol><li>Read the key and calculate elapsed milliseconds.</li><li>Update the shared arena controls.</li><li>Advance your own cast clock and fill the effect's frame.</li><li>Update each water/earth context, or update the shared fire system once.</li><li>Begin the arena frame and draw the floor, grid, objects, and effects.</li><li>End the 3D scene, draw any 2D labels, and call <code>Show Screen</code>.</li></ol>
+  <div class="note"><strong>Finish every scene you begin</strong><p>SMILE's <code>And</code> short-circuits. The expression <code>Ready = Scene.EndScene() And Ready</code> calls <code>EndScene</code> first and preserves an earlier failure. Reversing those operands could skip cleanup when <code>Ready</code> is already false. The samples only end scenes whose begin operation succeeded.</p></div>
+  <div class="table-wrap"><table><thead><tr><th>Symptom</th><th>First check</th></tr></thead><tbody>
+    <tr><td>The arena reports it could not start.</td><td>Use the native DirectX project and confirm both declared background images were published next to the executable.</td></tr>
+    <tr><td>An effect's preparation returns false.</td><td>Check the asset folder, filenames, and readiness/error fields before entering normal playback. Earth needs a prepared SM3D model with its textures.</td></tr>
+    <tr><td>Fire gets faster when you add more torches.</td><td>Call the shared <code>Fire.Update</code> once per frame, outside any emitter loop.</td></tr>
+    <tr><td>An effect never advances.</td><td>Check that cast time changes, <code>Progress</code> uses Double arithmetic, and update is called each frame.</td></tr>
+    <tr><td>Resources run out after several rounds.</td><td>Reuse contexts through a round, destroy them on scene exit, and do not overwrite a live handle with another creation result.</td></tr>
+    <tr><td>The spell looks correct but causes no damage.</td><td>That is expected until your game supplies combat rules. Visual particles do not own gameplay.</td></tr>
+  </tbody></table></div>
+  <p>For a finished actor-driven example, explore the <a href="https://github.com/Sincioco/SMILE-2.0/tree/main/tools/AdvancedFireVfxLab">Fire Lab</a>, <a href="https://github.com/Sincioco/SMILE-2.0/tree/main/tools/WaterVfxLab">Water Lab</a>, and <a href="https://github.com/Sincioco/SMILE-2.0/tree/main/tools/EarthVfxLab">Earth Lab</a>. Their scenes add characters, target selection, animation timing, sound, and inspection controls around these reusable modules.</p>
+  <p><a href="next.html">Continue to debugging and project ideas →</a></p>
+</section></article>
+      <details class="source-notes"><summary>Sources &amp; version notes</summary><p>Checked against the local SMILE 2.0 source on September 25, 2026. Examples target the native Windows toolchain unless stated otherwise. The linked repository may continue to evolve.</p><ul><li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/libraries/arena3d.md">Shared arena API, controls, assets, and native status ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Simple3D/ArenaViewport3D.smile">ArenaViewport3D: caller-owned state and lifecycle ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Simple3D/FireEmitter3D.smile">Fire emitter API and shared update ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Simple3D/WaterVfx3D.smile">Water context and frame API ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/libraries/Smile.Simple3D/EarthVfx3D.smile">Earth context and playback-time API ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/tools/AdvancedFireVfxLab/README.md">Native Fire Lab ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/tools/WaterVfxLab/README.md">Native Water Lab ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/tools/EarthVfxLab/README.md">Native Earth Lab ↗</a></li></ul></details>
+      <nav class="lesson-pager" aria-label="Lesson navigation"><a href="reference.html"><small>← Previous</small>Built-in reference</a><a href="next.html"><small>Up next →</small>Debug &amp; keep building</a></nav>
+    </main>
+    <aside class="page-toc" aria-label="On this page"><p>On this page</p><a href="#before-3d">From a 2D game to a 3D scene</a>
+<a href="#lifecycle">Meet the resource lifecycle</a>
+<a href="#arena">1. Create the shared arena</a>
+<a href="#setup-assets">Prepare the sample projects and assets</a>
+<a href="#fire">2. Create a fire emitter</a>
+<a href="#water">3. Give water an effect context and a frame</a>
+<a href="#earth">4. Animate rocks and keep the dust alive</a>
+<a href="#compose">Bring the scene together</a></aside>
+  </div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco · SMILE 2.0</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="start.html">Start learning</a><a href="https://github.com/Sincioco/SMILE-2.0">GitHub ↗</a></div></div></footer>
+</body>
+</html>

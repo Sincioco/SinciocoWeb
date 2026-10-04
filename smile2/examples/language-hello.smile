@@ -1,0 +1,13 @@
+' My first SMILE 2.0 program.
+Option Explicit
+
+Dim HeroName As Text
+Dim Score As Number
+
+HeroName = "Nova"
+Score = 10
+
+Print "Hello, " + HeroName + "!"
+Print "Your first score: "; Score
+
+End Program

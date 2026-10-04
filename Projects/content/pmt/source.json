@@ -1,0 +1,62 @@
+{
+  "slug": "pmt",
+  "name": "PMT",
+  "repository": "https://github.com/Sincioco/PMT",
+  "commit": "ec73ff3ad9a371deedcdc23ca32d5988c2336b6c",
+  "readmePath": "README.md",
+  "description": "PMT brings project planning, software delivery, QA, team documentation, diagrams, and daily coordination into one application.",
+  "images": [
+    {
+      "source": "docs/screenshots/readme/kanban-board.jpg",
+      "localPath": "images/pmt/kanban-board.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/projects.jpg",
+      "localPath": "images/pmt/projects.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/sprints.jpg",
+      "localPath": "images/pmt/sprints.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/dev-tasks.jpg",
+      "localPath": "images/pmt/dev-tasks.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/bug-tracking.jpg",
+      "localPath": "images/pmt/bug-tracking.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/backlog.jpg",
+      "localPath": "images/pmt/backlog.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/gantt.jpg",
+      "localPath": "images/pmt/gantt.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/roadmap.jpg",
+      "localPath": "images/pmt/roadmap.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/scrum.jpg",
+      "localPath": "images/pmt/scrum.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/personal-log.jpg",
+      "localPath": "images/pmt/personal-log.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/wfh-schedule.jpg",
+      "localPath": "images/pmt/wfh-schedule.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/documentation.jpg",
+      "localPath": "images/pmt/documentation.jpg"
+    },
+    {
+      "source": "docs/screenshots/readme/diagram-2.jpg",
+      "localPath": "images/pmt/diagram-2.jpg"
+    }
+  ]
+}

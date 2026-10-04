@@ -1,0 +1,30 @@
+{
+  "slug": "smile1",
+  "name": "SMILE 1.0",
+  "repository": "https://github.com/Sincioco/SMILE",
+  "commit": "32dc0fef51e42c75722b10c6b6cbe43b64f7df83",
+  "readmePath": "README.md",
+  "description": "An educational BASIC-like language and responsive desktop IDE that transpile readable programs into ten destination languages.",
+  "images": [
+    {
+      "source": "docs/assets/readme/lantern-maze.svg",
+      "localPath": "images/smile1/01-lantern-maze.svg"
+    },
+    {
+      "source": "docs/assets/readme/trail-runner.svg",
+      "localPath": "images/smile1/02-trail-runner.svg"
+    },
+    {
+      "source": "docs/assets/readme/sky-foundry.svg",
+      "localPath": "images/smile1/03-sky-foundry.svg"
+    },
+    {
+      "source": "docs/assets/readme/desktop-csharp-java-cpp.jpg",
+      "localPath": "images/smile1/04-desktop-csharp-java-cpp.jpg"
+    },
+    {
+      "source": "docs/assets/readme/compiler-pipeline.svg",
+      "localPath": "images/smile1/05-compiler-pipeline.svg"
+    }
+  ]
+}

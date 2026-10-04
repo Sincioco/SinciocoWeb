@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sin AI Prompt | Agentic AI Projects · Sincioco</title>
+  <meta name="description" content="A native Windows HTML prompt editor with rich text editing, layered image annotation, and document organization.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/Projects/sinaiprompt.html">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-5">
+  <link rel="stylesheet" href="projects.css?v=20261005-projects-5">
+  <script src="projects.js?v=20261005-projects-5" defer></script>
+</head>
+<body class="projects-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="./" aria-current="page">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="projects-bar"><div class="container"><nav class="project-tabs" aria-label="Projects"><a href="pmt.html">PMT</a><a href="life2.html">Life 2.0</a><a href="sinstar.html">Sin Star I</a><a href="smile2.html">SMILE 2.0</a><a href="sinaiprompt.html" aria-current="page">Sin AI Prompt</a><a href="smile1.html">SMILE 1.0</a></nav></div></div>
+  <div class="container project-layout">
+  <aside class="project-sidebar"><details class="section-menu" open><summary>On this page</summary><nav class="section-nav" aria-label="Sin AI Prompt sections"><a href="#project-overview" aria-current="location">Overview</a><a href="#run" class="section-level-2">Run</a>
+<a href="#edit-html" class="section-level-2">Edit HTML</a>
+<a href="#images-and-annotation" class="section-level-2">Images and annotation</a>
+<a href="#bundled-reference-documents" class="section-level-2">Bundled reference documents</a>
+<a href="#object-templates" class="section-level-2">Object templates</a>
+<a href="#standalone-export" class="section-level-2">Standalone export</a>
+<a href="#settings-that-survive-a-c-reformat" class="section-level-2">Settings that survive a C: reformat</a>
+<a href="#sin---notepad-foundation" class="section-level-2">Sin - Notepad foundation</a>
+<a href="#offline-build-and-validation" class="section-level-2">Offline build and validation</a>
+<a href="#license" class="section-level-2">License</a>
+<a href="#source-origins" class="section-level-2">Source origins</a></nav></details><a class="project-repository" href="https://github.com/Sincioco/SinAIPrompt">View repository ↗</a></aside>
+  <main id="main" class="project-main"><header class="project-heading"><p class="eyebrow">Agentic AI Projects / Sin AI Prompt</p><h1 id="project-overview">Sin - AI Prompt</h1><p class="lead">A native Windows HTML prompt editor with rich text editing, layered image annotation, and document organization.</p><div class="project-links"><a class="text-link" href="https://github.com/Sincioco/SinAIPrompt">View on GitHub ↗</a></div><img class="project-artwork" src="images/sinaiprompt/SinAIPrompt.png" alt="Sin AI Prompt application artwork" width="240" height="240" decoding="async"></header>
+  <article class="project-content"><span id="sin---ai-prompt"></span>
+<p>A native Windows HTML editor, cloned from Sin - Notepad, with PMT-style rich text editing and layered image annotation. No database, AI service, npm packages, or third-party application libraries.</p>
+<h2 id="run">Run</h2>
+<p>Double-click <strong>SinAIPrompt.lnk</strong>, or run <strong>app\Sin - AI Prompt.exe</strong> after building the package.
+Keep the entire <code>app</code> folder together. Its .NET runtime is included; it uses the Microsoft WebView2 runtime supplied with Windows. The application never downloads missing components.</p>
+<h2 id="edit-html">Edit HTML</h2>
+<ul>
+<li>Create, open, edit, and save <code>.html</code> / <code>.htm</code> files. New documents are named Prompt 1, Prompt 2, and so on.</li>
+<li>Use the toolbar to choose fonts, pixel sizes, foreground and selection background colors, bold, italic, underline, and strikethrough. Headings, lists, alignment, and links are included.</li>
+<li><strong>View Source</strong> opens the native HTML source editor. Return using <strong>Visual editor</strong>, or <strong>View → Visual editor / View source</strong>. <code>Ctrl+Shift+U</code> switches views.</li>
+<li><strong>Paste Code</strong> supports C#, HTML, JavaScript, CSS, SQL/T-SQL, TypeScript, JSON, and Java. Choose full code (default), a first-lines preview, or a collapsed block with a required caption. Click a disclosure to expand it; double-click to edit. Colors follow Visual Studio 2026 Light, with IntelliJ Default for Java. Coloring is lexical, without project/compiler symbol resolution.</li>
+<li>The ribbon uses Modern paragraph styles, a large Save button with New / Save As / Close, and a Tools group for Editor / Capture / Region Capture. The text marker starts yellow and remembers the chosen color; highlighting stays visible while the text remains selected.</li>
+<li>Font Color and Highlight are split buttons: the left applies the remembered color; the arrow opens its palette. Click outside to dismiss. All palettes share the ten most recently chosen colors, including annotation palettes, and retain them after restart. Tools buttons fill available ribbon space individually before wrapping or entering overflow.</li>
+<li><strong>Link</strong> provides a full-width address, optional name and <strong>URL only, no thumbnail</strong>. YouTube links default to a card with thumbnail, title/channel, inline playback, fullscreen and <strong>Open In Browser</strong>. <strong>Save the YouTube thumbnail locally</strong> optionally embeds a PNG; otherwise the thumbnail loads from YouTube. Other available page thumbnails are embedded, with text-link fallback when unavailable.</li>
+<li>Modified documents show <code> *</code> after their name in the title bar; saving clears it.</li>
+<li>Find and replace (<code>Ctrl+F</code> / <code>Ctrl+H</code>) open the source view, where you can search the complete HTML.</li>
+<li>HTML head content and script source are retained. Document scripts and inline event handlers do not run inside the editor.</li>
+</ul>
+<h2 id="images-and-annotation">Images and annotation</h2>
+<p>Pasting an image offers Base64 PNG, a separate PNG, or <strong>Reference Original Image</strong>. For <code>D:\Prompts\Example.html</code>, separate images go in <code>D:\Prompts\Example\</code> and use relative references. An unsaved document must be saved before creating a separate image or a relative original reference.</p>
+<p>Original references leave the existing file in place, with a choice of relative or absolute path. Copying an image file in Explorer or dropping it into the editor supplies its path; a clipboard bitmap without a path asks you to choose the original file. Relative paths require the same drive; otherwise the app offers an absolute reference. Referenced files must remain accessible. Save As rebases references without copying the images; moving to another drive requires an absolute path. Annotation edits produce a new stored image and leave the original untouched.</p>
+<p><strong>Settings → Documents → Pasted Images</strong> offers mutually exclusive defaults to always
+embed images, store them in the document folder, or reference the original file. All start off; leave all
+off to keep the per-paste choice. Existing same-document clipboard images retain their storage.</p>
+<p><strong>Region Capture</strong> starts a three-second countdown while you arrange your windows,
+then lets you drag across any part of the desktop. The screen stays undimmed and a
+magnifier moves to the opposite corner of the pointer's monitor. The cursor is never
+captured. The result inserts directly as a separate PNG, overriding the paste default,
+without an annotation or storage dialog. Esc cancels region selection.</p>
+<p>Separate PNGs use a SHA-256 content hash. Repeated pastes reuse the matching file,
+including a file you renamed. Cut/copy and paste within the same document preserve
+its image references and storage choices. Applying a permanent crop hashes the new
+rendered PNG; earlier image files remain available. A transparent blank annotation
+canvas exports its artwork's bounds. To trim an older saved canvas, edit and Apply it.</p>
+<p>Select an image to open its dropdown: <strong>Edit Image</strong>, <strong>Resize Image</strong>, <strong>View Full Screen</strong>,
+or <strong>View Externally</strong> in your default image viewer. Resize shows four proportional
+corner handles; selection uses a border without blue image shading. Double-click
+also edits its layers. The toolbar <strong>Editor</strong> opens the selected image or a blank canvas.</p>
+<p>The annotation window fills the application's client area, covering its menu, document list, and status bar until you Apply, Cancel, or press Escape. It provides:</p>
+<ul>
+<li>Arrows, lines, rectangles, ellipses/circles, and text objects.</li>
+<li>Dragging to draw, move, resize, or adjust either endpoint of a line or arrow. Corner resize handles preserve the object's proportions by default; side handles change width or height freely. Hold Shift while drawing a rectangle or ellipse for equal dimensions.</li>
+<li>Outline/fill colors, transparent outline/fill, thickness, arrow-head size, and opacity.</li>
+<li>A layer list with multi-selection using Shift-click, visibility, duplication, deletion, and front/back ordering. In Select mode, drag empty canvas to marquee-select objects touched by the rectangle; Shift adds to the selection.</li>
+<li>Copy selected objects with Ctrl+C or <strong>Copy…</strong>, then choose SVG or PNG. Ctrl+V or <strong>Paste</strong> inserts editable layers when copying between annotation canvases. Other applications receive the chosen SVG (also available as text) or PNG image format.</li>
+<li>Reversible image cropping with draggable handles and numeric top/right/bottom/left insets. Each corner has its own radius control.</li>
+<li>Multiple images on an expanding canvas, with undo and redo. Apply retains the image's document width, matching PMT, while fitting expanded artwork into it.</li>
+</ul>
+<p>Dragging keeps the current canvas scale while the scrollable workspace expands. Roll the mouse wheel over the canvas to zoom in or out (5–400%), or choose a zoom percentage or Fit. Resizing the annotation window recalculates Fit. The side panels keep their normal scrolling behavior.</p>
+<p>An annotated image is displayed as a lossless PNG. Editable original image sources and objects are retained in the HTML image's <code>data-sin-annotation</code> metadata, so copying the HTML also preserves its editing state. Cropping does not discard original pixels. Large annotated files can contain both source images and the rendered PNG.</p>
+<h2 id="bundled-reference-documents">Bundled reference documents</h2>
+<p>The two original pinned references are permanently included under
+<code>src/SinAIPrompt/Assets/Documents/</code> and embedded in the compiled application:</p>
+<ul>
+<li><code>2026-09-16 1025 - AI Instructions.html</code></li>
+<li><code>AI Prompt - Output Formatting.html</code></li>
+</ul>
+<p>At startup, the app reopens and pins these exact filenames, recreating missing files
+from the bundle. A restored document keeps its original location and recovery text.
+Otherwise, references use the working folder, then the autosave folder if no working
+folder is configured, or <code>Reference Documents</code> under application storage as a fallback.
+Existing files are never replaced, including edited or newer versions.</p>
+<p><strong>Help → Re-add AI Instructions</strong> and <strong>Help → Re-add Output Formatting</strong> add and pin
+fresh copies of the bundled originals and show the Document List. If a filename is
+already on disk or open in any window, a numbered name keeps both versions. These
+commands also work after a reference has been closed or deleted. Automatic startup
+restoration recognizes the exact bundled filenames; differently named versions remain
+independent documents. Bundled HTML uses the same script-disabled editor as other files.</p>
+<h2 id="object-templates">Object templates</h2>
+<p>Select one or more objects and choose <strong>Save selected as template</strong>. Click a saved template to insert it. Use its down-arrow button to export a <code>.pmt-template.json</code> file, or <strong>Import PMT template</strong> to bring one in.</p>
+<p>PMT's version 1 template format is supported for images, arrows, lines, rectangles, circles, and text boxes, including image cropping and corner radii. Entity/database, relationship, field-mapping, and rich-text canvas objects are outside this application's scope; imports containing those objects report the unsupported type instead of silently losing it.</p>
+<h2 id="standalone-export">Standalone export</h2>
+<p>Choose <strong>File → Export as Standalone HTML</strong>. The export embeds document images and CSS background images as PNG Base64 data and includes the code-block styling. Missing or unreadable image assets cause an explicit export error. The open document and its normal save path remain unchanged.</p>
+<p>Save As copies separate image assets into a folder matching the new HTML filename and preserves inline images. The original HTML and image files remain intact. Rename moves the HTML file and its matching image folder together, then updates image references in the saved file and open editors. Unsaved edits remain unsaved. An occupied destination folder is rejected, and a failed HTML rewrite rolls back the file and folder moves.</p>
+<h2 id="settings-that-survive-a-c-reformat">Settings that survive a C: reformat</h2>
+<p>Open the gear button and change <strong>Application storage</strong> to a persistent location, for example <code>D:\Sin AI Prompt Data</code>. Saving copies the existing JSON files to that folder and leaves the old files as a backup. An occupied destination is rejected to prevent replacing another profile.</p>
+<p>The storage folder contains <code>settings.json</code>, <code>session.json</code>, and <code>templates.json</code>, plus recovery backups. It is independent of the HTML document folder and optional autosave folder. The default is <code>%LOCALAPPDATA%\Sin - AI Prompt</code>.</p>
+<p>The chosen location is recorded in <code>app\data-location.json</code>. Keep that file and the chosen storage folder when moving/rebuilding the app. Packaging preserves the location file. You can also launch with <code>--data-dir &quot;D:\Sin AI Prompt Data&quot;</code> to use an existing profile directly. Windows WebView2's disposable browser cache lives separately under <code>%LOCALAPPDATA%\Sin - AI Prompt Cache</code>; losing it does not lose documents, settings, or templates.</p>
+<h2 id="sin---notepad-foundation">Sin - Notepad foundation</h2>
+<p>Prompt Explorer is the default left pane. Its folder button (left of <strong>+</strong>) chooses
+the working directory. Use <strong>Show folders</strong> to filter normal folders and the header's
+list button to switch back to the existing Document List. <code>Ctrl+Shift+L</code> switches
+between the left navigation pane and horizontal tabs.</p>
+<p>Explorer uses Windows Shell icons and expandable folder rows. It lists only normal
+<code>.html</code>, <code>.txt</code>, <code>.md</code>, <code>.png</code>, <code>.jpg</code>, <code>.gif</code>, and <code>.pdf</code> entries; hidden/system
+entries and filesystem links are omitted. <strong>View → Sort Documents</strong> also controls
+Explorer ordering. Manual mode follows open-document order, then sorts other files
+newest first. Folder contents load on demand and refresh after filesystem changes;
+<strong>F5</strong> refreshes while the tree has focus. Startup still loads only the last active
+HTML editor, independently of folder enumeration.</p>
+<p>Selecting HTML opens the existing editor. Double-click an HTML row to reveal its
+matching image folder, then expand that folder and select an image to preview it in
+the document area. Text, Markdown, images and PDF have read-only previews, outside
+the open-document collection. <strong>Return to document</strong> or <code>Ctrl+W</code> returns to the last
+HTML editor. PDF uses the installed offline WebView2 viewer.</p>
+<p>Unused image filenames appear red, using current unsaved HTML when open. Right-click
+files for <strong>Delete to Recycle Bin</strong>, <strong>Show in File Explorer</strong> (select the item), or
+<strong>Open Containing Folder</strong>. Delete also works from the keyboard. A document's image
+folder can be recycled only when no existing file beneath it is referenced by the
+current parent document or another open document. Broken references do not block
+deletion. Other folders have only the location actions. Open-file deletion warns
+about unsaved edits and closes its open copies after Windows successfully recycles it.</p>
+<p>Select an image and press <strong>F2</strong>, or right-click <strong>Rename</strong>, to rename it while keeping
+its extension. Its parent HTML's local image references update on disk and in open
+editors; unsaved edits remain unsaved. Name collisions and externally changed parent
+HTML are rejected. If the parent save fails, the image keeps its original name.</p>
+<p>The clone retains the native title bar, horizontal tabs / resizable Document List (<code>Ctrl+Shift+L</code>), tab reordering, recent files, rename/delete/path actions, document numbering, autosave, encoding choices, external-file conflict checks, and session recovery. Deletion uses the Windows Recycle Bin.</p>
+<p>Common shortcuts: <code>Ctrl+N</code> new, <code>Ctrl+O</code> open, <code>Ctrl+S</code> save, <code>Ctrl+Shift+S</code> Save As, <code>Ctrl+W</code> close, <code>Ctrl+Tab</code> next document, and <code>Ctrl+Plus</code> / <code>Ctrl+Minus</code> zoom. <code>Ctrl+B</code>, <code>Ctrl+I</code>, and <code>Ctrl+U</code> apply rich text formatting. The Date/Time menu and F5 are retained; <code>Ctrl+D</code> inserts the long date/time and <code>Ctrl+L</code> inserts the separator. Date/time plus separator remains available in the Edit menu.</p>
+<h2 id="offline-build-and-validation">Offline build and validation</h2>
+<p>Use Windows x64 and Visual Studio 2026 with its .NET 10 desktop development components. No network package source is configured; <code>NuGet.Config</code> clears them all. There are no PackageReference entries, node dependencies, build-time external URLs, or package download steps.</p>
+<p>From Windows PowerShell in the project folder:</p>
+<pre><code>.\Build.ps1 -Package
+.\Test.ps1 -Packaged
+</code></pre>
+<p><code>Build.ps1</code> finds Visual Studio through its installed <code>vswhere.exe</code>. It references Microsoft's WebView2 Core/WPF assemblies and native loader already present in Visual Studio's <code>Common7\IDE\PrivateAssemblies</code>. An explicit <code>-VisualStudioWebViewPath</code> supports custom installations.</p>
+<p>The offline packager copies the .NET / Windows Desktop runtimes installed by Visual Studio into <code>app</code> and merges their local dependency manifests. It does not download NuGet runtime packs. No Visual Studio installation is needed to run the resulting app folder; Windows WebView2 must already be present.</p>
+<p>The editor uses two WebView2 virtual host names mapped to local folders. These are local resource mappings, not websites or network services. Application UI assets are bundled locally. User-authored external assets, link previews and YouTube playback require network access. YouTube may restrict particular videos; <strong>Open In Browser</strong> remains available. Saved video cards remain ordinary thumbnail/text links outside this application, with no document scripts added.</p>
+<p><code>Test.ps1</code> uses the real WPF app and Windows WebView2, including native browser input for drag checks. There is no Playwright, Selenium, npm, or test-library dependency. Tests use isolated profiles under ignored <code>work</code> and avoid normal settings and documents. See <a href="https://github.com/Sincioco/SinAIPrompt/blob/5c706172621dddd69dc2a6e2f5a271753a7ba19f/docs/VALIDATION.md">validation</a>.</p>
+<p>Architecture checks run through both build and test entry points. Run <code>scripts\Test-Architecture.ps1 -Report</code> for file sizes and <code>scripts\Test-Architecture.Tests.ps1</code> for the checker's pass/fail fixtures. See the <a href="https://github.com/Sincioco/SinAIPrompt/blob/5c706172621dddd69dc2a6e2f5a271753a7ba19f/docs/ARCHITECTURE.md">module map, enforced limits, and growth triggers</a>; existing architectural debt remains visible even when checks pass.</p>
+<p>After code, CSS, or image changes, rebuild/package and restart the desktop application. Browser Ctrl+F5 is not required; the app loads its bundled local files at startup.</p>
+<p>Startup registers Windows file associations in the background, streams recovery JSON without an extra full-file text copy, and creates only the last active editor. Other documents remain in the list; their editors and saved files load when first selected. Hidden source editors are populated when you switch to HTML source.</p>
+<h2 id="license">License</h2>
+<p>Sin - AI Prompt is licensed under the GNU Affero General Public License v3.0
+(AGPL-3.0), matching <a href="https://github.com/Sincioco/PMT">PMT</a>. See <a href="https://github.com/Sincioco/SinAIPrompt/blob/5c706172621dddd69dc2a6e2f5a271753a7ba19f/LICENSE">LICENSE</a>
+for the full license text.</p>
+<h2 id="source-origins">Source origins</h2>
+<ul>
+<li>Application artwork: the original supplied PNG is preserved at <code>src/SinAIPrompt/Assets/SinAIPrompt.png</code>; <code>SinAIPrompt.ico</code> beside it contains transparent 16–256 pixel Windows icon sizes and is embedded in the executable and WPF window.</li>
+<li>Native shell and document persistence: Sin - Notepad at <code>b4e1197c43935b32be53a0de19dc5a4cbe162503</code>.</li>
+<li>Code highlighting originally followed PMT's <code>wwwroot/js/shared/source-highlighting.js</code>; its current standalone lexer uses Visual Studio 2026 Light and IntelliJ Default colors.</li>
+<li>Annotation behavior and template schema: PMT Diagram 2 and its shared image-annotation implementation at that same reference commit. The focused annotation editor here excludes PMT's database features.</li>
+</ul>
+</article>
+  <div class="project-source"><p>Content and images from the public <a href="https://github.com/Sincioco/SinAIPrompt/blob/5c706172621dddd69dc2a6e2f5a271753a7ba19f/README.md">Sin AI Prompt README</a>, retrieved October 5, 2026. Repository snapshot <a href="https://github.com/Sincioco/SinAIPrompt/commit/5c706172621dddd69dc2a6e2f5a271753a7ba19f">5c70617</a>.</p><a href="#project-overview">Back to top ↑</a></div></main>
+</div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="mailto:louiery@gmail.com">louiery@gmail.com</a></div></div></footer>
+</body>
+</html>

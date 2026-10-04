@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your first SMILE program | SMILE 2.0 · Sincioco</title>
+  <meta name="description" content="Set up SMILE 2.0 on Windows, write your first program, and learn the difference between source code, projects, and compiled games.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/smile2/start.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Your first SMILE program | SMILE 2.0">
+  <meta property="og:description" content="Set up SMILE 2.0 on Windows, write your first program, and learn the difference between source code, projects, and compiled games.">
+  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
+  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
+  <script src="search-index.js?v=20261005-projects-1" defer></script>
+  <script src="docs.js?v=20261005-projects-1" defer></script>
+</head>
+<body class="smile-docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../Projects/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="docs-bar"><div class="docs-bar-inner">
+    <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>
+    <div class="docs-bar-actions"><span class="edition">Language guide</span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="lesson-nav" hidden>Lessons <span aria-hidden="true">☰</span></button></div>
+  </div></div>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="lesson-nav">
+      <div class="search-box" hidden><label for="doc-search">Search the docs</label><input id="doc-search" type="search" placeholder="Try “arrays” or “fire”…" autocomplete="off" aria-controls="search-results"><p id="search-status" class="sr-only" aria-live="polite"></p><div id="search-results" hidden></div></div>
+      <nav class="lesson-nav" aria-label="Documentation"><p class="nav-group">Start here</p>
+<a href="Index.html"><span class="lesson-number">00</span>Overview</a>
+<a href="start.html" aria-current="page"><span class="lesson-number">01</span>Your first program</a>
+<p class="nav-group">Learn the language</p>
+<a href="basics.html"><span class="lesson-number">02</span>Values &amp; variables</a>
+<a href="flow.html"><span class="lesson-number">03</span>Decisions &amp; loops</a>
+<a href="structure.html"><span class="lesson-number">04</span>Organize your code</a>
+<a href="media.html"><span class="lesson-number">05</span>Graphics, input &amp; sound</a>
+<a href="game.html"><span class="lesson-number">06</span>Build Star Collector</a>
+<p class="nav-group">Explore & build</p>
+<a href="libraries.html"><span class="lesson-number">07</span>Library guide</a>
+<a href="reference.html"><span class="lesson-number">08</span>Built-in reference</a>
+<a href="advanced.html"><span class="lesson-number">09</span>Arena &amp; elemental VFX</a>
+<a href="next.html"><span class="lesson-number">10</span>Debug &amp; keep building</a></nav>
+      <a class="source-link" href="https://github.com/Sincioco/SMILE-2.0">Explore the source <span aria-hidden="true">↗</span></a>
+      <p class="sidebar-note">Simple Modern and Intuitive<br>Language for Everyone.</p>
+    </aside>
+    <main id="main" class="doc-main">
+      <header class="doc-heading"><p class="eyebrow">01 / Start here</p><h1>Your first SMILE program</h1><p class="lead">Start small: give a hero a name, award ten points, and turn a few readable instructions into a real Windows program.</p></header>
+      <article class="doc-content"><section aria-labelledby="before-you-start">
+<h2 id="before-you-start">Your first tiny game idea</h2>
+<p>A game remembers things, follows rules, and responds to a player. Before moving a spaceship, make a program that remembers a hero's name and score. You will learn to save your instructions, compile them, and run the result.</p>
+<div class="callout"><strong>What is SMILE?</strong><p>SMILE means <strong>Simple Modern and Intuitive Language for Everyone</strong>. SMILE 2.0 is a programming language and toolchain created by Louiery R. Sincioco (Sin), with Codex collaboration. These lessons describe the current language, using small examples you can change.</p></div>
+<figure class="concept-diagram"><div class="diagram-step"><strong>Write</strong><span>Your instructions in a .smile file</span></div><div class="diagram-arrow" aria-hidden="true">→</div><div class="diagram-step"><strong>Compile</strong><span>smilec checks and translates them</span></div><div class="diagram-arrow" aria-hidden="true">→</div><div class="diagram-step"><strong>Run</strong><span>Windows follows the instructions</span></div><figcaption>A compiler turns your source code into a program Windows can run. Editing the source means compiling again.</figcaption></figure>
+</section>
+<section aria-labelledby="setup">
+<h2 id="setup">Set up the current Windows toolchain</h2>
+<p>Start on a Windows computer. If this is a shared family or school computer, a teacher or adult can help prepare the development tools. The repository currently documents these prerequisites:</p>
+<ul><li><strong>Windows 11 x64</strong>.</li><li><strong>PowerShell 7</strong>, the command window used in the steps below.</li><li><strong>.NET SDK 10.0.400</strong>, selected by the repository's <code>global.json</code>.</li><li><strong>Visual Studio 2026</strong> with <strong>Desktop development with C++</strong>. Building the editor extension also needs <strong>Visual Studio extension development</strong>.</li></ul>
+<p>The current extension manifest and installation script target <strong>Visual Studio Enterprise</strong>. This guide does not promise support for other editions. You can also use the compiler commands below once the native build tools are available.</p>
+<ol><li>Get the source from the <a href="https://github.com/Sincioco/SMILE-2.0">official SMILE 2.0 repository</a> and open PowerShell in its root folder. The repository root contains <code>README.md</code> and the <code>scripts</code> folder.</li><li>Run the prerequisite checker, then build the toolchain:</li></ol>
+<pre><code class="language-powershell">pwsh -NoProfile -ExecutionPolicy Bypass -File scripts\doctor.ps1
+.\scripts\build.cmd</code></pre>
+<p>The build produces <code>artifacts\compiler\smilec.exe</code> (the compiler) and <code>artifacts\vsix\Smile.VisualStudio.vsix</code> (the editor extension). Resolve any prerequisite error before continuing.</p>
+<p>For Visual Studio integration, save your work and close Visual Studio, then run the repository's installation script. Reopen Visual Studio when installation finishes:</p>
+<pre><code class="language-powershell">.\scripts\install-vsix.cmd --skip-build</code></pre>
+<div class="callout"><strong>Already have a working SMILE setup?</strong><p>You can skip rebuilding the toolchain. Use your installed compiler and extension. The lessons do not need game art, character models, or third-party game libraries.</p></div>
+</section>
+<section aria-labelledby="first-program">
+<h2 id="first-program">Write “Hello, Nova!”</h2>
+<p>In Visual Studio, create a <strong>SMILE 2.0 Console Application</strong> and replace the starter source with this code. A console program writes text; it is a useful place to test your game's rules before adding pictures.</p>
+<p>You can instead download <a href="examples/language-hello.smile" download>language-hello.smile</a> and its <a href="examples/language-hello.smileproj" download>project file</a>. Save both in the same folder, keeping their filenames, and open the <code>.smileproj</code> in Visual Studio.</p>
+<pre><code class="language-smile">&#39; My first SMILE 2.0 program.
+Option Explicit
+
+Dim HeroName As Text
+Dim Score As Number
+
+HeroName = &quot;Nova&quot;
+Score = 10
+
+Print &quot;Hello, &quot; + HeroName + &quot;!&quot;
+Print &quot;Your first score: &quot;; Score
+
+End Program</code></pre>
+<table><thead><tr><th>Line or symbol</th><th>What it tells the computer</th></tr></thead><tbody><tr><td><code>'</code></td><td>The rest of this line is a comment for humans.</td></tr><tr><td><code>Option Explicit</code></td><td>Require every variable to be declared, so misspelled names are caught.</td></tr><tr><td><code>Dim HeroName As Text</code></td><td>Make a named place to store text.</td></tr><tr><td><code>HeroName = "Nova"</code></td><td>Put the text Nova into that variable. The quotation marks describe text; they are not part of the name.</td></tr><tr><td><code>+</code> between texts</td><td>Join pieces of text together.</td></tr><tr><td><code>Print ... ; Score</code></td><td>Write the label and the number on the same line without converting the number to text.</td></tr><tr><td><code>End Program</code></td><td>Finish the program.</td></tr></tbody></table>
+</section>
+<section aria-labelledby="run-it">
+<h2 id="run-it">Build it. Run it. Change it.</h2>
+<p>In Visual Studio, save your file, build the project, and use <strong>Ctrl+F5</strong> to run without debugging. <strong>F5</strong> runs with the debugger, which lets you pause and inspect variables. If the console closes before you can read it, use the command-line route below.</p>
+<p>For the command-line route, put the downloaded files in a folder called <code>MyFirstSmile</code> inside your repository root. These commands are entered in PowerShell at the repository root:</p>
+<pre><code class="language-powershell">&amp; &quot;.\artifacts\compiler\smilec.exe&quot; --project &quot;.\MyFirstSmile\language-hello.smileproj&quot; -o &quot;.\MyFirstSmile\HelloSmile.exe&quot;
+&amp; &quot;.\MyFirstSmile\HelloSmile.exe&quot;</code></pre>
+<p>The first command builds the executable. The second starts it. The standard SMILE startup branding may appear before the output. The lesson's output is:</p>
+<pre><code class="language-text">Hello, Nova!
+Your first score: 10</code></pre>
+<p>Now change <code>"Nova"</code> to your hero's name and <code>10</code> to <code>25</code>. Save, compile, and run again. You have changed your first game state.</p>
+<div class="callout"><strong>Use your own paths.</strong><p>The example folder is a choice, not a special folder required by SMILE. Put quotation marks around a path when it contains spaces. In PowerShell, <code>&amp;</code> lets you run a quoted executable path.</p></div>
+</section>
+<section aria-labelledby="files">
+<h2 id="files">Source code and project files do different jobs</h2>
+<table><thead><tr><th>File</th><th>Its job</th></tr></thead><tbody><tr><td><code>.smile</code></td><td>Contains the actual language instructions that you write.</td></tr><tr><td><code>.smileproj</code></td><td>Lists the source files, startup file, project kind, assets, and library references.</td></tr><tr><td><code>.exe</code></td><td>The compiled native Windows program.</td></tr><tr><td><code>.smilelibproj</code> / <code>.smilelib</code></td><td>A reusable library project / its compiled package. You will meet these in <a href="libraries.html">Libraries</a>.</td></tr></tbody></table>
+<details><summary>See the tiny project file used by this lesson</summary><p>This is XML project configuration, not SMILE code. <code>StartupFile</code> chooses the file whose top-level instructions run.</p><pre><code class="language-xml">&lt;SmileProject Version=&quot;1.0&quot;&gt;
+  &lt;PropertyGroup&gt;
+    &lt;ProjectKind&gt;Console&lt;/ProjectKind&gt;
+    &lt;StartupFile&gt;language-hello.smile&lt;/StartupFile&gt;
+    &lt;OutputName&gt;HelloSmile&lt;/OutputName&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;SmileSource Include=&quot;language-hello.smile&quot; StartupOnly=&quot;true&quot; /&gt;
+  &lt;/ItemGroup&gt;
+&lt;/SmileProject&gt;</code></pre></details>
+<p>For a single source file, a project file is optional. This equivalent command compiles the source directly:</p>
+<pre><code class="language-powershell">&amp; &quot;.\artifacts\compiler\smilec.exe&quot; &quot;.\MyFirstSmile\language-hello.smile&quot; -o &quot;.\MyFirstSmile\HelloSmile.exe&quot;</code></pre>
+</section>
+<section aria-labelledby="debug">
+<h2 id="debug">Make one mistake on purpose</h2>
+<p>Change <code>Score = 10</code> to <code>Scroe = 10</code>, then build. With <code>Option Explicit</code>, the compiler reports the unknown name. Read the file and line in the diagnostic, fix the spelling, and build again. An error message is a clue about which instruction needs attention.</p>
+<table><thead><tr><th>What happens</th><th>What to check</th></tr></thead><tbody><tr><td>Unknown variable name</td><td>Check its spelling and <code>Dim ... As ...</code> declaration.</td></tr><tr><td>Text or syntax error</td><td>Check both quotation marks and keep each statement on its own line.</td></tr><tr><td>Type mismatch</td><td>A number and a piece of text are different kinds of value. Use <code>;</code> to print them together.</td></tr><tr><td>Old output after an edit</td><td>Save the source, build successfully, and run the newly built executable.</td></tr><tr><td>Native build tools unavailable</td><td>Run <code>scripts\doctor.ps1</code> and check the required C++ workload.</td></tr></tbody></table>
+<div class="challenge"><h3>Your mission: a welcome screen in words</h3><p>Add a <code>Lives</code> variable of type <code>Number</code>. Give the player three lives and print <code>Lives: 3</code> on a new line.</p><details><summary>Reveal one solution</summary><p>Add the declaration beside the other declarations, the assignment beside the other assignments, and the print before <code>End Program</code>.</p><pre><code class="language-smile">Dim Lives As Number
+
+Lives = 3
+Print &quot;Lives: &quot;; Lives</code></pre></details></div>
+<p class="lesson-next">Next: <a href="basics.html">learn the values your game remembers →</a></p>
+</section></article>
+      <details class="source-notes"><summary>Sources &amp; version notes</summary><p>Checked against the local SMILE 2.0 source on September 25, 2026. Examples target the native Windows toolchain unless stated otherwise. The linked repository may continue to evolve.</p><ul><li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/README.md">Current toolchain prerequisites ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/README.md">Language declarations and source files ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/src/Smile.VisualStudio/Templates/Console/SmileConsole.vstemplate">Visual Studio console project template ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/src/Smile.VisualStudio/source.extension.vsixmanifest">Current extension edition target ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/scripts/install-vsix.cmd">Repository extension installer ↗</a></li></ul></details>
+      <nav class="lesson-pager" aria-label="Lesson navigation"><a href="Index.html"><small>← Previous</small>Overview</a><a href="basics.html"><small>Up next →</small>Values &amp; variables</a></nav>
+    </main>
+    <aside class="page-toc" aria-label="On this page"><p>On this page</p><a href="#before-you-start">Your first tiny game idea</a>
+<a href="#setup">Set up the current Windows toolchain</a>
+<a href="#first-program">Write “Hello, Nova!”</a>
+<a href="#run-it">Build it. Run it. Change it.</a>
+<a href="#files">Source code and project files do different jobs</a>
+<a href="#debug">Make one mistake on purpose</a></aside>
+  </div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco · SMILE 2.0</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="start.html">Start learning</a><a href="https://github.com/Sincioco/SMILE-2.0">GitHub ↗</a></div></div></footer>
+</body>
+</html>

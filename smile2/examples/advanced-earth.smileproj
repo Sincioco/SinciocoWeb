@@ -1,0 +1,21 @@
+<SmileProject Version="1.0">
+  <PropertyGroup>
+    <ProjectKind>Game</ProjectKind>
+    <StartupFile>advanced-earth.smile</StartupFile>
+    <OutputName>DocumentationEarth</OutputName>
+    <GraphicsBackend>DirectX</GraphicsBackend>
+    <VSync>true</VSync>
+  </PropertyGroup>
+  <ItemGroup>
+    <SmileSource Include="advanced-earth.smile" StartupOnly="true" />
+    <SmileProjectReference Include="..\..\libraries\Smile.Simple3D\Smile.Simple3D.smilelibproj" />
+    <Asset Include="Assets\Backgrounds\SinStarLandscape.png" />
+    <Asset Include="Assets\Backgrounds\SinStarTitleWithLogo.png" />
+    <Asset Include="Assets\Earth\earth-dust.png" />
+    <Model3DAsset Include="BuildAssets\earth-rocks.glb"
+                  LogicalPath="Assets/Earth/EarthRocks.sm3d"
+                  TextureOutputDirectory="Assets/Earth/Textures"
+                  Profile="Static" Identity="smile.docs.earth-rocks"
+                  ProductionState="Prototype" />
+  </ItemGroup>
+</SmileProject>

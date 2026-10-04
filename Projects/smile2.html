@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMILE 2.0 | Agentic AI Projects · Sincioco</title>
+  <meta name="description" content="A BASIC-inspired programming language, native Windows compiler and game-development toolchain powering Sin Star I.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/Projects/smile2.html">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-5">
+  <link rel="stylesheet" href="projects.css?v=20261005-projects-5">
+  <script src="projects.js?v=20261005-projects-5" defer></script>
+</head>
+<body class="projects-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="./" aria-current="page">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="projects-bar"><div class="container"><nav class="project-tabs" aria-label="Projects"><a href="pmt.html">PMT</a><a href="life2.html">Life 2.0</a><a href="sinstar.html">Sin Star I</a><a href="smile2.html" aria-current="page">SMILE 2.0</a><a href="sinaiprompt.html">Sin AI Prompt</a><a href="smile1.html">SMILE 1.0</a></nav></div></div>
+  <div class="container project-layout">
+  <aside class="project-sidebar"><details class="section-menu" open><summary>On this page</summary><nav class="section-nav" aria-label="SMILE 2.0 sections"><a href="#project-overview" aria-current="location">Overview</a><a href="#latest-progress--the-native-battle-system" class="section-level-2">Latest progress — the native Battle System</a>
+<a href="#earth-lab--giving-kael-the-power-to-move-stone" class="section-level-2">Earth Lab — giving Kael the power to move stone</a>
+<a href="#fire-lab--choreographing-flame" class="section-level-2">Fire Lab — choreographing flame</a>
+<a href="#water-lab--shaping-flow-and-impact" class="section-level-2">Water Lab — shaping flow and impact</a>
+<a href="#kael--from-character-package-to-elemental-opponent" class="section-level-2">Kael — from character package to elemental opponent</a>
+<a href="#vrax--a-different-kind-of-boss-encounter" class="section-level-2">Vrax — a different kind of boss encounter</a>
+<a href="#the-red-dragon--animation-fire-and-party-reactions" class="section-level-2">The Red Dragon — animation, fire and party reactions</a>
+<a href="#sin-star-i--from-script-to-screen" class="section-level-2">Sin Star I — from script to screen</a>
+<a href="#watch-the-trailer" class="section-level-3">Watch the trailer</a>
+<a href="#the-illustrated-story" class="section-level-3">The illustrated story</a>
+<a href="#what-is-being-built-underneath" class="section-level-2">What is being built underneath</a>
+<a href="#smile-20-studio-status" class="section-level-3">SMILE 2.0 Studio status</a>
+<a href="#build-and-explore" class="section-level-2">Build and explore</a>
+<a href="#work-with-sin" class="section-level-2">Work with Sin</a></nav></details><a class="project-repository" href="https://github.com/Sincioco/SMILE-2.0">View repository ↗</a></aside>
+  <main id="main" class="project-main"><header class="project-heading"><p class="eyebrow">Agentic AI Projects / SMILE 2.0</p><h1 id="project-overview">SMILE 2.0</h1><p class="lead">A BASIC-inspired programming language, native Windows compiler and game-development toolchain powering Sin Star I.</p><div class="project-links"><a class="text-link" href="https://github.com/Sincioco/SMILE-2.0">View on GitHub ↗</a><a class="text-link" href="../smile2/">Learn SMILE 2.0 →</a></div></header>
+  <article class="project-content"><blockquote>
+<p><strong>Current direction - September 29, 2026:</strong> The existing native Character Viewer is
+<strong>SMILE 2.0 - Sin Star I - Game Engine and Studio</strong> (&quot;Sin Star Studio&quot; or &quot;Studio&quot;).
+Existing paths remain under <code>tools/Character3DViewer</code>. The separate Studio concept
+below is abandoned for now; Web development is paused indefinitely. Desktop Sin Star I
+development continues in this existing application.</p>
+</blockquote>
+<p>
+  <img src="images/smile2/08-smile-2.0-logo.png" alt="Official SMILE 2.0 logo" width="1536" height="1024" loading="lazy" decoding="async">
+</p>
+<span id="smile-20"></span>
+<p><strong>Simple Modern and Intuitive Language for Everyone</strong><br>
+A readable language. A native compiler. A world taking shape.</p>
+<p>
+  <a href="#latest-progress--the-native-battle-system">Latest Progress</a> ·
+  <a href="#earth-lab--giving-kael-the-power-to-move-stone">Earth Lab</a> ·
+  <a href="#fire-lab--choreographing-flame">Fire Lab</a> ·
+  <a href="#water-lab--shaping-flow-and-impact">Water Lab</a> ·
+  <a href="#sin-star-i--from-script-to-screen">Sin Star I Trailer &amp; Story</a> ·
+  <a href="#build-and-explore">Build &amp; Explore</a> ·
+  <a href="#work-with-sin">Work With Sin</a>
+</p>
+<p><img src="images/smile2/01-battle-system.jpg" alt="Arin, Orin, Zara and Mira face Kael in the native SMILE 2.0 Battle System, with party orders and live combat status" width="1421" height="1025" loading="lazy" decoding="async"></p>
+<p><em>Latest native Battle System: four heroes, one towering opponent, and the language and tools behind the scene.</em></p>
+<p><strong>SMILE 2.0 is a programming language and game-development toolchain created by
+Louiery R. Sincioco (Sin), with Codex collaboration.</strong> It brings together a shared
+language and semantic model, a native Windows compiler, rendering and audio
+runtimes, reusable SMILE libraries, and Visual Studio integration.</p>
+<p>Its current creative focus is <strong>Sin Star I</strong>, a science-fantasy RPG in development.
+Much of the hands-on progress happens in the <strong>3D Character Viewer and Animation
+Editor</strong>: bringing characters to life, refining equipment and poses, building
+reusable effects, and turning party choreography into interactive battles.</p>
+<p><strong>Development snapshot: September 24, 2026.</strong> The thirteen Viewer and VFX Lab
+screenshots on this page were captured from the native applications for this
+update. The story illustrations and trailer below are separate creative-production
+material. Sin Star I is a work in progress.</p>
+<h2 id="latest-progress--the-native-battle-system">Latest progress — the native Battle System</h2>
+<p>The Viewer now opens directly into a battle against <strong>Kael</strong>, with <strong>Arin, Orin,
+Zara and Mira</strong> as the party. This latest slice adds playable decisions to the
+existing character, animation and effects workflow:</p>
+<ul>
+<li><strong>Party orders:</strong> select attacks, magic, healing targets, Defend, Limit Break or Run.</li>
+<li><strong>Automatic rounds:</strong> repeat remembered orders, then request new ones at a round boundary.</li>
+<li><strong>Battle feedback:</strong> HP, MP, Limit Break gauges, floating damage/healing and a crystal order pointer.</li>
+<li><strong>Progression:</strong> EXP rewards, level growth, statistics tables and graphs for the current session.</li>
+<li><strong>Presentation:</strong> a cinematic opening, action cameras, victory animations and automatic encounter restarts.</li>
+<li><strong>Hands-on inspection:</strong> pause the battle while keeping smooth camera pan, orbit and zoom available.</li>
+</ul>
+<p>The <strong>Battle System</strong> and <strong>Kael Party</strong> are distinct views: one runs interactive
+combat; the other demonstrates the character choreography and effects.</p>
+<p><img src="images/smile2/02-kael-party.jpg" alt="Kael towers over the party while Orin attacks in the native Character Viewer" width="1421" height="1025" loading="lazy" decoding="async"></p>
+<p><em>Kael Party in the native Viewer. The editor exposes playback, camera beats,
+equipment and effects alongside the live scene.</em></p>
+<p><a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/Character3DViewer/README.md#native-battle-system">Explore the Battle System and controls</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/Character3DViewer/ARCHITECTURE.md">Read the ownership and validation notes</a></p>
+<h2 id="earth-lab--giving-kael-the-power-to-move-stone">Earth Lab — giving Kael the power to move stone</h2>
+<p><strong>Boulder Hurl. Stone Volley. Fault Line.</strong> The new native Earth Lab pairs Kael's
+planted stances and two-handed casts with lifted rocks, flying fragments, dust,
+impact cues and a reflective arena. His sword disappears during the cast so the
+motion reads clearly, then returns for normal sword animation.</p>
+<p><img src="images/smile2/03-earth-boulder-hurl.jpg" alt="Kael raises a boulder and loose stone in SMILE 2.0 Earth Lab" width="1440" height="1025" loading="lazy" decoding="async"></p>
+<p><em>Boulder Hurl — body motion, stone lift and reflected geometry in the native renderer.</em></p>
+<div class="project-gallery"><figure><img src="images/smile2/09-earth-stone-volley.jpg" alt="Kael lifts several rocks for Stone Volley in the native Earth Lab" width="1440" height="1025" loading="lazy" decoding="async"><figcaption><strong>Stone Volley</strong><br>Three successive thrusts send stone toward a selected target.</figcaption></figure>
+<figure><img src="images/smile2/10-earth-fault-line.jpg" alt="Fault Line drives a row of rocks and dust toward the Earth Lab target pillars" width="1440" height="1025" loading="lazy" decoding="async"><figcaption><strong>Fault Line</strong><br>A downward strike drives the effect across the arena.</figcaption></figure></div>
+<p>This is reusable SMILE code: the Earth effect owns rocks and dust independently
+of Kael, while his adapter supplies animation timing and targets. The same casts
+are already used in the native Viewer and Sin Star I's Kael presentations.</p>
+<p><a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/EarthVfxLab/README.md">Explore Earth Lab and its controls</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/libraries/Smile.Simple3D/EarthVfx3D.smile">Inspect the shared Earth effect</a></p>
+<h2 id="fire-lab--choreographing-flame">Fire Lab — choreographing flame</h2>
+<p><strong>Ember Strikes. Flame Sweep. Inferno Blast.</strong> The native Fire Lab connects
+Kael's punches, sweeping kick and two-handed release to jets emitted from his
+animated hands and foot. Bright flame cores, embers, heat distortion and cooling
+smoke make each motion visible across the reflective arena.</p>
+<div class="project-gallery"><figure><img src="images/smile2/11-fire-inferno-blast.jpg" alt="Kael releases a wide Inferno Blast toward target pillars in the native Fire Lab" width="1421" height="1025" loading="lazy" decoding="async"><figcaption><strong>Inferno Blast</strong><br>A low lunge and two-handed release drive a broad jet toward the targets.</figcaption></figure>
+<figure><img src="images/smile2/12-fire-ember-strikes.jpg" alt="Kael punches a forward jet of flame during Ember Strikes in the native Fire Lab" width="1421" height="1025" loading="lazy" decoding="async"><figcaption><strong>Ember Strikes</strong><br>Chambered punches send fire forward from the animated hands.</figcaption></figure></div>
+<p>The Lab also previews Arin's sword and shield flames and standalone effects such
+as torches, fireballs and dragon breath. Playback can pause while the camera stays
+active; quality, wind, turbulence and CPU/GPU controls support focused inspection.
+Shared fire emitters own the effect resources, while character adapters provide
+the attachment positions and attack timing.</p>
+<p><strong>Current status:</strong> Kael's three Fire attacks are native Lab previews. Their
+adoption into his Character Viewer and Sin Star I battle rotations is pending.</p>
+<p><a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/AdvancedFireVfxLab/README.md">Explore Fire Lab and its controls</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/libraries/Smile.Simple3D/FireEmitter3D.smile">Inspect the shared fire emitter</a></p>
+<h2 id="water-lab--shaping-flow-and-impact">Water Lab — shaping flow and impact</h2>
+<p><strong>Water Whip. Serpent Orbit. Tidal Surge.</strong> Water winds around Kael before
+following his arm sweeps and torso turns toward a target. The native Water Lab
+brings the animation, translucent water surfaces, spray and reflections together,
+with a choice of standard and Realistic Water appearances.</p>
+<div class="project-gallery"><figure><img src="images/smile2/13-water-serpent-orbit.jpg" alt="Reflective water coils around Kael during Serpent Orbit with Realistic Water enabled in the native Water Lab" width="1421" height="1025" loading="lazy" decoding="async"><figcaption><strong>Serpent Orbit</strong><br>Coiling water surrounds the caster, shown with Realistic Water enabled.</figcaption></figure>
+<figure><img src="images/smile2/14-water-tidal-surge.jpg" alt="Kael guides a curved water surge toward the target pillars during Tidal Surge in the native Water Lab" width="1421" height="1025" loading="lazy" decoding="async"><figcaption><strong>Tidal Surge</strong><br>A broad curved flow follows the cast before reaching the selected pillar.</figcaption></figure></div>
+<p>Impacts can split around the smaller cylindrical targets and reunite behind them;
+the largest target uses a crown splash. These are authored real-time effects with
+explicit target bounds. The Lab also retains Mira's eight effect previews and
+provides pause, 100 ms stepping, speed controls and a live clip clock for inspection.
+Shared water modules own flow, impact geometry and spray independently of the actor.</p>
+<p><strong>Current status:</strong> Kael's three Water casts are already used in the native
+Character Viewer and Sin Star I's normal/Earth/Water party rotation.</p>
+<p><a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/WaterVfxLab/README.md">Explore Water Lab and its controls</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/libraries/Smile.Simple3D/WaterVfx3D.smile">Inspect the shared water effect</a></p>
+<h2 id="kael--from-character-package-to-elemental-opponent">Kael — from character package to elemental opponent</h2>
+<p>Kael's current native package brings together <strong>sixteen animation clips</strong>, a
+silver-haired character, a fitted sword, and separate solo and boss presentations.
+The Kael Party demo alternates sword attacks with Earth and Water casts, using
+his own assets and timing.</p>
+<div class="project-table" role="region" aria-label="Scrollable project table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Current native progress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Earth</strong></td>
+<td>Boulder Hurl, Stone Volley and Fault Line in Earth Lab, the Viewer and Sin Star I.</td>
+</tr>
+<tr>
+<td><strong>Water</strong></td>
+<td>Water Whip, Serpent Orbit and Tidal Surge in Water Lab, the Viewer and Sin Star I.</td>
+</tr>
+<tr>
+<td><strong>Fire</strong></td>
+<td>Ember Strikes, Flame Sweep and Inferno Blast in a separate Fire Lab preview; adoption into Kael's Viewer/game rotation is pending.</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="https://github.com/Sincioco/SinStarI/blob/main/SourceAssets/Characters/Kael/KaelV1/README.md">Kael's versioned package</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/WaterVfxLab/README.md">Water Lab</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/AdvancedFireVfxLab/README.md">Fire Lab</a></p>
+<h2 id="vrax--a-different-kind-of-boss-encounter">Vrax — a different kind of boss encounter</h2>
+<p>Vrax brings a mechanical silhouette, <strong>24 animation clips</strong>, six attack variants,
+orange fire breath and blue-white arm lightning. His individual preview and party
+encounter make it possible to inspect animation, targeting, effects and attack
+sound cues in context.</p>
+<p><img src="images/smile2/04-vrax-party.jpg" alt="The party confronts Vrax while Orin’s lightning spreads across the reflective arena" width="1421" height="1025" loading="lazy" decoding="async"></p>
+<p><em>Party Vrax — character scale, equipment effects, lightning and reflections working together.</em></p>
+<p><img src="images/smile2/05-vrax-animation.jpg" alt="Vrax’s mechanical body and articulated appendages in the Character Viewer animation inspection view" width="1421" height="1025" loading="lazy" decoding="async"></p>
+<p><em>Vrax's individual animation view, with clip selection, playback information and camera controls.</em></p>
+<p><a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/Character3DViewer/README.md#vrax-attacks">Explore Vrax's effects</a>
+· <a href="https://github.com/Sincioco/SinStarI/blob/main/SourceAssets/Bosses/Vrax/VraxV1/VRAX-CREATION-AND-REPAIR-JOURNEY.md">Read the asset and audio integration journey</a></p>
+<h2 id="the-red-dragon--animation-fire-and-party-reactions">The Red Dragon — animation, fire and party reactions</h2>
+<p>The Red Dragon remains a living test of the whole scene: wings and claws,
+head and mouth targeting, breath and fireball effects, defensive reactions,
+and multiple independently animated heroes.</p>
+<p><img src="images/smile2/06-dragon-fire-breath.jpg" alt="The Red Dragon breathes fire toward the heroes, with the dragon, flame and party reflected in the native arena" width="1421" height="1025" loading="lazy" decoding="async"></p>
+<p><em>Fire breath in the native Viewer, paused for inspection with the camera still available.</em></p>
+<p><img src="images/smile2/07-dragon-party.jpg" alt="Arin, Orin, Zara and Mira face the Red Dragon in the current native Party Dragon preview" width="1421" height="1025" loading="lazy" decoding="async"></p>
+<p><em>The current Party Dragon scene brings the four-character roster into the same shared arena.</em></p>
+<p>The dragon uses a lightweight preview rig. The goal is to make each animation,
+attachment, effect and camera decision useful to the developing game, while
+keeping the editor focused and responsive.</p>
+<p><a href="https://github.com/Sincioco/SinStarI/blob/main/SourceAssets/Bosses/RedDragon/RedDragonV11/README.md">Dragon package and rig notes</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/Character3DViewer/README.md">Character Viewer workflow</a></p>
+<h2 id="sin-star-i--from-script-to-screen">Sin Star I — from script to screen</h2>
+<p>Sin Star I's development also reaches beyond the runtime: an illustrated script,
+a visual storyboard, animated scene previews and video production explore the
+characters, worlds and emotional stakes of the RPG.</p>
+<h3 id="watch-the-trailer">Watch the trailer</h3>
+<p>
+  <a href="https://www.youtube.com/watch?v=IuDbnSnKEPo">
+    <img src="images/smile2/15-hqdefault.jpg" alt="Watch Sin Star - Trailer (2026) by Louiery Sincioco on YouTube" width="480" height="360" loading="lazy" decoding="async">
+  </a>
+</p>
+<p><strong><a href="https://www.youtube.com/watch?v=IuDbnSnKEPo">▶ Watch Sin Star — Trailer (2026)</a></strong></p>
+<p><em>The trailer presents Sin Star I's cinematic vision; the native screenshots above show current runtime development.</em></p>
+<h3 id="the-illustrated-story">The illustrated story</h3>
+<p>
+  <a href="https://github.com/Sincioco/SinStarI">
+    <img src="images/smile2/16-c00-s01-duel.png" alt="Sin Star I storyboard illustration of Arin crossing swords with a mysterious opponent" width="1672" height="941" loading="lazy" decoding="async">
+  </a>
+</p>
+<p><em>Story illustration — the duel that follows Arin into his dreams.</em></p>
+<p>
+  <a href="https://github.com/Sincioco/SinStarI">
+    <img src="images/smile2/17-c09-s03-planet.png" alt="Sin Star I storyboard art of Aevos wielding a planet while Mira shields the party" width="1536" height="1024" loading="lazy" decoding="async">
+  </a>
+</p>
+<p><em>Story illustration — A World Hurled: Aevos, the party, and Mira's shield.</em></p>
+<p>The native game now lives at the root of the dedicated <a href="https://github.com/Sincioco/SinStarI">Sin Star I repository</a>,
+which also contains the illustrated script, storyboard and production materials. Its current
+storyboard has <strong>122 illustrations across 53 scenes</strong>, connected to script dialogue
+and scene navigation. The local creative workspace also supports animated image
+previews, clip variations and a Video Clips sequence-review view.</p>
+<p><a href="https://github.com/Sincioco/SinStarI/blob/main/Visual%20Script%20and%20Storyboard/Start%20Here.md">Explore the Script, Storyboard and Video Clips guide</a>
+· <a href="https://github.com/Sincioco/SinStarI/tree/main/Visual%20Script%20and%20Storyboard/production">Browse the production materials</a>
+· <a href="https://github.com/Sincioco/SinStarI/blob/main/README.md">Explore the native Sin Star I project</a></p>
+<p>Video files stay outside Git. The trailer above is publicly watchable on YouTube;
+the story repository explains local playback and the available online versions.</p>
+<h2 id="what-is-being-built-underneath">What is being built underneath</h2>
+<p>The scenes above are the visible result of work across the full toolchain.</p>
+<div class="project-table" role="region" aria-label="Scrollable project table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What the repository demonstrates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Language and compiler</strong></td>
+<td>A shared lexer, parser, diagnostics, types and semantic model; readable BASIC-inspired source; native Windows compilation.</td>
+</tr>
+<tr>
+<td><strong>Runtime and rendering</strong></td>
+<td>Permanent 2D support alongside 3D characters, skeletal animation, materials, planar reflections, particles, input and audio.</td>
+</tr>
+<tr>
+<td><strong>Reusable SMILE libraries</strong></td>
+<td>Camera and arena controls, animation/equipment workflows, effects, UI and RPG systems with explicit state ownership.</td>
+</tr>
+<tr>
+<td><strong>Visual Studio tooling</strong></td>
+<td>SMILE projects, compiler integration, language services, templates and a VSIX.</td>
+</tr>
+<tr>
+<td><strong>Asset and editing workflow</strong></td>
+<td>Versioned character packages, grounding checks, sockets, timeline inspection and saved pose corrections for supported characters.</td>
+</tr>
+<tr>
+<td><strong>Creative production</strong></td>
+<td>Sin Star I's script, storyboard, character direction, scene previews and trailer.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Windows native development is priority one.</strong> Web compilation is an existing
+second target sharing the language front end. Recent native features shown here
+must not be assumed to have reached Web: <strong>all Web adoption, publication and
+browser validation are on hold</strong>.</p>
+<h3 id="smile-20-studio-status">SMILE 2.0 Studio status</h3>
+<p>Studio has a bounded hosted Viewer and Character Editor using the shared Viewer
+session. <strong>Studio creation, development, final interaction acceptance and next
+phases remain on hold.</strong> The standalone Viewer and labs shown above are the current
+working tools. General scene documents, reusable saved-effect/audio documents,
+declarative scene authoring and faithful scene export remain planned.</p>
+<p>The <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/docs/architecture/2026-09-09%20-%20SMILE%202.0%20Studio.md">accepted Studio architecture</a>
+and <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/docs/architecture/studio-visual-design.md">working visual design</a> describe the
+direction, not completed product capabilities. Future work resumes only on Sin's
+direction; see the <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/SmileStudio/README.md">Studio implementation status</a> and
+<a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/docs/implementation/party-beat-camera-checkpoint.md">current adoption checkpoint</a>.</p>
+<h2 id="build-and-explore">Build and explore</h2>
+<p>The core Windows toolchain uses Windows components and Visual Studio tooling.
+Start with <strong>Windows 11 x64</strong>, <strong>PowerShell 7</strong>, <strong>.NET SDK 10.0.400</strong> (selected by
+<code>global.json</code>), and <strong>Visual Studio 2026</strong> with Desktop development with C++ and
+Visual Studio extension development.</p>
+<p>Check prerequisites, then build the compiler and extension:</p>
+<pre><code>pwsh -NoProfile -ExecutionPolicy Bypass -File scripts\doctor.ps1
+.\scripts\build.cmd
+</code></pre>
+<p>Primary outputs:</p>
+<pre><code>artifacts\compiler\smilec.exe
+artifacts\vsix\Smile.VisualStudio.vsix
+</code></pre>
+<p>For the native character workflow, follow the
+<a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/Character3DViewer/README.md#build-and-launch">Viewer build and asset-preparation guide</a>.
+Some featured characters use locally licensed source assets that are not included
+in Git; the guide explains the roster and preparation requirements. With those
+prerequisites prepared:</p>
+<pre><code>pwsh -File tools\Character3DViewer\Launch.ps1 -Build
+</code></pre>
+<p><a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/docs/language/README.md">Language documentation</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/docs/libraries/README.md">Libraries</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/docs/architecture/README.md">Architecture</a>
+· <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/tools/EarthVfxLab/README.md">Earth Lab build and controls</a></p>
+<h2 id="work-with-sin">Work with Sin</h2>
+<p><strong>Louiery R. Sincioco (Sin)</strong> creates and programs SMILE 2.0 and leads Sin Star I's
+creative direction, with Codex collaboration. This repository makes the work
+visible from language design and low-level rendering through artist-facing tools
+and game presentation.</p>
+<ul>
+<li><strong>Employers and clients:</strong> explore the compiler, runtime, tooling and native demonstrations as examples of Sin's engineering work. Get in touch about roles or projects that need those skills.</li>
+<li><strong>Partners and investors:</strong> discuss the long-term direction for an approachable programming language, creative tools and the developing Sin Star I experience.</li>
+<li><strong>Contributors:</strong> review the architecture and current task boundaries, then discuss a focused improvement to the language, native tools, documentation or character workflow.</li>
+</ul>
+<p><strong>Interested in working together?</strong> <a href="mailto:louiery@gmail.com">Email Sin</a>
+or <a href="https://linkedin.com/in/louierysincioco">connect on LinkedIn</a>.</p>
+<p><a href="https://github.com/Sincioco">GitHub</a>
+· <a href="https://youtube.com/@TheSincioco">YouTube</a>
+· <a href="https://facebook.com/louiery.sincioco">Facebook</a>
+· <a href="https://tiktok.com/@sincioco">TikTok</a></p>
+<hr />
+<p><strong>SMILE 2.0 — Simple Modern and Intuitive Language for Everyone.</strong></p>
+<p>Copyright(c) 2026. All rights reserved. Programmed by Louiery R. Sincioco (Sin).</p>
+</article>
+  <div class="project-source"><p>Content and images from the public <a href="https://github.com/Sincioco/SMILE-2.0/blob/61cc9253d29a17ed264eb416e912c648b0a5d845/README.md">SMILE 2.0 README</a>, retrieved October 5, 2026. Repository snapshot <a href="https://github.com/Sincioco/SMILE-2.0/commit/61cc9253d29a17ed264eb416e912c648b0a5d845">61cc925</a>.</p><a href="#project-overview">Back to top ↑</a></div></main>
+</div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="mailto:louiery@gmail.com">louiery@gmail.com</a></div></div></footer>
+</body>
+</html>

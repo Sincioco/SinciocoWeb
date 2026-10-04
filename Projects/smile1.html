@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMILE 1.0 | Agentic AI Projects · Sincioco</title>
+  <meta name="description" content="An educational BASIC-like language and responsive desktop IDE that transpile readable programs into ten destination languages.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/Projects/smile1.html">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-5">
+  <link rel="stylesheet" href="projects.css?v=20261005-projects-5">
+  <script src="projects.js?v=20261005-projects-5" defer></script>
+</head>
+<body class="projects-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="./" aria-current="page">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="projects-bar"><div class="container"><nav class="project-tabs" aria-label="Projects"><a href="pmt.html">PMT</a><a href="life2.html">Life 2.0</a><a href="sinstar.html">Sin Star I</a><a href="smile2.html">SMILE 2.0</a><a href="sinaiprompt.html">Sin AI Prompt</a><a href="smile1.html" aria-current="page">SMILE 1.0</a></nav></div></div>
+  <div class="container project-layout">
+  <aside class="project-sidebar"><details class="section-menu" open><summary>On this page</summary><nav class="section-nav" aria-label="SMILE 1.0 sections"><a href="#project-overview" aria-current="location">Overview</a><a href="#latest-progress" class="section-level-2">Latest progress</a>
+<a href="#text-routines-double-math-and-persistence-back-ported-from-smile-20" class="section-level-3">Text, routines, Double math, and persistence back-ported from SMILE 2.0</a>
+<a href="#three-original-games-written-entirely-in-smile" class="section-level-3">Three original games, written entirely in SMILE</a>
+<a href="#recent-foundations-beneath-the-games" class="section-level-3">Recent foundations beneath the games</a>
+<a href="#see-the-same-program-in-three-languages" class="section-level-2">See the same program in three languages</a>
+<a href="#small-programs-you-can-read-and-run" class="section-level-2">Small programs you can read and run</a>
+<a href="#1-greet-someone" class="section-level-3">1. Greet someone</a>
+<a href="#2-add-a-sequence-and-make-a-decision" class="section-level-3">2. Add a sequence and make a decision</a>
+<a href="#3-store-scores-and-call-a-function" class="section-level-3">3. Store scores and call a function</a>
+<a href="#4-start-a-game-board" class="section-level-3">4. Start a game board</a>
+<a href="#how-the-compiler-works" class="section-level-2">How the compiler works</a>
+<a href="#canonical-language" class="section-level-2">Canonical language</a>
+<a href="#ten-active-targets" class="section-level-2">Ten active targets</a>
+<a href="#examples" class="section-level-2">Examples</a>
+<a href="#quick-start" class="section-level-2">Quick start</a>
+<a href="#requirements" class="section-level-3">Requirements</a>
+<a href="#build-and-open-desktop" class="section-level-3">Build and open Desktop</a>
+<a href="#use-the-cli" class="section-level-3">Use the CLI</a>
+<a href="#format-source-explicitly" class="section-level-3">Format source explicitly</a>
+<a href="#validation" class="section-level-2">Validation</a>
+<a href="#the-engineering-and-the-opportunity" class="section-level-2">The engineering and the opportunity</a>
+<a href="#project-policy" class="section-level-2">Project policy</a>
+<a href="#license" class="section-level-2">License</a></nav></details><a class="project-repository" href="https://github.com/Sincioco/SMILE">View repository ↗</a></aside>
+  <main id="main" class="project-main"><header class="project-heading"><p class="eyebrow">Agentic AI Projects / SMILE 1.0</p><h1 id="project-overview">SMILE 1.0</h1><p class="lead">An educational BASIC-like language and responsive desktop IDE that transpile readable programs into ten destination languages.</p><div class="project-links"><a class="text-link" href="https://github.com/Sincioco/SMILE">View on GitHub ↗</a></div></header>
+  <article class="project-content"><span id="smile-10"></span>
+<p><strong>Simple Modern and Intuitive Language for Everyone</strong></p>
+<p>Write a small, readable program. See how it becomes C#, Java, C++, and seven other languages. SMILE is a beginner-first educational language, a working transpiler, and a Windows desktop environment for exploring the connection between source code and the code a compiler generates.</p>
+<p><strong>Current release:</strong> <code>1.0.0</code> · <strong>Language:</strong> Core BASIC 2.1 — Text-Game Foundation · <strong>10 active targets</strong> · <strong>Windows / .NET 10</strong></p>
+<p><a href="#latest-progress">Latest progress</a> · <a href="#see-the-same-program-in-three-languages">Desktop</a> · <a href="#small-programs-you-can-read-and-run">Small programs</a> · <a href="#how-the-compiler-works">Compiler</a> · <a href="#quick-start">Quick start</a> · <a href="#the-engineering-and-the-opportunity">Contribute</a></p>
+<h2 id="latest-progress">Latest progress</h2>
+<h3 id="text-routines-double-math-and-persistence-back-ported-from-smile-20">Text, routines, Double math, and persistence back-ported from SMILE 2.0</h3>
+<p><code>Text_Length</code>, <code>Text_Code_At</code>, and <code>Text_Slice</code> now inspect Unicode scalars, including emoji. Routines support exact-type <code>ByRef</code> variables and array cells, typed Optional defaults, named arguments, and multiline parameter lists; Number expressions also accept unary <code>+</code>. The evaluator and all ten targets preserve argument evaluation order. Windows C#, Java, and Python output explicitly uses UTF-8 when the program contains Unicode text.</p>
+<p><code>Double</code> adds fractional and exponent values while <code>Number</code> stays a whole-number type. All ten targets support Double variables, arrays, routines, Optional defaults, exact comparisons, explicit Number/Text conversions, and the math functions below. Invalid domains, zero divisors, conversion overflow, and nonfinite results fail with the SMILE source line.</p>
+<pre><code>Dim Speed As Double
+Speed = ToDouble(3) / 2.0
+Print Speed
+Print Sqrt(9.0); &quot;:&quot;; Round(2.5)
+Print Text_From_Double(-0.0)
+</code></pre>
+<p>This prints <code>1.5</code>, <code>3.0:2.0</code>, and <code>-0.0</code>. Double math also includes <code>Abs</code>, <code>Min</code>, <code>Max</code>, <code>Clamp</code>, <code>Sin</code>, <code>Cos</code>, <code>Atan2</code>, <code>Floor</code>, <code>Ceiling</code>, and <code>Truncate</code>. Use <code>ToNumber</code> for checked truncation and <code>Text_To_Double</code> to parse invariant decimal text. No implicit Number/Double conversion occurs.</p>
+<p>The text, console and core-language back-port is recorded in the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%202%20Core%20Backport%20Progress.md">back-port inventory</a>. Modules, application projects and deterministic source-owned libraries are supported. Double output uses native binary64 arithmetic and standard math APIs, with small checks where the target permits infinities or has different conversion rules. COBOL needs C interoperability for exact binary64 operations because its ordinary decimal arithmetic and numeric transfers lose distinctions required by SMILE. Exponent spelling and transcendental rounding can differ between targets.</p>
+<p><code>ByRef</code> changes the caller's storage immediately, including when two parameters
+refer to the same variable. Ordinary parameters remain independent ByVal copies.
+Array indices are captured and checked once, in source order, before later
+arguments run. Optional parameters must be ByVal.</p>
+<pre><code>Dim Score As Number
+Call AddPoint(Score)
+Print Score
+
+Sub AddPoint(ByRef Value As Number)
+    Value = Value + 1
+End Sub
+</code></pre>
+<p>This prints <code>1</code>. C#, C/C++, MASM, and COBOL use native references or pointers.
+Java, JavaScript, and Python pass ordinary mutable arrays with a captured index;
+only addressed scalar variables need a one-element array. Swift uses <code>inout</code>
+where exclusive access is safe and a small location closure for shared aliases.</p>
+<p><code>Load Text File Path Into Bytes Count ByteCount</code> now reads bounded UTF-8 bytes
+into a one-dimensional Number array on all ten targets. It removes an initial
+UTF-8 BOM, clears unused cells, and returns zero for missing/unreadable files.
+Paths are normalized relative to the executable (or script/class directory),
+with escaping paths rejected. Place data files there when running generated
+programs, or declare project assets to publish them automatically. Node.js reads
+asynchronously. See the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Language%20Specification/003%20-%20SMILE%20Core%20BASIC%202.1%20Text-Game%20Foundation%20Official%20Specification.md#load-text-file">official file-read contract</a>.</p>
+<p>Console controls also recognize O/F/G/R/P/B/X/Y/Z/E/C, Backtick, Plus and Minus
+with SMILE 2.0 key codes on every target. <code>KEY_CONTROL</code> reports standalone left/right Control presses through native console events.</p>
+<p>Integer <code>Load</code> and <code>Save</code> persist Number values across runs on all ten targets:</p>
+<pre><code>Dim Best As Number
+Load Best From &quot;best-score&quot; Default 0
+Best = Max(Best, 100)
+Save Best To &quot;best-score&quot;
+</code></pre>
+<p>Keys are nonempty Text literals. Load always evaluates its Number default first;
+missing, invalid, or unreadable values use it. Save accepts a Number variable or
+constant and ignores storage failures. Files contain plain decimal integers under
+<code>%LOCALAPPDATA%\SMILE\Games\&lt;program&gt;\&lt;key&gt;.txt</code>. CLI/Desktop use the source
+filename stem for a stable program identity across targets and temporary runs;
+Save As with a new name selects a different storage directory. Names/keys replace
+non-ASCII letters/digits (except <code>_</code> and <code>-</code>) with underscores. This is a separate
+SMILE 1.0 namespace; it does not import SMILE 2.0 saves automatically.</p>
+<p><code>Save Data Bytes Count Length To Key Status State</code> and
+<code>Load Data Key Into Bytes Count Length Status State</code> now persist byte arrays on
+all ten targets. Computed Text keys, SHA-256 checksums, 1 MiB blocks, backup
+recovery and the <code>DATA_STATUS_*</code> constants follow SMILE 2.0. Checked loads keep
+the array intact on failure; successful loads change only the returned bytes.
+Omit Status for strict operations that stop on storage errors (a missing load
+returns zero). See the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Language%20Specification/003%20-%20SMILE%20Core%20BASIC%202.1%20Text-Game%20Foundation%20Official%20Specification.md#data-persistence">Data contract</a>,
+including Node.js's two-step atomic backup/primary publication. Projects use an
+explicit ApplicationId, falling back to OutputName; loose files also accept
+<code>--application-id</code>. Libraries share their consuming application's identity.</p>
+<p>Nominal enums now work in the evaluator and all ten targets:</p>
+<pre><code>Enum Direction
+    None
+    Left = -1
+    Right = 1
+End Enum
+Dim Heading As Direction
+Heading = Direction.Left
+Print Heading = Direction.Left
+</code></pre>
+<p>Members hold checked signed 64-bit values; aliases are allowed and storage
+defaults to zero. Enum arrays, Const, exact-type ByVal/ByRef, Optional defaults,
+returns and Select Case are supported. Enum values cannot be printed, converted
+to Number, ordered or used in arithmetic. See the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Language%20Specification/003%20-%20SMILE%20Core%20BASIC%202.1%20Text-Game%20Foundation%20Official%20Specification.md#nominal-enums">enum contract</a>.</p>
+<p><code>Type</code> records group values and copy them independently, including nested records
+and fixed array fields. They work in the evaluator and all ten targets:</p>
+<pre><code>Type ScoreEntry
+    Player As Text
+    Points As Number
+End Type
+Dim Current As ScoreEntry
+Dim Saved As ScoreEntry
+Current.Player = &quot;Sin&quot;
+Current.Points = 10
+Saved = Current
+Current.Points = 20
+Print Saved.Player; &quot;:&quot;; Saved.Points
+</code></pre>
+<p>Records support variables, array cells, ByVal/ByRef parameters and returns.
+Writable fields can be passed ByRef, including fixed-array field cells, and can
+receive Data Count/Status outputs. Copying a whole record preserves existing
+references into its fields. Whole records cannot be printed, compared, used in
+arithmetic or stored in Const. <code>With CurrentEntry</code> ... <code>End With</code> captures a writable
+record location once; leading-dot expressions such as <code>.Points</code> use that record.
+Nested blocks use the nearest receiver, and array indexes run once on entry.
+Types also contain Sub/Function methods and Property Get/Set accessors. <code>Me</code>
+borrows the current record; a setter receives its new value as <code>Value</code>. Methods
+and properties are Public by default and may be Private; fields remain Public.
+Member calls support Optional and named arguments. A property assignment evaluates
+its new value before capturing its receiver.</p>
+<p><code>Class</code> declares reference objects. <code>Dim Board As New ScoreBoard()</code> or
+<code>Board = New ScoreBoard()</code> constructs an instance; assignment, ByVal and returns
+copy its reference. An optional <code>Sub New(...)</code> initializes fields. Class fields
+are Private by default, while methods and properties are Public by default.
+<code>Nothing</code> is the default reference; <code>Is</code> and <code>Is Not</code> compare identity. <code>With Board</code>
+captures the reference once, even if Board is reassigned inside the block. A
+Nothing receiver fails before method arguments or field indexes run. Class fields
+may contain scalar values, enums, records and fixed arrays, but not other class
+references; arrays of class references are also unsupported, matching SMILE 2.0.</p>
+<p><code>Module ... End Module</code>, <code>Import Name As Alias</code>, source-local imports/Option
+Explicit, Public/Private module declarations and qualified names work across
+multiple sources and all ten targets. Application <code>.smileproj</code> files select a
+startup source, references, runtime assets and persistent ApplicationId. Desktop
+opens the project and edits its startup source. The CLI also builds and consumes
+deterministic <code>.smilelib</code> format-7 packages with exact dependencies and source/API
+validation. Try <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/modules/Scoreboard.smileproj">Scoreboard</a> or follow the
+<a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Modules%20and%20Projects.md">Modules and Projects guide</a>.</p>
+<pre><code>dotnet run --project src/SMILE.Cli -- --project examples/modules/Scoreboard.smileproj --target python --run
+dotnet run --project src/SMILE.Cli -- --project examples/modules/library/Counters.smilelibproj --target library -o out/Counters.smilelib
+</code></pre>
+<h3 id="three-original-games-written-entirely-in-smile">Three original games, written entirely in SMILE</h3>
+<p>The latest implementation expands the terminal games with larger boards, named colors, cursor-based redraws, and state-driven updates. Their rules live in ordinary <code>.smile</code> programs: arrays hold the board, routines organize behavior, and loops respond to keys and time.</p>
+<p><img src="images/smile1/01-lantern-maze.svg" alt="Lantern Maze board diagram rendered from the evaluator: a 71-by-21 maze with pellets, a central ghost house, a player, and targeting shadows." loading="lazy" decoding="async"></p>
+<p><strong><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/text-maze-muncher.smile">Lantern Maze</a></strong> — explore a symmetric 71-by-21 collection maze, travel through side tunnels, and avoid four shadows with different targeting behavior.</p>
+<div class="project-gallery"><figure><div class="gallery-label">Trail Runner</div><img src="images/smile1/02-trail-runner.svg" alt="Trail Runner board diagram rendered from the evaluator, showing a growing trail and food on a 60-by-17 board." loading="lazy" decoding="async"><figcaption><strong><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/text-snake.smile">Read the program</a></strong> — steer a growing trail, eat food, and avoid the border and your own path.</figcaption></figure>
+<figure><div class="gallery-label">Sky Foundry</div><img src="images/smile1/03-sky-foundry.svg" alt="Sky Foundry board diagram rendered from the evaluator, showing a falling shape after one row has been cleared." loading="lazy" decoding="async"><figcaption><strong><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/text-falling-blocks.smile">Read the program</a></strong> — move and rotate seven families of four-cell shapes, complete rows, and keep the board clear.</figcaption></figure></div>
+<p><em>The three board diagrams above render actual evaluator output with scripted input, including cursor-positioned characters. They are illustrations of captured game states, not terminal screenshots; presentation colors are illustrative. <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/assets/readme/README.md">Visual provenance</a>.</em></p>
+<p>These are terminal games. Run their generated programs in an attached Windows console of at least <strong>80 columns × 25 rows</strong>. The games prepare rows before overwriting the previous frame, redraw when state changes, and clear at screen transitions. Keyboard controls do not require Enter after each move.</p>
+<h3 id="recent-foundations-beneath-the-games">Recent foundations beneath the games</h3>
+<div class="project-table" role="region" aria-label="Scrollable project table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Implemented progress</th>
+<th>What it enables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Larger, colored terminal games</strong></td>
+<td>Three complete examples with real-time controls, scores, and reusable routines.</td>
+</tr>
+<tr>
+<td><strong>Explicit source formatting</strong></td>
+<td><code>Format SMILE</code> or <code>Ctrl+K, Ctrl+D</code> formats valid source in one undoable edit.</td>
+</tr>
+<tr>
+<td><strong>Find and Go to Line</strong></td>
+<td><code>Ctrl+F</code> and <code>Ctrl+G</code> navigate the focused source or generated-code editor.</td>
+</tr>
+<tr>
+<td><strong>Core BASIC 2.1 terminal primitives</strong></td>
+<td>Fixed 2D arrays, key polling, cursor movement, colors, timing, and random values.</td>
+</tr>
+<tr>
+<td><strong>Readable target output</strong></td>
+<td>Native control flow and routines, semantic spacing, and support emitted only when needed.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="see-the-same-program-in-three-languages">See the same program in three languages</h2>
+<p><img src="images/smile1/04-desktop-csharp-java-cpp.jpg" alt="SMILE Desktop showing the same source alongside generated C#, Java, and C++ code." width="1920" height="1032" loading="lazy" decoding="async"></p>
+<p><em>Current Desktop build, captured for this README. The source is <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic.smile"><code>examples/core-basic.smile</code></a>; the three destination panes favor C#, Java, and C++.</em></p>
+<p>The Desktop makes the compiler visible: edit SMILE on the left, inspect the generated source, then build and run with an installed target toolchain. All ten targets remain selectable. Toolchain discovery, generation, compilation, and process work run asynchronously so the editor stays responsive.</p>
+<p>Desktop loads the cumulative <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/language.smile"><code>language.smile</code></a> reference after its first paint. Live transpilation updates the visible target without rewriting learner source. Recoverable failures appear in the output area and keep the IDE open.</p>
+<h2 id="small-programs-you-can-read-and-run">Small programs you can read and run</h2>
+<p>Save any of these snippets as a <code>.smile</code> file and open it in Desktop, or use the CLI in the <a href="#quick-start">quick start</a>. Each example is complete.</p>
+<h3 id="1-greet-someone">1. Greet someone</h3>
+<p>Variables can begin with a direct assignment. <code>Print</code> joins its semicolon-separated expressions on one line.</p>
+<pre><code>Name = &quot;Sin&quot;
+Print &quot;Hello, &quot;; Name; &quot;!&quot;
+</code></pre>
+<pre><code>Hello, Sin!
+</code></pre>
+<h3 id="2-add-a-sequence-and-make-a-decision">2. Add a sequence and make a decision</h3>
+<p><code>For</code> includes both endpoints. <code>If</code> keeps the condition readable.</p>
+<pre><code>Total = 0
+
+For StepNumber = 1 To 3
+    Total = Total + StepNumber
+End For
+
+If Total = 6 Then
+    Print &quot;Total=&quot;; Total
+End If
+</code></pre>
+<pre><code>Total=6
+</code></pre>
+<h3 id="3-store-scores-and-call-a-function">3. Store scores and call a function</h3>
+<p>Use explicit types when teaching declarations. Array indexes start at zero; routines accept typed values.</p>
+<pre><code>Option Explicit
+
+Dim Scores[3] As Number
+
+Dim Index As Number
+Dim Total As Number
+
+Scores[0] = 1
+Scores[1] = 2
+Scores[2] = 3
+
+For Index = 0 To 2
+    Total = Total + Scores[Index]
+End For
+
+Print &quot;Double=&quot;; Double(Total)
+
+End Program
+
+Function Double(Value As Number) As Number
+
+    Return Value * 2
+
+End Function
+</code></pre>
+<p>Expected output:</p>
+<pre><code>Double=12
+</code></pre>
+<h3 id="4-start-a-game-board">4. Start a game board</h3>
+<p>A two-dimensional array stores a grid. <code>Abs</code> provides a simple building block for distance calculations.</p>
+<pre><code>Dim Board[4, 3] As Text
+
+Board[1, 1] = &quot;@&quot;
+
+PlayerX = 1
+EnemyX = 6
+
+Print &quot;Player=&quot;; Board[1, 1]
+Print &quot;Distance=&quot;; Abs(PlayerX - EnemyX)
+</code></pre>
+<pre><code>Player=@
+Distance=5
+</code></pre>
+<p>For complete interactive programs, follow the three game sources above or the smaller <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/text-game-foundation.smile">Text-Game Foundation example</a>.</p>
+<h2 id="how-the-compiler-works">How the compiler works</h2>
+<p>The engine carries immutable type symbols through binding, evaluation and
+generation. Built-in types are shared symbols; storage categories are separate
+from exact type identity. Each Enum and Type declaration owns a distinct type
+symbol, as does each Class declaration.
+For Engine API callers, <code>SmileType</code> is now a symbol class with <code>Kind</code> and <code>Name</code>;
+the existing <code>SmileType.Integer</code>, <code>Double</code>, <code>String</code>, <code>Boolean</code>, and <code>Error</code>
+members remain available. Parsed declarations carry <code>TypeNameSyntax</code>; the binder
+resolves those names to symbols. Existing scalar source remains valid.</p>
+<p><img src="images/smile1/05-compiler-pipeline.svg" alt="SMILE compiler pipeline: source to lexer and parser, binder, typed bound program, then evaluator or ten target writers, with optional local build and run." loading="lazy" decoding="async"></p>
+<ol>
+<li><strong>Parse the structure.</strong> The lexer and parser recognize the canonical language and preserve source locations for diagnostics.</li>
+<li><strong>Check the meaning.</strong> The binder resolves names, scopes, types, routines, arrays, and control flow into one bound program.</li>
+<li><strong>Evaluate or generate.</strong> The evaluator and every target writer consume that same checked meaning. Targets do not reparse the learner's program.</li>
+<li><strong>Read, build, and run.</strong> Writers produce normal destination source. Optional toolchains compile or execute it in temporary workspaces.</li>
+</ol>
+<p>Generated code is part of the lesson. A SMILE loop should remain a recognizable loop, a routine should become an ordinary routine, and a tiny program should produce proportionate output. Target-specific helpers are used only where needed to preserve meaning. See the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Architecture.md">architecture</a> and <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Target%20Code%20Generation%20Standard%20v1.0.md">generation standard</a> for the actual boundaries and tradeoffs.</p>
+<h2 id="canonical-language">Canonical language</h2>
+<p>SMILE 1.0 accepts one canonical language: <strong>Core BASIC 2.1 — Text-Game Foundation</strong>. The shared Core BASIC subset aligns with SMILE 2.0; <code>2.1</code> is a language milestone, not a second product or a selectable dialect.</p>
+<p>Core BASIC 2.1 provides:</p>
+<ul>
+<li>case-insensitive Unicode identifiers and apostrophe comments;</li>
+<li><code>Number</code>, <code>Boolean</code>, and <code>Text</code> scalar values with exact fixed types;</li>
+<li>implicit variables by first direct assignment, explicit <code>Dim ... As ...</code>, and immutable <code>Const</code> values;</li>
+<li>typed expressions with normal precedence, short-circuit <code>And</code>/<code>Or</code>, Text concatenation, truncating division, and signed <code>Mod</code>;</li>
+<li>expression-list <code>Print</code>, including blank Print and trailing-semicolon newline suppression;</li>
+<li><code>If / Else If / Else / End If</code>;</li>
+<li>ascending <code>For ... To</code> and descending <code>For ... Down To</code>, closed by <code>End For</code>;</li>
+<li>post-tested <code>Do / Loop Until</code>, unconditional <code>Do / Loop</code>, <code>Exit For</code>, and <code>Exit Do</code>;</li>
+<li>optional <code>Option Explicit</code>;</li>
+<li>top-level <code>Sub</code> and <code>Function</code> routines, <code>Call</code>, <code>Return</code>, exact typed ByVal/ByRef parameters, routine-local scope, and recursion;</li>
+<li>Optional literal/Const defaults, named arguments using <code>Name:=Value</code>, and multiline routine declarations;</li>
+<li>Unicode scalar <code>Text_Length</code>, <code>Text_Code_At</code>, and <code>Text_Slice</code>, plus unary Number <code>+</code>;</li>
+<li><code>Select Case</code> over exact scalar constants;</li>
+<li>checked fixed one- and two-dimensional arrays with zero-based indexes;</li>
+<li>nonblocking <code>Get Key</code>, stable <code>KEY_*</code> constants, <code>Clear Screen</code>, 1-based <code>Move Cursor To</code>, named <code>Text Color</code>, and millisecond <code>Wait</code>;</li>
+<li>inclusive <code>Random ... From ... To ...</code>, monotonic <code>Timer()</code>, and <code>Abs</code>/<code>Min</code>/<code>Max</code>;</li>
+<li><code>End Program</code>.</li>
+</ul>
+<p>The complete current language is defined by the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Language%20Specification/003%20-%20SMILE%20Core%20BASIC%202.1%20Text-Game%20Foundation%20Official%20Specification.md">SMILE Core BASIC 2.1 Text-Game Foundation Official Specification</a>. The <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Language%20Specification/002%20-%20SMILE%20Core%20BASIC%202%20Official%20Specification.md">Core BASIC 2.0 specification</a> and <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Core%20BASIC%20Profile%202.0.md">Profile 2.0 record</a> preserve the unchanged shared subset and parity corpus. See the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Migrating%20to%20Core%20BASIC%202.md">migration guide</a>, <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Core%20BASIC%202%20Parity%20Report.md">parity report</a>, and self-contained <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/smile-1-language-reference.html">student language reference</a>.</p>
+<p>This release intentionally rejects earlier SMILE 1.0-only syntax. The compiler does not silently reinterpret old source. Core BASIC 1 remains a valid subset, while its former active documentation is preserved under <code>Requirements/Archive/Core-BASIC-1</code>.</p>
+<p><strong>Current boundaries:</strong> no blocking <code>Input</code>, graphical game window, sound, arbitrary file I/O, or dynamic arrays. Bounded text-file reads, project assets, modules/libraries and Number/Data persistence are supported. Library package builds use the CLI; Desktop edits an application project's startup source. <code>Number</code> is a signed 64-bit whole-number type. This is an active research project; deliberate language improvements update living examples and documentation together, without a legacy parser or external backward-compatibility promise.</p>
+<h2 id="ten-active-targets">Ten active targets</h2>
+<p>The same parsed and bound program generates all ten active destinations:</p>
+<div class="project-table" role="region" aria-label="Scrollable project table" tabindex="0"><table>
+<thead>
+<tr>
+<th>CLI ID</th>
+<th>Destination</th>
+<th>Primary file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>csharp</code></td>
+<td>C#</td>
+<td><code>Program.cs</code> plus a minimal project file</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>C</td>
+<td><code>Program.c</code></td>
+</tr>
+<tr>
+<td><code>masm-x64</code></td>
+<td>Windows x64 MASM Assembly</td>
+<td><code>Program.asm</code></td>
+</tr>
+<tr>
+<td><code>javascript</code></td>
+<td>JavaScript (Node.js)</td>
+<td><code>Program.js</code></td>
+</tr>
+<tr>
+<td><code>java</code></td>
+<td>Java</td>
+<td><code>Program.java</code></td>
+</tr>
+<tr>
+<td><code>cobol</code></td>
+<td>COBOL</td>
+<td><code>Program.cob</code></td>
+</tr>
+<tr>
+<td><code>objective-c</code></td>
+<td>Objective-C</td>
+<td><code>Program.m</code></td>
+</tr>
+<tr>
+<td><code>swift</code></td>
+<td>Swift</td>
+<td><code>Program.swift</code></td>
+</tr>
+<tr>
+<td><code>python</code></td>
+<td>Python</td>
+<td><code>Program.py</code></td>
+</tr>
+<tr>
+<td><code>cpp</code></td>
+<td>C++</td>
+<td><code>Program.cpp</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Generated code uses native destination constructs whenever practical: ordinary routines and call frames, locals/globals, arrays, conditionals, counted and post-test loops, combined destination-native output, native selection where its type rules are exact, and direct process termination. A shared semantic layout keeps imports, state, entry code, learner routines, and unavoidable support in readable sections.</p>
+<details>
+<summary>Target-native implementation details</summary>
+<p>Helpers appear only when a target needs one to preserve semantics, such as checked indexes, C Text concatenation, or Python's typed exit across differently nested loop kinds. C, Objective-C, and MASM Text concatenation uses explicit generated roots and bounded statement-boundary collection; a feature-gated MASM C companion supplies only that lifetime mechanism. COBOL pairs its native fixed <code>PIC X(4096)</code> Text storage with an explicit logical length so <code>DISPLAY</code> preserves meaningful spaces in variables, arrays, routine calls, returns, comparisons, concatenation, and game cells. Python output is a direct module-level script—no synthetic <code>main()</code> wrapper. JavaScript is executed by Node.js with no npm dependency. Only <code>Get Key</code> adds a small generated Windows console addon, built locally with the installed Visual Studio C++ tools.</p>
+<p>For interactive programs, generated code polls real terminal keys without requiring Enter, clears or positions the attached console, applies named foreground/background colors, waits without a busy loop, and restores changed input state. Games explicitly reset their colors before returning. Node.js uses async <code>main</code> only for Wait or asynchronous file/persistence operations; its delay remains Promise-based and key polling does not change stdin mode. Noninteractive programs receive none of that support.</p>
+<p>See <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Architecture.md">Architecture</a>, <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Toolchains.md">Toolchains</a>, and the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Target%20Code%20Generation%20Standard%20v1.0.md">Target Code Generation Standard</a>.</p>
+</details>
+<h2 id="examples">Examples</h2>
+<ul>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/language.smile"><code>examples/language.smile</code></a> — cumulative valid language reference packaged with Desktop;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic.smile"><code>examples/core-basic.smile</code></a> — compact end-to-end example;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/control-flow.smile"><code>examples/control-flow.smile</code></a> — counted loops, post-test loops, and typed exits;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-canonical.smile"><code>examples/core-basic-2-canonical.smile</code></a> — cumulative routines, Select, and arrays;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-byval-scope.smile"><code>examples/core-basic-2-byval-scope.smile</code></a> — ByVal isolation and shadowing;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-recursion.smile"><code>examples/core-basic-2-recursion.smile</code></a> — direct and mutual recursion;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-arrays.smile"><code>examples/core-basic-2-arrays.smile</code></a> — checked fixed arrays and their default values;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-select.smile"><code>examples/core-basic-2-select.smile</code></a> — exact typed Select cases;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-parameters.smile"><code>examples/core-basic-2-parameters.smile</code></a> — 0 through 16 parameters;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-evaluation-order.smile"><code>examples/core-basic-2-evaluation-order.smile</code></a> — left-to-right calls and short circuiting;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-local-arrays.smile"><code>examples/core-basic-2-local-arrays.smile</code></a> — fresh local arrays in ordinary and recursive calls;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic-2-end-program-routine.smile"><code>examples/core-basic-2-end-program-routine.smile</code></a> — whole-program termination from a routine;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/text-game-foundation.smile"><code>examples/text-game-foundation.smile</code></a> — compact 2D array and terminal-primitive demonstration;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/text-snake.smile"><code>examples/text-snake.smile</code></a> — Trail Runner, a complete growing-trail game on a roomy 60-by-17 board;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/text-maze-muncher.smile"><code>examples/text-maze-muncher.smile</code></a> — Lantern Maze, an original 71-by-21 symmetric collection maze with a ghost house, wrap tunnel, and four distinct targeting shadows;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/text-falling-blocks.smile"><code>examples/text-falling-blocks.smile</code></a> — Sky Foundry, an original seven-family falling-block game with a widened, colored playfield;</li>
+<li><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/tests/CoreBasic2Parity/canonical.smile"><code>tests/CoreBasic2Parity/canonical.smile</code></a> — unchanged Profile 2 fixture compiled by both repositories.</li>
+</ul>
+<p>All examples use only the canonical Core BASIC 2.1 language. The three games are terminal programs, not graphical games; use an attached Windows console of at least 80 columns by 25 rows for real-time controls and colored full-frame overwrite. They prepare complete rows before moving the cursor to the top-left, redraw only when state changes, and clear only at screen transitions, so there is no visible blank frame or instruction text beneath the playfield.</p>
+<h2 id="quick-start">Quick start</h2>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Windows with the .NET 10 SDK for the solution, CLI, tests, and Desktop application;</li>
+<li>an optional destination toolchain to build/run generated output locally.</li>
+</ul>
+<p>Target detection is independent. Missing optional compilers do not prevent transpilation or use of installed targets.</p>
+<h3 id="build-and-open-desktop">Build and open Desktop</h3>
+<p>Restore and build:</p>
+<pre><code>dotnet restore SMILE.sln
+dotnet build SMILE.sln -c Debug --no-restore -nologo
+dotnet run --project src/SMILE.Desktop --no-build
+</code></pre>
+<p>Open <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/examples/core-basic.smile"><code>examples/core-basic.smile</code></a>, select C#, Java, or C++ in a destination pane, and inspect the generated source. <strong>Build &amp; Run</strong> becomes available when that destination's toolchain is installed; C# uses the .NET SDK already required above.</p>
+<p>For a game, open its <code>.smile</code> file, leave <strong>Open Generated Folder</strong> and <strong>Press Any Key Launcher</strong> enabled, and use <strong>Build &amp; Run</strong> for the chosen target. The redirected run cannot receive game keys; cancel that run once compilation finishes, or let its timeout return control. In the generated folder, launch the generated program or its press-any-key launcher in an attached console for keyboard play.</p>
+<h3 id="use-the-cli">Use the CLI</h3>
+<pre><code>dotnet run --project src/SMILE.Cli -- examples/core-basic.smile --target csharp --run
+dotnet run --project src/SMILE.Cli -- examples/core-basic.smile --target java
+dotnet run --project src/SMILE.Cli -- examples/core-basic.smile --target cpp
+dotnet run --project src/SMILE.Cli -- examples/core-basic.smile --target all
+</code></pre>
+<h3 id="format-source-explicitly">Format source explicitly</h3>
+<pre><code>dotnet run --project src/SMILE.Cli -- examples/language.smile --format
+dotnet run --project src/SMILE.Cli -- examples/language.smile --check
+pwsh -File scripts/Format-Smile.ps1 -Check
+</code></pre>
+<p>The formatter parses and binds first, preserves exact Text and apostrophe-comment content, normalizes logical paragraphs and four-space indentation, is idempotent, and leaves invalid source untouched. Desktop offers the same operation through <strong>Edit → Format SMILE</strong> or <code>Ctrl+K, Ctrl+D</code>.</p>
+<h2 id="validation">Validation</h2>
+<p>The repository includes language conformance, deterministic generation, Desktop, formatting, scripted game, real console, and toolchain tests. See the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Architecture.md#validation-architecture">validation architecture</a> for their responsibilities. Test commands below describe available checks; they are not a claim that every matrix ran for this documentation update.</p>
+<p>Run the focused mission guardrail:</p>
+<pre><code>dotnet test tests/SMILE.Tests/SMILE.Tests.csproj -c Debug --filter TestCategory=MissionGuardrail -nologo
+</code></pre>
+<p>Run canonical conformance and generation tests:</p>
+<pre><code>dotnet test tests/SMILE.Tests/SMILE.Tests.csproj -c Debug --filter &quot;FullyQualifiedName~CoreBasicConformanceTests|FullyQualifiedName~CoreBasic2ConformanceTests|FullyQualifiedName~CoreBasicGenerationTests&quot; -nologo
+</code></pre>
+<details>
+<summary>Broader milestone and parity checks</summary>
+<p>At a language milestone or release, run the profile and Text-Game Foundation matrices with their required toolchains installed:</p>
+<pre><code>dotnet test tests/SMILE.Tests/SMILE.Tests.csproj -c Debug --filter TestCategory=MilestoneMatrix -nologo
+pwsh -File scripts/Test-TextGameFoundation.ps1
+</code></pre>
+<p>Run the pinned cross-repository parity check:</p>
+<pre><code>pwsh -File scripts/Test-CoreBasicParity.ps1
+</code></pre>
+<p>The parity command runs the retained Profile 1 gate and the new Profile 2 fixture/hash gate. It reads SMILE 2.0, verifies its pinned commit and exact working-tree status before and after, and writes all executable output beneath the system temporary directory. It never modifies SMILE 2.0 or pre-existing authority work.</p>
+</details>
+<h2 id="the-engineering-and-the-opportunity">The engineering and the opportunity</h2>
+<p>Created by <strong><a href="https://github.com/Sincioco">Sin / Louiery Sincioco</a></strong>, SMILE brings language design, compiler construction, native code generation, and desktop tooling together in a public, inspectable project. Its central question is practical: how can a beginner learn one clear idea and recognize it in several professional programming languages?</p>
+<div class="project-table" role="region" aria-label="Scrollable project table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Engineering work you can inspect</th>
+<th>Where to look</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One front end with typed binding and shared semantics</td>
+<td><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/src/SMILE.Engine">Engine</a> and <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Architecture.md">architecture</a></td>
+</tr>
+<tr>
+<td>Ten destinations with explicit native-language tradeoffs</td>
+<td><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/src/SMILE.Engine/Generation">Generators</a> and <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Target%20Code%20Generation%20Standard%20v1.0.md">generation standard</a></td>
+</tr>
+<tr>
+<td>Responsive WPF tools and cancellation-aware build/run integration</td>
+<td><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/src/SMILE.Desktop">Desktop</a> and <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/src/SMILE.Toolchains">toolchains</a></td>
+</tr>
+<tr>
+<td>Deterministic game evaluation, real-console tests, and parity fixtures</td>
+<td><a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/tests/SMILE.Tests">Tests</a> and <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/Core%20BASIC%202%20Parity%20Report.md">parity report</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>For contributors:</strong> useful work includes clearer beginner diagnostics, teaching examples, editor usability, and focused improvements to the ten existing targets. Read <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/AGENTS.md">AGENTS.md</a> and the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Core%20Principles.md">Core Principles</a> first; <a href="https://github.com/Sincioco/SMILE/issues">open an issue</a> to discuss a concrete improvement, or submit a focused pull request with relevant validation.</p>
+<p><strong>For employers, collaborators, and supporters:</strong> the source, examples, and design decisions provide a working portfolio of compiler and developer-tool engineering. Explore <a href="https://github.com/Sincioco">Sin's GitHub profile</a> to connect about related projects, collaboration, or opportunities to support educational programming tools.</p>
+<h2 id="project-policy">Project policy</h2>
+<p>The active destination set is frozen at ten until Sin explicitly changes it. Routine validation follows Velocity Mode: use the smallest directly relevant checks, while broad all-target and cross-repository verification is appropriate for major milestones. Manual <code>SMILE CI</code> remains available through <code>workflow_dispatch</code>.</p>
+<p>Historical requirement files are retained for research context, not as current language authority. Current behavior is governed by <code>AGENTS.md</code>, <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%20Core%20Principles.md">Core Principles</a>, and the single current official specification.</p>
+<p>The current hardening milestone is recorded in the <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/docs/SMILE%201.0%20Human-Readable%20Formatting%20and%20Hardening%20Completion%20Report.md">Human-Readable Formatting and Hardening Completion Report</a>.</p>
+<h2 id="license">License</h2>
+<p>SMILE is licensed under the GNU Affero General Public License v3.0. See <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/LICENSE">LICENSE</a>.</p>
+</article>
+  <div class="project-source"><p>Content and images from the public <a href="https://github.com/Sincioco/SMILE/blob/32dc0fef51e42c75722b10c6b6cbe43b64f7df83/README.md">SMILE 1.0 README</a>, retrieved October 5, 2026. Repository snapshot <a href="https://github.com/Sincioco/SMILE/commit/32dc0fef51e42c75722b10c6b6cbe43b64f7df83">32dc0fe</a>.</p><a href="#project-overview">Back to top ↑</a></div></main>
+</div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="mailto:louiery@gmail.com">louiery@gmail.com</a></div></div></footer>
+</body>
+</html>

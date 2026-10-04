@@ -1,0 +1,12 @@
+<SmileProject Version="1.0">
+  <PropertyGroup>
+    <ProjectKind>Game</ProjectKind>
+    <StartupFile>star-collector.smile</StartupFile>
+    <OutputName>StarCollector</OutputName>
+    <GraphicsBackend>Auto</GraphicsBackend>
+    <VSync>true</VSync>
+  </PropertyGroup>
+  <ItemGroup>
+    <SmileSource Include="star-collector.smile" StartupOnly="true" />
+  </ItemGroup>
+</SmileProject>

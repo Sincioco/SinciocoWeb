@@ -1,0 +1,38 @@
+{
+  "slug": "life2",
+  "name": "Life 2.0",
+  "repository": "https://github.com/Sincioco/life2",
+  "commit": "4cee5ac2ff15432086f42ec506581e93096cd7d6",
+  "readmePath": "README.md",
+  "description": "Life 2.0 is a native iPhone and iPad app for tracking recurring activities, building routines, and exploring completion patterns.",
+  "images": [
+    {
+      "source": "docs/screenshots/activities.png",
+      "localPath": "images/life2/activities.png"
+    },
+    {
+      "source": "docs/screenshots/calendar.png",
+      "localPath": "images/life2/calendar.png"
+    },
+    {
+      "source": "docs/screenshots/history.png",
+      "localPath": "images/life2/history.png"
+    },
+    {
+      "source": "docs/screenshots/overview-september.png",
+      "localPath": "images/life2/overview-september.png"
+    },
+    {
+      "source": "docs/screenshots/overview-october.png",
+      "localPath": "images/life2/overview-october.png"
+    },
+    {
+      "source": "docs/screenshots/streaks-ai-insights.png",
+      "localPath": "images/life2/streaks-ai-insights.png"
+    },
+    {
+      "source": "docs/screenshots/calendar-landscape.png",
+      "localPath": "images/life2/calendar-landscape.png"
+    }
+  ]
+}

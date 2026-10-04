@@ -1,0 +1,43 @@
+' Values, expressions and a small score table.
+Option Explicit
+
+Const PointsPerGem = 10
+Const RoundCount = 3
+
+Dim HeroName As Text
+Dim Gems As Number
+Dim Score As Number
+Dim HasKey As Boolean
+Dim Speed As Double
+Dim ElapsedMilliseconds As Number
+Dim Distance As Double
+Dim RoundScores[RoundCount] As Number
+Dim Total As Number
+Dim RoundIndex As Number
+
+HeroName = "Nova"
+Gems = 7
+Score = Gems * PointsPerGem
+HasKey = True
+Speed = 2.5
+ElapsedMilliseconds = 200
+Distance = Speed * (ToDouble(ElapsedMilliseconds) / 1000.0)
+
+RoundScores[0] = Score
+RoundScores[1] = 40
+RoundScores[2] = 90
+
+For RoundIndex = 0 To RoundCount - 1
+    Total = Total + RoundScores[RoundIndex]
+End For
+
+Print "Player: " + HeroName
+Print "Gem score: "; Score
+Print "Has key: "; HasKey
+Print "Whole halves: "; 7 / 2
+Print "Left over: "; 7 Mod 2
+Print "Fractional halves: "; 7.0 / 2.0
+Print "Distance: "; Distance
+Print "Total: "; Total
+
+End Program

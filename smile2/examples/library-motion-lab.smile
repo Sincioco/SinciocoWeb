@@ -1,0 +1,45 @@
+Option Explicit
+
+Dim PlayerX As Number
+Dim PlayerY As Number
+Dim Clicks As Number
+Dim Key As Number
+
+PlayerX = 320
+PlayerY = 180
+
+Game Window "SMILE Motion Lab" Size 640 By 360
+
+Do
+    Get Key Key
+
+    If Key_Held(KEY_LEFT) Then
+        PlayerX = Max(20, PlayerX - 4)
+    End If
+    If Key_Held(KEY_RIGHT) Then
+        PlayerX = Min(620, PlayerX + 4)
+    End If
+    If Key_Held(KEY_UP) Then
+        PlayerY = Max(20, PlayerY - 4)
+    End If
+    If Key_Held(KEY_DOWN) Then
+        PlayerY = Min(340, PlayerY + 4)
+    End If
+    If Pointer_Inside() And Pointer_Pressed(POINTER_PRIMARY) Then
+        Clicks = Clicks + 1
+    End If
+
+    Clear Rgb(10, 18, 36)
+    Fill Rectangle 20, 70, 600, 250, Rgb(17, 39, 60)
+    Fill Circle PlayerX, PlayerY, 16, CYAN
+    Draw Circle PlayerX, PlayerY, 20, WHITE
+    Draw Text "Arrow Keys Move - Click Counts - Escape Exits" At 320, 20 Size 18 Color WHITE Centered
+    Draw Text "Clicks:" At 24, 45 Size 16 Color YELLOW
+    Draw Number Clicks At 95, 45 Size 16 Color YELLOW
+    Show Screen
+    Wait 16 Milliseconds
+
+Loop Until Game_Closed() Or Key = KEY_ESCAPE
+
+End Program
+

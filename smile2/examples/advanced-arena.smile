@@ -1,0 +1,77 @@
+' Shared native arena: create once, update, draw, then release.
+
+Option Explicit
+
+Import Smile.Simple3D.ArenaViewport3D As Arena
+Import Smile.Simple3D.Precision3D As P
+Import Smile.Simple3D.Graphics3D As Graphics
+Import Smile.Simple3D.Scene3D As Scene
+
+Dim Stage As Arena.State
+Dim BaseCamera As P.Camera3D
+Dim Ready As Boolean
+Dim Key As Number
+
+Game Window "SMILE 2.0 - My First Arena" Size 1280 By 720
+
+Ready = Graphics.RendererAvailable()
+
+If Ready Then
+    Stage = Arena.Create(1000, 800)
+    Ready = Stage.Ready
+End If
+
+BaseCamera.Position = P.Vector(0.0, 180.0, -500.0)
+BaseCamera.Target = P.Vector(0.0, 60.0, 0.0)
+BaseCamera.UpDirection = P.Vector(0.0, 1.0, 0.0)
+BaseCamera.FovDegrees = 55.0
+BaseCamera.NearPlane = 1.0
+BaseCamera.FarPlane = 3000.0
+
+Do
+    Get Key Key
+
+    If Ready Then
+        Call Arena.Update(Stage, Key)
+    End If
+
+    Call DrawArena()
+
+    Show Screen
+
+Loop Until Game_Closed() Or Key = KEY_ESCAPE
+
+Call Arena.Destroy(Stage)
+Call Graphics.ResetRenderer3D()
+
+Sub DrawArena()
+
+    If Ready Then
+
+        Ready = Arena.BeginFrame(Stage, BaseCamera)
+
+        If Ready Then
+            Ready = Arena.Draw(Stage)
+            Ready = Scene.EndScene() And Ready
+        End If
+
+    End If
+
+    If Ready Then
+
+        Draw Text "My First Arena" At 24, 20 Size 28 Color WHITE
+        Draw Text "F: Floor    G: Grid    B: Background    Escape: Exit" At 24, 58 Size 18 Color WHITE
+        Draw Text "Left Drag: Pan    Middle Drag: Orbit    Wheel: Zoom    Right Click: Reset" At 24, 686 Size 18 Color WHITE
+
+    Else
+
+        Clear Rgb(9, 18, 31)
+        Draw Text "The Arena Could Not Be Created Or Drawn" At 640, 300 Size 28 Color YELLOW Centered
+        Draw Text "Check DirectX And The Two Assets/Backgrounds Images" At 640, 350 Size 20 Color WHITE Centered
+        Draw Text "Escape: Exit" At 640, 400 Size 20 Color WHITE Centered
+
+    End If
+
+End Sub
+
+End Program

@@ -1,0 +1,242 @@
+{
+  "slug": "sinstar",
+  "name": "Sin Star I",
+  "repository": "https://github.com/Sincioco/SinStarI",
+  "commit": "097f52ff30f032c1b30dd13812d9215cc760532b",
+  "readmePath": "README.md",
+  "description": "A science-fantasy RPG in development, built with the SMILE 2.0 Game Engine and supported by an illustrated script and storyboard.",
+  "images": [
+    {
+      "source": "https://i.ytimg.com/vi/IuDbnSnKEPo/hqdefault.jpg",
+      "localPath": "images/sinstar/hqdefault.jpg"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/cast-arin.png",
+      "localPath": "images/sinstar/cast-arin.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/cast-mira.png",
+      "localPath": "images/sinstar/cast-mira.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/cast-orin.png",
+      "localPath": "images/sinstar/cast-orin.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/cast-zara.png",
+      "localPath": "images/sinstar/cast-zara.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/cast-milo.png",
+      "localPath": "images/sinstar/cast-milo.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/cast-kael.png",
+      "localPath": "images/sinstar/cast-kael.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/cast-aevos.png",
+      "localPath": "images/sinstar/cast-aevos.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/panel-02-1.png",
+      "localPath": "images/sinstar/panel-02-1.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/panel-03-2.png",
+      "localPath": "images/sinstar/panel-03-2.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/panel-04-3.png",
+      "localPath": "images/sinstar/panel-04-3.png"
+    },
+    {
+      "source": "Visual%20Script%20and%20Storyboard/asset/images/panel-14-2.png",
+      "localPath": "images/sinstar/panel-14-2.png"
+    },
+    {
+      "source": "docs/images/battles/Vrax-Arin.png",
+      "localPath": "images/sinstar/Vrax-Arin.png"
+    },
+    {
+      "source": "docs/images/battles/Vrax-Orin.png",
+      "localPath": "images/sinstar/Vrax-Orin.png"
+    },
+    {
+      "source": "docs/images/battles/Vrax-Zara.png",
+      "localPath": "images/sinstar/Vrax-Zara.png"
+    },
+    {
+      "source": "docs/images/battles/Vrax-Mira.png",
+      "localPath": "images/sinstar/Vrax-Mira.png"
+    },
+    {
+      "source": "docs/images/battles/Kael-Arin.png",
+      "localPath": "images/sinstar/Kael-Arin.png"
+    },
+    {
+      "source": "docs/images/battles/Kael-Orin.png",
+      "localPath": "images/sinstar/Kael-Orin.png"
+    },
+    {
+      "source": "docs/images/battles/Kael-Zara.png",
+      "localPath": "images/sinstar/Kael-Zara.png"
+    },
+    {
+      "source": "docs/images/battles/Kael-Mira.png",
+      "localPath": "images/sinstar/Kael-Mira.png"
+    },
+    {
+      "source": "docs/images/battles/Dragon-Arin.png",
+      "localPath": "images/sinstar/Dragon-Arin.png"
+    },
+    {
+      "source": "docs/images/battles/Dragon-Orin.png",
+      "localPath": "images/sinstar/Dragon-Orin.png"
+    },
+    {
+      "source": "docs/images/battles/Dragon-Zara.png",
+      "localPath": "images/sinstar/Dragon-Zara.png"
+    },
+    {
+      "source": "docs/images/battles/Dragon-Mira.png",
+      "localPath": "images/sinstar/Dragon-Mira.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Metropolis-day.png",
+      "localPath": "images/sinstar/Neris-Metropolis-day.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Metropolis-night.png",
+      "localPath": "images/sinstar/Neris-Metropolis-night.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Town-day.png",
+      "localPath": "images/sinstar/Neris-Town-day.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Town-night.png",
+      "localPath": "images/sinstar/Neris-Town-night.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Spaceport-day.png",
+      "localPath": "images/sinstar/Neris-Spaceport-day.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Spaceport-night.png",
+      "localPath": "images/sinstar/Neris-Spaceport-night.png"
+    },
+    {
+      "source": "docs/images/towns/Horizon%20Airport-day.png",
+      "localPath": "images/sinstar/Horizon-Airport-day.png"
+    },
+    {
+      "source": "docs/images/towns/Horizon%20Airport-night.png",
+      "localPath": "images/sinstar/Horizon-Airport-night.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Canals-day.png",
+      "localPath": "images/sinstar/Neris-Canals-day.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Canals-night.png",
+      "localPath": "images/sinstar/Neris-Canals-night.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Star%20Lake-day.png",
+      "localPath": "images/sinstar/Neris-Star-Lake-day.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Star%20Lake-night.png",
+      "localPath": "images/sinstar/Neris-Star-Lake-night.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Crown%20Isles-day.png",
+      "localPath": "images/sinstar/Neris-Crown-Isles-day.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Crown%20Isles-night.png",
+      "localPath": "images/sinstar/Neris-Crown-Isles-night.png"
+    },
+    {
+      "source": "docs/images/towns/East%20Valley-day.png",
+      "localPath": "images/sinstar/East-Valley-day.png"
+    },
+    {
+      "source": "docs/images/towns/East%20Valley-night.png",
+      "localPath": "images/sinstar/East-Valley-night.png"
+    },
+    {
+      "source": "docs/images/towns/Orin%27s%20Village-day.png",
+      "localPath": "images/sinstar/Orin-s-Village-day.png"
+    },
+    {
+      "source": "docs/images/towns/Orin%27s%20Village-night.png",
+      "localPath": "images/sinstar/Orin-s-Village-night.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Waterworks-day.png",
+      "localPath": "images/sinstar/Neris-Waterworks-day.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Waterworks-night.png",
+      "localPath": "images/sinstar/Neris-Waterworks-night.png"
+    },
+    {
+      "source": "docs/images/towns/Verdant%20Reach-day.png",
+      "localPath": "images/sinstar/Verdant-Reach-day.png"
+    },
+    {
+      "source": "docs/images/towns/Verdant%20Reach-night.png",
+      "localPath": "images/sinstar/Verdant-Reach-night.png"
+    },
+    {
+      "source": "docs/images/towns/Greyglass%20Pass-day.png",
+      "localPath": "images/sinstar/Greyglass-Pass-day.png"
+    },
+    {
+      "source": "docs/images/towns/Greyglass%20Pass-night.png",
+      "localPath": "images/sinstar/Greyglass-Pass-night.png"
+    },
+    {
+      "source": "docs/images/towns/Sunglass%20Expanse-day.png",
+      "localPath": "images/sinstar/Sunglass-Expanse-day.png"
+    },
+    {
+      "source": "docs/images/towns/Sunglass%20Expanse-night.png",
+      "localPath": "images/sinstar/Sunglass-Expanse-night.png"
+    },
+    {
+      "source": "docs/images/towns/Ancient%20Relay-day.png",
+      "localPath": "images/sinstar/Ancient-Relay-day.png"
+    },
+    {
+      "source": "docs/images/towns/Ancient%20Relay-night.png",
+      "localPath": "images/sinstar/Ancient-Relay-night.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Relief%20Quarter-day.png",
+      "localPath": "images/sinstar/Neris-Relief-Quarter-day.png"
+    },
+    {
+      "source": "docs/images/towns/Neris%20Relief%20Quarter-night.png",
+      "localPath": "images/sinstar/Neris-Relief-Quarter-night.png"
+    },
+    {
+      "source": "docs/images/towns/Willowstep%20Highlands-day.png",
+      "localPath": "images/sinstar/Willowstep-Highlands-day.png"
+    },
+    {
+      "source": "docs/images/towns/Willowstep%20Highlands-night.png",
+      "localPath": "images/sinstar/Willowstep-Highlands-night.png"
+    },
+    {
+      "source": "docs/images/towns/Silverfall%20Basin-day.png",
+      "localPath": "images/sinstar/Silverfall-Basin-day.png"
+    },
+    {
+      "source": "docs/images/towns/Silverfall%20Basin-night.png",
+      "localPath": "images/sinstar/Silverfall-Basin-night.png"
+    }
+  ]
+}

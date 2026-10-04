@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Values, names &amp; expressions | SMILE 2.0 · Sincioco</title>
+  <meta name="description" content="Learn SMILE 2.0 variables, Number and Double types, text, Boolean expressions, constants, arrays, and readable syntax.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/smile2/basics.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Values, names &amp; expressions | SMILE 2.0">
+  <meta property="og:description" content="Learn SMILE 2.0 variables, Number and Double types, text, Boolean expressions, constants, arrays, and readable syntax.">
+  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
+  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
+  <script src="search-index.js?v=20261005-projects-1" defer></script>
+  <script src="docs.js?v=20261005-projects-1" defer></script>
+</head>
+<body class="smile-docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../Projects/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="docs-bar"><div class="docs-bar-inner">
+    <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>
+    <div class="docs-bar-actions"><span class="edition">Language guide</span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="lesson-nav" hidden>Lessons <span aria-hidden="true">☰</span></button></div>
+  </div></div>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="lesson-nav">
+      <div class="search-box" hidden><label for="doc-search">Search the docs</label><input id="doc-search" type="search" placeholder="Try “arrays” or “fire”…" autocomplete="off" aria-controls="search-results"><p id="search-status" class="sr-only" aria-live="polite"></p><div id="search-results" hidden></div></div>
+      <nav class="lesson-nav" aria-label="Documentation"><p class="nav-group">Start here</p>
+<a href="Index.html"><span class="lesson-number">00</span>Overview</a>
+<a href="start.html"><span class="lesson-number">01</span>Your first program</a>
+<p class="nav-group">Learn the language</p>
+<a href="basics.html" aria-current="page"><span class="lesson-number">02</span>Values &amp; variables</a>
+<a href="flow.html"><span class="lesson-number">03</span>Decisions &amp; loops</a>
+<a href="structure.html"><span class="lesson-number">04</span>Organize your code</a>
+<a href="media.html"><span class="lesson-number">05</span>Graphics, input &amp; sound</a>
+<a href="game.html"><span class="lesson-number">06</span>Build Star Collector</a>
+<p class="nav-group">Explore & build</p>
+<a href="libraries.html"><span class="lesson-number">07</span>Library guide</a>
+<a href="reference.html"><span class="lesson-number">08</span>Built-in reference</a>
+<a href="advanced.html"><span class="lesson-number">09</span>Arena &amp; elemental VFX</a>
+<a href="next.html"><span class="lesson-number">10</span>Debug &amp; keep building</a></nav>
+      <a class="source-link" href="https://github.com/Sincioco/SMILE-2.0">Explore the source <span aria-hidden="true">↗</span></a>
+      <p class="sidebar-note">Simple Modern and Intuitive<br>Language for Everyone.</p>
+    </aside>
+    <main id="main" class="doc-main">
+      <header class="doc-heading"><p class="eyebrow">02 / Language foundations</p><h1>Values, names &amp; expressions</h1><p class="lead">Scores, health, names, and positions are all values. Learn how to name them, calculate with them, and organize them into useful groups.</p></header>
+      <article class="doc-content"><section aria-labelledby="remember">
+<h2 id="remember">A variable is a labeled place for a value</h2>
+<p>A game needs to remember a score, a player's position, and whether a door is unlocked. Give each fact a clear name. <code>Dim</code> declares the variable; <code>As</code> states what kind of value it can hold; <code>=</code> stores a value.</p>
+<pre><code class="language-smile">Option Explicit
+
+Dim HeroName As Text
+Dim Score As Number
+Dim HasKey As Boolean
+Dim Speed As Double
+
+HeroName = &quot;Nova&quot;
+Score = 70
+HasKey = True
+Speed = 2.5</code></pre>
+<figure class="concept-diagram"><div class="diagram-step"><strong>Name</strong><span>Score</span></div><div class="diagram-arrow" aria-hidden="true">→</div><div class="diagram-step"><strong>Type</strong><span>Number: whole numbers</span></div><div class="diagram-arrow" aria-hidden="true">→</div><div class="diagram-step"><strong>Current value</strong><span>70 points</span></div><figcaption>The name stays the same while its stored value can change during play.</figcaption></figure>
+<table><thead><tr><th>Type</th><th>Use it for</th><th>Examples</th><th>Default</th></tr></thead><tbody><tr><td><code>Number</code></td><td>Whole-number scores, counts, indices, IDs</td><td><code>7</code>, <code>0</code>, <code>-3</code></td><td><code>0</code></td></tr><tr><td><code>Double</code></td><td>Fractional positions, speeds, elapsed seconds</td><td><code>2.5</code>, <code>0.125</code>, <code>1e-3</code></td><td><code>0.0</code></td></tr><tr><td><code>Boolean</code></td><td>A yes-or-no fact</td><td><code>True</code>, <code>False</code></td><td><code>False</code></td></tr><tr><td><code>Text</code></td><td>Names, dialogue, labels</td><td><code>"Nova"</code>, <code>"Level 1"</code></td><td><code>""</code> (empty text)</td></tr></tbody></table>
+<p>You will also meet <code>Image</code> for pictures, and your own <code>Enum</code>, <code>Type</code>, and <code>Class</code> types. Start with the four kinds above.</p>
+<div class="callout"><strong>Make typos visible.</strong><p>Put <code>Option Explicit</code> at the start of each source file, before ordinary declarations or instructions. Comments may come first. Module files have a slightly different placement, shown in <a href="structure.html#modules">Modules</a>. Older examples may omit it; new learner programs should declare their variables.</p></div>
+</section>
+<section aria-labelledby="arithmetic">
+<h2 id="arithmetic">Turn rules into expressions</h2>
+<p>An expression calculates a value. For example, <code>Gems * PointsPerGem</code> calculates the reward for all collected gems. A constant is a named value that cannot be changed while the program runs.</p>
+<pre><code class="language-smile">Const PointsPerGem = 10
+
+Dim Gems As Number
+Dim Score As Number
+
+Gems = 7
+Score = Gems * PointsPerGem
+Print Score</code></pre>
+<table><thead><tr><th>Expression</th><th>Meaning</th><th>Result</th></tr></thead><tbody><tr><td><code>7 + 2</code></td><td>Add</td><td><code>9</code></td></tr><tr><td><code>7 - 2</code></td><td>Subtract</td><td><code>5</code></td></tr><tr><td><code>7 * 2</code></td><td>Multiply</td><td><code>14</code></td></tr><tr><td><code>7 / 2</code></td><td>Divide whole numbers; discard the fractional part</td><td><code>3</code></td></tr><tr><td><code>7 Mod 2</code></td><td>Whole-number remainder</td><td><code>1</code></td></tr><tr><td><code>7.0 / 2.0</code></td><td>Divide fractional numbers</td><td><code>3.5</code></td></tr><tr><td><code>(7 + 2) * 3</code></td><td>Calculate the parentheses first</td><td><code>27</code></td></tr></tbody></table>
+<p>Multiplication and division happen before addition and subtraction. Use parentheses whenever they make your intention clearer. In an assignment such as <code>Score = Score + 10</code>, SMILE reads the old score, adds ten, and stores the new result.</p>
+</section>
+<section aria-labelledby="double">
+<h2 id="double">Whole numbers and fractional numbers are different</h2>
+<p><code>Number</code> means an integer in SMILE 2.0. Writing <code>7</code> creates a Number literal; writing <code>7.0</code> creates a Double literal. SMILE does not silently change one type into the other. Use <code>ToDouble</code> or <code>ToNumber</code> where you intend a conversion.</p>
+<pre><code class="language-smile">Dim Speed As Double
+Dim ElapsedMilliseconds As Number
+Dim Distance As Double
+
+Speed = 2.5
+ElapsedMilliseconds = 200
+Distance = Speed * (ToDouble(ElapsedMilliseconds) / 1000.0)
+Print Distance</code></pre>
+<p>At 2.5 units per second for 200 milliseconds, the distance is 0.5 units. Converting the elapsed time <em>before</em> division keeps that fraction. <code>ToDouble(1 / 2)</code> is <code>0.0</code>, because the integer division already produced zero. <code>ToDouble(1) / 2.0</code> is <code>0.5</code>.</p>
+<p><code>ToNumber(3.9)</code> gives <code>3</code>; <code>ToNumber(-3.9)</code> gives <code>-3</code>. The fractional part is removed toward zero. Array positions and loop counters still need Number values.</p>
+<div class="callout"><strong>Fractions are approximate.</strong><p>Double uses binary floating point. Many decimal fractions cannot be stored exactly. Compare a calculated value with a small tolerance when appropriate, such as <code>Abs(Distance - 0.5) &lt; 0.000001</code>. Division by zero and invalid operations such as <code>Sqrt(-1.0)</code> are errors. Write <code>0.5</code>, with digits on both sides of the dot.</p></div>
+</section>
+<section aria-labelledby="text">
+<h2 id="text">Talk to the player with Text</h2>
+<p>Text goes inside double quotation marks. Join Text values with <code>+</code>. To print a label beside a number, separate them with a semicolon. SMILE does not turn a Number into Text just because it is next to a Text value.</p>
+<pre><code class="language-smile">Dim HeroName As Text
+Dim Score As Number
+
+HeroName = &quot;Nova&quot;
+Score = 70
+
+Print &quot;Welcome, &quot; + HeroName + &quot;!&quot;
+Print &quot;Score: &quot;; Score</code></pre>
+<p><code>Print</code> normally finishes the line. A final semicolon keeps the next output on that same line. A plain <code>Print</code> finishes that line. Text supports Unicode, so names and dialogue can contain more than English letters.</p>
+<p><code>Text_Length("Nova")</code> gives <code>4</code>. <code>Text_Slice("Nova", 1, 2)</code> gives <code>"ov"</code>: start at zero-based character index 1, then take 2 characters. These functions count Unicode scalar values. See <a href="reference.html">the built-in reference</a> for text and conversion functions.</p>
+</section>
+<section aria-labelledby="booleans">
+<h2 id="booleans">Ask questions with Boolean expressions</h2>
+<p>A comparison returns <code>True</code> or <code>False</code>. In an assignment, <code>=</code> stores a value. Inside a condition or expression, <code>=</code> checks equality.</p>
+<table><thead><tr><th>Question</th><th>Expression</th></tr></thead><tbody><tr><td>Are these equal?</td><td><code>Score = 100</code></td></tr><tr><td>Are these different?</td><td><code>Score &lt;&gt; 100</code></td></tr><tr><td>Below / at most / above / at least?</td><td><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></td></tr><tr><td>Are both facts true?</td><td><code>HasKey And IsNearDoor</code></td></tr><tr><td>Is at least one fact true?</td><td><code>HasKey Or DoorIsOpen</code></td></tr><tr><td>Reverse yes and no?</td><td><code>Not HasKey</code></td></tr></tbody></table>
+<p><code>And</code> and <code>Or</code> short-circuit from left to right: the right side is skipped if the left side already decides the answer. Text equality is exact: <code>"Nova"</code> and <code>"nova"</code> are different values, even though SMILE variable names are case-insensitive.</p>
+</section>
+<section aria-labelledby="arrays">
+<h2 id="arrays">An array stores several values under one name</h2>
+<p>Imagine three score slots in a row. <code>Dim RoundScores[3] As Number</code> makes three Number elements. Their positions, called <em>indices</em>, start at zero.</p>
+<figure class="concept-diagram"><div class="diagram-step"><strong>Index 0</strong><span>70 points</span></div><div class="diagram-step"><strong>Index 1</strong><span>40 points</span></div><div class="diagram-step"><strong>Index 2</strong><span>90 points</span></div><figcaption>Three elements means indices 0, 1, and 2. Index 3 is outside this array.</figcaption></figure>
+<pre><code class="language-smile">Const RoundCount = 3
+
+Dim RoundScores[RoundCount] As Number
+Dim Total As Number
+Dim RoundIndex As Number
+
+RoundScores[0] = 70
+RoundScores[1] = 40
+RoundScores[2] = 90
+
+For RoundIndex = 0 To RoundCount - 1
+    Total = Total + RoundScores[RoundIndex]
+End For
+
+Print Total</code></pre>
+<p>The <code>For</code> loop visits each valid index and adds its score. The total is <code>200</code>. You will learn loops on the next page. Array lengths are fixed by positive compile-time Number expressions; they are not a growable list.</p>
+<p>Two dimensions are useful for board games. <code>Dim Board[8, 8] As Number</code> creates 64 elements. <code>Board[2, 5] = 1</code> changes one cell. Both indices must be from 0 to 7. SMILE checks array bounds; an out-of-range access stops the program with an error.</p>
+</section>
+<section aria-labelledby="readable">
+<h2 id="readable">Code that your future self can read</h2>
+<ul><li>Use names such as <code>PlayerHealth</code> and <code>PointsPerGem</code> instead of single letters.</li><li>Use <code>'</code> for comments that explain why a rule exists.</li><li>Put one instruction on each line and indent nested code by four spaces.</li><li>Spell keywords consistently: <code>Dim</code>, <code>Print</code>, <code>End If</code>. SMILE is case-insensitive, but a consistent style helps you read.</li><li>To continue a long expression onto another line, enclose it in balanced parentheses. An array's square brackets do not enable continuation.</li></ul>
+<div class="challenge"><h3>Your mission: add a fourth round</h3><p>Download the <a href="examples/language-scoreboard.smile" download>complete scoreboard example</a>. Change <code>RoundCount</code> to 4, add a score of 60 at index 3, and predict the new total before running it.</p><details><summary>Reveal one solution</summary><p>Change the constant and add the new assignment after the other round scores. The existing loop already uses <code>RoundCount - 1</code>, so it visits the new element too. The total becomes <strong>260</strong>.</p><pre><code class="language-smile">Const RoundCount = 4
+
+&#39; Add this after assigning indices 0, 1, and 2:
+RoundScores[3] = 60</code></pre></details></div>
+<p class="lesson-next">Next: <a href="flow.html">make decisions, repeat actions, and name your rules →</a></p>
+</section></article>
+      <details class="source-notes"><summary>Sources &amp; version notes</summary><p>Checked against the local SMILE 2.0 source on September 25, 2026. Examples target the native Windows toolchain unless stated otherwise. The linked repository may continue to evolve.</p><ul><li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/README.md">Declarations, expressions and arrays ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/double.md">Double arithmetic and explicit conversions ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/SMILE-2.0-Authoritative-Code-Formatting-Conventions.md">Authoritative formatting conventions ↗</a></li></ul></details>
+      <nav class="lesson-pager" aria-label="Lesson navigation"><a href="start.html"><small>← Previous</small>Your first program</a><a href="flow.html"><small>Up next →</small>Decisions &amp; loops</a></nav>
+    </main>
+    <aside class="page-toc" aria-label="On this page"><p>On this page</p><a href="#remember">A variable is a labeled place for a value</a>
+<a href="#arithmetic">Turn rules into expressions</a>
+<a href="#double">Whole numbers and fractional numbers are different</a>
+<a href="#text">Talk to the player with Text</a>
+<a href="#booleans">Ask questions with Boolean expressions</a>
+<a href="#arrays">An array stores several values under one name</a>
+<a href="#readable">Code that your future self can read</a></aside>
+  </div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco · SMILE 2.0</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="start.html">Start learning</a><a href="https://github.com/Sincioco/SMILE-2.0">GitHub ↗</a></div></div></footer>
+</body>
+</html>

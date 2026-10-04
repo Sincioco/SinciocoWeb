@@ -1,0 +1,12 @@
+' The startup file for the two-source module example.
+Option Explicit
+
+Import Adventure.Scoring As Scoring
+
+Dim Score As Number
+
+Score = Scoring.GemPoints(4)
+Print "Four gems: "; Score
+Print "One gem: "; Scoring.PointsPerGem
+
+End Program

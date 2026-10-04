@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Types, objects &amp; modules | SMILE 2.0 · Sincioco</title>
+  <meta name="description" content="Learn SMILE 2.0 Enum, Type, Class, properties, constructors, With blocks, Module, Import, value copies, and object ownership.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sincioco.com/smile2/structure.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Types, objects &amp; modules | SMILE 2.0">
+  <meta property="og:description" content="Learn SMILE 2.0 Enum, Type, Class, properties, constructors, With blocks, Module, Import, value copies, and object ownership.">
+  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
+  <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
+  <link rel="stylesheet" href="../CSS/site.css?v=20261005-projects-1">
+  <link rel="stylesheet" href="docs.css?v=20261005-projects-1">
+  <script src="search-index.js?v=20261005-projects-1" defer></script>
+  <script src="docs.js?v=20261005-projects-1" defer></script>
+</head>
+<body class="smile-docs">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-shell">
+    <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../Projects/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+  </div></header>
+  <div class="docs-bar"><div class="docs-bar-inner">
+    <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>
+    <div class="docs-bar-actions"><span class="edition">Language guide</span><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="lesson-nav" hidden>Lessons <span aria-hidden="true">☰</span></button></div>
+  </div></div>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="lesson-nav">
+      <div class="search-box" hidden><label for="doc-search">Search the docs</label><input id="doc-search" type="search" placeholder="Try “arrays” or “fire”…" autocomplete="off" aria-controls="search-results"><p id="search-status" class="sr-only" aria-live="polite"></p><div id="search-results" hidden></div></div>
+      <nav class="lesson-nav" aria-label="Documentation"><p class="nav-group">Start here</p>
+<a href="Index.html"><span class="lesson-number">00</span>Overview</a>
+<a href="start.html"><span class="lesson-number">01</span>Your first program</a>
+<p class="nav-group">Learn the language</p>
+<a href="basics.html"><span class="lesson-number">02</span>Values &amp; variables</a>
+<a href="flow.html"><span class="lesson-number">03</span>Decisions &amp; loops</a>
+<a href="structure.html" aria-current="page"><span class="lesson-number">04</span>Organize your code</a>
+<a href="media.html"><span class="lesson-number">05</span>Graphics, input &amp; sound</a>
+<a href="game.html"><span class="lesson-number">06</span>Build Star Collector</a>
+<p class="nav-group">Explore & build</p>
+<a href="libraries.html"><span class="lesson-number">07</span>Library guide</a>
+<a href="reference.html"><span class="lesson-number">08</span>Built-in reference</a>
+<a href="advanced.html"><span class="lesson-number">09</span>Arena &amp; elemental VFX</a>
+<a href="next.html"><span class="lesson-number">10</span>Debug &amp; keep building</a></nav>
+      <a class="source-link" href="https://github.com/Sincioco/SMILE-2.0">Explore the source <span aria-hidden="true">↗</span></a>
+      <p class="sidebar-note">Simple Modern and Intuitive<br>Language for Everyone.</p>
+    </aside>
+    <main id="main" class="doc-main">
+      <header class="doc-heading"><p class="eyebrow">04 / Organize your game</p><h1>Types, objects &amp; modules</h1><p class="lead">Keep related facts together and give reusable code a clear home. Learn the difference between copying a hero&#39;s stats and sharing one object.</p></header>
+      <article class="doc-content"><section aria-labelledby="choose">
+<h2 id="choose">Choose the smallest useful container</h2>
+<p>When your game grows, related values need to stay together. A hero has a name and health. A game has a title screen, a playing state, and a game-over state. Reusable scoring rules belong in their own module.</p>
+<table><thead><tr><th>Feature</th><th>Think of it as</th><th>A useful game example</th></tr></thead><tbody><tr><td><code>Enum</code></td><td>Named choices in one category</td><td>Title, Playing, GameOver</td></tr><tr><td><code>Type</code></td><td>A value made from related fields</td><td>A hero's stats or a position</td></tr><tr><td><code>Class</code></td><td>An object that several references can share</td><td>One menu or score board shared by callers</td></tr><tr><td><code>Module</code></td><td>A named home for reusable declarations</td><td>Scoring calculations or drawing helpers</td></tr></tbody></table>
+<p>You can build a small game with variables and routines first. Add these structures when they make a specific part easier to understand.</p>
+</section>
+<section aria-labelledby="enums">
+<h2 id="enums">Enum gives game states meaningful names</h2>
+<p>Instead of remembering that 0 means “title” and 1 means “playing,” declare the choices. An enum is its own type, so an unrelated number cannot silently become a game state.</p>
+<pre><code class="language-smile">Enum AdventureState
+    Title
+    Playing
+    GameOver
+End Enum
+
+Dim State As AdventureState
+
+State = AdventureState.Playing
+
+Select Case State
+    Case AdventureState.Title
+        Print &quot;Press Start&quot;
+    Case AdventureState.Playing
+        Print &quot;Explore the world&quot;
+    Case AdventureState.GameOver
+        Print &quot;Try again&quot;
+End Select</code></pre>
+<p>Write the type and member together, such as <code>AdventureState.Playing</code>. Members begin at zero unless an explicit Number constant is supplied; following implicit members increase by one. Prefer a useful zero member because an unassigned enum defaults to its underlying zero value.</p>
+<p>Enums support same-type <code>=</code> and <code>&lt;&gt;</code> comparisons and work in <code>Select Case</code>. Do not use them as ordinary numbers, do arithmetic on them, or pass the whole enum to <code>Print</code>. Print a friendly label from a matching case instead.</p>
+</section>
+<section aria-labelledby="types">
+<h2 id="types">Type groups values and copies them</h2>
+<p>A field is a named value inside another value. Use a dot to reach it. Assigning one Type value to another copies its fields, including nested values, text, and fixed arrays.</p>
+<pre><code class="language-smile">Type HeroStats
+    Name As Text
+    Health As Number
+
+    Public Sub Heal(Optional Amount As Number = 5)
+
+        Me.Health = Min(100, Me.Health + Amount)
+
+    End Sub
+End Type
+
+Dim Hero As HeroStats
+Dim Backup As HeroStats
+
+Hero.Name = &quot;Nova&quot;
+Hero.Health = 80
+Backup = Hero
+
+Call Hero.Heal(Amount:=10)
+
+Print Hero.Health
+Print Backup.Health</code></pre>
+<figure class="concept-diagram"><div class="diagram-step"><strong>Hero</strong><span>Name: Nova · Health: 90</span></div><div class="diagram-arrow" aria-hidden="true">≠</div><div class="diagram-step"><strong>Backup</strong><span>Name: Nova · Health: 80</span></div><figcaption>After Backup = Hero, they hold independent values. Healing Hero does not change Backup.</figcaption></figure>
+<p><code>Me</code> means the Type value whose method was called. A method is a Sub or Function inside the Type. <code>Call Hero.Heal()</code> applies the default amount to Hero; <code>Call Hero.Heal(Amount:=10)</code> supplies ten.</p>
+<p>A Type can contain other Types and fixed one- or two-dimensional arrays. For example, <code>Waypoints[4] As Point2D</code> inside an actor Type stores four positions. Fields have no declaration-time initializers; assign their starting values in your program.</p>
+<div class="callout"><strong>Methods need a stable Type location.</strong><p>A Type method or property works on a writable variable, array element, or field. If a Function returns a Type, first store it in a variable, then call its methods. Passing a Type ByVal copies it; passing it ByRef allows the routine to change the caller's value.</p></div>
+</section>
+<section aria-labelledby="classes">
+<h2 id="classes">Class gives several names one shared object</h2>
+<p>A Class behaves differently from a Type. <code>New</code> creates an object. Assignment copies the reference to that object, so two variables can reach the same stored state. This complete fragment prints 15 and True.</p>
+<pre><code class="language-smile">Class ScoreBoard
+    Private StoredScore As Number
+
+    Public Sub New(Optional Start As Number = 0)
+
+        Me.StoredScore = Start
+
+    End Sub
+
+    Public Sub Add(Points As Number)
+
+        Me.StoredScore = Me.StoredScore + Points
+
+    End Sub
+
+    Public Property Total As Number
+
+        Get
+
+            Dim Result As Number
+
+            Result = Me.StoredScore
+
+            Return Result
+
+        End Get
+
+    End Property
+End Class
+
+Dim Board As New ScoreBoard(Start:=10)
+Dim OtherView As ScoreBoard
+
+OtherView = Board
+
+Call OtherView.Add(5)
+
+Print Board.Total
+Print OtherView Is Board</code></pre>
+<figure class="concept-diagram"><div class="diagram-step"><strong>Board</strong><span>A reference</span></div><div class="diagram-arrow" aria-hidden="true">↘</div><div class="diagram-step"><strong>One ScoreBoard</strong><span>StoredScore: 15</span></div><div class="diagram-arrow" aria-hidden="true">↖</div><div class="diagram-step"><strong>OtherView</strong><span>A reference</span></div><figcaption>Changing the object through OtherView is visible through Board.</figcaption></figure>
+<p><code>Sub New</code> is the constructor: it runs when the object is created. The <code>Total</code> property has a getter, so callers can read it like a field. The score field is Private, so callers use <code>Add</code> to change it.</p>
+<p>A <code>Set</code> accessor can make a property writable. Inside it, the contextual name <code>Value</code> holds the incoming value. For example, a health property could store <code>Max(0, Value)</code> to prevent negative health. A getter-only property cannot be assigned to.</p>
+<table><thead><tr><th>Assignment</th><th>What is shared?</th></tr></thead><tbody><tr><td><code>Backup = Hero</code> for a Type</td><td>Nothing mutable is aliased by the copy. Each value has its own fields.</td></tr><tr><td><code>OtherView = Board</code> for a Class</td><td>Both references reach the same object.</td></tr><tr><td>Class parameter passed ByVal</td><td>The reference still reaches the same object. Its fields can be changed through methods.</td></tr><tr><td>Class parameter passed ByRef</td><td>The routine can also replace the caller's reference with a different object or Nothing.</td></tr></tbody></table>
+</section>
+<section aria-labelledby="ownership">
+<h2 id="ownership">Nothing means “no object here”</h2>
+<p>An uninitialized Class variable holds <code>Nothing</code>. Check references using <code>Is</code> or <code>Is Not</code>. The <code>=</code> and <code>&lt;&gt;</code> operators are not Class identity comparisons.</p>
+<pre><code class="language-smile">&#39; Fragment using Board and OtherView from the previous example.
+OtherView = Nothing
+
+If Board Is Not Nothing Then
+    Print Board.Total
+End If</code></pre>
+<p>Assigning Nothing to OtherView releases that reference. Board still owns a reference to the object, so the object remains available. SMILE releases owned references as scopes end or references are replaced. Do not call a method or read a property through Nothing.</p>
+<p>Keep ownership easy to follow: decide which part of your game creates a resource, which part updates it, and which part releases it. A library's <code>Destroy</code> method or resource handle may still need an explicit call; follow that library's contract rather than assuming every resource is a Class.</p>
+</section>
+<section aria-labelledby="with">
+<h2 id="with">With saves repeated typing</h2>
+<p>When several neighboring instructions work with the same Type or Class, <code>With</code> gives leading-dot member names a shared target. This is a fragment after declaring and initializing Hero:</p>
+<pre><code class="language-smile">With Hero
+    .Name = &quot;Nova the Brave&quot;
+    .Health = 100
+End With</code></pre>
+<p>The target is selected once on entry. For a Type, the block keeps its writable location. For a Class, it keeps the original object identity. Use it for a clear group of related edits, not just to wrap one line.</p>
+</section>
+<section aria-labelledby="modules">
+<h2 id="modules">Module and Import give reusable code a home</h2>
+<p>Keep your program's main story short. Put reusable declarations in a module, export the useful ones with <code>Public</code>, then import that module with a short alias.</p>
+<p><strong>File 1: language-module.smile</strong> owns the scoring rule. Inside a module, <code>Option Explicit</code> comes immediately after the Module header and before imports or declarations.</p>
+<pre><code class="language-smile">Module Adventure.Scoring
+
+Option Explicit
+
+Public Const PointsPerGem = 10
+
+Public Function GemPoints(Gems As Number) As Number
+
+    Dim Result As Number
+
+    Result = Gems * PointsPerGem
+
+    Return Result
+
+End Function
+
+End Module</code></pre>
+<p><strong>File 2: language-import.smile</strong> owns the executable flow.</p>
+<pre><code class="language-smile">&#39; The startup file for the two-source module example.
+Option Explicit
+
+Import Adventure.Scoring As Scoring
+
+Dim Score As Number
+
+Score = Scoring.GemPoints(4)
+Print &quot;Four gems: &quot;; Score
+Print &quot;One gem: &quot;; Scoring.PointsPerGem
+
+End Program</code></pre>
+<p><code>Scoring</code> is a local alias, so <code>Scoring.GemPoints(4)</code> means “call GemPoints from the imported module.” An Import is local to the physical source file where it appears. Import does not download a library or add a source file to the project for you.</p>
+<p>Download all three files into one folder: <a href="examples/language-module.smile" download>module source</a>, <a href="examples/language-import.smile" download>startup source</a>, and <a href="examples/language-import.smileproj" download>project file</a>. Open the project in Visual Studio. Its source list includes both files. Expected output: <code>Four gems: 40</code>, then <code>One gem: 10</code>.</p>
+<details><summary>Compile the two files without a project</summary><p>From the repository root, with the files in MyFirstSmile:</p><pre><code class="language-powershell">&amp; &quot;.\artifacts\compiler\smilec.exe&quot; &quot;.\MyFirstSmile\language-import.smile&quot; --source &quot;.\MyFirstSmile\language-module.smile&quot; -o &quot;.\MyFirstSmile\AdventureModules.exe&quot;
+&amp; &quot;.\MyFirstSmile\AdventureModules.exe&quot;</code></pre></details>
+<p>Module declarations are Private by default. Export only the constants, routines, and types other files should use. An imported type needs its alias, such as <code>Models.HeroStats</code>. Modules cannot reach into a consumer's global variables; pass the state they need as arguments.</p>
+</section>
+<section aria-labelledby="boundaries">
+<h2 id="boundaries">Build within the current language boundaries</h2>
+<table><thead><tr><th>Current feature</th><th>Useful boundary</th></tr></thead><tbody><tr><td>Type fields</td><td>Public; Type methods and properties may be Public or Private.</td></tr><tr><td>Class fields</td><td>Private by default; explicitly Public when intended. Methods and properties default to Public.</td></tr><tr><td>Class references</td><td>Scalar references only. No Class arrays, directly nested Class fields, or Class fields inside Types.</td></tr><tr><td>Class-owned data</td><td>Number, Double, Boolean, Text, Enum and Type fields, including fixed arrays of supported value types. Direct Image fields are not supported; a contained Type can own Image data.</td></tr><tr><td>Object-oriented features</td><td>No inheritance, interfaces, virtual dispatch, static Class members, indexed/default properties, or user-defined destructors in this feature set.</td></tr><tr><td>Modules</td><td>Imports must form a non-circular dependency graph. An application may use local modules without packaging them.</td></tr><tr><td>Multiple source files</td><td>The selected startup file owns top-level executable statements. Other ordinary support files provide declarations and routines.</td></tr><tr><td>Native versus Web</td><td>Native support/module scalar Class initializers run before startup. Web adoption of that initialization order is still open. Initialize shared objects explicitly when targeting both.</td></tr></tbody></table>
+<p>The language's limitations are useful design information. For a party of several heroes, use a fixed array of Type values. Keep a single Class reference for a shared service when that is the behavior you actually want.</p>
+<div class="challenge"><h3>Your mission: predict the copy</h3><p>Download <a href="examples/language-models.smile" download>the complete models example</a>. After <code>Backup = Hero</code>, add <code>Backup.Health = 20</code>. What will the two health lines show after Hero heals?</p><details><summary>Reveal the answer</summary><p><strong>Hero: 90</strong> and <strong>Backup: 20</strong>. The values are independent. The later score board example still shares one Class object and prints 15.</p></details></div>
+<p class="lesson-next">Next: <a href="game.html">make a playable Star Collector game →</a> or <a href="libraries.html">explore the library toolbox →</a></p>
+</section></article>
+      <details class="source-notes"><summary>Sources &amp; version notes</summary><p>Checked against the local SMILE 2.0 source on September 25, 2026. Examples target the native Windows toolchain unless stated otherwise. The linked repository may continue to evolve.</p><ul><li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/README.md">Current Type, Class, Enum, With and module contracts ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/double.md">Double support in structured values ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/language/SMILE-2.0-Lightweight-OOP.md">Lightweight object-oriented feature design ↗</a></li>
+<li><a href="https://github.com/Sincioco/SMILE-2.0/blob/main/docs/SMILE-2.0-Authoritative-Code-Formatting-Conventions.md">Authoritative member formatting ↗</a></li></ul></details>
+      <nav class="lesson-pager" aria-label="Lesson navigation"><a href="flow.html"><small>← Previous</small>Decisions &amp; loops</a><a href="media.html"><small>Up next →</small>Graphics, input &amp; sound</a></nav>
+    </main>
+    <aside class="page-toc" aria-label="On this page"><p>On this page</p><a href="#choose">Choose the smallest useful container</a>
+<a href="#enums">Enum gives game states meaningful names</a>
+<a href="#types">Type groups values and copies them</a>
+<a href="#classes">Class gives several names one shared object</a>
+<a href="#ownership">Nothing means “no object here”</a>
+<a href="#with">With saves repeated typing</a>
+<a href="#modules">Module and Import give reusable code a home</a>
+<a href="#boundaries">Build within the current language boundaries</a></aside>
+  </div>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco · SMILE 2.0</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="start.html">Start learning</a><a href="https://github.com/Sincioco/SMILE-2.0">GitHub ↗</a></div></div></footer>
+</body>
+</html>

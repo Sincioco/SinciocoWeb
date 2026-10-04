@@ -1,0 +1,72 @@
+' Decisions, repetition and reusable routines.
+Option Explicit
+
+Dim Health As Number
+Dim Score As Number
+Dim Turn As Number
+Dim Choice As Text
+
+Health = 30
+Choice = "Attack"
+
+If Health <= 0 Then
+    Print "Game over"
+Else If Health < 10 Then
+    Print "Find a potion"
+Else
+    Print "Ready for adventure"
+End If
+
+Select Case Choice
+    Case "Attack"
+        Print "You swing your sword."
+    Case "Defend"
+        Print "You raise your shield."
+    Case Else
+        Print "Choose Attack or Defend."
+End Select
+
+For Turn = 1 To 3
+    Score = Score + PointsFor(Turn)
+End For
+
+Call GiveBonus(Score)
+Call Announce(Caption:="Round score", Value:=Score)
+
+Do
+    If Health <= 0 Then
+        Exit Do
+    End If
+
+    Health = Max(0, Health - 10)
+    Print "Health: "; Health
+
+Loop
+
+For Turn = 3 Down To 1
+    Print "Countdown: "; Turn
+End For
+
+Sub GiveBonus(ByRef Total As Number, Optional Amount As Number = 5)
+
+    Total = Total + Amount
+
+End Sub
+
+Sub Announce(Value As Number, Optional Caption As Text = "Score")
+
+    Print Caption + ": "; Value
+
+End Sub
+
+Function PointsFor(TurnNumber As Number) As Number
+
+    Dim Result As Number
+
+    Result = TurnNumber * 10
+
+    Return Result
+
+End Function
+
+End Program

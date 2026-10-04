@@ -1,0 +1,113 @@
+' Fire effect: prepare once, update before drawing, and release on exit.
+Option Explicit
+
+Import Smile.Simple3D.ArenaViewport3D As Arena
+Import Smile.Simple3D.Precision3D As P
+Import Smile.Simple3D.Graphics3D As Graphics
+Import Smile.Simple3D.Scene3D As Scene
+Import Smile.Simple3D.FireEmitter3D As Vfx
+
+Dim Stage As Arena.State
+Dim BaseCamera As P.Camera3D
+Dim Effect As Vfx.FireEmitter
+Dim Ready As Boolean
+Dim Ok As Boolean
+Dim Key As Number
+Dim PreviousTime As Number
+Dim CurrentTime As Number
+Dim Elapsed As Number
+Dim CastTime As Number
+
+Game Window "SMILE 2.0 - Fire Playground" Size 1280 By 720
+
+Ready = Graphics.RendererAvailable()
+
+If Ready Then
+
+    Stage = Arena.Create(1000, 800)
+    Ready = Stage.Ready
+
+    If Ready Then
+        Ready = Vfx.Initialize("Assets/Fire")
+
+        If Ready Then
+
+            Effect = Vfx.StartAtPrecise("TorchFire", P.Vector(0.0, 10.0, 0.0), 12345,
+                Vfx.QUALITY_MEDIUM, Vfx.SIMULATION_AUTO, 20)
+            Ready = Effect.Slot > 0
+
+        End If
+    End If
+
+End If
+
+BaseCamera.Position = P.Vector(0.0, 180.0, -500.0)
+BaseCamera.Target = P.Vector(0.0, 60.0, 0.0)
+BaseCamera.UpDirection = P.Vector(0.0, 1.0, 0.0)
+BaseCamera.FovDegrees = 55.0
+BaseCamera.NearPlane = 1.0
+BaseCamera.FarPlane = 3000.0
+
+PreviousTime = Timer()
+
+Do
+    Get Key Key
+    CurrentTime = Timer()
+    Elapsed = Max(0, Min(100, CurrentTime - PreviousTime))
+    PreviousTime = CurrentTime
+
+    If Ready Then
+
+        CastTime = (CastTime + Elapsed) Mod 4000
+
+        Call Arena.Update(Stage, Key)
+        Call Vfx.Update(Elapsed)
+
+    End If
+
+    Call DrawPlayground()
+
+    Show Screen
+
+Loop Until Game_Closed() Or Key = KEY_ESCAPE
+
+Ok = Vfx.Destroy(Effect)
+
+Call Vfx.Shutdown()
+Call Arena.Destroy(Stage)
+Call Graphics.ResetRenderer3D()
+
+Sub DrawPlayground()
+
+    If Ready Then
+
+        Ready = Arena.BeginFrame(Stage, BaseCamera)
+
+        If Ready Then
+
+            Ready = Arena.Draw(Stage)
+            Ready = Vfx.Draw(Effect) And Ready
+            Ready = Scene.EndScene() And Ready
+
+        End If
+
+    End If
+
+    If Ready Then
+
+        Draw Text "Fire Playground" At 24, 20 Size 28 Color WHITE
+        Draw Text "A shared update advances every emitter once per frame." At 24, 58 Size 18 Color WHITE
+        Draw Text "Drag: Pan / Orbit    Wheel: Zoom    F/G/B: Arena    Escape: Exit" At 24, 686 Size 18 Color WHITE
+
+    Else
+
+        Clear Rgb(9, 18, 31)
+        Draw Text "Could Not Prepare Or Draw The Effect" At 640, 300 Size 28 Color YELLOW Centered
+        Draw Text "Check DirectX And Run The Asset Preparation Helper" At 640, 350 Size 20 Color WHITE Centered
+        Draw Text "Escape: Exit" At 640, 400 Size 20 Color WHITE Centered
+
+    End If
+
+End Sub
+
+End Program

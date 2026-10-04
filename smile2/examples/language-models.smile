@@ -1,0 +1,92 @@
+' Named states, value copies, shared references and member routines.
+Option Explicit
+
+Enum AdventureState
+    Title
+    Playing
+    GameOver
+End Enum
+
+Type HeroStats
+    Name As Text
+    Health As Number
+
+    Public Sub Heal(Optional Amount As Number = 5)
+
+        Me.Health = Min(100, Me.Health + Amount)
+
+    End Sub
+End Type
+
+Class ScoreBoard
+    Private StoredScore As Number
+
+    Public Sub New(Optional Start As Number = 0)
+
+        Me.StoredScore = Start
+
+    End Sub
+
+    Public Sub Add(Points As Number)
+
+        Me.StoredScore = Me.StoredScore + Points
+
+    End Sub
+
+    Public Property Total As Number
+
+        Get
+
+            Dim Result As Number
+
+            Result = Me.StoredScore
+
+            Return Result
+
+        End Get
+
+    End Property
+End Class
+
+Dim State As AdventureState
+Dim Hero As HeroStats
+Dim Backup As HeroStats
+Dim Board As New ScoreBoard(Start:=10)
+Dim OtherView As ScoreBoard
+
+State = AdventureState.Playing
+Hero.Name = "Nova"
+Hero.Health = 80
+Backup = Hero
+
+Call Hero.Heal(Amount:=10)
+
+Print "Hero: "; Hero.Health
+Print "Backup: "; Backup.Health
+
+OtherView = Board
+
+Call OtherView.Add(5)
+
+Print "Shared score: "; Board.Total
+Print "Same object: "; OtherView Is Board
+
+With Hero
+    .Name = "Nova the Brave"
+    .Health = 100
+End With
+
+Select Case State
+    Case AdventureState.Title
+        Print "Press Start"
+    Case AdventureState.Playing
+        Print Hero.Name + " is exploring."
+    Case AdventureState.GameOver
+        Print "Try again"
+End Select
+
+OtherView = Nothing
+Print "Other view released: "; OtherView Is Nothing
+Print "Board still exists: "; Board.Total
+
+End Program

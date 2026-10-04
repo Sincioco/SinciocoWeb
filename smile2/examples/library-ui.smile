@@ -1,0 +1,24 @@
+Option Explicit
+
+Import Smile.UI.Controls As Controls
+
+Dim Selected As Boolean
+Dim Key As Number
+
+Game Window "My First Library Button" Size 640 By 360
+
+Do
+    Get Key Key
+    If Controls.Clicked(220, 140, 200, 64) Then
+        Selected = Not Selected
+    End If
+
+    Clear Rgb(12, 18, 36)
+    Call Controls.DrawButton(220, 140, 200, 64, "Click Me", Selected)
+    Draw Text "A library handles the button. You choose its action." At 320, 245 Size 16 Color WHITE Centered
+    Show Screen
+    Wait 16 Milliseconds
+
+Loop Until Game_Closed() Or Key = KEY_ESCAPE
+
+End Program

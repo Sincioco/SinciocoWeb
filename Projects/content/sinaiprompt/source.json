@@ -1,0 +1,12 @@
+{
+  "slug": "sinaiprompt",
+  "name": "Sin AI Prompt",
+  "repository": "https://github.com/Sincioco/SinAIPrompt",
+  "commit": "5c706172621dddd69dc2a6e2f5a271753a7ba19f",
+  "readmePath": "README.md",
+  "description": "A native Windows HTML prompt editor with rich text editing, layered image annotation, and document organization.",
+  "images": [],
+  "heroImage": "images/sinaiprompt/SinAIPrompt.png",
+  "heroAlt": "Sin AI Prompt application artwork",
+  "heroSource": "https://raw.githubusercontent.com/Sincioco/SinAIPrompt/5c706172621dddd69dc2a6e2f5a271753a7ba19f/src/SinAIPrompt/Assets/SinAIPrompt.png"
+}
