@@ -22,18 +22,13 @@ download. Keep them in sync with their source when editing either sub-site.
 
 Open `Index.html` directly, or serve this folder using IIS or IIS Express.
 No .NET recompilation is required for these static pages.
+Use the HTTP/HTTPS website preview for the inline YouTube trailer; direct file
+opening keeps a link to YouTube instead.
 
-The root `Web.config` is machine-specific and ignored because the existing local
-copy contains a database credential. A sanitized `Web.config.example` preserves
-the IIS configuration without connection strings. On a fresh checkout, create
-the local configuration before serving through IIS:
-
-```powershell
-Copy-Item -LiteralPath .\Web.config.example -Destination .\Web.config
-```
-
-Keep any deployment credentials in local configuration, never in source control.
-The static site itself does not require the previous database connection string.
+The tracked root `Web.config` supplies the IIS settings and static-file MIME
+mappings. It contains no database connection strings, and a fresh checkout can
+be served through IIS without copying a configuration template. The static site
+does not use a database. Keep deployment credentials outside source control.
 
 ## Rebuild and verify
 

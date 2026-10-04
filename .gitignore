@@ -1,5 +1,4 @@
-# Keep machine-specific configuration and credentials local.
-/Web.config
+# Keep local credentials and private key material out of source control.
 .env
 .env.*
 *.pfx
