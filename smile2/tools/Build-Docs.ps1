@@ -4,6 +4,7 @@ param()
 $ErrorActionPreference = 'Stop'
 $site = Split-Path $PSScriptRoot -Parent
 $root = Split-Path $site -Parent
+. (Join-Path $root 'tools/Get-SeoHead.ps1')
 $version = '20261005-projects-1'
 $order = @('index','start','basics','flow','structure','media','game','libraries','reference','advanced','next')
 $labels = @('Overview','Your first program','Values & variables','Decisions & loops','Organize your code','Graphics, input & sound','Build Star Collector','Library guide','Built-in reference','Arena & elemental VFX','Debug & keep building')
@@ -49,20 +50,18 @@ foreach ($id in $order) {
     $nextLink = if ($position -lt $order.Count-1) { '<a href="{0}"><small>Up next →</small>{1}</a>' -f (PageHref $order[$position+1]),(Encode $labels[$position+1]) }
     $tocHtml = if ($sections.Count -gt 0) { '<aside class="page-toc" aria-label="On this page"><p>On this page</p>'+($toc -join "`n")+'</aside>' }
     $heroClass = if ($id -eq 'index') { ' doc-home' } else { '' }
+    $pageUrl = 'http://sincioco.com/smile2/' + $(if ($id -ne 'index') { $href })
+    $breadcrumbs = @(@{ name = 'Home'; url = 'http://sincioco.com/' }, @{ name = 'SMILE 2.0 Guide'; url = 'http://sincioco.com/smile2/' })
+    if ($id -ne 'index') { $breadcrumbs += @{ name = $page.title; url = $pageUrl } }
+    $seoHead = Get-SeoHead -Title ($page.title + ' | SMILE 2.0 · Sincioco') -Description $page.description -Url $pageUrl -Image 'http://sincioco.com/smile2/images/smile-2.0-logo.png' -ImageAlt 'SMILE 2.0 programming language logo' -PageType TechArticle -Breadcrumbs $breadcrumbs
     $html = @"
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>$title | SMILE 2.0 · Sincioco</title>
-  <meta name="description" content="$description">
+$seoHead
   <meta name="theme-color" content="#ffffff">
-  <link rel="canonical" href="https://sincioco.com/smile2/$(if ($id -ne 'index') {$href})">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="$title | SMILE 2.0">
-  <meta property="og:description" content="$description">
-  <meta property="og:image" content="https://sincioco.com/smile2/images/snake.png">
   <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
   <link rel="stylesheet" href="../CSS/site.css?v=$version">
   <link rel="stylesheet" href="docs.css?v=$version">
@@ -107,10 +106,10 @@ foreach ($entry in $api.functions) {
 }
 $searchJson = ConvertTo-Json -InputObject @($search.ToArray()) -Depth 8 -Compress
 Set-Content -LiteralPath (Join-Path $site 'search-index.js') -Value "window.SMILE_SEARCH = $searchJson;" -Encoding utf8
-$urls = foreach ($id in $order) { '<url><loc>https://sincioco.com/smile2/{0}</loc><lastmod>2026-09-25</lastmod></url>' -f $(if ($id -ne 'index') { PageHref $id }) }
+$urls = foreach ($id in $order) { '<url><loc>http://sincioco.com/smile2/{0}</loc><lastmod>2026-10-05</lastmod></url>' -f $(if ($id -ne 'index') { PageHref $id }) }
 $mapPath = Join-Path $root 'sitemap.xml'
 $sitemap = Get-Content -LiteralPath $mapPath -Raw
-$sitemap = $sitemap -replace '(?s)\s*<url><loc>https://sincioco.com/smile2/.*?</url>',''
+$sitemap = $sitemap -replace '(?s)\s*<url><loc>http://sincioco.com/smile2/.*?</url>',''
 $sitemap = $sitemap -replace '</urlset>',(($urls -join "`n  ")+"`n</urlset>")
 Set-Content -LiteralPath $mapPath -Value $sitemap.TrimEnd() -Encoding utf8
 Write-Output "Built $($pages.Count) documentation pages and $($search.Count) search entries."

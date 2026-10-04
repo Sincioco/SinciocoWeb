@@ -17,6 +17,8 @@ project tab and its language-guide link remain available.
 - `tools/Convert-ProjectReadme.ps1` converts the snapshots into semantic HTML,
   replaces image paths, resolves source links, and extracts heading anchors.
 - `tools/Build-Projects.ps1` owns the page shell, project order, and sitemap entries.
+- `../tools/Get-SeoHead.ps1` owns shared search/social metadata, page JSON-LD, and
+  breadcrumbs; the builder supplies each page's content and identity.
 - `projects.css` owns only this sub-site's layout. `../CSS/site.css` owns shared
   typography, colors, header, footer, and global navigation. Documentation details
   follow the existing `../smile2/docs.css` conventions.
@@ -45,12 +47,15 @@ From the website root, using the installed PowerShell 7:
 pwsh -NoProfile -File .\AgenticAI\tools\Build-Projects.ps1
 pwsh -NoProfile -File .\AgenticAI\tools\Check-Projects.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
+pwsh -NoProfile -File .\tools\Check-SEO.ps1
 pwsh -NoProfile -File .\AgenticAI\tools\Test-ProjectBuild.ps1
 pwsh -NoProfile -File .\AgenticAI\tools\Test-SinStarTowns.ps1
 ```
 
 With an IIS/IIS Express preview running, add `-PreviewUrl http://localhost:8877`
-to either checker to verify the served pages too. The site needs no .NET build.
+to the checkers to verify the served pages too. The root SEO checker covers all
+21 sitemap routes and permanent redirects; see the [root SEO audit](../README.md#seo-audit--2026-10-05) for
+the live hosting findings and current HTTP-origin policy. The site needs no .NET build.
 The existing SMILE documentation generator also includes the new global link;
 rebuilding it will retain the navigation. Each generator preserves the other
 sub-site's sitemap entries.
@@ -109,7 +114,7 @@ New handwritten files range from 22 to 138 lines. Shared CSS grew from 236 to 24
 lines for wrapping navigation; the existing documentation generator and checker
 retain their previous line counts. The build regression checks sitemap stability
 and retention of all 21 entries after repeated builds of either sub-site. It
-covers a newline-growth bug found during this task. Its first three relevant runs passed;
+covers a newline-growth bug found during this task. Its first four relevant runs passed;
 retire it after ten consecutive relevant successful runs under the global policy.
 
 The Towns regression covers the original table's separated name-only cards. It

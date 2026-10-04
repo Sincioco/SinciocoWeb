@@ -6,6 +6,7 @@ $projectRoot = Split-Path $PSScriptRoot -Parent
 $siteRoot = Split-Path $projectRoot -Parent
 . (Join-Path $PSScriptRoot 'Convert-ProjectReadme.ps1')
 . (Join-Path $PSScriptRoot 'Format-SinStarReadme.ps1')
+. (Join-Path $siteRoot 'tools/Get-SeoHead.ps1')
 $version = '20261005-projects-6'
 $order = @('pmt', 'life2', 'sinstar', 'smile2', 'sinaiprompt', 'smile1')
 $projects = foreach ($slug in $order) {
@@ -23,16 +24,27 @@ function WriteProjectPage([string]$file, [string]$title, [string]$description, [
     $canonical = if ($file -eq 'Index.html') { '' } else { $file }
     $tabs = ProjectTabs $current
     $videoScript = if ($current -eq 'sinstar') { '<script src="project-video.js?v=' + $version + '" defer></script>' } else { '' }
+    $url = "http://sincioco.com/AgenticAI/$canonical"
+    $breadcrumbs = @(@{ name = 'Home'; url = 'http://sincioco.com/' }, @{ name = 'Agentic AI Projects'; url = 'http://sincioco.com/AgenticAI/' })
+    $imageUrl = 'http://sincioco.com/Resume/Sin_San_Francisco_Cropped.png'
+    $imageAlt = 'Louiery Sincioco, software engineer and architect'
+    $pageType = 'CollectionPage'
+    if ($current) {
+        $project = $projects | Where-Object slug -EQ $current
+        $breadcrumbs += @{ name = $project.name; url = $url }
+        $cover = if ($project.heroImage) { $project.heroImage } else { $project.images[0].localPath }
+        if ($cover -notmatch '\.svg$') { $imageUrl = 'http://sincioco.com/AgenticAI/' + $cover; $imageAlt = $project.name + ' project preview' }
+        $pageType = 'WebPage'
+    }
+    $seoHead = Get-SeoHead -Title $title -Description $description -Url $url -Image $imageUrl -ImageAlt $imageAlt -PageType $pageType -Breadcrumbs $breadcrumbs
     $html = @"
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>$(Encode $title) | Agentic AI Projects · Sincioco</title>
-  <meta name="description" content="$(Encode $description)">
+$seoHead
   <meta name="theme-color" content="#ffffff">
-  <link rel="canonical" href="https://sincioco.com/AgenticAI/$canonical">
   <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
   <link rel="stylesheet" href="../CSS/site.css?v=$version">
   <link rel="stylesheet" href="projects.css?v=$version">
@@ -61,9 +73,17 @@ $cards = foreach ($project in $projects) {
 "@
 }
 $landing = @"
-<main id="main" class="container projects-landing"><header class="page-hero"><p class="eyebrow">Ideas into working software</p><h1>Agentic AI Projects</h1><p class="lead">Explore six projects by Louiery Sincioco: tools for work and everyday life, programming languages, and the world of Sin Star I.</p></header><div class="project-grid">$($cards -join "`n")</div></main>
+<main id="main" class="container projects-landing"><header class="page-hero"><p class="eyebrow">Ideas into working software</p><h1>Agentic AI Projects</h1><p class="lead">Explore my work in AI-assisted software development: business tools, iPhone and iPad apps, programming languages, and games.</p><p>I help teams in the United States and the Philippines build custom software using AI, with hands-on software engineering, human review, and testing. These six projects show the kinds of products and tools I build.</p><a class="text-link" href="../#custom-software-services">Software engineering and AI development services →</a></header><div class="project-grid">$($cards -join "`n")</div><section class="section-heading"><h2>Build custom software for your team</h2><p>Discuss a business application, an AI integration, or a workflow you want to automate. I bring C#/.NET, Azure, web and mobile experience to contract and part-time engagements in the U.S. and the Philippines.</p><p><a class="text-link" href="mailto:louiery@gmail.com">Discuss your software project →</a> · <a href="../Resume/">Review my software engineering experience</a></p></section></main>
 "@
-WriteProjectPage 'Index.html' 'Agentic AI Projects' 'Explore PMT, Life 2.0, Sin Star I, SMILE 2.0, Sin AI Prompt and SMILE 1.0 by Louiery Sincioco.' $landing ''
+WriteProjectPage 'Index.html' 'Agentic AI & Custom Software Projects | Louiery Sincioco' 'Explore AI-assisted projects by Louiery Sincioco: business tools, mobile apps and developer tools. Custom software for U.S. and Philippine teams.' $landing ''
+$projectTitles = @{
+    pmt = 'PMT Project Management Software'
+    life2 = 'Life 2.0 Activity Tracker for iPhone & iPad'
+    sinstar = 'Sin Star I Game Development'
+    smile2 = 'SMILE 2.0 Programming Language & Game Engine'
+    sinaiprompt = 'Sin AI Prompt Editor for Windows'
+    smile1 = 'SMILE 1.0 Programming Language & IDE'
+}
 $sectionCount = 0
 foreach ($project in $projects) {
     $markdown = Get-Content -LiteralPath (Join-Path $projectRoot "content/$($project.slug)/README.md") -Raw
@@ -90,13 +110,13 @@ foreach ($project in $projects) {
   <div class="project-source"><p>Content and images from the public <a href="$sourceUrl">$([Net.WebUtility]::HtmlEncode($project.name)) README</a>, retrieved October 5, 2026. Repository snapshot <a href="$($project.repository)/commit/$($project.commit)">$($project.commit.Substring(0,7))</a>.</p><a href="#project-overview">Back to top ↑</a></div></main>
 </div>
 "@
-    WriteProjectPage "$($project.slug).html" $project.name $project.description $content $project.slug
+    WriteProjectPage "$($project.slug).html" ($projectTitles[$project.slug] + ' | Louiery Sincioco') $project.description $content $project.slug
 }
 $mapPath = Join-Path $siteRoot 'sitemap.xml'
 $sitemap = Get-Content -LiteralPath $mapPath -Raw
-$sitemap = $sitemap -replace '(?s)\s*<url><loc>https://sincioco.com/AgenticAI/.*?</url>', ''
-$urls = @('<url><loc>https://sincioco.com/AgenticAI/</loc><lastmod>2026-10-05</lastmod></url>')
-$urls += $order | ForEach-Object { "<url><loc>https://sincioco.com/AgenticAI/$_.html</loc><lastmod>2026-10-05</lastmod></url>" }
+$sitemap = $sitemap -replace '(?s)\s*<url><loc>http://sincioco.com/AgenticAI/.*?</url>', ''
+$urls = @('<url><loc>http://sincioco.com/AgenticAI/</loc><lastmod>2026-10-05</lastmod></url>')
+$urls += $order | ForEach-Object { "<url><loc>http://sincioco.com/AgenticAI/$_.html</loc><lastmod>2026-10-05</lastmod></url>" }
 $sitemap = $sitemap.Replace('</urlset>', ($urls -join "`n  ") + "`n</urlset>")
 Set-Content -LiteralPath $mapPath -Value $sitemap.TrimEnd() -Encoding utf8
 Write-Output "Built 7 project pages with $sectionCount section links from local source snapshots."

@@ -13,6 +13,9 @@ The private GitHub repository is `Sincioco/SinciocoWeb`.
 - `smile2/` contains the SMILE 2.0 learning site, content, source examples, and
   its generation/validation scripts.
 - `sitemap.xml` and `robots.txt` describe the site's published routes.
+- `tools/Get-SeoHead.ps1` owns shared search/social metadata, page JSON-LD, and
+  breadcrumbs for both generated sub-sites. Parent-page metadata stays in its HTML.
+- `tools/Check-SEO.ps1` validates metadata and indexability across sitemap routes.
 
 Generated HTML and required images/downloads are included so the website can be
 served directly without a build service, package installation, or external asset
@@ -39,16 +42,83 @@ pwsh -NoProfile -File .\smile2\tools\Build-Docs.ps1
 pwsh -NoProfile -File .\AgenticAI\tools\Build-Projects.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
 pwsh -NoProfile -File .\AgenticAI\tools\Check-Projects.ps1
+pwsh -NoProfile -File .\tools\Check-SEO.ps1
 ```
 
-Both checkers accept `-PreviewUrl http://localhost:8877` when a local server is
-running. `AgenticAI/tools/Test-ProjectBuild.ps1` is the focused regression check
+All three checkers accept `-PreviewUrl http://localhost:8877` when a local server
+is running. The SEO checker also verifies permanent redirects.
+`AgenticAI/tools/Test-ProjectBuild.ps1` is the focused regression check
 for repeatable sitemap generation. See each sub-site's README for ownership,
 source provenance, validation details, and cache-version updates.
 
 Use Ctrl+F5 after changes during browser testing. The generators use local source
 snapshots and installed PowerShell/Windows capabilities; they require no package
 downloads. Publishing this repository does not deploy changes to the website.
+
+## SEO audit — 2026-10-05
+
+Local changes describe software engineering, software architecture, custom software
+developed with AI, and Agentic AI work for United States and Philippines teams.
+Home now connects three service capabilities to project evidence and explains
+human direction, code review, and testing. Resume and Agentic AI pages have
+matching, focused introductions. Unique titles/descriptions, social metadata,
+Person/ProfilePage/WebSite/Service data, and generated page/breadcrumb data reflect
+visible content; no physical office, LocalBusiness address, or unsupported claim
+was added. This SEO work adds no third-party packages and changes no CSS, JavaScript,
+or image assets.
+
+The live audit found the following before deployment of these local changes:
+
+| Public route | Observed result |
+| --- | --- |
+| `http://sincioco.com/` | HTTP 200. |
+| `https://sincioco.com/` and `https://www.sincioco.com/` | TLS certificate-name mismatch: the server presents an Azure wildcard certificate instead of a certificate valid for these custom hostnames. |
+| `http://www.sincioco.com/` | Azure HTTP 404. |
+| `http://sincioco.com/Projects/` and `http://sincioco.com/AgenticAI/` | Both return HTTP 200, leaving the old route as a duplicate. |
+
+All 21 published sitemap routes also returned HTTP 200 on the live HTTP origin.
+This confirms reachability of the current deployment, not publication of the local SEO edits.
+
+Local canonical URLs, social URL fields, site URLs/IDs in structured data,
+`sitemap.xml`, and the sitemap declaration in `robots.txt` now consistently use
+`http://sincioco.com`, the currently working origin. No HTTP-to-HTTPS redirect is
+enabled while the certificate is invalid. Once a valid certificate is confirmed,
+migrate those references and redirects together. Keep canonical and sitemap
+signals consistent with [Google's canonical URL guidance](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls).
+The two service markets share English content; there are no duplicated country
+pages or invented regional offices. See [Google's multiregional guidance](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)
+before introducing distinct regional content.
+
+Local validation passed for all 21 sitemap routes, metadata, JSON-LD, robots rules,
+and HTTP responses. Three redirect cases passed with HTTP 301: the old Projects
+landing, an old project page with its query string preserved, and an explicit
+AgenticAI directory index. The existing 21-page project and 14-page SMILE checkers
+also passed. Home/services, Resume, and the Agentic AI landing page were reviewed
+at 390px and 1280px with no horizontal overflow. `git diff --check` passed.
+The shared metadata helper is 51 physical lines and the SEO checker is 252 lines;
+both have focused ownership and use only installed PowerShell/.NET capabilities.
+The project builder grew from 102 to 122 lines; the documentation builder changed
+from 116 to 115. Home grew from 92 to 138 lines and Resume from 414 to 436, mainly
+for visible service copy and structured data. No file-size exception, runtime
+dependency, or shared mutable browser state was introduced.
+The local IIS rules consolidate `/Projects/` into `/AgenticAI/` and
+explicit directory `Index.html` URLs into directory routes; their live behavior
+still needs checking after deployment. This was not a Search Console performance
+or Core Web Vitals audit, and it makes no ranking or indexing guarantee.
+
+Sin approved committing and pushing these SEO changes on 2026-10-05. Public
+deployment remains a separate step. The Azure App Service plan remains **D1**;
+no accounts, DNS records, hosting plans, or hosting resources were changed.
+After deployment approval, deploy the
+reviewed files/configuration and verify the live routes, redirects, metadata,
+certificate, robots file, and sitemap. Then verify the property in Google Search
+Console and Bing Webmaster Tools through approved accounts and submit the sitemap.
+
+Azure Static Web Apps Free is a future hosting option to evaluate against its
+[official plans](https://learn.microsoft.com/en-us/azure/static-web-apps/plans)
+and [quotas](https://learn.microsoft.com/en-us/azure/static-web-apps/quotas), including
+this site's storage, bandwidth, and custom-domain needs. It has not been provisioned;
+any migration, new account, DNS change, or plan change requires separate approval.
 
 ## Working conventions
 

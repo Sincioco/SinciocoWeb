@@ -9,6 +9,8 @@ restart, package installation, or production build step is required to serve it.
 - `content/*.json` owns lesson titles, descriptions, HTML bodies, and source links.
 - `tools/Build-Docs.ps1` owns the shared documentation layout, lesson order,
   generated HTML pages, search index, and documentation sitemap entries.
+- `../tools/Get-SeoHead.ps1` owns shared search/social metadata, page JSON-LD, and
+  breadcrumbs; the documentation builder supplies each lesson's values.
 - `docs.css` owns documentation layout and components. `../CSS/site.css` owns
   the existing Sincioco.com design tokens, header, navigation, and footer.
 - `docs.js` owns only progressive enhancements: search, copy buttons, simple
@@ -25,13 +27,19 @@ Rebuild after changing lesson content or the shared layout, using PowerShell 7:
 ```powershell
 pwsh -NoProfile -File .\smile2\tools\Build-Docs.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
+pwsh -NoProfile -File .\tools\Check-SEO.ps1
 ```
 
 Optional HTTP verification of every page against a running local site:
 
 ```powershell
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1 -PreviewUrl http://localhost:8877
+pwsh -NoProfile -File .\tools\Check-SEO.ps1 -PreviewUrl http://localhost:8877
 ```
+
+The root SEO checker covers all 21 sitemap routes, metadata, JSON-LD, robots rules,
+and permanent legacy/canonical redirects. See the [root SEO audit](../README.md#seo-audit--2026-10-05) for
+the current HTTP-origin policy, live hosting findings, and approval/deployment steps.
 
 The generator's version value controls cache-busting URLs. Update that value and
 the three parent-page stylesheet URLs for a later CSS/JS release. Use Ctrl+F5 in
