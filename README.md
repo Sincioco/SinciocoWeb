@@ -8,7 +8,7 @@ The private GitHub repository is `Sincioco/SinciocoWeb`.
 - `Index.html`, `Resume/`, and `Military/` contain the main personal-site pages.
 - `CSS/site.css` owns the shared design, header, navigation, and footer.
 - `Images/` and page-specific image folders hold local artwork and photographs.
-- `Projects/` contains the Agentic AI Projects sub-site, six repository README
+- `AgenticAI/` contains the Agentic AI Projects sub-site, six repository README
   snapshots, their local pictures, and its generation/validation scripts.
 - `smile2/` contains the SMILE 2.0 learning site, content, source examples, and
   its generation/validation scripts.
@@ -36,13 +36,13 @@ Run from the website root using the installed PowerShell 7:
 
 ```powershell
 pwsh -NoProfile -File .\smile2\tools\Build-Docs.ps1
-pwsh -NoProfile -File .\Projects\tools\Build-Projects.ps1
+pwsh -NoProfile -File .\AgenticAI\tools\Build-Projects.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
-pwsh -NoProfile -File .\Projects\tools\Check-Projects.ps1
+pwsh -NoProfile -File .\AgenticAI\tools\Check-Projects.ps1
 ```
 
 Both checkers accept `-PreviewUrl http://localhost:8877` when a local server is
-running. `Projects/tools/Test-ProjectBuild.ps1` is the focused regression check
+running. `AgenticAI/tools/Test-ProjectBuild.ps1` is the focused regression check
 for repeatable sitemap generation. See each sub-site's README for ownership,
 source provenance, validation details, and cache-version updates.
 

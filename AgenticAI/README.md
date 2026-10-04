@@ -1,6 +1,6 @@
 # Agentic AI Projects
 
-This static sub-site is available at `/Projects/`. The landing page presents six
+This static sub-site is available at `/AgenticAI/`. The landing page presents six
 projects in the requested order: PMT, Life 2.0, Sin Star I, SMILE 2.0, Sin AI Prompt,
 and SMILE 1.0. Each project keeps its complete public README on one HTML page.
 Its left navigation links to headings on that same page.
@@ -42,11 +42,11 @@ a click before allowing playback with sound; the site never falls back to mute.
 From the website root, using the installed PowerShell 7:
 
 ```powershell
-pwsh -NoProfile -File .\Projects\tools\Build-Projects.ps1
-pwsh -NoProfile -File .\Projects\tools\Check-Projects.ps1
+pwsh -NoProfile -File .\AgenticAI\tools\Build-Projects.ps1
+pwsh -NoProfile -File .\AgenticAI\tools\Check-Projects.ps1
 pwsh -NoProfile -File .\smile2\tools\Check-Docs.ps1
-pwsh -NoProfile -File .\Projects\tools\Test-ProjectBuild.ps1
-pwsh -NoProfile -File .\Projects\tools\Test-SinStarTowns.ps1
+pwsh -NoProfile -File .\AgenticAI\tools\Test-ProjectBuild.ps1
+pwsh -NoProfile -File .\AgenticAI\tools\Test-SinStarTowns.ps1
 ```
 
 With an IIS/IIS Express preview running, add `-PreviewUrl http://localhost:8877`
@@ -109,7 +109,7 @@ New handwritten files range from 22 to 138 lines. Shared CSS grew from 236 to 24
 lines for wrapping navigation; the existing documentation generator and checker
 retain their previous line counts. The build regression checks sitemap stability
 and retention of all 21 entries after repeated builds of either sub-site. It
-covers a newline-growth bug found during this task. Its first two relevant runs passed;
+covers a newline-growth bug found during this task. Its first three relevant runs passed;
 retire it after ten consecutive relevant successful runs under the global policy.
 
 The Towns regression covers the original table's separated name-only cards. It

@@ -32,7 +32,7 @@ function WriteProjectPage([string]$file, [string]$title, [string]$description, [
   <title>$(Encode $title) | Agentic AI Projects · Sincioco</title>
   <meta name="description" content="$(Encode $description)">
   <meta name="theme-color" content="#ffffff">
-  <link rel="canonical" href="https://sincioco.com/Projects/$canonical">
+  <link rel="canonical" href="https://sincioco.com/AgenticAI/$canonical">
   <link rel="icon" href="../Images/favicon.svg?v=20260923" type="image/svg+xml">
   <link rel="stylesheet" href="../CSS/site.css?v=$version">
   <link rel="stylesheet" href="projects.css?v=$version">
@@ -94,9 +94,9 @@ foreach ($project in $projects) {
 }
 $mapPath = Join-Path $siteRoot 'sitemap.xml'
 $sitemap = Get-Content -LiteralPath $mapPath -Raw
-$sitemap = $sitemap -replace '(?s)\s*<url><loc>https://sincioco.com/Projects/.*?</url>', ''
-$urls = @('<url><loc>https://sincioco.com/Projects/</loc><lastmod>2026-10-05</lastmod></url>')
-$urls += $order | ForEach-Object { "<url><loc>https://sincioco.com/Projects/$_.html</loc><lastmod>2026-10-05</lastmod></url>" }
+$sitemap = $sitemap -replace '(?s)\s*<url><loc>https://sincioco.com/AgenticAI/.*?</url>', ''
+$urls = @('<url><loc>https://sincioco.com/AgenticAI/</loc><lastmod>2026-10-05</lastmod></url>')
+$urls += $order | ForEach-Object { "<url><loc>https://sincioco.com/AgenticAI/$_.html</loc><lastmod>2026-10-05</lastmod></url>" }
 $sitemap = $sitemap.Replace('</urlset>', ($urls -join "`n  ") + "`n</urlset>")
 Set-Content -LiteralPath $mapPath -Value $sitemap.TrimEnd() -Encoding utf8
 Write-Output "Built 7 project pages with $sectionCount section links from local source snapshots."

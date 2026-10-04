@@ -4,7 +4,7 @@ param([string]$PreviewUrl)
 
 $ErrorActionPreference = 'Stop'
 $siteRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
-$projectsRoot = Join-Path $siteRoot 'Projects'
+$projectsRoot = Join-Path $siteRoot 'AgenticAI'
 $failures = [Collections.Generic.List[string]]::new()
 $expectedPages = @('Index.html', 'pmt.html', 'life2.html', 'sinstar.html', 'smile2.html', 'sinaiprompt.html', 'smile1.html')
 $expectedLabels = @('PMT', 'Life 2.0', 'Sin Star I', 'SMILE 2.0', 'Sin AI Prompt', 'SMILE 1.0')
@@ -43,14 +43,14 @@ function Resolve-LocalTarget([string]$Page, [string]$Value) {
     return $target
 }
 
-$pages = @(foreach ($folder in @('', 'Resume', 'Military', 'smile2', 'Projects')) {
+$pages = @(foreach ($folder in @('', 'Resume', 'Military', 'smile2', 'AgenticAI')) {
     Get-ChildItem -LiteralPath (Join-Path $siteRoot $folder) -Filter '*.html' -File
 })
 $projectPages = @($pages | Where-Object DirectoryName -EQ $projectsRoot)
 foreach ($name in $expectedPages) {
-    if ($projectPages.Name -notcontains $name) { $failures.Add("Projects/$name is missing.") }
+    if ($projectPages.Name -notcontains $name) { $failures.Add("AgenticAI/$name is missing.") }
 }
-if ($projectPages.Count -ne 7) { $failures.Add("Expected seven immediate Projects HTML pages; found $($projectPages.Count).") }
+if ($projectPages.Count -ne 7) { $failures.Add("Expected seven immediate AgenticAI HTML pages; found $($projectPages.Count).") }
 $htmlCache = @{}
 foreach ($page in $pages) { $htmlCache[$page.FullName] = [regex]::Replace([IO.File]::ReadAllText($page.FullName), '(?s)<!--.*?-->', '') }
 
@@ -84,7 +84,7 @@ foreach ($page in $pages) {
             if (!$target.StartsWith($siteRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { $failures.Add("${relative}: link escapes the site: $value"); continue }
             if (!(Test-Path -LiteralPath $target -PathType Leaf)) { $failures.Add("${relative}: missing local $attribute '$value'."); continue }
             if ($isProject -and $isImage -and $attribute -eq 'src' -and !$target.StartsWith((Join-Path $projectsRoot 'images') + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
-                $failures.Add("${relative}: project image must be stored in Projects/images: $value")
+                $failures.Add("${relative}: project image must be stored in AgenticAI/images: $value")
             }
             if ($value.Contains('#') -and [IO.Path]::GetExtension($target) -eq '.html') {
                 $fragment = [Uri]::UnescapeDataString(($value -split '#', 2)[1])
