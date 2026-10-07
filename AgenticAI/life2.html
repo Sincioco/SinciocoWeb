@@ -31,12 +31,10 @@
   <div class="projects-bar"><div class="container"><nav class="project-tabs" aria-label="Projects"><a href="pmt.html">PMT</a><a href="life2.html" aria-current="page">Life 2.0</a><a href="sinstar.html">Sin Star I</a><a href="smile2.html">SMILE 2.0</a><a href="sinaiprompt.html">Sin AI Prompt</a><a href="smile1.html">SMILE 1.0</a></nav></div></div>
   <div class="container project-layout">
   <aside class="project-sidebar"><details class="section-menu" open><summary>On this page</summary><nav class="section-nav" aria-label="Life 2.0 sections"><a href="#project-overview" aria-current="location">Overview</a><a href="#screenshots" class="section-level-2">Screenshots</a>
-<a href="#major-features" class="section-level-2">Major features</a>
-<a href="#on-device-ai-technology" class="section-level-2">On-device AI technology</a>
-<a href="#run-the-project" class="section-level-2">Run the project</a>
-<a href="#project-structure" class="section-level-2">Project structure</a>
+<a href="#major-features" class="section-level-2">Major Features</a>
+<a href="#on-device-ai-technology" class="section-level-2">On-Device AI Technology</a>
 <a href="#license" class="section-level-2">License</a></nav></details><a class="project-repository" href="https://github.com/Sincioco/life2">View repository ↗</a></aside>
-  <main id="main" class="project-main"><header class="project-heading"><p class="eyebrow">Agentic AI Projects / Life 2.0</p><h1 id="project-overview">Life 2.0</h1><p class="lead">Life 2.0 is a native iPhone and iPad app for tracking recurring activities, building routines, and exploring completion patterns.</p><div class="project-links"><a class="text-link" href="https://github.com/Sincioco/life2">View on GitHub ↗</a></div></header>
+  <main id="main" class="project-main"><header class="project-heading"><p class="eyebrow">Agentic AI Projects / Life 2.0</p><h1 id="project-overview">Life 2.0</h1><p class="lead">Life 2.0 is a native iPhone and iPad app for tracking recurring activities, building routines, and exploring completion patterns. Use the power of on-device AI to get encouragement and insights into your workouts!</p><div class="project-links"><a class="text-link" href="https://github.com/Sincioco/life2">View on GitHub ↗</a></div></header>
   <article class="project-content"><span id="life-20"></span>
 <p>A native iPhone and iPad app for tracking recurring activities, building routines, and seeing patterns in what you complete. Set goals for fitness, work, and everyday life, log completions, and explore your progress through calendars and charts.</p>
 <p>Built with <strong>SwiftUI</strong>, <strong>SwiftData</strong>, <strong>Swift Charts</strong>, and <strong>Foundation Models</strong>. Requires <strong>iOS / iPadOS 26.1 or later</strong>.</p>
@@ -49,7 +47,7 @@
 <figure><div class="gallery-label">Overview — October</div><a href="images/life2/overview-october.png?v=cdf95ce9faadc9c7"><img src="images/life2/overview-october.png?v=cdf95ce9faadc9c7" alt="October overview with activity totals and a Fitness, Work, and Fun category breakdown" width="1320" height="2868" loading="lazy" decoding="async"></a></figure>
 <figure><div class="gallery-label">Streaks &amp; AI insights</div><a href="images/life2/streaks-ai-insights.png?v=ec7590bac2e078b1"><img src="images/life2/streaks-ai-insights.png?v=ec7590bac2e078b1" alt="Completion trends, activity streaks, and generated AI insights with a refresh control" width="1320" height="2868" loading="lazy" decoding="async"></a></figure>
 <figure><div class="gallery-label">Calendar in landscape</div><a href="images/life2/calendar-landscape.png?v=f411ffe87c74296f"><img src="images/life2/calendar-landscape.png?v=f411ffe87c74296f" alt="September calendar in landscape orientation with larger activity icons and the tab bar" width="2868" height="1320" loading="lazy" decoding="async"></a></figure></div>
-<h2 id="major-features">Major features</h2>
+<h2 id="major-features">Major Features</h2>
 <ul>
 <li><strong>Recurring goals and quick logging.</strong> Create daily, weekly, monthly, yearly, or non-recurring activities with custom target counts. Swipe an activity to mark it done, and track progress with gauges and optional monthly history charts.</li>
 <li><strong>Search and category organization.</strong> Group activities into custom categories, filter by category, and search activity or category names. Give categories their own icons and colors.</li>
@@ -65,63 +63,10 @@
 <blockquote>
 <p><strong>Import behavior:</strong> importing requires an empty activity list and replaces stored categories, activities, and history. Export a backup before clearing data through <strong>Options → Delete All Activities</strong>.</p>
 </blockquote>
-<h2 id="on-device-ai-technology">On-device AI technology</h2>
+<h2 id="on-device-ai-technology">On-Device AI Technology</h2>
 <p>The <strong>AI Insights</strong> panel uses Apple's <a href="https://developer.apple.com/documentation/foundationmodels">Foundation Models framework</a> and its on-device <a href="https://developer.apple.com/documentation/foundationmodels/systemlanguagemodel">SystemLanguageModel</a>, the language model behind Apple Intelligence. Insight generation runs locally on the device.</p>
 <p>In <code>Life 2.0/GraphView.swift</code>, a <code>LanguageModelSession</code> receives a compact snapshot of monthly completion counts, 30-day trends, activity streaks, and top activities. Guided generation with <code>@Generable</code> returns a structured <code>GraphInsights</code> value containing a trends summary, a streaks summary, and encouragement. The <strong>Refresh Insights</strong> button requests a new summary.</p>
 <p>Insights require a supported Apple Intelligence device with Apple Intelligence enabled and the system model available. Model availability can differ on simulators. Activity tracking and charts remain available independently of AI insight generation.</p>
-<h2 id="run-the-project">Run the project</h2>
-<ol>
-<li><p>Clone the repository and open the Xcode project:</p>
-<pre><code>git clone https://github.com/Sincioco/life2.git
-cd life2
-open &quot;Life 2.0.xcodeproj&quot;
-</code></pre>
-</li>
-<li><p>Use Xcode with the iOS 26.1 SDK or later, select the <strong>Life 2.0</strong> scheme, and choose an iPhone or iPad simulator running iOS 26.1 or later.</p>
-</li>
-<li><p>Press <strong>⌘R</strong> to build and run. For a physical device, select your own development team under <strong>Signing &amp; Capabilities</strong> first.</p>
-</li>
-</ol>
-<p>The project uses Apple frameworks and has no external package dependencies. AI insights additionally depend on Foundation Models availability on the selected device.</p>
-<h2 id="project-structure">Project structure</h2>
-<div class="project-table" role="region" aria-label="Scrollable project table" tabindex="0"><table>
-<thead>
-<tr>
-<th>Area</th>
-<th>Source</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>App entry point and tab navigation</td>
-<td><code>Life 2.0/Life2App.swift</code>, <code>Life 2.0/MainView.swift</code></td>
-</tr>
-<tr>
-<td>Data models and recurrence logic</td>
-<td><code>Life 2.0/Activity.swift</code>, <code>Life 2.0/ActivityHistory.swift</code>, <code>Life 2.0/Category.swift</code></td>
-</tr>
-<tr>
-<td>Activity list and editing</td>
-<td><code>Life 2.0/ActivitiesView.swift</code>, <code>Life 2.0/AddActivityView.swift</code>, <code>Life 2.0/EditActivityView.swift</code></td>
-</tr>
-<tr>
-<td>Calendar and history</td>
-<td><code>Life 2.0/CalendarView.swift</code>, <code>Life 2.0/CalendarDayCell.swift</code>, <code>Life 2.0/ActivityHistoryView.swift</code></td>
-</tr>
-<tr>
-<td>Charts and AI insights</td>
-<td><code>Life 2.0/GraphView.swift</code></td>
-</tr>
-<tr>
-<td>Categories, preferences, and backups</td>
-<td><code>Life 2.0/CategoryListView.swift</code>, <code>Life 2.0/OptionsView.swift</code>, <code>Life 2.0/ExportImportView.swift</code></td>
-</tr>
-<tr>
-<td>README screenshots</td>
-<td><code>docs/screenshots/</code></td>
-</tr>
-</tbody>
-</table></div>
 <h2 id="license">License</h2>
 <p>Life 2.0 is licensed under the <strong>GNU Affero General Public License v3.0 (AGPL-3.0)</strong>, the same license used by <a href="https://github.com/Sincioco/PMT">PMT</a>. See <a href="https://github.com/Sincioco/life2/blob/4cee5ac2ff15432086f42ec506581e93096cd7d6/LICENSE">LICENSE</a> for the full terms.</p>
 <p>Copyright (c) 2025–2026 <strong>Louiery R. Sincioco</strong>.</p>

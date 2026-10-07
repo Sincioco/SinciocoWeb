@@ -781,6 +781,11 @@
   },
   {
     "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-15-2.png",
+    "deployed": "AgenticAI/images/sinstar/panel-15-2.png"
+  },
+  {
+    "source": "main",
     "path": "AgenticAI/images/sinstar/Kael-Arin.png",
     "deployed": "AgenticAI/images/sinstar/Kael-Arin.png"
   },
