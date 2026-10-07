@@ -1708,5 +1708,10 @@
     "source": "main",
     "path": "AgenticAI/images/pmt/pmt-1-thumbnail-draft-1c.png",
     "deployed": "AgenticAI/images/pmt/pmt-1-thumbnail-draft-1c.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/sin-star-game-poster.png",
+    "deployed": "AgenticAI/images/sinstar/sin-star-game-poster.png"
   }
 ]

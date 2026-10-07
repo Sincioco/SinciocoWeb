@@ -6,8 +6,8 @@ $ErrorActionPreference = 'Stop'
 $siteRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $projectsRoot = Join-Path $siteRoot 'AgenticAI'
 $failures = [Collections.Generic.List[string]]::new()
-$expectedPages = @('Index.html', 'pmt.html', 'life2.html', 'sinstar.html', 'smile2.html', 'sinaiprompt.html', 'smile1.html')
-$expectedLabels = @('PMT', 'Life 2.0', 'Sin Star I', 'SMILE 2.0', 'Sin AI Prompt', 'SMILE 1.0')
+$expectedPages = @('Index.html', 'sinaiprompt.html', 'pmt.html', 'sinstar.html', 'life2.html', 'smile2.html', 'smile1.html')
+$expectedLabels = @('Sin AI Prompt', 'PMT', 'Sin Star I', 'Life 2.0', 'SMILE 2.0', 'SMILE 1.0')
 
 function Get-Attribute([string]$Tag, [string]$Name) {
     $pattern = '(?is)(?:^|\s)' + [regex]::Escape($Name) + '\s*=\s*(?:"(?<v>[^"]*)"|''(?<v>[^'']*)''|(?<v>[^\s"''=<>`]+))'

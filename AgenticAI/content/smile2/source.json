@@ -5,6 +5,7 @@
   "commit": "61cc9253d29a17ed264eb416e912c648b0a5d845",
   "readmePath": "README.md",
   "description": "A BASIC-inspired programming language, native Windows compiler and game-development toolchain powering Sin Star I.",
+  "cardImage": "images/smile2/08-smile-2.0-logo.png",
   "images": [
     {
       "source": "docs/images/readme/2026-09-24/battle-system.jpg",

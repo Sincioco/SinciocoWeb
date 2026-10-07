@@ -7,7 +7,7 @@ $siteRoot = Split-Path $projectRoot -Parent
 . (Join-Path $PSScriptRoot 'Convert-ProjectReadme.ps1')
 . (Join-Path $PSScriptRoot 'Format-SinStarReadme.ps1')
 . (Join-Path $siteRoot 'tools/Get-SeoHead.ps1')
-$order = @('pmt', 'life2', 'sinstar', 'smile2', 'sinaiprompt', 'smile1')
+$order = @('sinaiprompt', 'pmt', 'sinstar', 'life2', 'smile2', 'smile1')
 $projects = foreach ($slug in $order) {
     $source = Get-Content -LiteralPath (Join-Path $projectRoot "content/$slug/source.json") -Raw | ConvertFrom-Json
     if ($slug -eq 'sinaiprompt') {
@@ -69,11 +69,11 @@ $videoScript
 "@
     Set-Content -LiteralPath (Join-Path $projectRoot $file) -Value $html -Encoding utf8
 }
-$cardOrder = @('sinaiprompt', 'sinstar', 'pmt', 'life2', 'smile2', 'smile1')
+$cardOrder = $order
 $cards = foreach ($slug in $cardOrder) {
     $project = $projects | Where-Object slug -EQ $slug
     $cover = if ($project.cardImage) { $project.cardImage } elseif ($project.heroImage) { $project.heroImage } else { $project.images[0].localPath }
-    $coverClass = if ($project.slug -eq 'life2') { 'project-card-image' } else { 'project-card-image project-card-image-cover' }
+    $coverClass = if ($project.slug -eq 'life2') { 'project-card-image' } elseif ($project.slug -eq 'smile2') { 'project-card-image project-card-image-logo' } else { 'project-card-image project-card-image-cover' }
     if ($project.slug -eq 'sinaiprompt') { $cover = 'images/sinaiprompt/sin-ai-prompt-thumbnail.png' }
     $coverHtml = if ($cover) { '<img src="{0}" alt="{1}" loading="lazy" decoding="async">' -f (Encode $cover), (Encode ($project.name + ' project preview')) } else { '' }
     if ($project.slug -eq 'sinstar') {
