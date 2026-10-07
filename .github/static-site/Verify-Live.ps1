@@ -60,6 +60,14 @@ try {
         }
     }
     foreach ($origin in $origins) {
+        foreach ($folder in @('/AgenticAI','/Military','/Resume','/smile2')) {
+            $url = $origin + $folder
+            Add-LiveCheck 'canonical-folder-slash' $url {
+                $first = Get-VerificationResponse -Client $firstClient -Uri $url -Method HEAD
+                $final = Get-VerificationResponse -Client $client -Uri $url -Method HEAD
+                [pscustomobject]@{passed=($first.Status -eq 301 -and @(($folder + '/'), ($origin + $folder + '/')) -ccontains $first.Location -and $final.Status -eq 200 -and $final.FinalUrl -ceq ($origin + $folder + '/'));status=$first.Status;location=$first.Location;final_status=$final.Status;final_url=$final.FinalUrl}
+            }
+        }
         foreach ($wrapper in @(@{path='/BookOne/';local='BookOne/index.html'},@{path='/SinStar_Storyboard/';local='SinStar_Storyboard/index.html'})) {
             foreach ($url in @(($origin + $wrapper.path.TrimEnd('/')), ($origin + $wrapper.path), ($origin + $wrapper.path + 'index.html'))) {
                 Add-LiveCheck 'wrapper-bytes' $url {

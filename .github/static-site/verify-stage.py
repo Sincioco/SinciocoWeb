@@ -40,7 +40,10 @@ for rule in config['routes']:
     rules[path] = rule
     normalized[key] = path
     target = rule.get('redirect', rule.get('rewrite'))
-    if target and target.startswith('/') and normalized_route(target) == key:
+    directory_slash_redirect = (rule.get('statusCode') == 301 and
+        rule.get('redirect') == path + '/' and not path.endswith('/') and
+        (root / path.lstrip('/') / 'index.html').is_file())
+    if target and target.startswith('/') and normalized_route(target) == key and not directory_slash_redirect:
         fail('normalized redirect loop', route=path)
     if target and urlsplit(target).scheme:
         parsed = urlsplit(target)
@@ -117,6 +120,8 @@ def resolve_local_link(path):
             path = posixpath.normpath(unquote(parsed.path))
             if not path.startswith('/'):
                 path = '/' + path
+            if parsed.path.endswith('/') and path != '/':
+                path += '/'
             continue
         candidate = root / path.lstrip('/')
         if candidate.is_dir():
@@ -137,6 +142,8 @@ for page in root.rglob('*.html'):
         base = '/' + page.relative_to(root).parent.as_posix().rstrip('.') + '/'
         path = posixpath.normpath(raw if raw.startswith('/') else base + raw)
         path = '/' + path.lstrip('/')
+        if raw.endswith('/') and path != '/':
+            path += '/'
         checked += 1
         kind, resolved = resolve_local_link(path)
         if kind == 'external':
@@ -213,6 +220,13 @@ if sitemap_route.get('statusCode') != 301 or sitemap_route.get('redirect') != bo
 if 'sitemap-sinstar.xml' in expected_paths:
     fail('Retired Azure reader sitemap is still in the publication allowlist')
 locations = [node.text or '' for node in ET.parse(root / 'sitemap.xml').findall('.//{*}loc')]
+# Azure's explicit trailingSlash modes strip .html and redirect these canonicals.
+if config.get('trailingSlash') in ('auto', 'always', 'never') and any(urlsplit(url).path.endswith('.html') for url in locations):
+    fail('Azure URL normalization would redirect authored .html canonical URLs')
+for folder in ('/AgenticAI', '/Military', '/Resume', '/smile2'):
+    rule = rules.get(folder, {})
+    if rule.get('redirect') != folder + '/' or rule.get('statusCode') != 301:
+        fail('Relative assets require an explicit bare-folder slash redirect', route=folder)
 if any(not url.startswith('https://sincioco.com/') for url in locations):
     fail('Main sitemap must retain its original main-host canonical URLs')
 if any('/BookOne' in url or '/SinStar_Storyboard' in url for url in locations):
