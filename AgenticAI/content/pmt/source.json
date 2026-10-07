@@ -5,6 +5,7 @@
   "commit": "ec73ff3ad9a371deedcdc23ca32d5988c2336b6c",
   "readmePath": "README.md",
   "description": "PMT brings project planning, software delivery, QA, team documentation, diagrams, and daily coordination into one application.",
+  "cardImage": "images/pmt/pmt-thumbnail.png",
   "images": [
     {
       "source": "docs/screenshots/readme/kanban-board.jpg",

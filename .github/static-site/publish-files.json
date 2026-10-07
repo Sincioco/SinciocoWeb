@@ -591,6 +591,11 @@
   },
   {
     "source": "main",
+    "path": "AgenticAI/images/pmt/pmt-thumbnail.png",
+    "deployed": "AgenticAI/images/pmt/pmt-thumbnail.png"
+  },
+  {
+    "source": "main",
     "path": "AgenticAI/images/pmt/backlog.jpg",
     "deployed": "AgenticAI/images/pmt/backlog.jpg"
   },
