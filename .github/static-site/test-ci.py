@@ -104,7 +104,7 @@ class PublicationContractTests(unittest.TestCase):
 
     def test_exact_reviewed_main_only_allowlist(self):
         entries=json.loads((ROOT/'publish-files.json').read_text(encoding='utf-8-sig'))
-        self.assertEqual(len(entries),341)
+        self.assertEqual(len(entries),342)
         self.assertTrue(all(entry['source']=='main' for entry in entries))
         paths=[public_relative(entry['deployed']).as_posix() for entry in entries]
         self.assertEqual(len({p.casefold() for p in paths}),len(paths))

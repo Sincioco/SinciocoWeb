@@ -1703,5 +1703,10 @@
     "source": "main",
     "path": "wrapper-nav.js",
     "deployed": "wrapper-nav.js"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/pmt-1-thumbnail-draft-1c.png",
+    "deployed": "AgenticAI/images/pmt/pmt-1-thumbnail-draft-1c.png"
   }
 ]
