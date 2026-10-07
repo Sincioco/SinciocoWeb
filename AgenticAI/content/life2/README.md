@@ -90,6 +90,8 @@ The project uses Apple frameworks and has no external package dependencies. AI i
 
 ## License
 
-Life 2.0 is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**, the same license used by [PMT](https://github.com/Sincioco/PMT). See [LICENSE](LICENSE) for the full terms.
+Life 2.0 source code is licensed under the **MIT License**. See [LICENSE](LICENSE) for the full terms.
+
+Apple frameworks and SF Symbols remain subject to Apple's terms; they are not relicensed by this project.
 
 Copyright (c) 2025–2026 **Louiery R. Sincioco**.

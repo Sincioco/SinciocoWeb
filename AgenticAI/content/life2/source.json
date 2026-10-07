@@ -2,8 +2,9 @@
   "slug": "life2",
   "name": "Life 2.0",
   "repository": "https://github.com/Sincioco/life2",
-  "commit": "4cee5ac2ff15432086f42ec506581e93096cd7d6",
+  "commit": "15d4e3e40746c7e6a91540d7f3e6304ded3c35c0",
   "readmePath": "README.md",
+  "retrievedDate": "October 7, 2026",
   "description": "Life 2.0 is a native iPhone and iPad app for tracking recurring activities, building routines, and exploring completion patterns.",
   "cardImage": "images/life2/life-2-thumbnail.png",
   "images": [
