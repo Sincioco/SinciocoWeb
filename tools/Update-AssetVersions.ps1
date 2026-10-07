@@ -12,6 +12,7 @@ $changedPages = [Collections.Generic.List[string]]::new()
 foreach ($location in $sitemap.urlset.url.loc) {
     $relative = [Uri]::UnescapeDataString(([Uri]$location).AbsolutePath).TrimStart('/')
     if (!$relative -or $relative.EndsWith('/')) { $relative += 'Index.html' }
+    elseif ([IO.Path]::GetExtension($relative) -eq '') { $relative += '.html' }
     $pagePath = [IO.Path]::GetFullPath((Join-Path $sitePath $relative))
     if (!$pagePath.StartsWith($sitePath + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
         throw "Page path escapes the website: $relative"

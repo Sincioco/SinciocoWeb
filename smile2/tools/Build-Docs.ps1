@@ -49,7 +49,7 @@ foreach ($id in $order) {
     $nextLink = if ($position -lt $order.Count-1) { '<a href="{0}"><small>Up next →</small>{1}</a>' -f (PageHref $order[$position+1]),(Encode $labels[$position+1]) }
     $tocHtml = if ($sections.Count -gt 0) { '<aside class="page-toc" aria-label="On this page"><p>On this page</p>'+($toc -join "`n")+'</aside>' }
     $heroClass = if ($id -eq 'index') { ' doc-home' } else { '' }
-    $pageUrl = 'https://sincioco.com/smile2/' + $(if ($id -ne 'index') { $href })
+    $pageUrl = 'https://sincioco.com/smile2/' + $(if ($id -ne 'index') { $id })
     $breadcrumbs = @(@{ name = 'Home'; url = 'https://sincioco.com/' }, @{ name = 'SMILE 2.0 Guide'; url = 'https://sincioco.com/smile2/' })
     if ($id -ne 'index') { $breadcrumbs += @{ name = $page.title; url = $pageUrl } }
     $seoHead = Get-SeoHead -Title ($page.title + ' | SMILE 2.0 · Sincioco') -Description $page.description -Url $pageUrl -Image 'https://sincioco.com/smile2/images/smile-2.0-logo.png' -ImageAlt 'SMILE 2.0 programming language logo' -PageType TechArticle -Breadcrumbs $breadcrumbs
@@ -105,7 +105,7 @@ foreach ($entry in $api.functions) {
 }
 $searchJson = ConvertTo-Json -InputObject @($search.ToArray()) -Depth 8 -Compress
 Set-Content -LiteralPath (Join-Path $site 'search-index.js') -Value "window.SMILE_SEARCH = $searchJson;" -Encoding utf8
-$urls = foreach ($id in $order) { '<url><loc>https://sincioco.com/smile2/{0}</loc><lastmod>2026-10-05</lastmod></url>' -f $(if ($id -ne 'index') { PageHref $id }) }
+$urls = foreach ($id in $order) { '<url><loc>https://sincioco.com/smile2/{0}</loc><lastmod>2026-10-05</lastmod></url>' -f $(if ($id -ne 'index') { $id }) }
 $mapPath = Join-Path $root 'sitemap.xml'
 $sitemap = Get-Content -LiteralPath $mapPath -Raw
 $sitemap = $sitemap -replace '(?s)\s*<url><loc>https://sincioco.com/smile2/.*?</url>',''

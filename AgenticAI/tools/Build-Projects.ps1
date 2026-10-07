@@ -25,7 +25,7 @@ function ProjectTabs([string]$current) {
     '<nav class="project-tabs" aria-label="Projects">' + ($items -join '') + '</nav>'
 }
 function WriteProjectPage([string]$file, [string]$title, [string]$description, [string]$content, [string]$current) {
-    $canonical = if ($file -eq 'Index.html') { '' } else { $file }
+    $canonical = if ($file -eq 'Index.html') { '' } else { [IO.Path]::GetFileNameWithoutExtension($file) }
     $tabs = ProjectTabs $current
     $videoScript = if ($current -eq 'sinstar') { '<script src="project-video.js" defer></script>' } else { '' }
     $url = "https://sincioco.com/AgenticAI/$canonical"
@@ -75,11 +75,11 @@ $cards = foreach ($project in $projects) {
     $coverHtml = if ($cover) { '<img src="{0}" alt="{1}" loading="lazy" decoding="async">' -f (Encode $cover), (Encode ($project.name + ' project preview')) } else { '' }
     if ($project.slug -eq 'sinstar') {
     @"
-<article class="project-card"><div class="project-card-image">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><div class="project-card-actions" style="display:flex;flex-wrap:wrap;gap:.75rem 1rem"><a class="text-link" href="$($project.slug).html">Explore project <span aria-hidden="true">→</span></a><a class="text-link" href="../SinStar_Storyboard/">Explore web site <span aria-hidden="true">→</span></a></div></div></article>
+<article class="project-card"><div class="project-card-image">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><div class="project-card-actions" style="display:flex;flex-wrap:wrap;gap:.75rem 1rem"><a class="text-link" href="$($project.slug).html">Github Repo <span aria-hidden="true">→</span></a><a class="text-link" href="../SinStar_Storyboard/">Storyboard <span aria-hidden="true">→</span></a><a class="text-link" href="https://sinstar.sincioco.com/BookOne">Audio Book <span aria-hidden="true">→</span></a></div></div></article>
 "@
     } else {
     @"
-<a class="project-card" href="$($project.slug).html"><div class="project-card-image">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><span class="text-link">Explore project <span aria-hidden="true">→</span></span></div></a>
+<a class="project-card" href="$($project.slug).html"><div class="project-card-image">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><span class="text-link">Github Repo <span aria-hidden="true">→</span></span></div></a>
 "@
     }
 }
@@ -132,7 +132,7 @@ $mapPath = Join-Path $siteRoot 'sitemap.xml'
 $sitemap = Get-Content -LiteralPath $mapPath -Raw
 $sitemap = $sitemap -replace '(?s)\s*<url><loc>https://sincioco.com/AgenticAI/.*?</url>', ''
 $urls = @('<url><loc>https://sincioco.com/AgenticAI/</loc><lastmod>2026-10-05</lastmod></url>')
-$urls += $order | ForEach-Object { "<url><loc>https://sincioco.com/AgenticAI/$_.html</loc><lastmod>2026-10-05</lastmod></url>" }
+$urls += $order | ForEach-Object { "<url><loc>https://sincioco.com/AgenticAI/$_</loc><lastmod>2026-10-05</lastmod></url>" }
 $sitemap = $sitemap.Replace('</urlset>', ($urls -join "`n  ") + "`n</urlset>")
 Set-Content -LiteralPath $mapPath -Value $sitemap.TrimEnd() -Encoding utf8
 & (Join-Path $siteRoot 'tools/Update-AssetVersions.ps1') -SiteRoot $siteRoot

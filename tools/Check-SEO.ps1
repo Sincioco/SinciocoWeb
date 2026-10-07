@@ -149,6 +149,8 @@ foreach ($location in $locations) {
     $relative = [Uri]::UnescapeDataString($uri.AbsolutePath).TrimStart('/')
     $path = [IO.Path]::GetFullPath((Join-Path $siteRoot $relative))
     if ($uri.AbsolutePath.EndsWith('/')) { $path = Join-Path $path 'Index.html' }
+    elseif ([IO.Path]::GetExtension($uri.AbsolutePath) -eq '') { $path += '.html' }
+    else { $failures.Add("sitemap.xml must use extensionless page URLs or slash folder URLs ('$location')."); continue }
     if (!$path.StartsWith($siteRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
         $failures.Add("sitemap.xml path escapes the website ('$location')."); continue
     }

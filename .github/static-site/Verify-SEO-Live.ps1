@@ -43,6 +43,8 @@ try {
         if (-not $uri.IsAbsoluteUri -or $uri.Scheme -cne 'https' -or $uri.Host -cne 'sincioco.com' -or $uri.UserInfo -or $uri.Query -or $uri.Fragment) { throw 'Unexpected canonical URL in main sitemap.' }
         $relative = $uri.AbsolutePath.TrimStart('/')
         if (-not $relative -or $relative.EndsWith('/')) { $relative += 'index.html' }
+        elseif ([IO.Path]::GetExtension($relative) -eq '') { $relative += '.html' }
+        else { throw 'Main canonical page URLs must be extensionless or end in a folder slash.' }
         if ($relative.Contains('..') -or $relative.Contains('%') -or $relative.Contains('\')) { throw 'Unsafe canonical path in main sitemap.' }
         $checks += [pscustomobject]@{url=$location;local=(Join-Path $siteRoot $relative);html=$true}
     }
@@ -61,6 +63,20 @@ try {
                     (($metadata.robots -join ',') + ',' + $r.XRobotsTag) -notmatch '(?i)\b(?:noindex|none)\b')
             }
             [pscustomobject]@{passed=($r.Status -eq 200 -and $r.FinalUrl -ceq $check.url -and $bytes.matches_staged -and $metadataOkay);status=$r.Status;final_url=$r.FinalUrl;bytes=$bytes;metadata=$metadata;x_robots_tag=$r.XRobotsTag}
+        }
+    }
+    # Retained .html hyperlinks must redirect to the same final page on both hosts.
+    foreach ($location in $locations) {
+        $canonicalPath = ([Uri]$location).AbsolutePath
+        if ($canonicalPath.EndsWith('/')) { continue }
+        foreach ($origin in @('https://sincioco.com','https://sinstar.sincioco.com')) {
+            $legacyUrl = $origin + $canonicalPath + '.html'
+            $expectedFinal = $origin + $canonicalPath
+            Add-SeoCheck 'html-compatibility-redirect' $legacyUrl {
+                $first = Get-VerificationResponse -Client $firstClient -Uri $legacyUrl -Method HEAD
+                $final = Get-VerificationResponse -Client $client -Uri $legacyUrl -Method HEAD
+                [pscustomobject]@{passed=($first.Status -eq 301 -and @($canonicalPath,$expectedFinal) -ccontains $first.Location -and $final.Status -eq 200 -and $final.FinalUrl -ceq $expectedFinal);status=$first.Status;location=$first.Location;final_status=$final.Status;final_url=$final.FinalUrl;expected_final_url=$expectedFinal}
+            }
         }
     }
     $wrappers = @(@{path='/BookOne/';local='BookOne/index.html';canonical=$bookPages},@{path='/SinStar_Storyboard/';local='SinStar_Storyboard/index.html';canonical=$storyPages})

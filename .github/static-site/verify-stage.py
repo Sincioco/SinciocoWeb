@@ -126,6 +126,8 @@ def resolve_local_link(path):
         candidate = root / path.lstrip('/')
         if candidate.is_dir():
             candidate = candidate / 'index.html'
+        elif not path.endswith('/') and not candidate.is_file() and not candidate.suffix:
+            candidate = candidate.with_suffix('.html')
         return 'file', candidate
     return 'error', 'Route depth exceeded'
 
@@ -220,13 +222,40 @@ if sitemap_route.get('statusCode') != 301 or sitemap_route.get('redirect') != bo
 if 'sitemap-sinstar.xml' in expected_paths:
     fail('Retired Azure reader sitemap is still in the publication allowlist')
 locations = [node.text or '' for node in ET.parse(root / 'sitemap.xml').findall('.//{*}loc')]
-# Azure's explicit trailingSlash modes strip .html and redirect these canonicals.
-if config.get('trailingSlash') in ('auto', 'always', 'never') and any(urlsplit(url).path.endswith('.html') for url in locations):
-    fail('Azure URL normalization would redirect authored .html canonical URLs')
+# Native auto supplies folder slashes and extensionless final HTML URLs.
+if config.get('trailingSlash') != 'auto':
+    fail('Azure native trailingSlash:auto is required for final canonical URLs')
 for folder in ('/AgenticAI', '/Military', '/Resume', '/smile2'):
-    rule = rules.get(folder, {})
-    if rule.get('redirect') != folder + '/' or rule.get('statusCode') != 301:
-        fail('Relative assets require an explicit bare-folder slash redirect', route=folder)
+    if folder in rules:
+        fail('Bare-folder routes must use native auto normalization', route=folder)
+if len(locations) != 21 or len(set(locations)) != 21:
+    fail('Main sitemap must contain 21 unique canonical pages')
+canonical_files_checked = 0
+canonical_file_paths = set()
+for location in locations:
+    parsed = urlsplit(location)
+    if parsed.scheme != 'https' or parsed.netloc != 'sincioco.com' or parsed.query or parsed.fragment:
+        fail('Main canonical URL must use the exact HTTPS main origin', url=location)
+        continue
+    path = unquote(parsed.path)
+    if not path.endswith('/') and Path(path).suffix:
+        fail('Main canonical page URLs must be extensionless', url=location)
+        continue
+    kind, resolved = resolve_local_link(path)
+    if kind != 'file' or resolved.suffix != '.html' or not resolved.is_file():
+        fail('Main canonical URL has no prepared HTML file', url=location)
+        continue
+    if not path.endswith('/') and (root / path.lstrip('/')).is_dir():
+        fail('Main canonical folders must include a trailing slash', url=location)
+        continue
+    if resolved in canonical_file_paths:
+        fail('Main canonical URLs must resolve to distinct HTML files', url=location)
+    canonical_file_paths.add(resolved)
+    page = Page()
+    page.feed(resolved.read_text(encoding='utf-8-sig'))
+    if page.canonicals != [location]:
+        fail('Main page canonical does not match its native final URL', url=location)
+    canonical_files_checked += 1
 if any(not url.startswith('https://sincioco.com/') for url in locations):
     fail('Main sitemap must retain its original main-host canonical URLs')
 if any('/BookOne' in url or '/SinStar_Storyboard' in url for url in locations):
@@ -240,7 +269,7 @@ summary = {'files':len(actual), 'bytes':sum(item['bytes'] for item in actual),
            'copied_files_hash_verified':len(manifest), 'html_links_checked':checked,
            'external_redirect_links_resolved':external_resolutions,
            'routes':len(rules), 'reader_asset_redirects':len(expected_asset_routes),
-           'main_canonical_pages':len(locations), 'wrappers':len(contract['wrappers']),
+           'main_canonical_pages':len(locations), 'canonical_html_files_checked':canonical_files_checked, 'wrappers':len(contract['wrappers']),
            'novel_source_entries':sum(entry['source']=='novel' for entry in entries), 'failures':failures}
 if len(actual) > 15000 or summary['bytes'] > 250 * 1024 * 1024:
     fail('deployment exceeds Azure Free quota')

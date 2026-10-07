@@ -115,6 +115,13 @@ class PublicationContractTests(unittest.TestCase):
         self.assertIn('wrapper-nav.js',paths)
         self.assertEqual(json.loads((ROOT/'sources.json').read_text()),{'main':'../..'})
 
+    def test_native_auto_preserves_final_canonical_contract(self):
+        config=json.loads((ROOT/'site-config/staticwebapp.config.json').read_text(encoding='utf-8-sig'))
+        self.assertEqual(config.get('trailingSlash'),'auto')
+        self.assertEqual(len(config['routes']),141)
+        paths={rule['route'] for rule in config['routes']}
+        self.assertTrue(paths.isdisjoint({'/AgenticAI','/Military','/Resume','/smile2'}))
+
     def test_workflow_never_deploys_pull_requests_or_builds_repository_root(self):
         text=(ROOT.parent/'workflows/deploy-sincioco-free.yml').read_text()
         triggers=text.split('\npermissions:',1)[0]
