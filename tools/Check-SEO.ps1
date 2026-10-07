@@ -9,7 +9,7 @@ param([string]$PreviewUrl)
 
 $ErrorActionPreference = 'Stop'
 $siteRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$siteOrigin = 'http://sincioco.com'
+$siteOrigin = 'https://sincioco.com'
 $failures = [Collections.Generic.List[string]]::new()
 $records = [Collections.Generic.List[object]]::new()
 $pageTypes = @('WebPage', 'ProfilePage', 'CollectionPage', 'TechArticle', 'Article', 'AboutPage')
@@ -219,6 +219,7 @@ else {
     $robots = [IO.File]::ReadAllText($robotsPath)
     $robotSitemaps = @([regex]::Matches($robots, '(?im)^\s*Sitemap:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value })
     if ($robotSitemaps -cnotcontains ($siteOrigin + '/sitemap.xml')) { $failures.Add("robots.txt must declare $siteOrigin/sitemap.xml.") }
+    if ($robotSitemaps -ccontains 'https://sinstar.sincioco.com/sitemap-sinstar.xml') { $failures.Add('robots.txt still declares the retired Azure reader sitemap.') }
     $activeAgents = @()
     $hasRules = $false
     $allowsAll = $false

@@ -16,8 +16,8 @@ function Get-SeoHead {
         name = $Title
         description = $Description
         inLanguage = 'en'
-        isPartOf = @{ '@id' = 'http://sincioco.com/#website' }
-        author = @{ '@type' = 'Person'; '@id' = 'http://sincioco.com/#louiery-sincioco'; name = 'Louiery Sincioco' }
+        isPartOf = @{ '@id' = 'https://sincioco.com/#website' }
+        author = @{ '@type' = 'Person'; '@id' = 'https://sincioco.com/#louiery-sincioco'; name = 'Louiery Sincioco' }
         image = $Image
     }
     $graph = @($page)

@@ -1,7 +1,64 @@
 # SinciocoWeb
 
 Source and published static files for the Sincioco.com personal website.
-The private GitHub repository is `Sincioco/SinciocoWeb`.
+The GitHub repository is `Sincioco/SinciocoWeb`.
+
+
+## Current hosting and publication
+
+The personal site uses the existing Azure Static Web App **sincioco-free**, on
+the **Free** plan, with HTTPS at <https://sincioco.com> and
+<https://sinstar.sincioco.com>. Earlier dated audit notes below describe the
+previous IIS/App Service setup and are retained as historical evidence.
+
+`BookOne/` and `SinStar_Storyboard/` are small iframe pages with direct-open links.
+Their content is hosted by the public GitHub Pages repositories
+[SinStar_Audio_BookOne](https://github.com/Sincioco/SinStar_Audio_BookOne) and
+[SinStar_Storyboard](https://github.com/Sincioco/SinStar_Storyboard), each using
+`main` and `/docs`. Old novel URLs are preserved by the reviewed Azure routes.
+Reader position and downloaded audio belong to their browser origin; they do
+not automatically transfer from Azure to GitHub Pages or between an iframe and
+the standalone reader.
+
+The `Deploy sincioco-free` workflow publishes reviewed pushes to `main`, or a
+manual run on `main`, only while this repository is public and the repository
+variable `AZURE_SINCIOCO_FREE_DEPLOY_ENABLED` equals `true`. It requires the
+already-configured app-scoped Actions secret
+`AZURE_STATIC_WEB_APPS_API_TOKEN_SINCIOCO_FREE`; never put its value in a file,
+commit, command, or chat. Clearing the enable variable disables future runs.
+
+The workflow uses standard Ubuntu runners, read-only GitHub permissions and
+full-commit action pins. It performs no PR or preview deployment. It builds
+only `.github/static-site/publish-files.json`, checks the complete prepared
+payload and SEO, then uploads `.github/static-site/website` to the existing app.
+Post-upload checks verify the expected Azure hostname, custom-domain content,
+redirects and SEO. A failed post-upload check can mean the upload already
+happened; inspect the run before retrying. The official Azure action's pinned
+Dockerfile still uses Microsoft's mutable native-client `stable` image.
+
+For an offline preparation check using installed Python 3.12+ and PowerShell 7:
+
+```powershell
+python -B .github/static-site/test-ci.py
+python -B .github/static-site/prepare-site.py
+python -B .github/static-site/prepare-site.py --check
+python -B .github/static-site/verify-stage.py
+pwsh -NoProfile -File tools/Check-SEO.ps1
+```
+
+The existing private `Deployment/Deploy-Free-Site.ps1` remains the local manual
+fallback. `Deployment/`, credentials, backups, generated payloads and diagnostics
+are excluded from Git. Keep the approved public-file list, migration contract,
+route config and shared validators synchronized between CI and that local flow
+when changing publication boundaries. Git may normalize text line endings;
+each flow verifies the exact bytes it prepares and uploads.
+
+The book and storyboard updaters operate separately from Git publication:
+see [audiobook update instructions](tools/README-BookOne.md) and
+[storyboard update instructions](tools/README-Storyboard.md). They preserve
+authoring sources and back up the previous public copy before replacement.
+Azure retirement workers preserve existing audio caches and saved state while
+retiring only the old reader shell after old tabs close normally.
 
 ## Site structure
 
@@ -57,8 +114,8 @@ for repeatable sitemap generation. See each sub-site's README for ownership,
 source provenance and validation details.
 
 The generators use local source snapshots and installed PowerShell/Windows
-capabilities; they require no package downloads. Publishing this repository does
-not deploy changes to the website.
+capabilities; they require no package downloads. Main-branch pushes deploy through
+the guarded Azure workflow described above when its enable variable is set.
 
 ## Asset caching — 2026-10-05
 

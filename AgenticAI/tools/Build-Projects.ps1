@@ -1,4 +1,4 @@
-# Build static project pages from reviewed, pinned local README snapshots.
+﻿# Build static project pages from reviewed, pinned local README snapshots.
 [CmdletBinding()]
 param()
 $ErrorActionPreference = 'Stop'
@@ -28,16 +28,16 @@ function WriteProjectPage([string]$file, [string]$title, [string]$description, [
     $canonical = if ($file -eq 'Index.html') { '' } else { $file }
     $tabs = ProjectTabs $current
     $videoScript = if ($current -eq 'sinstar') { '<script src="project-video.js" defer></script>' } else { '' }
-    $url = "http://sincioco.com/AgenticAI/$canonical"
-    $breadcrumbs = @(@{ name = 'Home'; url = 'http://sincioco.com/' }, @{ name = 'Agentic AI Projects'; url = 'http://sincioco.com/AgenticAI/' })
-    $imageUrl = 'http://sincioco.com/Resume/Sin_San_Francisco_Cropped.png'
+    $url = "https://sincioco.com/AgenticAI/$canonical"
+    $breadcrumbs = @(@{ name = 'Home'; url = 'https://sincioco.com/' }, @{ name = 'Agentic AI Projects'; url = 'https://sincioco.com/AgenticAI/' })
+    $imageUrl = 'https://sincioco.com/Resume/Sin_San_Francisco_Cropped.png'
     $imageAlt = 'Louiery Sincioco, software engineer and architect'
     $pageType = 'CollectionPage'
     if ($current) {
         $project = $projects | Where-Object slug -EQ $current
         $breadcrumbs += @{ name = $project.name; url = $url }
         $cover = if ($project.heroImage) { $project.heroImage } else { $project.images[0].localPath }
-        if ($cover -notmatch '\.svg$') { $imageUrl = 'http://sincioco.com/AgenticAI/' + $cover; $imageAlt = $project.name + ' project preview' }
+        if ($cover -notmatch '\.svg$') { $imageUrl = 'https://sincioco.com/AgenticAI/' + $cover; $imageAlt = $project.name + ' project preview' }
         $pageType = 'WebPage'
     }
     $seoHead = Get-SeoHead -Title $title -Description $description -Url $url -Image $imageUrl -ImageAlt $imageAlt -PageType $pageType -Breadcrumbs $breadcrumbs
@@ -73,9 +73,15 @@ $cards = foreach ($project in $projects) {
     $cover = if ($project.heroImage) { $project.heroImage } else { $project.images[0].localPath }
     if ($project.slug -eq 'sinaiprompt') { $cover = 'images/sinaiprompt/sin-ai-prompt-thumbnail.png' }
     $coverHtml = if ($cover) { '<img src="{0}" alt="{1}" loading="lazy" decoding="async">' -f (Encode $cover), (Encode ($project.name + ' project preview')) } else { '' }
+    if ($project.slug -eq 'sinstar') {
+    @"
+<article class="project-card"><div class="project-card-image">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><div class="project-card-actions" style="display:flex;flex-wrap:wrap;gap:.75rem 1rem"><a class="text-link" href="$($project.slug).html">Explore project <span aria-hidden="true">→</span></a><a class="text-link" href="../SinStar_Storyboard/">Explore web site <span aria-hidden="true">→</span></a></div></div></article>
+"@
+    } else {
     @"
 <a class="project-card" href="$($project.slug).html"><div class="project-card-image">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><span class="text-link">Explore project <span aria-hidden="true">→</span></span></div></a>
 "@
+    }
 }
 $landing = @"
 <main id="main" class="container projects-landing"><header class="page-hero"><p class="eyebrow">Ideas into working software</p><h1>Agentic AI Projects</h1><p class="lead">Explore my work in AI-assisted software development: business tools, iPhone and iPad apps, programming languages, and games.</p><p>I help teams in the United States and the Philippines build custom software using AI, with hands-on software engineering, human review, and testing. These six projects show the kinds of products and tools I build.</p><a class="text-link" href="../#custom-software-services">Software engineering and AI development services →</a></header><div class="project-grid">$($cards -join "`n")</div><section class="section-heading"><h2>Build custom software for your team</h2><p>Discuss a business application, an AI integration, or a workflow you want to automate. I bring C#/.NET, Azure, web and mobile experience to contract and part-time engagements in the U.S. and the Philippines.</p><p><a class="text-link" href="mailto:louiery@gmail.com">Discuss your software project →</a> · <a href="../Resume/">Review my software engineering experience</a></p></section></main>
@@ -111,7 +117,7 @@ foreach ($project in $projects) {
     }
     $imageCredit = if ($project.slug -eq 'sinaiprompt') { '<p>Application screenshot supplied by Louiery Sincioco.</p>' } else { '' }
     $sourceUrl = "$($project.repository)/blob/$($project.commit)/$($project.readmePath)"
-    $extra = if ($project.slug -eq 'smile2') { '<a class="text-link" href="../smile2/">Learn SMILE 2.0 →</a>' } else { '' }
+    $extra = if ($project.slug -eq 'smile2') { '<a class="text-link" href="../smile2/">Learn SMILE 2.0 →</a>' } elseif ($project.slug -eq 'sinstar') { '<a class="text-link" href="https://sinstar.sincioco.com/BookOne/">Read and listen to Sin Star: Book One</a>' } else { '' }
     $content = @"
 <div class="container project-layout">
   <aside class="project-sidebar"><details class="section-menu" open><summary>On this page</summary><nav class="section-nav" aria-label="$(Encode $project.name) sections"><a href="#project-overview" aria-current="location">Overview</a>$($navigation -join "`n")</nav></details><a class="project-repository" href="$($project.repository)">View repository ↗</a></aside>
@@ -124,9 +130,9 @@ foreach ($project in $projects) {
 }
 $mapPath = Join-Path $siteRoot 'sitemap.xml'
 $sitemap = Get-Content -LiteralPath $mapPath -Raw
-$sitemap = $sitemap -replace '(?s)\s*<url><loc>http://sincioco.com/AgenticAI/.*?</url>', ''
-$urls = @('<url><loc>http://sincioco.com/AgenticAI/</loc><lastmod>2026-10-05</lastmod></url>')
-$urls += $order | ForEach-Object { "<url><loc>http://sincioco.com/AgenticAI/$_.html</loc><lastmod>2026-10-05</lastmod></url>" }
+$sitemap = $sitemap -replace '(?s)\s*<url><loc>https://sincioco.com/AgenticAI/.*?</url>', ''
+$urls = @('<url><loc>https://sincioco.com/AgenticAI/</loc><lastmod>2026-10-05</lastmod></url>')
+$urls += $order | ForEach-Object { "<url><loc>https://sincioco.com/AgenticAI/$_.html</loc><lastmod>2026-10-05</lastmod></url>" }
 $sitemap = $sitemap.Replace('</urlset>', ($urls -join "`n  ") + "`n</urlset>")
 Set-Content -LiteralPath $mapPath -Value $sitemap.TrimEnd() -Encoding utf8
 & (Join-Path $siteRoot 'tools/Update-AssetVersions.ps1') -SiteRoot $siteRoot

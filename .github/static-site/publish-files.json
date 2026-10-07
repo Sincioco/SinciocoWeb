@@ -1,0 +1,1687 @@
+[
+  {
+    "source": "main",
+    "path": "Index.html",
+    "deployed": "index.html"
+  },
+  {
+    "source": "main",
+    "path": "robots.txt",
+    "deployed": "robots.txt"
+  },
+  {
+    "source": "main",
+    "path": "sitemap.xml",
+    "deployed": "sitemap.xml"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/Index.html",
+    "deployed": "AgenticAI/index.html"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/life2.html",
+    "deployed": "AgenticAI/life2.html"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/pmt.html",
+    "deployed": "AgenticAI/pmt.html"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/project-video.js",
+    "deployed": "AgenticAI/project-video.js"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/projects.css",
+    "deployed": "AgenticAI/projects.css"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/projects.js",
+    "deployed": "AgenticAI/projects.js"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/sinaiprompt.html",
+    "deployed": "AgenticAI/sinaiprompt.html"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/sinstar.html",
+    "deployed": "AgenticAI/sinstar.html"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/smile1.html",
+    "deployed": "AgenticAI/smile1.html"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/smile2.html",
+    "deployed": "AgenticAI/smile2.html"
+  },
+  {
+    "source": "main",
+    "path": "CSS/site.css",
+    "deployed": "CSS/site.css"
+  },
+  {
+    "source": "main",
+    "path": "Images/favicon.svg",
+    "deployed": "Images/favicon.svg"
+  },
+  {
+    "source": "main",
+    "path": "Images/Louiery-Sincioco-Transparent.png",
+    "deployed": "Images/Louiery-Sincioco-Transparent.png"
+  },
+  {
+    "source": "main",
+    "path": "Military/Index.html",
+    "deployed": "Military/index.html"
+  },
+  {
+    "source": "main",
+    "path": "Military/military.css",
+    "deployed": "Military/military.css"
+  },
+  {
+    "source": "main",
+    "path": "Military/military.js",
+    "deployed": "Military/military.js"
+  },
+  {
+    "source": "main",
+    "path": "Resume/Index.html",
+    "deployed": "Resume/index.html"
+  },
+  {
+    "source": "main",
+    "path": "Resume/Louiery Sincioco - Summary (2026).docx",
+    "deployed": "Resume/Louiery Sincioco - Summary (2026).docx"
+  },
+  {
+    "source": "main",
+    "path": "Resume/Louiery Sincioco - Summary (2026).pdf",
+    "deployed": "Resume/Louiery Sincioco - Summary (2026).pdf"
+  },
+  {
+    "source": "main",
+    "path": "Resume/Sin_San_Francisco_Cropped.png",
+    "deployed": "Resume/Sin_San_Francisco_Cropped.png"
+  },
+  {
+    "source": "main",
+    "path": "smile2/advanced.html",
+    "deployed": "smile2/advanced.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/basics.html",
+    "deployed": "smile2/basics.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/docs.css",
+    "deployed": "smile2/docs.css"
+  },
+  {
+    "source": "main",
+    "path": "smile2/docs.js",
+    "deployed": "smile2/docs.js"
+  },
+  {
+    "source": "main",
+    "path": "smile2/flow.html",
+    "deployed": "smile2/flow.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/game.html",
+    "deployed": "smile2/game.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/Index.html",
+    "deployed": "smile2/index.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/libraries.html",
+    "deployed": "smile2/libraries.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/media.html",
+    "deployed": "smile2/media.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/next.html",
+    "deployed": "smile2/next.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/reference.html",
+    "deployed": "smile2/reference.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/search-index.js",
+    "deployed": "smile2/search-index.js"
+  },
+  {
+    "source": "main",
+    "path": "smile2/start.html",
+    "deployed": "smile2/start.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/structure.html",
+    "deployed": "smile2/structure.html"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/advanced.json",
+    "deployed": "smile2/content/advanced.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/basics.json",
+    "deployed": "smile2/content/basics.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/flow.json",
+    "deployed": "smile2/content/flow.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/game.json",
+    "deployed": "smile2/content/game.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/index.json",
+    "deployed": "smile2/content/index.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/libraries.json",
+    "deployed": "smile2/content/libraries.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/media.json",
+    "deployed": "smile2/content/media.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/next.json",
+    "deployed": "smile2/content/next.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/reference.json",
+    "deployed": "smile2/content/reference.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/start.json",
+    "deployed": "smile2/content/start.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/content/structure.json",
+    "deployed": "smile2/content/structure.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/data/api.json",
+    "deployed": "smile2/data/api.json"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-arena.smile",
+    "deployed": "smile2/examples/advanced-arena.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-arena.smileproj",
+    "deployed": "smile2/examples/advanced-arena.smileproj"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-earth.smile",
+    "deployed": "smile2/examples/advanced-earth.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-earth.smileproj",
+    "deployed": "smile2/examples/advanced-earth.smileproj"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-fire.smile",
+    "deployed": "smile2/examples/advanced-fire.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-fire.smileproj",
+    "deployed": "smile2/examples/advanced-fire.smileproj"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-prepare.ps1",
+    "deployed": "smile2/examples/advanced-prepare.ps1"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-water.smile",
+    "deployed": "smile2/examples/advanced-water.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/advanced-water.smileproj",
+    "deployed": "smile2/examples/advanced-water.smileproj"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/language-hello.smile",
+    "deployed": "smile2/examples/language-hello.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/language-hello.smileproj",
+    "deployed": "smile2/examples/language-hello.smileproj"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/language-import.smile",
+    "deployed": "smile2/examples/language-import.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/language-import.smileproj",
+    "deployed": "smile2/examples/language-import.smileproj"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/language-models.smile",
+    "deployed": "smile2/examples/language-models.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/language-module.smile",
+    "deployed": "smile2/examples/language-module.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/language-scoreboard.smile",
+    "deployed": "smile2/examples/language-scoreboard.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/language-turns.smile",
+    "deployed": "smile2/examples/language-turns.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/library-motion-lab.smile",
+    "deployed": "smile2/examples/library-motion-lab.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/library-movement.smile",
+    "deployed": "smile2/examples/library-movement.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/library-rpg.smile",
+    "deployed": "smile2/examples/library-rpg.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/library-ui.smile",
+    "deployed": "smile2/examples/library-ui.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/star-collector.smile",
+    "deployed": "smile2/examples/star-collector.smile"
+  },
+  {
+    "source": "main",
+    "path": "smile2/examples/star-collector.smileproj",
+    "deployed": "smile2/examples/star-collector.smileproj"
+  },
+  {
+    "source": "main",
+    "path": "smile2/images/earth-boulder-hurl.jpg",
+    "deployed": "smile2/images/earth-boulder-hurl.jpg"
+  },
+  {
+    "source": "main",
+    "path": "smile2/images/fire-inferno-blast.jpg",
+    "deployed": "smile2/images/fire-inferno-blast.jpg"
+  },
+  {
+    "source": "main",
+    "path": "smile2/images/smile-2.0-logo.png",
+    "deployed": "smile2/images/smile-2.0-logo.png"
+  },
+  {
+    "source": "main",
+    "path": "smile2/images/snake.png",
+    "deployed": "smile2/images/snake.png"
+  },
+  {
+    "source": "main",
+    "path": "smile2/images/star-collector.jpg",
+    "deployed": "smile2/images/star-collector.jpg"
+  },
+  {
+    "source": "main",
+    "path": "smile2/images/water-serpent-orbit.jpg",
+    "deployed": "smile2/images/water-serpent-orbit.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Courage_2x.jpg",
+    "deployed": "Military/Images/Courage_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/DarthSin_2x.jpg",
+    "deployed": "Military/Images/DarthSin_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Discpline_2x.jpg",
+    "deployed": "Military/Images/Discpline_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Forgive_2x.jpg",
+    "deployed": "Military/Images/Forgive_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Friends_2x.jpg",
+    "deployed": "Military/Images/Friends_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Happiness_2x.jpg",
+    "deployed": "Military/Images/Happiness_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Love_2x.jpg",
+    "deployed": "Military/Images/Love_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/NAM_2x.jpg",
+    "deployed": "Military/Images/NAM_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Responsibility_2x.jpg",
+    "deployed": "Military/Images/Responsibility_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Success_2x.jpg",
+    "deployed": "Military/Images/Success_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Teacher_2x.jpg",
+    "deployed": "Military/Images/Teacher_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Teamwork_2x.jpg",
+    "deployed": "Military/Images/Teamwork_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Time_2x.jpg",
+    "deployed": "Military/Images/Time_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Vacation_2x.jpg",
+    "deployed": "Military/Images/Vacation_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/War_2x.jpg",
+    "deployed": "Military/Images/War_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Work_2x.jpg",
+    "deployed": "Military/Images/Work_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Courage_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Courage_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/DarthSin_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/DarthSin_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Discpline_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Discpline_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Forgive_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Forgive_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Friends_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Friends_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Happiness_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Happiness_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Love_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Love_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/NAM_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/NAM_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Responsibility_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Responsibility_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Success_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Success_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Teacher_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Teacher_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Teamwork_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Teamwork_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Time_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Time_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Vacation_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Vacation_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/War_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/War_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "Military/Images/Thumbnails/Work_2x.jpg",
+    "deployed": "Military/Images/Thumbnails/Work_2x.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/activities.png",
+    "deployed": "AgenticAI/images/life2/activities.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/calendar-landscape.png",
+    "deployed": "AgenticAI/images/life2/calendar-landscape.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/calendar.png",
+    "deployed": "AgenticAI/images/life2/calendar.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/history.png",
+    "deployed": "AgenticAI/images/life2/history.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/overview-october.png",
+    "deployed": "AgenticAI/images/life2/overview-october.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/overview-september.png",
+    "deployed": "AgenticAI/images/life2/overview-september.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/streaks-ai-insights.png",
+    "deployed": "AgenticAI/images/life2/streaks-ai-insights.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/backlog.jpg",
+    "deployed": "AgenticAI/images/pmt/backlog.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/bug-tracking.jpg",
+    "deployed": "AgenticAI/images/pmt/bug-tracking.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/dev-tasks.jpg",
+    "deployed": "AgenticAI/images/pmt/dev-tasks.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/diagram-2.jpg",
+    "deployed": "AgenticAI/images/pmt/diagram-2.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/documentation.jpg",
+    "deployed": "AgenticAI/images/pmt/documentation.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/gantt.jpg",
+    "deployed": "AgenticAI/images/pmt/gantt.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/kanban-board.jpg",
+    "deployed": "AgenticAI/images/pmt/kanban-board.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/personal-log.jpg",
+    "deployed": "AgenticAI/images/pmt/personal-log.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/projects.jpg",
+    "deployed": "AgenticAI/images/pmt/projects.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/roadmap.jpg",
+    "deployed": "AgenticAI/images/pmt/roadmap.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/scrum.jpg",
+    "deployed": "AgenticAI/images/pmt/scrum.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/sprints.jpg",
+    "deployed": "AgenticAI/images/pmt/sprints.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/wfh-schedule.jpg",
+    "deployed": "AgenticAI/images/pmt/wfh-schedule.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-editor.png",
+    "deployed": "AgenticAI/images/sinaiprompt/sin-ai-prompt-editor.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-thumbnail.png",
+    "deployed": "AgenticAI/images/sinaiprompt/sin-ai-prompt-thumbnail.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/SinAIPrompt.png",
+    "deployed": "AgenticAI/images/sinaiprompt/SinAIPrompt.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Ancient-Relay-day.png",
+    "deployed": "AgenticAI/images/sinstar/Ancient-Relay-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Ancient-Relay-night.png",
+    "deployed": "AgenticAI/images/sinstar/Ancient-Relay-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-aevos.png",
+    "deployed": "AgenticAI/images/sinstar/cast-aevos.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-arin.png",
+    "deployed": "AgenticAI/images/sinstar/cast-arin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-kael.png",
+    "deployed": "AgenticAI/images/sinstar/cast-kael.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-milo.png",
+    "deployed": "AgenticAI/images/sinstar/cast-milo.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-mira.png",
+    "deployed": "AgenticAI/images/sinstar/cast-mira.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-orin.png",
+    "deployed": "AgenticAI/images/sinstar/cast-orin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-zara.png",
+    "deployed": "AgenticAI/images/sinstar/cast-zara.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Dragon-Arin.png",
+    "deployed": "AgenticAI/images/sinstar/Dragon-Arin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Dragon-Mira.png",
+    "deployed": "AgenticAI/images/sinstar/Dragon-Mira.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Dragon-Orin.png",
+    "deployed": "AgenticAI/images/sinstar/Dragon-Orin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Dragon-Zara.png",
+    "deployed": "AgenticAI/images/sinstar/Dragon-Zara.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/East-Valley-day.png",
+    "deployed": "AgenticAI/images/sinstar/East-Valley-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/East-Valley-night.png",
+    "deployed": "AgenticAI/images/sinstar/East-Valley-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Greyglass-Pass-day.png",
+    "deployed": "AgenticAI/images/sinstar/Greyglass-Pass-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Greyglass-Pass-night.png",
+    "deployed": "AgenticAI/images/sinstar/Greyglass-Pass-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Horizon-Airport-day.png",
+    "deployed": "AgenticAI/images/sinstar/Horizon-Airport-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Horizon-Airport-night.png",
+    "deployed": "AgenticAI/images/sinstar/Horizon-Airport-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/hqdefault.jpg",
+    "deployed": "AgenticAI/images/sinstar/hqdefault.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Kael-Arin.png",
+    "deployed": "AgenticAI/images/sinstar/Kael-Arin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Kael-Mira.png",
+    "deployed": "AgenticAI/images/sinstar/Kael-Mira.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Kael-Orin.png",
+    "deployed": "AgenticAI/images/sinstar/Kael-Orin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Kael-Zara.png",
+    "deployed": "AgenticAI/images/sinstar/Kael-Zara.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Canals-day.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Canals-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Canals-night.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Canals-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Crown-Isles-day.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Crown-Isles-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Crown-Isles-night.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Crown-Isles-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Metropolis-day.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Metropolis-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Metropolis-night.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Metropolis-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Relief-Quarter-day.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Relief-Quarter-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Relief-Quarter-night.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Relief-Quarter-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Spaceport-day.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Spaceport-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Spaceport-night.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Spaceport-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Star-Lake-day.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Star-Lake-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Star-Lake-night.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Star-Lake-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Town-day.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Town-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Town-night.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Town-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Waterworks-day.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Waterworks-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Waterworks-night.png",
+    "deployed": "AgenticAI/images/sinstar/Neris-Waterworks-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Orin-s-Village-day.png",
+    "deployed": "AgenticAI/images/sinstar/Orin-s-Village-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Orin-s-Village-night.png",
+    "deployed": "AgenticAI/images/sinstar/Orin-s-Village-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-02-1.png",
+    "deployed": "AgenticAI/images/sinstar/panel-02-1.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-03-2.png",
+    "deployed": "AgenticAI/images/sinstar/panel-03-2.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-04-3.png",
+    "deployed": "AgenticAI/images/sinstar/panel-04-3.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-14-2.png",
+    "deployed": "AgenticAI/images/sinstar/panel-14-2.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Silverfall-Basin-day.png",
+    "deployed": "AgenticAI/images/sinstar/Silverfall-Basin-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Silverfall-Basin-night.png",
+    "deployed": "AgenticAI/images/sinstar/Silverfall-Basin-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Sunglass-Expanse-day.png",
+    "deployed": "AgenticAI/images/sinstar/Sunglass-Expanse-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Sunglass-Expanse-night.png",
+    "deployed": "AgenticAI/images/sinstar/Sunglass-Expanse-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Verdant-Reach-day.png",
+    "deployed": "AgenticAI/images/sinstar/Verdant-Reach-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Verdant-Reach-night.png",
+    "deployed": "AgenticAI/images/sinstar/Verdant-Reach-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Vrax-Arin.png",
+    "deployed": "AgenticAI/images/sinstar/Vrax-Arin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Vrax-Mira.png",
+    "deployed": "AgenticAI/images/sinstar/Vrax-Mira.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Vrax-Orin.png",
+    "deployed": "AgenticAI/images/sinstar/Vrax-Orin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Vrax-Zara.png",
+    "deployed": "AgenticAI/images/sinstar/Vrax-Zara.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Willowstep-Highlands-day.png",
+    "deployed": "AgenticAI/images/sinstar/Willowstep-Highlands-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Willowstep-Highlands-night.png",
+    "deployed": "AgenticAI/images/sinstar/Willowstep-Highlands-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/01-lantern-maze.svg",
+    "deployed": "AgenticAI/images/smile1/01-lantern-maze.svg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/02-trail-runner.svg",
+    "deployed": "AgenticAI/images/smile1/02-trail-runner.svg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/03-sky-foundry.svg",
+    "deployed": "AgenticAI/images/smile1/03-sky-foundry.svg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/04-desktop-csharp-java-cpp.jpg",
+    "deployed": "AgenticAI/images/smile1/04-desktop-csharp-java-cpp.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/05-compiler-pipeline.svg",
+    "deployed": "AgenticAI/images/smile1/05-compiler-pipeline.svg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/01-battle-system.jpg",
+    "deployed": "AgenticAI/images/smile2/01-battle-system.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/02-kael-party.jpg",
+    "deployed": "AgenticAI/images/smile2/02-kael-party.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/03-earth-boulder-hurl.jpg",
+    "deployed": "AgenticAI/images/smile2/03-earth-boulder-hurl.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/04-vrax-party.jpg",
+    "deployed": "AgenticAI/images/smile2/04-vrax-party.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/05-vrax-animation.jpg",
+    "deployed": "AgenticAI/images/smile2/05-vrax-animation.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/06-dragon-fire-breath.jpg",
+    "deployed": "AgenticAI/images/smile2/06-dragon-fire-breath.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/07-dragon-party.jpg",
+    "deployed": "AgenticAI/images/smile2/07-dragon-party.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/08-smile-2.0-logo.png",
+    "deployed": "AgenticAI/images/smile2/08-smile-2.0-logo.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/09-earth-stone-volley.jpg",
+    "deployed": "AgenticAI/images/smile2/09-earth-stone-volley.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/10-earth-fault-line.jpg",
+    "deployed": "AgenticAI/images/smile2/10-earth-fault-line.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/11-fire-inferno-blast.jpg",
+    "deployed": "AgenticAI/images/smile2/11-fire-inferno-blast.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/12-fire-ember-strikes.jpg",
+    "deployed": "AgenticAI/images/smile2/12-fire-ember-strikes.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/13-water-serpent-orbit.jpg",
+    "deployed": "AgenticAI/images/smile2/13-water-serpent-orbit.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/14-water-tidal-surge.jpg",
+    "deployed": "AgenticAI/images/smile2/14-water-tidal-surge.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/15-hqdefault.jpg",
+    "deployed": "AgenticAI/images/smile2/15-hqdefault.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/16-c00-s01-duel.png",
+    "deployed": "AgenticAI/images/smile2/16-c00-s01-duel.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/17-c09-s03-planet.png",
+    "deployed": "AgenticAI/images/smile2/17-c09-s03-planet.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/life2/source.json",
+    "deployed": "AgenticAI/content/life2/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/pmt/source.json",
+    "deployed": "AgenticAI/content/pmt/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/sinaiprompt/source.json",
+    "deployed": "AgenticAI/content/sinaiprompt/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/sinstar/source.json",
+    "deployed": "AgenticAI/content/sinstar/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/smile1/source.json",
+    "deployed": "AgenticAI/content/smile1/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/smile2/source.json",
+    "deployed": "AgenticAI/content/smile2/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/project-video.js",
+    "deployed": "Projects/project-video.js"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/projects.css",
+    "deployed": "Projects/projects.css"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/projects.js",
+    "deployed": "Projects/projects.js"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/activities.png",
+    "deployed": "Projects/images/life2/activities.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/calendar-landscape.png",
+    "deployed": "Projects/images/life2/calendar-landscape.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/calendar.png",
+    "deployed": "Projects/images/life2/calendar.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/history.png",
+    "deployed": "Projects/images/life2/history.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/overview-october.png",
+    "deployed": "Projects/images/life2/overview-october.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/overview-september.png",
+    "deployed": "Projects/images/life2/overview-september.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/life2/streaks-ai-insights.png",
+    "deployed": "Projects/images/life2/streaks-ai-insights.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/backlog.jpg",
+    "deployed": "Projects/images/pmt/backlog.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/bug-tracking.jpg",
+    "deployed": "Projects/images/pmt/bug-tracking.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/dev-tasks.jpg",
+    "deployed": "Projects/images/pmt/dev-tasks.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/diagram-2.jpg",
+    "deployed": "Projects/images/pmt/diagram-2.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/documentation.jpg",
+    "deployed": "Projects/images/pmt/documentation.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/gantt.jpg",
+    "deployed": "Projects/images/pmt/gantt.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/kanban-board.jpg",
+    "deployed": "Projects/images/pmt/kanban-board.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/personal-log.jpg",
+    "deployed": "Projects/images/pmt/personal-log.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/projects.jpg",
+    "deployed": "Projects/images/pmt/projects.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/roadmap.jpg",
+    "deployed": "Projects/images/pmt/roadmap.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/scrum.jpg",
+    "deployed": "Projects/images/pmt/scrum.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/sprints.jpg",
+    "deployed": "Projects/images/pmt/sprints.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/wfh-schedule.jpg",
+    "deployed": "Projects/images/pmt/wfh-schedule.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-editor.png",
+    "deployed": "Projects/images/sinaiprompt/sin-ai-prompt-editor.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-thumbnail.png",
+    "deployed": "Projects/images/sinaiprompt/sin-ai-prompt-thumbnail.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/SinAIPrompt.png",
+    "deployed": "Projects/images/sinaiprompt/SinAIPrompt.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Ancient-Relay-day.png",
+    "deployed": "Projects/images/sinstar/Ancient-Relay-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Ancient-Relay-night.png",
+    "deployed": "Projects/images/sinstar/Ancient-Relay-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-aevos.png",
+    "deployed": "Projects/images/sinstar/cast-aevos.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-arin.png",
+    "deployed": "Projects/images/sinstar/cast-arin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-kael.png",
+    "deployed": "Projects/images/sinstar/cast-kael.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-milo.png",
+    "deployed": "Projects/images/sinstar/cast-milo.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-mira.png",
+    "deployed": "Projects/images/sinstar/cast-mira.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-orin.png",
+    "deployed": "Projects/images/sinstar/cast-orin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/cast-zara.png",
+    "deployed": "Projects/images/sinstar/cast-zara.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Dragon-Arin.png",
+    "deployed": "Projects/images/sinstar/Dragon-Arin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Dragon-Mira.png",
+    "deployed": "Projects/images/sinstar/Dragon-Mira.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Dragon-Orin.png",
+    "deployed": "Projects/images/sinstar/Dragon-Orin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Dragon-Zara.png",
+    "deployed": "Projects/images/sinstar/Dragon-Zara.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/East-Valley-day.png",
+    "deployed": "Projects/images/sinstar/East-Valley-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/East-Valley-night.png",
+    "deployed": "Projects/images/sinstar/East-Valley-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Greyglass-Pass-day.png",
+    "deployed": "Projects/images/sinstar/Greyglass-Pass-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Greyglass-Pass-night.png",
+    "deployed": "Projects/images/sinstar/Greyglass-Pass-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Horizon-Airport-day.png",
+    "deployed": "Projects/images/sinstar/Horizon-Airport-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Horizon-Airport-night.png",
+    "deployed": "Projects/images/sinstar/Horizon-Airport-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/hqdefault.jpg",
+    "deployed": "Projects/images/sinstar/hqdefault.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Kael-Arin.png",
+    "deployed": "Projects/images/sinstar/Kael-Arin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Kael-Mira.png",
+    "deployed": "Projects/images/sinstar/Kael-Mira.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Kael-Orin.png",
+    "deployed": "Projects/images/sinstar/Kael-Orin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Kael-Zara.png",
+    "deployed": "Projects/images/sinstar/Kael-Zara.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Canals-day.png",
+    "deployed": "Projects/images/sinstar/Neris-Canals-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Canals-night.png",
+    "deployed": "Projects/images/sinstar/Neris-Canals-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Crown-Isles-day.png",
+    "deployed": "Projects/images/sinstar/Neris-Crown-Isles-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Crown-Isles-night.png",
+    "deployed": "Projects/images/sinstar/Neris-Crown-Isles-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Metropolis-day.png",
+    "deployed": "Projects/images/sinstar/Neris-Metropolis-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Metropolis-night.png",
+    "deployed": "Projects/images/sinstar/Neris-Metropolis-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Relief-Quarter-day.png",
+    "deployed": "Projects/images/sinstar/Neris-Relief-Quarter-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Relief-Quarter-night.png",
+    "deployed": "Projects/images/sinstar/Neris-Relief-Quarter-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Spaceport-day.png",
+    "deployed": "Projects/images/sinstar/Neris-Spaceport-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Spaceport-night.png",
+    "deployed": "Projects/images/sinstar/Neris-Spaceport-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Star-Lake-day.png",
+    "deployed": "Projects/images/sinstar/Neris-Star-Lake-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Star-Lake-night.png",
+    "deployed": "Projects/images/sinstar/Neris-Star-Lake-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Town-day.png",
+    "deployed": "Projects/images/sinstar/Neris-Town-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Town-night.png",
+    "deployed": "Projects/images/sinstar/Neris-Town-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Waterworks-day.png",
+    "deployed": "Projects/images/sinstar/Neris-Waterworks-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Neris-Waterworks-night.png",
+    "deployed": "Projects/images/sinstar/Neris-Waterworks-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Orin-s-Village-day.png",
+    "deployed": "Projects/images/sinstar/Orin-s-Village-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Orin-s-Village-night.png",
+    "deployed": "Projects/images/sinstar/Orin-s-Village-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-02-1.png",
+    "deployed": "Projects/images/sinstar/panel-02-1.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-03-2.png",
+    "deployed": "Projects/images/sinstar/panel-03-2.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-04-3.png",
+    "deployed": "Projects/images/sinstar/panel-04-3.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/panel-14-2.png",
+    "deployed": "Projects/images/sinstar/panel-14-2.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Silverfall-Basin-day.png",
+    "deployed": "Projects/images/sinstar/Silverfall-Basin-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Silverfall-Basin-night.png",
+    "deployed": "Projects/images/sinstar/Silverfall-Basin-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Sunglass-Expanse-day.png",
+    "deployed": "Projects/images/sinstar/Sunglass-Expanse-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Sunglass-Expanse-night.png",
+    "deployed": "Projects/images/sinstar/Sunglass-Expanse-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Verdant-Reach-day.png",
+    "deployed": "Projects/images/sinstar/Verdant-Reach-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Verdant-Reach-night.png",
+    "deployed": "Projects/images/sinstar/Verdant-Reach-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Vrax-Arin.png",
+    "deployed": "Projects/images/sinstar/Vrax-Arin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Vrax-Mira.png",
+    "deployed": "Projects/images/sinstar/Vrax-Mira.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Vrax-Orin.png",
+    "deployed": "Projects/images/sinstar/Vrax-Orin.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Vrax-Zara.png",
+    "deployed": "Projects/images/sinstar/Vrax-Zara.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Willowstep-Highlands-day.png",
+    "deployed": "Projects/images/sinstar/Willowstep-Highlands-day.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/Willowstep-Highlands-night.png",
+    "deployed": "Projects/images/sinstar/Willowstep-Highlands-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/01-lantern-maze.svg",
+    "deployed": "Projects/images/smile1/01-lantern-maze.svg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/02-trail-runner.svg",
+    "deployed": "Projects/images/smile1/02-trail-runner.svg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/03-sky-foundry.svg",
+    "deployed": "Projects/images/smile1/03-sky-foundry.svg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/04-desktop-csharp-java-cpp.jpg",
+    "deployed": "Projects/images/smile1/04-desktop-csharp-java-cpp.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile1/05-compiler-pipeline.svg",
+    "deployed": "Projects/images/smile1/05-compiler-pipeline.svg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/01-battle-system.jpg",
+    "deployed": "Projects/images/smile2/01-battle-system.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/02-kael-party.jpg",
+    "deployed": "Projects/images/smile2/02-kael-party.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/03-earth-boulder-hurl.jpg",
+    "deployed": "Projects/images/smile2/03-earth-boulder-hurl.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/04-vrax-party.jpg",
+    "deployed": "Projects/images/smile2/04-vrax-party.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/05-vrax-animation.jpg",
+    "deployed": "Projects/images/smile2/05-vrax-animation.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/06-dragon-fire-breath.jpg",
+    "deployed": "Projects/images/smile2/06-dragon-fire-breath.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/07-dragon-party.jpg",
+    "deployed": "Projects/images/smile2/07-dragon-party.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/08-smile-2.0-logo.png",
+    "deployed": "Projects/images/smile2/08-smile-2.0-logo.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/09-earth-stone-volley.jpg",
+    "deployed": "Projects/images/smile2/09-earth-stone-volley.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/10-earth-fault-line.jpg",
+    "deployed": "Projects/images/smile2/10-earth-fault-line.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/11-fire-inferno-blast.jpg",
+    "deployed": "Projects/images/smile2/11-fire-inferno-blast.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/12-fire-ember-strikes.jpg",
+    "deployed": "Projects/images/smile2/12-fire-ember-strikes.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/13-water-serpent-orbit.jpg",
+    "deployed": "Projects/images/smile2/13-water-serpent-orbit.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/14-water-tidal-surge.jpg",
+    "deployed": "Projects/images/smile2/14-water-tidal-surge.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/15-hqdefault.jpg",
+    "deployed": "Projects/images/smile2/15-hqdefault.jpg"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/16-c00-s01-duel.png",
+    "deployed": "Projects/images/smile2/16-c00-s01-duel.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/smile2/17-c09-s03-planet.png",
+    "deployed": "Projects/images/smile2/17-c09-s03-planet.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/life2/source.json",
+    "deployed": "Projects/content/life2/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/pmt/source.json",
+    "deployed": "Projects/content/pmt/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/sinaiprompt/source.json",
+    "deployed": "Projects/content/sinaiprompt/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/sinstar/source.json",
+    "deployed": "Projects/content/sinstar/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/smile1/source.json",
+    "deployed": "Projects/content/smile1/source.json"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/content/smile2/source.json",
+    "deployed": "Projects/content/smile2/source.json"
+  },
+  {
+    "source": "main",
+    "path": "BookOne/index.html",
+    "deployed": "BookOne/index.html"
+  },
+  {
+    "source": "main",
+    "path": "BookOne/sw.js",
+    "deployed": "BookOne/sw.js"
+  },
+  {
+    "source": "main",
+    "path": "BookOne/retire-legacy-workers.js",
+    "deployed": "BookOne/retire-legacy-workers.js"
+  },
+  {
+    "source": "main",
+    "path": "sinstar/novel/sw.js",
+    "deployed": "sinstar/novel/sw.js"
+  },
+  {
+    "source": "main",
+    "path": "SinStar_Storyboard/index.html",
+    "deployed": "SinStar_Storyboard/index.html"
+  },
+  {
+    "source": "main",
+    "path": "wrapper-nav.js",
+    "deployed": "wrapper-nav.js"
+  }
+]

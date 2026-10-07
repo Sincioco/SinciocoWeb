@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://sincioco.com/sitemap.xml
+Sitemap: https://sincioco.com/sitemap.xml

@@ -1,0 +1,9 @@
+/website/
+/backups/
+/diagnostics/
+/.preparing-*/
+/.failed-website-*/
+/.payload-manifest-*.json
+/payload-manifest.json
+/deployment.lock
+/__pycache__/
