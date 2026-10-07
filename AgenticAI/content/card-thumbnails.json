@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "sizes": "(max-width: 520px) calc(100vw - 42px), (max-width: 700px) calc(50vw - 34px), (max-width: 1000px) calc(50vw - 46px), (max-width: 1184px) calc((100vw - 118px) / 3), 355.333333px",
+  "resampling": {
+    "filter": "Lanczos",
+    "crop": "centered 16:9, matching existing cover artwork",
+    "format": "lossless RGB PNG",
+    "sharpening": false,
+    "upscaling": false,
+    "pillowVersion": "12.0.0"
+  },
+  "images": {
+    "sinaiprompt": {
+      "source": "images/sinaiprompt/sin-ai-prompt-thumbnail.png",
+      "sourceSha256": "d3ae481fd93647ae7258d82e0ac87c0532c0b5ed4c90fe37d053b1e6ca2ae670",
+      "sourceWidth": 2400,
+      "sourceHeight": 1440,
+      "cropBox": [
+        0.0,
+        45.0,
+        2400.0,
+        1395.0
+      ],
+      "variants": [
+        {
+          "path": "images/sinaiprompt/sin-ai-prompt-card-320.png",
+          "width": 320,
+          "height": 180,
+          "sha256": "7683f2a94dc31ef39795e6fa388f79437f9941cd3381cd6ad92e18fbf5029fbb",
+          "bytes": 44632
+        },
+        {
+          "path": "images/sinaiprompt/sin-ai-prompt-card-368.png",
+          "width": 368,
+          "height": 207,
+          "sha256": "0b20a2953ddfd2829897529e43d9b9c9623e057cd7b7cd575fe93e0eb3d529bc",
+          "bytes": 55793
+        },
+        {
+          "path": "images/sinaiprompt/sin-ai-prompt-card-480.png",
+          "width": 480,
+          "height": 270,
+          "sha256": "30f525c40fde487af5643bdc640f6d14a903bd35d4b34ac308b52fbbdc28f659",
+          "bytes": 74503
+        },
+        {
+          "path": "images/sinaiprompt/sin-ai-prompt-card-640.png",
+          "width": 640,
+          "height": 360,
+          "sha256": "c489ddc01791ed363425cb01d397ece04f15c15eb01a56edc205fd9e0682eb7d",
+          "bytes": 135214
+        },
+        {
+          "path": "images/sinaiprompt/sin-ai-prompt-card-736.png",
+          "width": 736,
+          "height": 414,
+          "sha256": "808bfed2df89dee17f732362f521f7bb40da1dbe0c3e1f066404e423cd739333",
+          "bytes": 181321
+        },
+        {
+          "path": "images/sinaiprompt/sin-ai-prompt-card-960.png",
+          "width": 960,
+          "height": 540,
+          "sha256": "95a16f3308db7bd64c6787aa1afc8fc8e3f5a2c20ac996ee09b053d9b4b40576",
+          "bytes": 282848
+        }
+      ]
+    },
+    "pmt": {
+      "source": "images/pmt/pmt-1-thumbnail-draft-1c.png",
+      "sourceSha256": "c86b406d3e04e12f942f0b1537b1d2d2a6f9d6821473e7d5fc7a0092e91dc823",
+      "sourceWidth": 1619,
+      "sourceHeight": 971,
+      "cropBox": [
+        0.0,
+        30.15625,
+        1619.0,
+        940.84375
+      ],
+      "variants": [
+        {
+          "path": "images/pmt/pmt-1-draft-1c-card-320.png",
+          "width": 320,
+          "height": 180,
+          "sha256": "496ff9f3d0ef2c22473cade220a78fa73bcddcadad77054c2856fab15568a4ad",
+          "bytes": 70923
+        },
+        {
+          "path": "images/pmt/pmt-1-draft-1c-card-368.png",
+          "width": 368,
+          "height": 207,
+          "sha256": "6cbb354280742382aa5e3764608ebc5d8f8c1337a3369267a65342c5bf326a75",
+          "bytes": 90578
+        },
+        {
+          "path": "images/pmt/pmt-1-draft-1c-card-480.png",
+          "width": 480,
+          "height": 270,
+          "sha256": "35c77196cdc7463b71ebbb5555145cf5d407ae9ad1b94d1ce9e2ceb26537381e",
+          "bytes": 146271
+        },
+        {
+          "path": "images/pmt/pmt-1-draft-1c-card-640.png",
+          "width": 640,
+          "height": 360,
+          "sha256": "6bd8756635e7b3095fe7132857d27569ff0ccf9d6d3b265c6d03d15a2b67c72b",
+          "bytes": 243937
+        },
+        {
+          "path": "images/pmt/pmt-1-draft-1c-card-736.png",
+          "width": 736,
+          "height": 414,
+          "sha256": "1c46e39e21fd6c218efb9dbd4e59de4e7413cae50ed06dc9f55e01818d58d3c6",
+          "bytes": 313398
+        },
+        {
+          "path": "images/pmt/pmt-1-draft-1c-card-960.png",
+          "width": 960,
+          "height": 540,
+          "sha256": "57d0bdabdd74820ffc4a7dd8ba4f7d4c9ec1f57cabe86be0c9783e2e4661bb77",
+          "bytes": 517946
+        }
+      ]
+    }
+  }
+}

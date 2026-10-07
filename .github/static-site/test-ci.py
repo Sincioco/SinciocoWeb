@@ -104,7 +104,7 @@ class PublicationContractTests(unittest.TestCase):
 
     def test_exact_reviewed_main_only_allowlist(self):
         entries=json.loads((ROOT/'publish-files.json').read_text(encoding='utf-8-sig'))
-        self.assertEqual(len(entries),343)
+        self.assertEqual(len(entries),355)
         self.assertTrue(all(entry['source']=='main' for entry in entries))
         paths=[public_relative(entry['deployed']).as_posix() for entry in entries]
         self.assertEqual(len({p.casefold() for p in paths}),len(paths))
@@ -147,6 +147,16 @@ class PublicationContractTests(unittest.TestCase):
         self.assertLess(text.index('--require-secret'),text.index('uses: Azure/static-web-apps-deploy@'))
         self.assertLess(text.index('uses: Azure/static-web-apps-deploy@'),text.index('--verify-deployment'))
         self.assertLess(text.index('--verify-deployment'),text.index('Verify-Live.ps1'))
+
+
+def load_tests(loader, tests, pattern):
+    # Run stdlib thumbnail failure cases as part of the existing pre-upload tests.
+    path = ROOT.parents[1] / 'AgenticAI/tools/test-card-thumbnails.py'
+    spec = importlib.util.spec_from_file_location('card_thumbnail_tests', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    tests.addTests(loader.loadTestsFromModule(module))
+    return tests
 
 
 if __name__ == '__main__':

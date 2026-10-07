@@ -70,12 +70,21 @@ $videoScript
     Set-Content -LiteralPath (Join-Path $projectRoot $file) -Value $html -Encoding utf8
 }
 $cardOrder = $order
+function Get-ResponsiveCardImages {
+    $python = Get-Command python -ErrorAction SilentlyContinue
+    if (!$python) { $python = Get-Command python3 -ErrorAction Stop }
+    $checker = Join-Path $projectRoot 'tools/check-card-thumbnails.py'
+    $output = & $python.Source -B $checker --site-root $siteRoot --render-json
+    if ($LASTEXITCODE -ne 0) { throw 'Responsive card source validation failed.' }
+    ($output -join "`n") | ConvertFrom-Json
+}
+$responsiveCardImages = Get-ResponsiveCardImages
 $cards = foreach ($slug in $cardOrder) {
     $project = $projects | Where-Object slug -EQ $slug
     $cover = if ($project.cardImage) { $project.cardImage } elseif ($project.heroImage) { $project.heroImage } else { $project.images[0].localPath }
     $coverClass = if ($project.slug -eq 'life2') { 'project-card-image' } elseif ($project.slug -eq 'smile2') { 'project-card-image project-card-image-logo' } else { 'project-card-image project-card-image-cover' }
     if ($project.slug -eq 'sinaiprompt') { $cover = 'images/sinaiprompt/sin-ai-prompt-thumbnail.png' }
-    $coverHtml = if ($cover) { '<img src="{0}" alt="{1}" loading="lazy" decoding="async">' -f (Encode $cover), (Encode ($project.name + ' project preview')) } else { '' }
+    $coverHtml = if ($project.slug -in @('sinaiprompt', 'pmt')) { $responsiveCardImages.($project.slug) } elseif ($cover) { '<img src="{0}" alt="{1}" loading="lazy" decoding="async">' -f (Encode $cover), (Encode ($project.name + ' project preview')) } else { '' }
     if ($project.slug -eq 'sinstar') {
     @"
 <article class="project-card"><div class="$coverClass">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><div class="project-card-actions" style="display:flex;flex-wrap:wrap;gap:.75rem 1rem"><a class="text-link" href="$(Encode $project.repository)">Github Repo <span aria-hidden="true">→</span></a><a class="text-link" href="../SinStar_Storyboard/">Storyboard <span aria-hidden="true">→</span></a><a class="text-link" href="https://sinstar.sincioco.com/BookOne">Audio Book <span aria-hidden="true">→</span></a></div></div></article>

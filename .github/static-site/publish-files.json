@@ -1713,5 +1713,65 @@
     "source": "main",
     "path": "AgenticAI/images/sinstar/sin-star-game-poster.png",
     "deployed": "AgenticAI/images/sinstar/sin-star-game-poster.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-320.png",
+    "deployed": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-320.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-368.png",
+    "deployed": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-368.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-480.png",
+    "deployed": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-480.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-640.png",
+    "deployed": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-640.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-736.png",
+    "deployed": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-736.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-960.png",
+    "deployed": "AgenticAI/images/sinaiprompt/sin-ai-prompt-card-960.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/pmt-1-draft-1c-card-320.png",
+    "deployed": "AgenticAI/images/pmt/pmt-1-draft-1c-card-320.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/pmt-1-draft-1c-card-368.png",
+    "deployed": "AgenticAI/images/pmt/pmt-1-draft-1c-card-368.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/pmt-1-draft-1c-card-480.png",
+    "deployed": "AgenticAI/images/pmt/pmt-1-draft-1c-card-480.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/pmt-1-draft-1c-card-640.png",
+    "deployed": "AgenticAI/images/pmt/pmt-1-draft-1c-card-640.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/pmt-1-draft-1c-card-736.png",
+    "deployed": "AgenticAI/images/pmt/pmt-1-draft-1c-card-736.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/pmt/pmt-1-draft-1c-card-960.png",
+    "deployed": "AgenticAI/images/pmt/pmt-1-draft-1c-card-960.png"
   }
 ]

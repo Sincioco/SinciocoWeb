@@ -7,6 +7,8 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 import json
+import subprocess
+import sys
 import posixpath
 import xml.etree.ElementTree as ET
 
@@ -265,12 +267,25 @@ robot_maps = [line.split(':', 1)[1].strip() for line in robots.splitlines() if l
 if robot_maps != ['https://sincioco.com/sitemap.xml']:
     fail('Azure robots must declare only the main canonical sitemap')
 
+# Dedicated responsive-image validation covers every srcset URL and immutable PNG.
+main_source_root = (ROOT / read_json(ROOT / 'sources.json')['main']).resolve()
+thumbnail_command = [sys.executable, '-B', str(main_source_root / 'AgenticAI/tools/check-card-thumbnails.py'),
+                     '--site-root', str(main_source_root), '--payload-root', str(root)]
+if ROOT.name.casefold() == 'deployment':
+    thumbnail_command.append('--require-private')
+thumbnail_result = subprocess.run(thumbnail_command, capture_output=True, text=True, encoding='utf-8', timeout=60)
+thumbnail_summary = None
+if thumbnail_result.returncode:
+    fail('Responsive card thumbnail validation failed', details=thumbnail_result.stderr.strip())
+else:
+    thumbnail_summary = json.loads(thumbnail_result.stdout)
+
 summary = {'files':len(actual), 'bytes':sum(item['bytes'] for item in actual),
            'copied_files_hash_verified':len(manifest), 'html_links_checked':checked,
            'external_redirect_links_resolved':external_resolutions,
            'routes':len(rules), 'reader_asset_redirects':len(expected_asset_routes),
            'main_canonical_pages':len(locations), 'canonical_html_files_checked':canonical_files_checked, 'wrappers':len(contract['wrappers']),
-           'novel_source_entries':sum(entry['source']=='novel' for entry in entries), 'failures':failures}
+           'responsive_card_thumbnails':thumbnail_summary, 'novel_source_entries':sum(entry['source']=='novel' for entry in entries), 'failures':failures}
 if len(actual) > 15000 or summary['bytes'] > 250 * 1024 * 1024:
     fail('deployment exceeds Azure Free quota')
 diagnostics = ROOT / 'diagnostics'
