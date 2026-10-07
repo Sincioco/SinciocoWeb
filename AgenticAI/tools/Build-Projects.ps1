@@ -107,6 +107,9 @@ foreach ($project in $projects) {
         $markdown = $markdown -replace '(?ms)^## (?:Run the project|Project structure)\r?\n.*?(?=^## |\z)', ''
         $markdown = $markdown -replace '(?m)^## Major features(?=\r?$)', '## Major Features'
         $markdown = $markdown -replace '(?m)^## On-device AI technology(?=\r?$)', '## On-Device AI Technology'
+        $policy = Get-Content -LiteralPath (Join-Path $projectRoot 'content/life2/PRIVACY.md') -Raw
+        if ([regex]::Matches($markdown, '(?m)^## License(?=\r?$)').Count -ne 1) { throw 'Life 2.0 License insertion point changed.' }
+        $markdown = [regex]::Replace($markdown, '(?m)^## License(?=\r?$)', [Text.RegularExpressions.MatchEvaluator]{ param($match) $policy.TrimEnd() + "`n`n" + $match.Value })
     }
     $document = Convert-ProjectReadme $project $markdown $projectRoot
     if ($project.slug -eq 'sinstar') {
@@ -125,6 +128,7 @@ foreach ($project in $projects) {
     }
     $imageCredit = if ($project.slug -eq 'sinaiprompt') { '<p>Application screenshot supplied by Louiery Sincioco.</p>' } else { '' }
     $retrievedDate = if ($project.retrievedDate) { $project.retrievedDate } else { 'October 5, 2026' }
+    $policyCredit = if ($project.slug -eq 'life2') { '<p>Privacy policy provided by Louiery Sincioco.</p>' } else { '' }
     $sourceUrl = "$($project.repository)/blob/$($project.commit)/$($project.readmePath)"
     $extra = if ($project.slug -eq 'smile2') { '<a class="text-link" href="../smile2/">Learn SMILE 2.0 →</a>' } elseif ($project.slug -eq 'sinstar') { '<a class="text-link" href="https://sinstar.sincioco.com/BookOne/">Read and listen to Sin Star: Book One</a>' } else { '' }
     $lead = $project.description
@@ -134,7 +138,7 @@ foreach ($project in $projects) {
   <aside class="project-sidebar"><details class="section-menu" open><summary>On this page</summary><nav class="section-nav" aria-label="$(Encode $project.name) sections"><a href="#project-overview" aria-current="location">Overview</a>$($navigation -join "`n")</nav></details><a class="project-repository" href="$($project.repository)">View repository ↗</a></aside>
   <main id="main" class="project-main"><header class="project-heading"><p class="eyebrow">Agentic AI Projects / $(Encode $project.name)</p><h1 id="project-overview">$(Encode $document.Title)</h1><p class="lead">$(Encode $lead)</p><div class="project-links"><a class="text-link" href="$($project.repository)">View on GitHub ↗</a>$extra</div>$artwork</header>
   <article class="project-content">$($document.Html)</article>
-  <div class="project-source"><p>Content and repository images from the public <a href="$sourceUrl">$([Net.WebUtility]::HtmlEncode($project.name)) README</a>, retrieved $(Encode $retrievedDate). Repository snapshot <a href="$($project.repository)/commit/$($project.commit)">$($project.commit.Substring(0,7))</a>.</p>$imageCredit<a href="#project-overview">Back to top ↑</a></div></main>
+  <div class="project-source"><p>Content and repository images from the public <a href="$sourceUrl">$([Net.WebUtility]::HtmlEncode($project.name)) README</a>, retrieved $(Encode $retrievedDate). Repository snapshot <a href="$($project.repository)/commit/$($project.commit)">$($project.commit.Substring(0,7))</a>.</p>$imageCredit$policyCredit<a href="#project-overview">Back to top ↑</a></div></main>
 </div>
 "@
     WriteProjectPage "$($project.slug).html" ($projectTitles[$project.slug] + ' | Louiery Sincioco') $project.description $content $project.slug

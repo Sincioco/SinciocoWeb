@@ -33,6 +33,14 @@
   <aside class="project-sidebar"><details class="section-menu" open><summary>On this page</summary><nav class="section-nav" aria-label="Life 2.0 sections"><a href="#project-overview" aria-current="location">Overview</a><a href="#screenshots" class="section-level-2">Screenshots</a>
 <a href="#major-features" class="section-level-2">Major Features</a>
 <a href="#on-device-ai-technology" class="section-level-2">On-Device AI Technology</a>
+<a href="#privacy-policy" class="section-level-2">Privacy Policy</a>
+<a href="#your-information-in-life-20" class="section-level-3">Your Information in Life 2.0</a>
+<a href="#on-device-ai-insights" class="section-level-3">On-Device AI Insights</a>
+<a href="#backups-imports-and-sharing" class="section-level-3">Backups, Imports, and Sharing</a>
+<a href="#device-access-and-diagnostics" class="section-level-3">Device Access and Diagnostics</a>
+<a href="#retention-and-deletion" class="section-level-3">Retention and Deletion</a>
+<a href="#contact" class="section-level-3">Contact</a>
+<a href="#changes-to-this-policy" class="section-level-3">Changes to This Policy</a>
 <a href="#license" class="section-level-2">License</a></nav></details><a class="project-repository" href="https://github.com/Sincioco/life2">View repository ↗</a></aside>
   <main id="main" class="project-main"><header class="project-heading"><p class="eyebrow">Agentic AI Projects / Life 2.0</p><h1 id="project-overview">Life 2.0</h1><p class="lead">Life 2.0 is a native iPhone and iPad app for tracking recurring activities, building routines, and exploring completion patterns. Use the power of on-device AI to get encouragement and insights into your workouts!</p><div class="project-links"><a class="text-link" href="https://github.com/Sincioco/life2">View on GitHub ↗</a></div></header>
   <article class="project-content"><span id="life-20"></span>
@@ -67,12 +75,38 @@
 <p>The <strong>AI Insights</strong> panel uses Apple's <a href="https://developer.apple.com/documentation/foundationmodels">Foundation Models framework</a> and its on-device <a href="https://developer.apple.com/documentation/foundationmodels/systemlanguagemodel">SystemLanguageModel</a>, the language model behind Apple Intelligence. Insight generation runs locally on the device.</p>
 <p>In <code>Life 2.0/GraphView.swift</code>, a <code>LanguageModelSession</code> receives a compact snapshot of monthly completion counts, 30-day trends, activity streaks, and top activities. Guided generation with <code>@Generable</code> returns a structured <code>GraphInsights</code> value containing a trends summary, a streaks summary, and encouragement. The <strong>Refresh Insights</strong> button requests a new summary.</p>
 <p>Insights require a supported Apple Intelligence device with Apple Intelligence enabled and the system model available. Model availability can differ on simulators. Activity tracking and charts remain available independently of AI insight generation.</p>
+<h2 id="privacy-policy">Privacy Policy</h2>
+<p><strong>Effective Date: October 7, 2026</strong></p>
+<p>This policy explains how Life 2.0 for iPhone and iPad handles your information. Life 2.0 is provided by <strong>Louiery Sincioco</strong>.</p>
+<h3 id="your-information-in-life-20">Your Information in Life 2.0</h3>
+<p>Life 2.0 stores the activities, goals, notes, categories, completion history, and preferences you enter in local app storage on your device. It uses this information to display your activities, calendar, charts, and insights. You do not need to create an account.</p>
+<p>Life 2.0 does not upload your activity records to a developer-operated server. The developer does not sell user data. The app contains no third-party advertising, analytics, or crash-reporting SDKs. Its progress charts analyze the records on your device.</p>
+<h3 id="on-device-ai-insights">On-Device AI Insights</h3>
+<p>AI Insights uses Apple's on-device language model through the Foundation Models framework. It processes a summary of your activity names, completion counts and dates, streaks, and activity icons locally to generate summaries and encouragement. Life 2.0 does not send that summary to a developer-operated or third-party AI server.</p>
+<p>Insights may be generated when the Overview screen loads or its data changes, and when you select Refresh Insights. Availability depends on your device and Apple Intelligence settings. Life 2.0 uses Apple's system model and does not download a separate AI model.</p>
+<h3 id="backups-imports-and-sharing">Backups, Imports, and Sharing</h3>
+<p>You can export activities, notes, categories, and completion history as a JSON backup, and import a backup you select through the system file picker. The exported file is readable and is not password-protected or encrypted by Life 2.0.</p>
+<p>You choose where to save or share an exported file. If you choose iCloud Drive or another storage or sharing provider, that provider handles the copy under its own terms and privacy policy. Life 2.0 does not provide automatic synchronization of your activity database between devices.</p>
+<p>Your device's backup settings may also include Life 2.0 data in a device or iCloud backup. These backups are separate from the app's JSON export feature. The developer cannot access, retrieve, or delete the copies in your storage accounts through Life 2.0.</p>
+<h3 id="device-access-and-diagnostics">Device Access and Diagnostics</h3>
+<p>Life 2.0 does not request access to your photo library, camera, microphone, location, contacts, Apple Calendar, or HealthKit records. Its calendar displays activity records you enter in Life 2.0. Its icons are bundled artwork and system symbols.</p>
+<p>The SF Symbol Formatter utility processes text on your device and writes the formatted result to local diagnostic output. Some app errors are also written to local diagnostic output.</p>
+<p>Apple may collect diagnostics and usage information under your device settings and Apple's policies. Depending on your sharing choices, Apple may provide app developers with aggregated or non-identifying usage statistics and crash information. You can manage this in <strong>Settings → Privacy &amp; Security → Analytics &amp; Improvements</strong>. See <a href="https://www.apple.com/legal/privacy/data/en/app-analytics/">Apple's App Analytics &amp; Privacy notice</a>.</p>
+<p>Information you send for support, and any diagnostic or usage reports received from Apple, is used only to respond to your requests or troubleshoot problems and is kept only for as long as needed for those purposes.</p>
+<h3 id="retention-and-deletion">Retention and Deletion</h3>
+<p>Life 2.0 does not automatically expire your saved activity records. In Options, <strong>Delete All Activities</strong> removes your activities and their associated completion history. <strong>Delete All History</strong> removes completion history while keeping activities. You can delete categories separately in Categories. Deleting activities or history does not reset your preferences or recent icon choices.</p>
+<p>Deleting information in the app does not delete JSON files you exported, copies you shared, or earlier device backups. Manage those copies separately with the relevant device settings or storage provider.</p>
+<h3 id="contact">Contact</h3>
+<p>For privacy questions, contact <strong>Louiery Sincioco</strong> at <strong><a href="mailto:louiery@gmail.com">louiery@gmail.com</a></strong>.</p>
+<p>If you contact the developer, the developer receives the information you choose to send. You can use the contact address above for privacy questions or requests to delete information you have sent.</p>
+<h3 id="changes-to-this-policy">Changes to This Policy</h3>
+<p>Updates to this policy will be posted on this page with a revised effective date.</p>
 <h2 id="license">License</h2>
 <p>Life 2.0 source code is licensed under the <strong>MIT License</strong>. See <a href="https://github.com/Sincioco/life2/blob/15d4e3e40746c7e6a91540d7f3e6304ded3c35c0/LICENSE">LICENSE</a> for the full terms.</p>
 <p>Apple frameworks and SF Symbols remain subject to Apple's terms; they are not relicensed by this project.</p>
 <p>Copyright (c) 2025–2026 <strong>Louiery R. Sincioco</strong>.</p>
 </article>
-  <div class="project-source"><p>Content and repository images from the public <a href="https://github.com/Sincioco/life2/blob/15d4e3e40746c7e6a91540d7f3e6304ded3c35c0/README.md">Life 2.0 README</a>, retrieved October 7, 2026. Repository snapshot <a href="https://github.com/Sincioco/life2/commit/15d4e3e40746c7e6a91540d7f3e6304ded3c35c0">15d4e3e</a>.</p><a href="#project-overview">Back to top ↑</a></div></main>
+  <div class="project-source"><p>Content and repository images from the public <a href="https://github.com/Sincioco/life2/blob/15d4e3e40746c7e6a91540d7f3e6304ded3c35c0/README.md">Life 2.0 README</a>, retrieved October 7, 2026. Repository snapshot <a href="https://github.com/Sincioco/life2/commit/15d4e3e40746c7e6a91540d7f3e6304ded3c35c0">15d4e3e</a>.</p><p>Privacy policy provided by Louiery Sincioco.</p><a href="#project-overview">Back to top ↑</a></div></main>
 </div>
   <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="mailto:louiery@gmail.com">louiery@gmail.com</a></div></div></footer>
 </body>
