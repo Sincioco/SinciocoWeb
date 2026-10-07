@@ -69,17 +69,20 @@ $videoScript
 "@
     Set-Content -LiteralPath (Join-Path $projectRoot $file) -Value $html -Encoding utf8
 }
-$cards = foreach ($project in $projects) {
-    $cover = if ($project.heroImage) { $project.heroImage } else { $project.images[0].localPath }
+$cardOrder = @('sinaiprompt', 'sinstar', 'pmt', 'life2', 'smile2', 'smile1')
+$cards = foreach ($slug in $cardOrder) {
+    $project = $projects | Where-Object slug -EQ $slug
+    $cover = if ($project.cardImage) { $project.cardImage } elseif ($project.heroImage) { $project.heroImage } else { $project.images[0].localPath }
+    $coverClass = if ($project.slug -eq 'life2') { 'project-card-image' } else { 'project-card-image project-card-image-cover' }
     if ($project.slug -eq 'sinaiprompt') { $cover = 'images/sinaiprompt/sin-ai-prompt-thumbnail.png' }
     $coverHtml = if ($cover) { '<img src="{0}" alt="{1}" loading="lazy" decoding="async">' -f (Encode $cover), (Encode ($project.name + ' project preview')) } else { '' }
     if ($project.slug -eq 'sinstar') {
     @"
-<article class="project-card"><div class="project-card-image">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><div class="project-card-actions" style="display:flex;flex-wrap:wrap;gap:.75rem 1rem"><a class="text-link" href="$($project.slug).html">Github Repo <span aria-hidden="true">→</span></a><a class="text-link" href="../SinStar_Storyboard/">Storyboard <span aria-hidden="true">→</span></a><a class="text-link" href="https://sinstar.sincioco.com/BookOne">Audio Book <span aria-hidden="true">→</span></a></div></div></article>
+<article class="project-card"><div class="$coverClass">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><div class="project-card-actions" style="display:flex;flex-wrap:wrap;gap:.75rem 1rem"><a class="text-link" href="$($project.slug).html">Github Repo <span aria-hidden="true">→</span></a><a class="text-link" href="../SinStar_Storyboard/">Storyboard <span aria-hidden="true">→</span></a><a class="text-link" href="https://sinstar.sincioco.com/BookOne">Audio Book <span aria-hidden="true">→</span></a></div></div></article>
 "@
     } else {
     @"
-<a class="project-card" href="$($project.slug).html"><div class="project-card-image">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><span class="text-link">Github Repo <span aria-hidden="true">→</span></span></div></a>
+<a class="project-card" href="$($project.slug).html"><div class="$coverClass">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><span class="text-link">Github Repo <span aria-hidden="true">→</span></span></div></a>
 "@
     }
 }

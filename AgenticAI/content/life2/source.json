@@ -5,6 +5,7 @@
   "commit": "4cee5ac2ff15432086f42ec506581e93096cd7d6",
   "readmePath": "README.md",
   "description": "Life 2.0 is a native iPhone and iPad app for tracking recurring activities, building routines, and exploring completion patterns.",
+  "cardImage": "images/life2/life-2-thumbnail.png",
   "images": [
     {
       "source": "docs/screenshots/activities.png",

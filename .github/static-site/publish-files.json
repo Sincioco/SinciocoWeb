@@ -551,6 +551,11 @@
   },
   {
     "source": "main",
+    "path": "AgenticAI/images/life2/life-2-thumbnail.png",
+    "deployed": "AgenticAI/images/life2/life-2-thumbnail.png"
+  },
+  {
+    "source": "main",
     "path": "AgenticAI/images/life2/activities.png",
     "deployed": "AgenticAI/images/life2/activities.png"
   },
@@ -758,6 +763,11 @@
     "source": "main",
     "path": "AgenticAI/images/sinstar/Horizon-Airport-night.png",
     "deployed": "AgenticAI/images/sinstar/Horizon-Airport-night.png"
+  },
+  {
+    "source": "main",
+    "path": "AgenticAI/images/sinstar/e01-s01-added.png",
+    "deployed": "AgenticAI/images/sinstar/e01-s01-added.png"
   },
   {
     "source": "main",

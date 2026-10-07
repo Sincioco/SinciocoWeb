@@ -7,24 +7,26 @@
   <meta name="description" content="Explore the Sin Star story, storyboard and cinematic concept clips.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://sincioco.github.io/SinStar_Storyboard/">
-  <meta name="theme-color" content="#101522">
+  <meta name="theme-color" content="#0c1422">
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; height: 100%; }
-    body { height: 100vh; height: 100dvh; display: grid; grid-template-rows: auto minmax(0, 1fr); background: #101522; color: #f4f2ed; font: 16px/1.45 system-ui, sans-serif; }
-    header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .65rem 1.5rem; padding: .75rem max(1rem, env(safe-area-inset-left)); border-bottom: 1px solid #384153; }
-    h1 { font-size: 1.05rem; margin: 0; }
-    a { color: #d9e9ff; text-underline-offset: .2em; }
-    nav { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .open-site { padding: .5rem .8rem; border: 1px solid #7e9bc6; border-radius: .35rem; font-weight: 650; }
+    body { height: 100vh; height: 100dvh; overflow: hidden; background: #0c1422; color: #eeeae3; font: 16px/1.45 system-ui, sans-serif; }
     main, iframe { width: 100%; height: 100%; min-height: 0; }
-    iframe { display: block; border: 0; background: #fff; }
-    a:focus-visible { outline: 3px solid #f3cd78; outline-offset: 4px; }
+    iframe { display: block; border: 0; background: #0c1422; }
+    .open-site { position: fixed; z-index: 1; left: -10000px; top: max(.75rem, env(safe-area-inset-top)); max-width: calc(100% - 1.5rem); padding: .5rem .75rem; border: 1px solid #35455e; border-radius: .3rem; background: #142033; }
+    .open-site:focus { left: max(.75rem, env(safe-area-inset-left)); outline: 3px solid #e2c587; outline-offset: 3px; }
+    .site-fallback { position: fixed; z-index: 1; right: max(.75rem, env(safe-area-inset-right)); bottom: max(.75rem, env(safe-area-inset-bottom)); max-width: min(28rem, calc(100% - 1.5rem)); margin: 0; padding: .5rem .75rem; border: 1px solid #35455e; border-radius: .3rem; background: #142033; font-size: .85rem; }
+    a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; color: #94d9e5; text-underline-offset: .2em; }
+    a:focus-visible { outline: 3px solid #e2c587; outline-offset: 3px; }
   </style>
   <script src="/wrapper-nav.js" defer></script>
 </head>
 <body>
-  <header><h1>Sin Star Storyboard</h1><nav aria-label="Storyboard links"><a href="https://sincioco.com/AgenticAI/sinstar.html">Explore project</a><a id="open-hosted-content" class="open-site" href="https://sincioco.github.io/SinStar_Storyboard/" target="_blank" rel="noopener">Open full web site</a></nav></header>
-  <main aria-label="Story and storyboard"><iframe id="hosted-content" src="https://sincioco.github.io/SinStar_Storyboard/" title="Sin Star story, storyboard and concept clips" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></main>
+  <a id="open-hosted-content" class="open-site" href="https://sincioco.github.io/SinStar_Storyboard/" target="_blank" rel="noopener">Open full web site</a>
+  <main aria-label="Story and storyboard">
+    <iframe id="hosted-content" src="https://sincioco.github.io/SinStar_Storyboard/" title="Sin Star story, storyboard and concept clips" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe>
+  </main>
+  <noscript><p class="site-fallback"><a href="https://sincioco.github.io/SinStar_Storyboard/" target="_blank" rel="noopener">Open full web site</a></p></noscript>
 </body>
 </html>
