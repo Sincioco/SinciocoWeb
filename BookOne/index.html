@@ -7,31 +7,27 @@
   <meta name="description" content="Read and listen to Sin Star: Book One by Louiery Sincioco.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://sincioco.github.io/SinStar_Audio_BookOne/">
-  <meta name="theme-color" content="#101522">
+  <meta name="theme-color" content="#f6f2e9">
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; height: 100%; }
-    body { height: 100vh; height: 100dvh; display: grid; grid-template-rows: auto minmax(0, 1fr); background: #101522; color: #f4f2ed; font: 16px/1.45 system-ui, sans-serif; }
-    header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .65rem 1.5rem; padding: .75rem max(1rem, env(safe-area-inset-left)); border-bottom: 1px solid #384153; }
-    h1 { font-size: 1.05rem; margin: 0; }
-    p { font-size: .85rem; margin: .15rem 0 0; color: #c6cedb; }
-    a { color: #d9e9ff; text-underline-offset: .2em; }
-    nav { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .open-reader { padding: .5rem .8rem; border: 1px solid #7e9bc6; border-radius: .35rem; font-weight: 650; }
+    body { height: 100vh; height: 100dvh; overflow: hidden; background: #f6f2e9; color: #332b22; font: 16px/1.45 system-ui, sans-serif; }
     main, iframe { width: 100%; height: 100%; min-height: 0; }
-    iframe { display: block; border: 0; background: #fff; }
-    a:focus-visible { outline: 3px solid #f3cd78; outline-offset: 4px; }
+    iframe { display: block; border: 0; background: #f6f2e9; }
+    .open-reader { position: fixed; z-index: 1; left: -10000px; top: max(.75rem, env(safe-area-inset-top)); max-width: calc(100% - 1.5rem); padding: .5rem .75rem; border: 1px solid #cabea9; border-radius: .3rem; background: #f6f2e9; }
+    .open-reader:focus { left: max(.75rem, env(safe-area-inset-left)); outline: 3px solid #986b26; outline-offset: 3px; }
+    .reader-fallback { position: fixed; z-index: 1; right: max(.75rem, env(safe-area-inset-right)); bottom: max(.75rem, env(safe-area-inset-bottom)); max-width: min(28rem, calc(100% - 1.5rem)); margin: 0; padding: .5rem .75rem; border: 1px solid #cabea9; border-radius: .3rem; background: #fffaf0; font-size: .85rem; }
+    a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; color: #594124; text-underline-offset: .2em; }
+    a:focus-visible { outline: 3px solid #986b26; outline-offset: 3px; }
   </style>
   <script src="/BookOne/retire-legacy-workers.js" defer></script>
   <script src="/wrapper-nav.js" defer></script>
 </head>
 <body>
-  <header>
-    <div><h1>Sin Star: Book One</h1><p>By Louiery Sincioco</p></div>
-    <nav aria-label="Reader links"><a href="https://sincioco.com/">Sincioco.com</a><a id="open-hosted-content" class="open-reader" href="https://sincioco.github.io/SinStar_Audio_BookOne/" target="_blank" rel="noopener">Open full reader</a></nav>
-  </header>
+  <a id="open-hosted-content" class="open-reader" href="https://sincioco.github.io/SinStar_Audio_BookOne/" target="_blank" rel="noopener">Open full reader</a>
   <main aria-label="Book reader">
     <iframe id="hosted-content" src="https://sincioco.github.io/SinStar_Audio_BookOne/" title="Sin Star: Book One audiobook and illustrated reader" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </main>
+  <noscript><p class="reader-fallback"><a href="https://sincioco.github.io/SinStar_Audio_BookOne/" target="_blank" rel="noopener">Open full reader</a></p></noscript>
 </body>
 </html>
