@@ -36,12 +36,13 @@ def safe_file(root, name):
 
 class ReaderHTML(HTMLParser):
     def __init__(self):
-        super().__init__(); self.ids=set(); self.cues=set(); self.refs=[]; self.follow=False
+        super().__init__(); self.ids=set(); self.cues=set(); self.refs=[]; self.follow=False; self.music_range=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
         if a.get('id'): self.ids.add(a['id'])
         if a.get('data-cue-id'): self.cues.add(a['data-cue-id'])
         if a.get('id')=='follow': self.follow='checked' in a and a.get('autocomplete')=='off'
+        if a.get('id')=='music-volume':self.music_range=(a.get('min'),a.get('max'),a.get('value'))
         for key in ('src','href'):
             if a.get(key): self.refs.append(a[key])
 
@@ -51,6 +52,13 @@ def validate(payload):
     book=json.loads(payload['book.json']); page=ReaderHTML(); page.feed(payload['index.html'].decode('utf-8'))
     if len(book['chapters']) != 43 or not page.follow:
         raise ValueError('Chapter count or default Follow behavior changed; review before publication.')
+    if page.music_range!=('0','10','3'):raise ValueError('Expected music range 0-10% and fresh default 3%.')
+    if book.get('audioRevision')!='web-heading-prefix-v1':raise ValueError('Expected the spoken-heading audio revision.')
+    for chapter in book['chapters'][1:]:
+        cues=chapter['cues'];offset=chapter.get('bodyStart',0)
+        if len(cues)<3 or [c.get('kind') for c in cues[:2]]!=['heading','heading'] or not 0<cues[0]['end']<cues[1]['start']<cues[1]['end']<offset or abs(cues[2]['start']-offset)>.0001:
+            raise ValueError('Invalid heading/body timing: '+chapter['id'])
+        if not chapter['audio'].endswith('-headings-v1.mp3'):raise ValueError('Heading revision must use distinct audio URLs.')
     total=0; cue_count=0
     for chapter in book['chapters']:
         name=chapter['audio']; audio=payload[name]
