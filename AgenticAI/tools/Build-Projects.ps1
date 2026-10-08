@@ -49,7 +49,10 @@ function WriteProjectPage([string]$file, [string]$title, [string]$description, [
   <meta name="viewport" content="width=device-width, initial-scale=1">
 $seoHead
   <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="../Images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon">
+  <link rel="icon" href="../Images/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../Images/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" sizes="180x180">
   <link rel="stylesheet" href="../CSS/site.css">
   <link rel="stylesheet" href="projects.css">
   <script src="projects.js" defer></script>

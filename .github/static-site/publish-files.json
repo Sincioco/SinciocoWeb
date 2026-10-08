@@ -1773,5 +1773,25 @@
     "source": "main",
     "path": "AgenticAI/images/pmt/pmt-1-draft-1c-card-960.png",
     "deployed": "AgenticAI/images/pmt/pmt-1-draft-1c-card-960.png"
+  },
+  {
+    "source": "main",
+    "path": "Images/favicon-16x16.png",
+    "deployed": "Images/favicon-16x16.png"
+  },
+  {
+    "source": "main",
+    "path": "Images/favicon-32x32.png",
+    "deployed": "Images/favicon-32x32.png"
+  },
+  {
+    "source": "main",
+    "path": "apple-touch-icon.png",
+    "deployed": "apple-touch-icon.png"
+  },
+  {
+    "source": "main",
+    "path": "favicon.ico",
+    "deployed": "favicon.ico"
   }
 ]

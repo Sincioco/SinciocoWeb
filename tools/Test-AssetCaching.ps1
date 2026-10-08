@@ -91,7 +91,7 @@ try {
         $conditional = Get-Response $route $html.ETag
         Assert ($conditional.Status -eq 304 -and $conditional.Cache -match '\bno-cache\b') "Unchanged HTML '$route' must revalidate with 304 and no-cache."
     }
-    foreach ($asset in @('CSS/site.css', 'AgenticAI/projects.js', 'Images/favicon.svg')) {
+    foreach ($asset in @('CSS/site.css', 'AgenticAI/projects.js', 'Images/favicon-32x32.png')) {
         $versioned = $asset + '?v=' + (Get-Version (Join-Path $siteRoot $asset))
         $response = Get-Response $versioned
         Assert ($response.Status -eq 200 -and $response.Cache -match '\bpublic\b' -and $response.Cache -match '\bmax-age=31536000\b' -and $response.Cache -match '\bimmutable\b' -and $response.Cache -notmatch '\bno-cache\b') "Versioned $asset must be immutable for one year."
