@@ -52,7 +52,7 @@ def validate(payload):
     book=json.loads(payload['book.json']); page=ReaderHTML(); page.feed(payload['index.html'].decode('utf-8'))
     if len(book['chapters']) != 43 or not page.follow:
         raise ValueError('Chapter count or default Follow behavior changed; review before publication.')
-    if page.music_range!=('0','10','3'):raise ValueError('Expected music range 0-10% and fresh default 3%.')
+    if page.music_range!=('0','10','5'):raise ValueError('Expected music range 0-10% and fresh default 5%.')
     if book.get('audioRevision')!='web-heading-prefix-v1':raise ValueError('Expected the spoken-heading audio revision.')
     for chapter in book['chapters'][1:]:
         cues=chapter['cues'];offset=chapter.get('bodyStart',0)
