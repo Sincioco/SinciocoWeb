@@ -73,6 +73,13 @@ def validate(payload):
             raise ValueError('Missing anchor: '+url.fragment)
     for name in json.loads(payload['storyboards.json'])['images']:
         if name not in payload: raise ValueError('Missing illustration: '+name)
+    music=json.loads(payload['music.json'])['tracks']
+    if [track['file'] for track in music] != ['music/starforge-horizon.mp3','music/starforge-march.mp3','music/bloom.mp3']:
+        raise ValueError('Unexpected background music playlist order.')
+    for track in music:
+        data=payload[track['file']]
+        if len(data)!=track['bytes'] or digest(data)!=track['sha256']:
+            raise ValueError('Music bytes/hash mismatch: '+track['file'])
     if sum(map(len,payload.values()))>=1_000_000_000 or any(len(v)>=100*1024*1024 for v in payload.values()):
         raise ValueError('GitHub Pages/file size budget exceeded.')
     for name,data in payload.items():

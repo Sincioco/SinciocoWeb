@@ -62,5 +62,13 @@
   "images/07-panel-08-4.webp",
   "images/08-panel-11-2.webp",
   "images/09-c09-s01-added.webp",
-  "images/10-e01-s01-added.webp"
+  "images/10-e01-s01-added.webp",
+  "music.js",
+  "music-cache.js",
+  "music.json",
+  "bookmarks.js",
+  "bookmark-anchors.js",
+  "music/starforge-horizon.mp3",
+  "music/starforge-march.mp3",
+  "music/bloom.mp3"
 ]
