@@ -159,10 +159,21 @@ class PublicationContractTests(unittest.TestCase):
         self.assertEqual(len(assets),62)
         self.assertEqual(len(set(assets)),62)
         self.assertEqual(sum(asset.startswith('audio/') for asset in assets),43)
+        targets=contract['reader_asset_targets']
+        expected_targets={f'audio/{chapter:02d}.mp3':f'audio/{chapter:02d}-headings-v1.mp3' for chapter in range(42)}
+        self.assertEqual(targets,expected_targets)
+        self.assertEqual({asset for asset in assets if asset.startswith('audio/')},set(expected_targets)|{'audio/title.mp3'})
+        current_targets=[targets.get(asset,asset) for asset in assets]
+        self.assertEqual(len(set(current_targets)),62)
+        self.assertIn('audio/title.mp3',current_targets)
+        for asset in list(assets)+list(targets)+current_targets:
+            self.assertRegex(asset,r'\A[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\Z')
+            self.assertTrue(set(asset.split('/')).isdisjoint({'.','..'}))
+            self.assertEqual(public_relative(asset).as_posix(),asset)
         for prefix in ('/BookOne/','/sinstar/novel/'):
             for asset in assets:
                 self.assertEqual(rules[prefix+asset],
-                                 {'route':prefix+asset,'redirect':book_pages+asset,'statusCode':301})
+                                 {'route':prefix+asset,'redirect':book_pages+targets.get(asset,asset),'statusCode':301})
         for path in contract['retirement_worker_paths']:
             self.assertEqual(rules[path],
                              {'route':path,'headers':{'Cache-Control':'no-cache, no-store, must-revalidate'}})

@@ -51,12 +51,30 @@ try {
     foreach ($asset in $assets) {
         if ($asset -notmatch '^[A-Za-z0-9_./-]+$' -or $asset.Contains('..') -or $asset.StartsWith('/')) { throw 'Unsafe historical asset path.' }
     }
+    $targetMapping = $contract.reader_asset_targets
+    if ($null -eq $targetMapping -or $targetMapping -isnot [pscustomobject]) { throw 'Reader asset targets must be a JSON object.' }
+    $mappingProperties = @($targetMapping.PSObject.Properties)
+    if ($mappingProperties.Count -ne 42) { throw 'Expected exactly 42 renamed chapter audio targets.' }
+    $mappedTargets = @{}
+    foreach ($property in $mappingProperties) {
+        if ($property.Name -cnotmatch '^audio/(?:[0-3][0-9]|4[01])\.mp3$' -or $property.Value -isnot [string]) { throw 'Unexpected historical audio mapping key or target type.' }
+        $expectedTarget = $property.Name.Substring(0, $property.Name.Length - 4) + '-headings-v1.mp3'
+        if ($property.Value -cne $expectedTarget -or $property.Value -cnotmatch '^[A-Za-z0-9_./-]+$' -or $property.Value.Contains('..') -or $property.Value.StartsWith('/')) { throw 'Unsafe or unexpected current chapter audio target.' }
+        $mappedTargets[$property.Name] = $property.Value
+    }
+    $assetTargets = @{}
+    foreach ($asset in $assets) {
+        $assetTargets[$asset] = if ($mappedTargets.ContainsKey($asset)) { $mappedTargets[$asset] } else { $asset }
+    }
+    if (@($mappedTargets.Keys | Where-Object { $assets -cnotcontains $_ }).Count) { throw 'An audio mapping key is absent from the historical asset contract.' }
+    $currentAssets = @($assets | ForEach-Object { $assetTargets[$_] })
+    if ($currentAssets.Count -ne 62 -or @($currentAssets | Select-Object -Unique).Count -ne 62) { throw 'Expected 62 unique current reader targets.' }
     $assetRoutes = @($config.routes | Where-Object { $_.route -cmatch '^/(?:BookOne|sinstar/novel)/' -and $_.redirect -clike ($bookPages + '*') })
     if ($assetRoutes.Count -ne 124) { throw 'Expected exactly 124 historical asset redirect rules in staged routing.' }
     foreach ($prefix in @('/BookOne/','/sinstar/novel/')) {
         foreach ($asset in $assets) {
             $route = @($config.routes | Where-Object { $_.route -ceq ($prefix + $asset) })
-            if ($route.Count -ne 1 -or $route[0].statusCode -ne 301 -or $route[0].redirect -cne ($bookPages + $asset)) { throw ('Missing or incorrect asset redirect: ' + $prefix + $asset) }
+            if ($route.Count -ne 1 -or $route[0].statusCode -ne 301 -or $route[0].redirect -cne ($bookPages + $assetTargets[$asset])) { throw ('Missing or incorrect asset redirect: ' + $prefix + $asset) }
         }
     }
     $client = New-VerificationClient
@@ -121,7 +139,7 @@ try {
             [pscustomobject]@{passed=($r.Status -eq 301 -and $r.FinalUrl -ceq $url -and $r.Location -ceq $route.redirect);status=$r.Status;final_url=$r.FinalUrl;location=$r.Location;expected_location=$route.redirect}
         }
     }
-    foreach ($asset in $assets) {
+    foreach ($asset in $currentAssets) {
         $url = $bookPages + $asset
         Add-LiveCheck 'pages-asset' $url {
             $r = Get-VerificationResponse -Client $client -Uri $url -Method HEAD
@@ -135,6 +153,7 @@ try {
             [pscustomobject]@{passed=($r.Status -eq 301 -and $r.FinalUrl -ceq $url -and $r.Location -ceq ($bookPages + 'sitemap.xml'));status=$r.Status;final_url=$r.FinalUrl;location=$r.Location;expected_location=($bookPages + 'sitemap.xml')}
         }
     }
+    $expectedRangeUrl = $bookPages + $assetTargets['audio/00.mp3']
     foreach ($prefix in @('/BookOne/','/sinstar/novel/')) {
         foreach ($start in @(0,100000)) {
             $url = $Base + $prefix + 'audio/00.mp3'
@@ -143,7 +162,7 @@ try {
                 $pattern = '^bytes ' + $start + '-' + ($start + 1023) + '/([0-9]+)$'
                 $rangeOkay = $r.ContentRange -cmatch $pattern
                 if ($rangeOkay) { $rangeOkay = [long]$Matches[1] -gt ($start + 1023) }
-                [pscustomobject]@{passed=($r.Status -eq 206 -and $r.Bytes.Length -eq 1024 -and $rangeOkay -and $r.FinalUrl -ceq ($bookPages + 'audio/00.mp3'));start=$start;status=$r.Status;bytes=$r.Bytes.Length;content_range=$r.ContentRange;final_url=$r.FinalUrl;expected_final_url=($bookPages + 'audio/00.mp3')}
+                [pscustomobject]@{passed=($r.Status -eq 206 -and $r.Bytes.Length -eq 1024 -and $rangeOkay -and $r.FinalUrl -ceq $expectedRangeUrl);start=$start;status=$r.Status;bytes=$r.Bytes.Length;content_range=$r.ContentRange;final_url=$r.FinalUrl;expected_final_url=$expectedRangeUrl}
             }
         }
     }

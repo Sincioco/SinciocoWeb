@@ -56,3 +56,11 @@ audio and reading position stay with their browser origin. Existing Azure data
 does not move automatically to GitHub Pages, and mobile browsers may partition
 the iframe separately from the direct reader. The Azure wrapper provides an
 Open full reader link for standalone use.
+
+When a reader update renames narration files, preserve the old Azure audio URLs
+by updating `reader_asset_targets` and `reader_audio_snapshot` in both
+migration contracts, and their corresponding exact route destinations.
+The current chapter-heading tracks use `audio/00-headings-v1.mp3` through
+`audio/41-headings-v1.mp3`; `audio/title.mp3` keeps its original name.
+Keep the main-site CI and private `Deployment` configurations synchronized
+and pass their asset and audio-range checks before retiring a domain.

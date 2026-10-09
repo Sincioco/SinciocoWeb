@@ -7,6 +7,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 import json
+import re
 import subprocess
 import sys
 import posixpath
@@ -185,14 +186,38 @@ if landing_rule.get('statusCode') != 301 or landing_rule.get('redirect') != book
 historical_assets = contract['retired_reader_assets']
 if len(historical_assets) != 62 or len(set(historical_assets)) != 62 or sum(path.startswith('audio/') for path in historical_assets) != 43:
     fail('Historical reader asset contract must retain 62 paths including 43 audio files')
+reader_asset_targets = contract.get('reader_asset_targets')
+expected_reader_asset_targets = {f'audio/{chapter:02d}.mp3': f'audio/{chapter:02d}-headings-v1.mp3' for chapter in range(42)}
+if not isinstance(reader_asset_targets, dict):
+    fail('Reader asset target mapping must be an object')
+    reader_asset_targets = {}
+if reader_asset_targets != expected_reader_asset_targets:
+    fail('Reader asset targets must contain exactly the 42 approved chapter renames')
+if {asset for asset in historical_assets if asset.startswith('audio/')} != set(expected_reader_asset_targets) | {'audio/title.mp3'}:
+    fail('Historical audio URLs must retain chapters 00 through 41 and the unchanged title track')
+
+def checked_reader_asset(path):
+    if (not isinstance(path, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*', path)
+            or any(part in ('.', '..') for part in path.split('/'))):
+        raise ValueError('Reader asset paths must be safe contained relative paths')
+    public_relative(path)
+    return path
+
+for previous, current in reader_asset_targets.items():
+    checked_reader_asset(previous)
+    checked_reader_asset(current)
+current_assets = [checked_reader_asset(reader_asset_targets.get(checked_reader_asset(asset), asset)) for asset in historical_assets]
+if len(current_assets) != 62 or len(set(current_assets)) != 62:
+    fail('Historical reader assets must resolve to exactly 62 distinct current targets')
 expected_asset_routes = set()
 for asset in historical_assets:
     public_relative(asset)
+    current_target = reader_asset_targets.get(asset, asset)
     for prefix in ('/BookOne/', '/sinstar/novel/'):
         route = prefix + asset
         expected_asset_routes.add(route)
         rule = rules.get(route, {})
-        if rule.get('statusCode') != 301 or rule.get('redirect') != book_pages + asset or 'rewrite' in rule:
+        if rule.get('statusCode') != 301 or rule.get('redirect') != book_pages + current_target or 'rewrite' in rule:
             fail('Missing or changed historical reader asset redirect', route=route)
 actual_asset_routes = {path for path, rule in rules.items() if
                        (path.startswith('/BookOne/') or path.startswith('/sinstar/novel/'))
@@ -316,6 +341,7 @@ summary = {'files':len(actual), 'bytes':sum(item['bytes'] for item in actual),
            'copied_files_hash_verified':len(manifest), 'html_links_checked':checked,
            'external_redirect_links_resolved':external_resolutions,
            'routes':len(rules), 'reader_asset_redirects':len(expected_asset_routes),
+           'reader_asset_mappings':len(reader_asset_targets), 'current_reader_assets':len(set(current_assets)),
            'main_canonical_pages':len(locations), 'canonical_html_files_checked':canonical_files_checked, 'wrappers':len(contract['wrappers']),
            'responsive_card_thumbnails':thumbnail_summary, 'novel_source_entries':sum(entry['source']=='novel' for entry in entries), 'failures':failures}
 if len(actual) > 15000 or summary['bytes'] > 250 * 1024 * 1024:
