@@ -90,7 +90,7 @@ $cards = foreach ($slug in $cardOrder) {
     $coverHtml = if ($project.slug -in @('sinaiprompt', 'pmt')) { $responsiveCardImages.($project.slug) } elseif ($cover) { '<img src="{0}" alt="{1}" loading="lazy" decoding="async">' -f (Encode $cover), (Encode ($project.name + ' project preview')) } else { '' }
     if ($project.slug -eq 'sinstar') {
     @"
-<article class="project-card"><div class="$coverClass">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><div class="project-card-actions" style="display:flex;flex-wrap:wrap;gap:.75rem 1rem"><a class="text-link" href="$(Encode $project.repository)">Github Repo <span aria-hidden="true">→</span></a><a class="text-link" href="../SinStar_Storyboard/">Storyboard <span aria-hidden="true">→</span></a><a class="text-link" href="https://sinstar.sincioco.com/BookOne">Audio Book <span aria-hidden="true">→</span></a></div></div></article>
+<article class="project-card"><div class="$coverClass">$coverHtml</div><div class="project-card-copy"><h2>$(Encode $project.name)</h2><p>$(Encode $project.description)</p><div class="project-card-actions" style="display:flex;flex-wrap:wrap;gap:.75rem 1rem"><a class="text-link" href="$(Encode $project.repository)">Github Repo <span aria-hidden="true">→</span></a><a class="text-link" href="../SinStar_Storyboard/">Storyboard <span aria-hidden="true">→</span></a><a class="text-link" href="https://sincioco.com/SinStar/BookOne">Audio Book <span aria-hidden="true">→</span></a></div></div></article>
 "@
     } else {
     @"
@@ -143,7 +143,7 @@ foreach ($project in $projects) {
     $retrievedDate = if ($project.retrievedDate) { $project.retrievedDate } else { 'October 5, 2026' }
     $policyCredit = if ($project.slug -eq 'life2') { '<p>Privacy policy provided by Louiery Sincioco.</p>' } else { '' }
     $sourceUrl = "$($project.repository)/blob/$($project.commit)/$($project.readmePath)"
-    $extra = if ($project.slug -eq 'smile2') { '<a class="text-link" href="../smile2/">Learn SMILE 2.0 →</a>' } elseif ($project.slug -eq 'sinstar') { '<a class="text-link" href="https://sinstar.sincioco.com/BookOne/">Read and listen to Sin Star: Book One</a>' } else { '' }
+    $extra = if ($project.slug -eq 'smile2') { '<a class="text-link" href="../smile2/">Learn SMILE 2.0 →</a>' } elseif ($project.slug -eq 'sinstar') { '<a class="text-link" href="https://sincioco.com/SinStar/BookOne/">Read and listen to Sin Star: Book One</a>' } else { '' }
     $lead = $project.description
     if ($project.slug -eq 'life2') { $lead += ' Use the power of on-device AI to get encouragement and insights into your workouts!' }
     $content = @"

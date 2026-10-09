@@ -1,5 +1,14 @@
 # Updating the public audiobook
 
+The public audiobook address is <https://sincioco.com/SinStar/BookOne/>.
+The main-site source `BookOne/index.html` wraps the GitHub Pages reader.
+An exact Azure rewrite exposes `/SinStar/BookOne/` without changing the browser
+address; `/BookOne/` remains available for existing apex links. Do not add a
+physical `SinStar` folder alongside the legacy `sinstar` folder on Windows.
+Its canonical target remains the indexable GitHub Pages reader; wrappers
+remain `noindex, follow`. `/sitemap-sinstar.xml` redirects to the reader
+sitemap on GitHub Pages. Do not restore links to the retired `sinstar` host.
+
 The authoritative reader remains in the novel project's `web` folder. The separate
 `SinStar_Audio_BookOne` repository contains its public deployment copy in `docs`.
 GitHub Pages must use branch `main`, folder `/docs`. No deployment secret, Azure

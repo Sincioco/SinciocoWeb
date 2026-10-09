@@ -111,6 +111,11 @@ class PublicationContractTests(unittest.TestCase):
         self.assertNotIn('sitemap-sinstar.xml',paths)
         self.assertEqual({p for p in paths if p.startswith('BookOne/')},
                          {'BookOne/index.html','BookOne/sw.js','BookOne/retire-legacy-workers.js'})
+        self.assertFalse(any(p.startswith('SinStar/') or p.casefold().startswith('sinstar/bookone/') for p in paths))
+        book_source='BookOne/index.html'
+        book_outputs={book_source,'SinStar/BookOne/index.html'}
+        book_entries=[entry for entry in entries if entry['deployed'] in book_outputs or entry['path'] in book_outputs]
+        self.assertEqual(book_entries,[{'source':'main','path':book_source,'deployed':book_source}])
         self.assertIn('SinStar_Storyboard/index.html',paths)
         self.assertIn('wrapper-nav.js',paths)
         self.assertEqual(json.loads((ROOT/'sources.json').read_text()),{'main':'../..'})
@@ -118,9 +123,49 @@ class PublicationContractTests(unittest.TestCase):
     def test_native_auto_preserves_final_canonical_contract(self):
         config=json.loads((ROOT/'site-config/staticwebapp.config.json').read_text(encoding='utf-8-sig'))
         self.assertEqual(config.get('trailingSlash'),'auto')
-        self.assertEqual(len(config['routes']),141)
+        self.assertEqual(len(config['routes']),142)
         paths={rule['route'] for rule in config['routes']}
         self.assertTrue(paths.isdisjoint({'/AgenticAI','/Military','/Resume','/smile2'}))
+        self.assertNotIn('navigationFallback',config)
+        self.assertFalse(any('*' in path for path in paths))
+        self.assertTrue(paths.isdisjoint({'/SinStar/BookOne','/SinStar/BookOne/'}))
+        for folder in ('/BookOne','/SinStar_Storyboard'):
+            self.assertTrue(paths.isdisjoint({folder,folder+'/',folder+'/index.html'}))
+
+    def test_book_wrapper_migration_contract_preserves_legacy_assets(self):
+        contract=json.loads((ROOT/'pages-migration-contract.json').read_text(encoding='utf-8-sig'))
+        config=json.loads((ROOT/'site-config/staticwebapp.config.json').read_text(encoding='utf-8-sig'))
+        book_pages='https://sincioco.github.io/SinStar_Audio_BookOne/'
+        book_wrapper='https://sincioco.com/SinStar/BookOne/'
+        self.assertEqual(contract['book_pages_url'],book_pages)
+        self.assertEqual(contract['book_wrapper_url'],book_wrapper)
+        self.assertEqual(contract['azure_origins'],['https://sincioco.com','https://www.sincioco.com'])
+        self.assertEqual(contract['retirement_worker_paths'],['/BookOne/sw.js','/sinstar/novel/sw.js'])
+        self.assertEqual(len(contract['wrappers']),3)
+        expected_wrappers=[
+            {'path':'SinStar/BookOne/index.html','source':'BookOne/index.html','canonical':book_pages},
+            {'path':'BookOne/index.html','canonical':book_pages},
+            {'path':'SinStar_Storyboard/index.html','canonical':'https://sincioco.github.io/SinStar_Storyboard/'},
+        ]
+        self.assertEqual(sorted(contract['wrappers'],key=lambda item:item['path']),
+                         sorted(expected_wrappers,key=lambda item:item['path']))
+        rules={rule['route']:rule for rule in config['routes']}
+        self.assertEqual(len(rules),142)
+        self.assertEqual(rules['/SinStar/BookOne/index.html'],
+                         {'route':'/SinStar/BookOne/index.html','rewrite':'/BookOne/index.html'})
+        self.assertEqual(rules['/sinstar/novel/index.html'],
+                         {'route':'/sinstar/novel/index.html','redirect':book_wrapper,'statusCode':301})
+        assets=contract['retired_reader_assets']
+        self.assertEqual(len(assets),62)
+        self.assertEqual(len(set(assets)),62)
+        self.assertEqual(sum(asset.startswith('audio/') for asset in assets),43)
+        for prefix in ('/BookOne/','/sinstar/novel/'):
+            for asset in assets:
+                self.assertEqual(rules[prefix+asset],
+                                 {'route':prefix+asset,'redirect':book_pages+asset,'statusCode':301})
+        for path in contract['retirement_worker_paths']:
+            self.assertEqual(rules[path],
+                             {'route':path,'headers':{'Cache-Control':'no-cache, no-store, must-revalidate'}})
 
     def test_workflow_never_deploys_pull_requests_or_builds_repository_root(self):
         text=(ROOT.parent/'workflows/deploy-sincioco-free.yml').read_text()

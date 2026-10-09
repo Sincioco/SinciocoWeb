@@ -7,11 +7,22 @@ The GitHub repository is `Sincioco/SinciocoWeb`.
 ## Current hosting and publication
 
 The personal site uses the existing Azure Static Web App **sincioco-free**, on
-the **Free** plan, with HTTPS at <https://sincioco.com> and
-<https://sinstar.sincioco.com>. Earlier dated audit notes below describe the
-previous IIS/App Service setup and are retained as historical evidence.
+the **Free** plan, with its primary HTTPS address at <https://sincioco.com>.
+The approved custom-domain pair is `sincioco.com` and `www.sincioco.com`; the
+`www` alias and certificate are managed in Azure and the existing DNS account.
+Azure should use the apex as its default domain. Do not add a shared path-only
+catch-all redirect, which would also match the apex and cause redirect loops.
+Earlier dated audit notes below describe the previous IIS/App Service setup.
 
-`BookOne/` and `SinStar_Storyboard/` are small iframe pages with direct-open links.
+`SinStar/BookOne/` and `SinStar_Storyboard/` are small iframe pages with direct-open links.
+The preferred audiobook address is <https://sincioco.com/SinStar/BookOne/>.
+The single source `BookOne/index.html` serves both addresses through an exact
+Azure rewrite at `/SinStar/BookOne/index.html`. Azure also matches that rule
+for the folder with or without a slash, preserving the visible new address.
+This avoids conflicting `SinStar` and `sinstar` directories on Windows while
+keeping the old worker files and apex bookmarks. Both addresses preserve chapter fragments. The
+retired `sinstar.sincioco.com` host requires its Azure binding and cannot serve
+redirects after that binding is removed.
 Their content is hosted by the public GitHub Pages repositories
 [SinStar_Audio_BookOne](https://github.com/Sincioco/SinStar_Audio_BookOne) and
 [SinStar_Storyboard](https://github.com/Sincioco/SinStar_Storyboard), each using
@@ -31,8 +42,9 @@ The workflow uses standard Ubuntu runners, read-only GitHub permissions and
 full-commit action pins. It performs no PR or preview deployment. It builds
 only `.github/static-site/publish-files.json`, checks the complete prepared
 payload and SEO, then uploads `.github/static-site/website` to the existing app.
-Post-upload checks verify the expected Azure hostname, custom-domain content,
-redirects and SEO. A failed post-upload check can mean the upload already
+Post-upload checks verify the expected Azure hostname, apex content,
+redirects and SEO. They target the apex so a custom-domain binding transition
+does not break publication; verify the `www` alias and certificate separately. A failed post-upload check can mean the upload already
 happened; inspect the run before retrying. The official Azure action's pinned
 Dockerfile still uses Microsoft's mutable native-client `stable` image.
 
@@ -117,7 +129,7 @@ The generators use local source snapshots and installed PowerShell/Windows
 capabilities; they require no package downloads. Main-branch pushes deploy through
 the guarded Azure workflow described above when its enable variable is set.
 
-## Asset caching — 2026-10-05
+## Asset caching â€” 2026-10-05
 
 Asset versions are generated from the first 16 lowercase hexadecimal characters
 of each file's SHA-256 hash. The updater covers local CSS, JavaScript, images,
@@ -167,7 +179,7 @@ the Life 2.0 Calendar card spans the full 842px gallery with no horizontal overf
 at a 1250px viewport. Retire the cache regression after ten consecutive relevant
 successful runs under the global policy.
 
-## SEO audit — 2026-10-05
+## SEO audit â€” 2026-10-05
 
 Local changes describe software engineering, software architecture, custom software
 developed with AI, and Agentic AI work for United States and Philippines teams.

@@ -1,5 +1,5 @@
 param(
-    [string]$Base = 'https://sinstar.sincioco.com',
+    [string]$Base = 'https://sincioco.com',
     [string]$MainBase = 'https://sincioco.com',
     [string]$ReportName = 'live-validation.json'
 )
@@ -35,6 +35,17 @@ try {
     $config = [IO.File]::ReadAllText((Join-Path $stageRoot 'staticwebapp.config.json')) | ConvertFrom-Json
     $contract = [IO.File]::ReadAllText((Join-Path $PSScriptRoot 'pages-migration-contract.json')) | ConvertFrom-Json
     if ($contract.book_pages_url -cne $bookPages -or $contract.storyboard_pages_url -cne $storyPages) { throw 'Unexpected Pages destinations in migration contract.' }
+    $bookWrapper = [string]$contract.book_wrapper_url
+    if ($bookWrapper -cne 'https://sincioco.com/SinStar/BookOne/') { throw 'Unexpected public audiobook wrapper URL.' }
+    $wrappers = @($contract.wrappers | ForEach-Object {
+        if ($_.path -cnotmatch '^(?:SinStar/BookOne|BookOne|SinStar_Storyboard)/index\.html$') { throw 'Unexpected wrapper publication path.' }
+        $virtual = $_.path -ceq 'SinStar/BookOne/index.html'
+        if ($virtual -and $_.source -cne 'BookOne/index.html') { throw 'The new audiobook route must use the existing book wrapper file.' }
+        if (-not $virtual -and $_.source -and $_.source -cne $_.path) { throw 'Unexpected physical wrapper source.' }
+        $local = if ($virtual) { $_.source } else { $_.path }
+        [pscustomobject]@{path=('/' + $_.path.Substring(0, $_.path.Length - 'index.html'.Length));local=$local;virtual=$virtual}
+    })
+    if ($wrappers.Count -ne 3 -or @($wrappers.path | Select-Object -Unique).Count -ne 3) { throw 'Expected the new and legacy book wrappers plus storyboard.' }
     $assets = @($contract.retired_reader_assets)
     if ($assets.Count -ne 62 -or @($assets | Select-Object -Unique).Count -ne 62 -or @($assets | Where-Object { $_ -cmatch '^audio/[^/]+\.mp3$' }).Count -ne 43) { throw 'Expected 62 unique historical reader assets, including 43 audio files.' }
     foreach ($asset in $assets) {
@@ -68,12 +79,19 @@ try {
                 [pscustomobject]@{passed=($first.Status -eq 301 -and @(($folder + '/'), ($origin + $folder + '/')) -ccontains $first.Location -and $final.Status -eq 200 -and $final.FinalUrl -ceq ($origin + $folder + '/'));status=$first.Status;location=$first.Location;final_status=$final.Status;final_url=$final.FinalUrl}
             }
         }
-        foreach ($wrapper in @(@{path='/BookOne/';local='BookOne/index.html'},@{path='/SinStar_Storyboard/';local='SinStar_Storyboard/index.html'})) {
+        foreach ($wrapper in $wrappers) {
             foreach ($url in @(($origin + $wrapper.path.TrimEnd('/')), ($origin + $wrapper.path), ($origin + $wrapper.path + 'index.html'))) {
                 Add-LiveCheck 'wrapper-bytes' $url {
+                    $first = Get-VerificationResponse -Client $firstClient -Uri $url -Method HEAD
                     $r = Get-VerificationResponse -Client $client -Uri $url
                     $bytes = Get-VerificationByteEvidence $r (Join-Path $stageRoot $wrapper.local)
-                    [pscustomobject]@{passed=($r.Status -eq 200 -and @($url,($origin + $wrapper.path)) -ccontains $r.FinalUrl -and $bytes.matches_staged);status=$r.Status;final_url=$r.FinalUrl;bytes=$bytes}
+                    $expectedFinal = $origin + $wrapper.path
+                    $isIndexAlias = $url -ceq ($expectedFinal + 'index.html')
+                    $redirectOkay = $first.Status -eq 301 -and @($wrapper.path,$expectedFinal) -ccontains $first.Location
+                    $directOkay = $first.Status -eq 200 -and -not $first.Location
+                    $routeOkay = if ($wrapper.virtual) { $directOkay -or $redirectOkay } elseif ($url -ceq $expectedFinal) { $directOkay } elseif ($isIndexAlias) { $directOkay -or $redirectOkay } else { $redirectOkay }
+                    $finalOkay = $r.FinalUrl -ceq $expectedFinal -or (($isIndexAlias -or $wrapper.virtual) -and $r.FinalUrl -ceq $url)
+                    [pscustomobject]@{passed=($routeOkay -and $r.Status -eq 200 -and $finalOkay -and $bytes.matches_staged);first_status=$first.Status;location=$first.Location;status=$r.Status;final_url=$r.FinalUrl;expected_final_url=$expectedFinal;bytes=$bytes}
                 }
             }
         }
@@ -92,7 +110,7 @@ try {
             Add-LiveCheck 'legacy-landing' $url {
                 $r = Get-VerificationResponse -Client $client -Uri $url
                 $bytes = Get-VerificationByteEvidence $r (Join-Path $stageRoot 'BookOne/index.html')
-                [pscustomobject]@{passed=($r.Status -eq 200 -and $r.FinalUrl -ceq 'https://sinstar.sincioco.com/BookOne/' -and $bytes.matches_staged);status=$r.Status;final_url=$r.FinalUrl;bytes=$bytes}
+                [pscustomobject]@{passed=($r.Status -eq 200 -and $r.FinalUrl -ceq $bookWrapper -and $bytes.matches_staged);status=$r.Status;final_url=$r.FinalUrl;bytes=$bytes}
             }
         }
     }

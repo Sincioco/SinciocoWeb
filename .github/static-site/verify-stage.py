@@ -54,6 +54,8 @@ for rule in config['routes']:
 
 if (root / 'staticwebapp.config.json').stat().st_size > 20 * 1024:
     fail('configuration exceeds Azure 20 KB limit')
+if 'navigationFallback' in config or any('*' in path for path in rules):
+    fail('The reviewed static site must not add catch-all or wildcard routing')
 actual = records_for_payload(root)
 if actual != manifest:
     fail('Payload file inventory/hashes differ from the approved manifest')
@@ -159,6 +161,27 @@ book_pages = contract['book_pages_url']
 storyboard_pages = contract['storyboard_pages_url']
 if book_pages != 'https://sincioco.github.io/SinStar_Audio_BookOne/' or storyboard_pages != 'https://sincioco.github.io/SinStar_Storyboard/':
     fail('Unexpected Pages deployment destinations in migration contract')
+book_wrapper_url = 'https://sincioco.com/SinStar/BookOne/'
+if contract.get('book_wrapper_url') != book_wrapper_url:
+    fail('Book wrapper must use its exact main-host nested URL')
+if contract.get('azure_origins') != ['https://sincioco.com', 'https://www.sincioco.com']:
+    fail('Azure origin contract must contain only the apex and www hosts')
+expected_wrappers = [
+    {'path': 'SinStar/BookOne/index.html', 'source': 'BookOne/index.html', 'canonical': book_pages},
+    {'path': 'BookOne/index.html', 'canonical': book_pages},
+    {'path': 'SinStar_Storyboard/index.html', 'canonical': storyboard_pages},
+]
+if sorted(contract['wrappers'], key=lambda item: item['path']) != sorted(expected_wrappers, key=lambda item: item['path']):
+    fail('Wrapper contract must retain one book source, its exact alias, and the storyboard')
+book_alias_rule = {'route': '/SinStar/BookOne/index.html', 'rewrite': '/BookOne/index.html'}
+if rules.get(book_alias_rule['route']) != book_alias_rule:
+    fail('Nested book URL must use only its exact reviewed index rewrite')
+for wrapper_path in ('BookOne/index.html', 'SinStar_Storyboard/index.html'):
+    if normalized_route('/' + wrapper_path) in normalized:
+        fail('Wrapper URLs must remain direct files with native auto normalization', file=wrapper_path)
+landing_rule = rules.get('/sinstar/novel/index.html', {})
+if landing_rule.get('statusCode') != 301 or landing_rule.get('redirect') != book_wrapper_url or 'rewrite' in landing_rule:
+    fail('Legacy novel landing must permanently redirect to the main-host book wrapper')
 historical_assets = contract['retired_reader_assets']
 if len(historical_assets) != 62 or len(set(historical_assets)) != 62 or sum(path.startswith('audio/') for path in historical_assets) != 43:
     fail('Historical reader asset contract must retain 62 paths including 43 audio files')
@@ -176,6 +199,8 @@ actual_asset_routes = {path for path, rule in rules.items() if
                        and rule.get('redirect', '').startswith(book_pages)}
 if actual_asset_routes != expected_asset_routes:
     fail('Reader asset redirect inventory differs from the historical contract')
+if contract['retirement_worker_paths'] != ['/BookOne/sw.js', '/sinstar/novel/sw.js']:
+    fail('Historical retirement worker URLs must remain unchanged')
 for worker_path in contract['retirement_worker_paths']:
     rule = rules.get(worker_path, {})
     if not (root / worker_path.lstrip('/')).is_file() or 'redirect' in rule or 'rewrite' in rule:
@@ -189,11 +214,18 @@ expected_book_files = {'BookOne/index.html', 'BookOne/sw.js', 'BookOne/retire-le
 actual_book_files = {item['path'] for item in actual if item['path'].startswith('BookOne/')}
 if actual_book_files != expected_book_files:
     fail('Azure BookOne contains files other than the three approved wrapper/retirement files')
+if any(item['path'].startswith('SinStar/') or item['path'].casefold().startswith('sinstar/bookone/') for item in actual):
+    fail('Nested book URL must remain virtual without a physical SinStar payload tree')
+book_source = 'BookOne/index.html'
+book_outputs = {book_source, 'SinStar/BookOne/index.html'}
+book_entries = [entry for entry in entries if entry['deployed'] in book_outputs or entry['path'] in book_outputs]
+if book_entries != [{'source': 'main', 'path': book_source, 'deployed': book_source}]:
+    fail('Book wrapper must retain its single original publication entry')
 if any(item['path'].startswith('sinstar/novel/') and item['path'] != 'sinstar/novel/sw.js' for item in actual):
     fail('Legacy novel payload contains content other than its retirement worker')
 
 for wrapper in contract['wrappers']:
-    path = root / wrapper['path']
+    path = root / public_relative(wrapper.get('source', wrapper['path']))
     if not path.is_file():
         fail('Missing wrapper', file=wrapper['path'])
         continue
@@ -208,7 +240,7 @@ for wrapper in contract['wrappers']:
         fail('Wrapper iframe must declare the approved referrer policy', file=wrapper['path'])
     if frame.get('id') != 'hosted-content' or 'sandbox' in frame:
         fail('Wrapper iframe identity or sandbox differs from the approved contract', file=wrapper['path'])
-    kind = 'book' if wrapper['path'] == 'BookOne/index.html' else 'storyboard'
+    kind = 'book' if wrapper['canonical'] == book_pages else 'storyboard'
     if page.html.get('data-hosted-page') != kind or not any(script.get('src') == '/wrapper-nav.js' and 'defer' in script for script in page.scripts):
         fail('Wrapper must include its fixed-target bookmark navigation', file=wrapper['path'])
     if kind == 'storyboard' and 'encrypted-media' not in [item.strip().split(' ')[0] for item in frame.get('allow', '').split(';')]:

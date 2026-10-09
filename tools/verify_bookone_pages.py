@@ -23,7 +23,7 @@ import xml.etree.ElementTree as ET
 
 DEFAULT_EXPECTED = Path(r'D:\My Documents - 2026\SinStar_Audio_BookOne\docs')
 DEFAULT_URL = 'https://sincioco.github.io/SinStar_Audio_BookOne/'
-PARENTS = ('https://sincioco.com', 'https://sinstar.sincioco.com')
+PARENTS = ('https://sincioco.com', 'https://www.sincioco.com')
 HEADERS = ('content-type', 'content-length', 'content-encoding', 'content-range',
            'accept-ranges', 'cache-control', 'etag', 'last-modified', 'age',
            'x-frame-options', 'content-security-policy', 'service-worker-allowed')

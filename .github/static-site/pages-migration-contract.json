@@ -4,7 +4,7 @@
   "storyboard_pages_url": "https://sincioco.github.io/SinStar_Storyboard/",
   "azure_origins": [
     "https://sincioco.com",
-    "https://sinstar.sincioco.com"
+    "https://www.sincioco.com"
   ],
   "retired_reader_assets": [
     "app.js",
@@ -76,6 +76,11 @@
   ],
   "wrappers": [
     {
+      "path": "SinStar/BookOne/index.html",
+      "canonical": "https://sincioco.github.io/SinStar_Audio_BookOne/",
+      "source": "BookOne/index.html"
+    },
+    {
       "path": "BookOne/index.html",
       "canonical": "https://sincioco.github.io/SinStar_Audio_BookOne/"
     },
@@ -141,5 +146,6 @@
     "required_ids": [
       "story"
     ]
-  }
+  },
+  "book_wrapper_url": "https://sincioco.com/SinStar/BookOne/"
 }

@@ -9,6 +9,7 @@ SOURCE = Path(r'D:\SMILE 2.0 - Sin Star I\Book and Novel Materials\Sin Star I - 
 REPOSITORY = Path(r'D:\My Documents - 2026\SinStar_Audio_BookOne')
 STATE = Path(r'D:\My Documents - 2026\Sincioco.com\Deployment\book-publication')
 CANONICAL = 'https://sincioco.github.io/SinStar_Audio_BookOne/'
+# Historical source metadata marker; this is not the current public wrapper URL.
 OLD_CANONICAL = 'https://sinstar.sincioco.com/BookOne/'
 
 def digest(data):

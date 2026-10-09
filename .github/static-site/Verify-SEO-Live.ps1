@@ -9,6 +9,8 @@ $results = [Collections.Generic.List[object]]::new()
 $client = $null; $firstClient = $null
 $bookPages = 'https://sincioco.github.io/SinStar_Audio_BookOne/'
 $storyPages = 'https://sincioco.github.io/SinStar_Storyboard/'
+# CI verifies the stable apex while the www binding is handed off separately.
+$origins = @('https://sincioco.com')
 
 function Add-SeoCheck {
     param([string]$Kind, [string]$Url, [scriptblock]$Action)
@@ -21,10 +23,10 @@ function Add-SeoCheck {
 function Test-PagesFraming {
     param($Response)
     if (-not [string]::IsNullOrWhiteSpace($Response.XFrameOptions)) { return $false }
-    # Multiple CSP policies all apply. Each frame-ancestors directive must permit both wrappers.
+    # Multiple CSP policies all apply. Each frame-ancestors directive must permit both intended custom-domain origins.
     foreach ($match in [regex]::Matches($Response.ContentSecurityPolicy, '(?i)(?:^|[;,])\s*frame-ancestors\s+([^;,]+)')) {
         $sources = @($match.Groups[1].Value.Trim() -split '\s+')
-        foreach ($origin in @('https://sincioco.com','https://sinstar.sincioco.com')) {
+        foreach ($origin in @($contract.azure_origins)) {
             if ($sources -notcontains '*' -and $sources -notcontains 'https:' -and $sources -notcontains $origin) { return $false }
         }
     }
@@ -34,6 +36,8 @@ function Test-PagesFraming {
 try {
     $contract = [IO.File]::ReadAllText((Join-Path $PSScriptRoot 'pages-migration-contract.json')) | ConvertFrom-Json
     if ($contract.book_pages_url -cne $bookPages -or $contract.storyboard_pages_url -cne $storyPages) { throw 'Unexpected Pages destinations in migration contract.' }
+    if ($contract.book_wrapper_url -cne 'https://sincioco.com/SinStar/BookOne/') { throw 'Unexpected public audiobook wrapper URL.' }
+    if (@($contract.azure_origins).Count -ne 2 -or @($contract.azure_origins) -cnotcontains 'https://sincioco.com' -or @($contract.azure_origins) -cnotcontains 'https://www.sincioco.com') { throw 'Unexpected intended custom-domain origins.' }
     $sitemap = Read-VerificationXml ([IO.File]::ReadAllBytes((Join-Path $siteRoot 'sitemap.xml')))
     $locations = @($sitemap.SelectNodes('/*[local-name()="urlset"]/*[local-name()="url"]/*[local-name()="loc"]') | ForEach-Object { $_.InnerText })
     if ($locations.Count -ne 21 -or @($locations | Select-Object -Unique).Count -ne 21) { throw 'Main sitemap must contain exactly 21 unique canonical pages.' }
@@ -65,11 +69,11 @@ try {
             [pscustomobject]@{passed=($r.Status -eq 200 -and $r.FinalUrl -ceq $check.url -and $bytes.matches_staged -and $metadataOkay);status=$r.Status;final_url=$r.FinalUrl;bytes=$bytes;metadata=$metadata;x_robots_tag=$r.XRobotsTag}
         }
     }
-    # Retained .html hyperlinks must redirect to the same final page on both hosts.
+    # Retained .html hyperlinks must redirect to the same final page on each checked origin.
     foreach ($location in $locations) {
         $canonicalPath = ([Uri]$location).AbsolutePath
         if ($canonicalPath.EndsWith('/')) { continue }
-        foreach ($origin in @('https://sincioco.com','https://sinstar.sincioco.com')) {
+        foreach ($origin in $origins) {
             $legacyUrl = $origin + $canonicalPath + '.html'
             $expectedFinal = $origin + $canonicalPath
             Add-SeoCheck 'html-compatibility-redirect' $legacyUrl {
@@ -79,8 +83,16 @@ try {
             }
         }
     }
-    $wrappers = @(@{path='/BookOne/';local='BookOne/index.html';canonical=$bookPages},@{path='/SinStar_Storyboard/';local='SinStar_Storyboard/index.html';canonical=$storyPages})
-    foreach ($origin in @('https://sincioco.com','https://sinstar.sincioco.com')) {
+    $wrappers = @($contract.wrappers | ForEach-Object {
+        if ($_.path -cnotmatch '^(?:SinStar/BookOne|BookOne|SinStar_Storyboard)/index\.html$' -or @($bookPages,$storyPages) -cnotcontains $_.canonical) { throw 'Unexpected wrapper publication contract.' }
+        $virtual = $_.path -ceq 'SinStar/BookOne/index.html'
+        if ($virtual -and $_.source -cne 'BookOne/index.html') { throw 'The new audiobook route must use the existing book wrapper file.' }
+        if (-not $virtual -and $_.source -and $_.source -cne $_.path) { throw 'Unexpected physical wrapper source.' }
+        $local = if ($virtual) { $_.source } else { $_.path }
+        [pscustomobject]@{path=('/' + $_.path.Substring(0, $_.path.Length - 'index.html'.Length));local=$local;virtual=$virtual;canonical=$_.canonical}
+    })
+    if ($wrappers.Count -ne 3 -or @($wrappers.path | Select-Object -Unique).Count -ne 3) { throw 'Expected the new and legacy book wrappers plus storyboard.' }
+    foreach ($origin in $origins) {
         foreach ($wrapper in $wrappers) {
             $url = $origin + $wrapper.path
             Add-SeoCheck 'wrapper-noindex-canonical' $url {
