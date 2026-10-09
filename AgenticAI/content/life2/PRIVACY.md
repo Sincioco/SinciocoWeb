@@ -42,7 +42,7 @@ Deleting information in the app does not delete JSON files you exported, copies 
 
 ### Contact
 
-For privacy questions, contact **Louiery Sincioco** at **[louiery@gmail.com](mailto:louiery@gmail.com)**.
+For privacy questions, contact **Louiery Sincioco** at **[louiery@sincioco.com](mailto:louiery@sincioco.com)**.
 
 If you contact the developer, the developer receives the information you choose to send. You can use the contact address above for privacy questions or requests to delete information you have sent.
 

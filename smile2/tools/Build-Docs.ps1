@@ -74,7 +74,7 @@ $seoHead
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header"><div class="container nav-shell">
     <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
-    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../AgenticAI/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="../AgenticAI/">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@sincioco.com">Let’s Talk</a></nav>
   </div></header>
   <div class="docs-bar"><div class="docs-bar-inner">
     <a class="docs-brand" href="Index.html"><span class="code-mark" aria-hidden="true">S<span>:</span></span><strong>SMILE 2.0</strong><span class="docs-label">Learn &amp; build</span></a>

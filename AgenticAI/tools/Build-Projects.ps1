@@ -62,11 +62,11 @@ $videoScript
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header"><div class="container nav-shell">
     <a class="brand" href="../">Louiery Sincioco<span>Software Architect</span></a>
-    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="./" aria-current="page">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@gmail.com">Let’s Talk</a></nav>
+    <nav class="primary-nav" aria-label="Main"><a href="../">Home</a><a href="../Resume/">Resume</a><a href="../Military/">Military</a><span class="nav-separator" aria-hidden="true"></span><a href="./" aria-current="page">Agentic AI Projects</a><a class="nav-contact" href="mailto:louiery@sincioco.com">Let’s Talk</a></nav>
   </div></header>
   <div class="projects-bar"><div class="container">$tabs</div></div>
   $content
-  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="mailto:louiery@gmail.com">louiery@gmail.com</a></div></div></footer>
+  <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Louiery Sincioco</p><div class="footer-links"><a href="../">Sincioco.com</a><a href="mailto:louiery@sincioco.com">louiery@sincioco.com</a></div></div></footer>
 </body>
 </html>
 "@
@@ -99,7 +99,7 @@ $cards = foreach ($slug in $cardOrder) {
     }
 }
 $landing = @"
-<main id="main" class="container projects-landing"><header class="page-hero"><p class="eyebrow">Ideas into working software</p><h1>Agentic AI Projects</h1><p class="lead">Explore my work in AI-assisted software development: business tools, iPhone and iPad apps, programming languages, and games.</p><p>I help teams in the United States and the Philippines build custom software using AI, with hands-on software engineering, human review, and testing. These six projects show the kinds of products and tools I build.</p><a class="text-link" href="../#custom-software-services">Software engineering and AI development services →</a></header><div class="project-grid">$($cards -join "`n")</div><section class="section-heading"><h2>Need a Custom Solution?</h2><p>Discuss a business application, an AI integration, or a workflow you want to automate. I bring C#/.NET, Azure, web and mobile experience to contract and part-time engagements in the U.S. and the Philippines.</p><p><a class="text-link" href="mailto:louiery@gmail.com">Discuss your software project →</a> · <a href="../Resume/">Review my software engineering experience</a></p></section></main>
+<main id="main" class="container projects-landing"><header class="page-hero"><p class="eyebrow">Ideas into working software</p><h1>Agentic AI Projects</h1><p class="lead">Explore my work in AI-assisted software development: business tools, iPhone and iPad apps, programming languages, and games.</p><p>I help teams in the United States and the Philippines build custom software using AI, with hands-on software engineering, human review, and testing. These six projects show the kinds of products and tools I build.</p><a class="text-link" href="../#custom-software-services">Software engineering and AI development services →</a></header><div class="project-grid">$($cards -join "`n")</div><section class="section-heading"><h2>Need a Custom Solution?</h2><p>Discuss a business application, an AI integration, or a workflow you want to automate. I bring C#/.NET, Azure, web and mobile experience to contract and part-time engagements in the U.S. and the Philippines.</p><p><a class="text-link" href="mailto:louiery@sincioco.com">Discuss your software project →</a> · <a href="../Resume/">Review my software engineering experience</a></p></section></main>
 "@
 WriteProjectPage 'Index.html' 'Agentic AI & Custom Software Projects | Louiery Sincioco' 'Explore AI-assisted projects by Louiery Sincioco: business tools, mobile apps and developer tools. Custom software for U.S. and Philippine teams.' $landing ''
 $projectTitles = @{
@@ -124,6 +124,7 @@ foreach ($project in $projects) {
         $markdown = [regex]::Replace($markdown, '(?m)^## License(?=\r?$)', [Text.RegularExpressions.MatchEvaluator]{ param($match) $policy.TrimEnd() + "`n`n" + $match.Value })
     }
     $document = Convert-ProjectReadme $project $markdown $projectRoot
+    $document.Html = $document.Html.Replace('louiery@gmail.com', 'louiery@sincioco.com')
     if ($project.slug -eq 'sinstar') {
         $trailer = [regex]::Match($document.Html, '(?s)^<p>\s*(<a href="https://www.youtube.com/watch\?v=IuDbnSnKEPo">.*?</a>)<br>\s*(.*?)</p>')
         if (!$trailer.Success) { throw 'The Sin Star I trailer markup changed; review its inline player.' }

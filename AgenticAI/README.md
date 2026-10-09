@@ -18,6 +18,7 @@ project tab and its language-guide link remain available.
 - `tools/Convert-ProjectReadme.ps1` converts the snapshots into semantic HTML,
   replaces image paths, resolves source links, and extracts heading anchors.
 - `tools/Build-Projects.ps1` owns the page shell, project order, and sitemap entries.
+  It updates contact email addresses when rendering the pinned snapshots for the website.
   It omits Sin AI Prompt's Run section and its navigation item, and uses the
   owner-supplied `images/sinaiprompt/sin-ai-prompt-editor.png` screenshot for the
   full-width introduction and social preview. Only the landing-page project card
