@@ -35,6 +35,9 @@ li + li { margin-top:.5rem; }
 .hero h1 { font-size:clamp(3rem,5.5vw,4.6rem); }
 .hero-tagline { font-size:23px; font-weight:550; letter-spacing:-.03em; margin-top:17px; }
 .hero .lead { max-width:600px; margin-top:12px; font-size:17px; }
+.resume-hero { border-bottom:1px solid var(--line); }
+.resume-hero .hero-copy > p:not(.eyebrow):not(.lead) { margin-top:16px; font-size:15px; color:var(--muted); }
+.resume-hero .hero-copy > .resume-contact { font-size:14px; }
 .lead { color:var(--muted); font-size:20px; line-height:1.6; max-width:760px; }
 .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; align-items:center; }
 .button { display:inline-flex; align-items:center; justify-content:center; min-height:46px; gap:9px; padding:10px 23px; border-radius:99px; background:var(--blue); border:1px solid var(--blue); color:#fff; text-decoration:none; font-size:14px; font-weight:600; line-height:1.5; transition:background .15s,transform .15s; }
@@ -170,6 +173,8 @@ li + li { margin-top:.5rem; }
   .hero .button { padding:10px 16px; font-size:12px; }
   .hero .proof-strip { grid-column:1; margin:0; padding-block:8px 24px; flex-direction:column; align-self:center; gap:19px; }
   .hero-portrait { grid-column:2; }
+  .resume-hero .hero-copy > p { grid-column:span 2; }
+  .resume-hero .hero-copy > p:not(.eyebrow):not(.lead) { margin-top:0; }
   .proof-strip strong { font-size:23px; }
   .proof-strip span { max-width:95px; font-size:10px; }
   .section { padding-block:55px; }

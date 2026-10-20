@@ -118,12 +118,17 @@ class PublicationContractTests(unittest.TestCase):
         self.assertEqual(book_entries,[{'source':'main','path':book_source,'deployed':book_source}])
         self.assertIn('SinStar_Storyboard/index.html',paths)
         self.assertIn('wrapper-nav.js',paths)
+        resumes=[entry for entry in entries if entry['deployed'].startswith('Resume/') and
+                 entry['deployed'].endswith(('.docx','.pdf'))]
+        self.assertEqual(resumes,[{'source':'main','path':f'Resume/Louiery Sincioco.{extension}',
+                                  'deployed':f'Resume/Louiery Sincioco.{extension}'}
+                                 for extension in ('docx','pdf')])
         self.assertEqual(json.loads((ROOT/'sources.json').read_text()),{'main':'../..'})
 
     def test_native_auto_preserves_final_canonical_contract(self):
         config=json.loads((ROOT/'site-config/staticwebapp.config.json').read_text(encoding='utf-8-sig'))
         self.assertEqual(config.get('trailingSlash'),'auto')
-        self.assertEqual(len(config['routes']),142)
+        self.assertEqual(len(config['routes']),144)
         paths={rule['route'] for rule in config['routes']}
         self.assertTrue(paths.isdisjoint({'/AgenticAI','/Military','/Resume','/smile2'}))
         self.assertNotIn('navigationFallback',config)
@@ -131,6 +136,12 @@ class PublicationContractTests(unittest.TestCase):
         self.assertTrue(paths.isdisjoint({'/SinStar/BookOne','/SinStar/BookOne/'}))
         for folder in ('/BookOne','/SinStar_Storyboard'):
             self.assertTrue(paths.isdisjoint({folder,folder+'/',folder+'/index.html'}))
+        resume_routes=[rule for rule in config['routes'] if rule['route'].startswith('/Resume/') and
+                       rule['route'].endswith(('.docx','.pdf'))]
+        self.assertEqual(resume_routes,[
+            {'route':f'/Resume/Louiery Sincioco - Summary (2026).{extension}',
+             'redirect':f'/Resume/Louiery%20Sincioco.{extension}','statusCode':301}
+            for extension in ('docx','pdf')])
 
     def test_book_wrapper_migration_contract_preserves_legacy_assets(self):
         contract=json.loads((ROOT/'pages-migration-contract.json').read_text(encoding='utf-8-sig'))
@@ -150,7 +161,7 @@ class PublicationContractTests(unittest.TestCase):
         self.assertEqual(sorted(contract['wrappers'],key=lambda item:item['path']),
                          sorted(expected_wrappers,key=lambda item:item['path']))
         rules={rule['route']:rule for rule in config['routes']}
-        self.assertEqual(len(rules),142)
+        self.assertEqual(len(rules),144)
         self.assertEqual(rules['/SinStar/BookOne/index.html'],
                          {'route':'/SinStar/BookOne/index.html','rewrite':'/BookOne/index.html'})
         self.assertEqual(rules['/sinstar/novel/index.html'],
