@@ -1,0 +1,15 @@
+Tool: built-in image_gen
+Final export: 1584 x 396 PNG, center-cropped and downsampled from generated artwork.
+
+Use case: ads-marketing
+Asset type: professional LinkedIn personal profile header banner.
+Primary request: Create a finished premium professional LinkedIn banner for Louiery Sincioco, a software engineer, architect and technical lead. Visually confident, understated, elegant, and credible to enterprise clients. Brand context: his own website uses charcoal, white, blue #0066cc and deep navy #102333.
+Canvas: an exceptionally wide 4:1 panorama, ideally exactly 3168 by 792 pixels (or 1584 by 396). Fill the canvas edge to edge. The actual image itself must be 4:1; do not simulate a banner inside a taller image. No border, no framing, no letterboxing or blank strips.
+Scene/backdrop: rich ink navy gradient with very subtle architectural depth, midnight blue to deep slate. On the far right edge only, precision blue architectural planes and a few fine connected lines suggest elegant software system architecture, softly lit, low contrast, restrained, not a sci-fi interface. Leave the leftmost 30 percent and especially lower-left quiet for the profile portrait overlay.
+Composition/framing: sophisticated editorial hierarchy. A single left-aligned text block begins around 34 percent across the canvas and ends before 90 percent. Keep all text in the middle 65 percent of the image height, with generous breathing room. Typography is meticulously typeset, modern clean sans serif with crisp readable high contrast. No crowded skill lists. Main name in large white medium-weight type, role beneath in smaller pale blue, a fine short blue rule, then the tagline in white and a small website line. Maintain strong spacing and clear visual hierarchy.
+Text (verbatim, exactly these four lines, no other text):
+"Louiery Sincioco"
+"Software Engineer, Architect & Technical Lead"
+"Turning Complex Problems into Simple Solutions"
+"sincioco.com"
+Constraints: professional corporate polish and extreme restraint. Every word must be spelled correctly, with Louiery spelled L-o-u-i-e-r-y and Sincioco spelled S-i-n-c-i-o-c-o. Keep name and full tagline legible when seen at 1584 by 396. No portrait, people, logos, mockups, robots, brains, stock business icons, lens flares, flashy neon, code screenshots, watermarks, extra text or UI elements. The banner is the only deliverable, directly as an image.
